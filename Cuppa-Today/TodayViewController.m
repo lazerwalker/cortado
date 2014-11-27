@@ -3,17 +3,14 @@
 #import "TodayViewController.h"
 
 @interface TodayViewController () <NCWidgetProviding>
+@property (weak, nonatomic) IBOutlet UIButton *cortadoButton;
+
 @end
 
 @implementation TodayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
@@ -25,5 +22,11 @@
 
     completionHandler(NCUpdateResultNewData);
 }
+
+#pragma mark -
+- (IBAction)didTapCortadoButton:(id)sender {
+    self.cortadoButton.enabled = NO;
+}
+
 
 @end
