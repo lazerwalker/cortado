@@ -1,16 +1,14 @@
-#import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
 
-@interface TodayViewController () <NCWidgetProviding, UICollectionViewDataSource, UICollectionViewDelegate>
+#import "TodayViewController.h"
 
+@interface TodayViewController () <NCWidgetProviding>
 @end
 
 @implementation TodayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.preferredContentSize = CGSizeMake(320, 110);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,14 +24,6 @@
     // If there's an update, use NCUpdateResultNewData
 
     completionHandler(NCUpdateResultNewData);
-}
-
-#pragma mark - UICollectionViewDelegate
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
 }
 
 @end
