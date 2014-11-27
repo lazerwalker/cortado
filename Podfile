@@ -1,7 +1,9 @@
 target "Cuppa" do
-  pod 'ReactiveCocoa', '~> 2.3'
+    pod 'Mantle', '~> 1.5'
+    pod 'ReactiveCocoa', '~> 2.3'
 end
 
 target "Cuppa-Today" do
-  pod 'ReactiveCocoa', '~> 2.3'
+    pod 'Mantle', '~> 1.5'
+    pod 'ReactiveCocoa', '~> 2.3'
 end

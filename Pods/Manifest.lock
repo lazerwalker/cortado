@@ -1,4 +1,7 @@
 PODS:
+  - Mantle (1.5.1):
+    - Mantle/extobjc (= 1.5.1)
+  - Mantle/extobjc (1.5.1)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI (= 2.3.1)
   - ReactiveCocoa/Core (2.3.1):
@@ -8,9 +11,11 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
+  - Mantle (~> 1.5)
   - ReactiveCocoa (~> 2.3)
 
 SPEC CHECKSUMS:
+  Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
 
 COCOAPODS: 0.35.0

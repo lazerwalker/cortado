@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Cuppa-Mantle.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Cuppa-ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Cuppa-Today-Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3412C0A3A1D9FF98D805F73A</key>
+		<key>2B38784E4A5449BEFEE18EF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4014B962BDE7275D157218DE</key>
+		<key>4061BD6ECB86AA01C2CED7EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F0A654143765E005235C16F</key>
+		<key>4D9114AFADB85EFA73B6333C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C078969277A415F9C1AC0C73</key>
+		<key>7C92FE1AB2C29B1B4CEDAF81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3B9481E57728CE5723C6B95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA88CBF0C7777BB2501B18A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
