@@ -14,6 +14,10 @@
 		A62D72331A254C6500846A33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62D72321A254C6500846A33 /* Images.xcassets */; };
 		A62D72361A254C6500846A33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62D72341A254C6500846A33 /* LaunchScreen.xib */; };
 		A62D72421A254C6500846A33 /* CuppaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72411A254C6500846A33 /* CuppaTests.m */; };
+		A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62D72541A254D1A00846A33 /* NotificationCenter.framework */; };
+		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
+		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
+		A62D72601A254D1A00846A33 /* Cuppa-Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A62D72521A254D1A00846A33 /* Cuppa-Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +28,28 @@
 			remoteGlobalIDString = A62D72211A254C6500846A33;
 			remoteInfo = Cuppa;
 		};
+		A62D725E1A254D1A00846A33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A62D72511A254D1A00846A33;
+			remoteInfo = "Cuppa-Today";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A62D72641A254D1A00846A33 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A62D72601A254D1A00846A33 /* Cuppa-Today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A62D72221A254C6500846A33 /* Cuppa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuppa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +65,12 @@
 		A62D723B1A254C6500846A33 /* CuppaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuppaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62D72401A254C6500846A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A62D72411A254C6500846A33 /* CuppaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuppaTests.m; sourceTree = "<group>"; };
+		A62D72521A254D1A00846A33 /* Cuppa-Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cuppa-Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A62D72541A254D1A00846A33 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A62D72581A254D1A00846A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A62D72591A254D1A00846A33 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		A62D725A1A254D1A00846A33 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		A62D725C1A254D1A00846A33 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +88,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A62D724F1A254D1A00846A33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +104,8 @@
 			children = (
 				A62D72241A254C6500846A33 /* Cuppa */,
 				A62D723E1A254C6500846A33 /* CuppaTests */,
+				A62D72561A254D1A00846A33 /* Cuppa-Today */,
+				A62D72531A254D1A00846A33 /* Frameworks */,
 				A62D72231A254C6500846A33 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +115,7 @@
 			children = (
 				A62D72221A254C6500846A33 /* Cuppa.app */,
 				A62D723B1A254C6500846A33 /* CuppaTests.xctest */,
+				A62D72521A254D1A00846A33 /* Cuppa-Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +123,8 @@
 		A62D72241A254C6500846A33 /* Cuppa */ = {
 			isa = PBXGroup;
 			children = (
+				A62D724D1A254CCC00846A33 /* Shared */,
+				A62D724C1A254CC700846A33 /* App */,
 				A62D72291A254C6500846A33 /* AppDelegate.h */,
 				A62D722A1A254C6500846A33 /* AppDelegate.m */,
 				A62D722C1A254C6500846A33 /* ViewController.h */,
@@ -119,6 +163,47 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A62D724C1A254CC700846A33 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		A62D724D1A254CCC00846A33 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		A62D72531A254D1A00846A33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A62D72541A254D1A00846A33 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A62D72561A254D1A00846A33 /* Cuppa-Today */ = {
+			isa = PBXGroup;
+			children = (
+				A62D72591A254D1A00846A33 /* TodayViewController.h */,
+				A62D725A1A254D1A00846A33 /* TodayViewController.m */,
+				A62D725C1A254D1A00846A33 /* MainInterface.storyboard */,
+				A62D72571A254D1A00846A33 /* Supporting Files */,
+			);
+			path = "Cuppa-Today";
+			sourceTree = "<group>";
+		};
+		A62D72571A254D1A00846A33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A62D72581A254D1A00846A33 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,10 +214,12 @@
 				A62D721E1A254C6500846A33 /* Sources */,
 				A62D721F1A254C6500846A33 /* Frameworks */,
 				A62D72201A254C6500846A33 /* Resources */,
+				A62D72641A254D1A00846A33 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A62D725F1A254D1A00846A33 /* PBXTargetDependency */,
 			);
 			name = Cuppa;
 			productName = Cuppa;
@@ -157,6 +244,23 @@
 			productReference = A62D723B1A254C6500846A33 /* CuppaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A62D72511A254D1A00846A33 /* Cuppa-Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A62D72611A254D1A00846A33 /* Build configuration list for PBXNativeTarget "Cuppa-Today" */;
+			buildPhases = (
+				A62D724E1A254D1A00846A33 /* Sources */,
+				A62D724F1A254D1A00846A33 /* Frameworks */,
+				A62D72501A254D1A00846A33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cuppa-Today";
+			productName = "Cuppa-Today";
+			productReference = A62D72521A254D1A00846A33 /* Cuppa-Today.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -172,6 +276,9 @@
 					A62D723A1A254C6500846A33 = {
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = A62D72211A254C6500846A33;
+					};
+					A62D72511A254D1A00846A33 = {
+						CreatedOnToolsVersion = 6.1;
 					};
 				};
 			};
@@ -190,6 +297,7 @@
 			targets = (
 				A62D72211A254C6500846A33 /* Cuppa */,
 				A62D723A1A254C6500846A33 /* CuppaTests */,
+				A62D72511A254D1A00846A33 /* Cuppa-Today */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +317,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A62D72501A254D1A00846A33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +349,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A62D724E1A254D1A00846A33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -240,6 +364,11 @@
 			isa = PBXTargetDependency;
 			target = A62D72211A254C6500846A33 /* Cuppa */;
 			targetProxy = A62D723C1A254C6500846A33 /* PBXContainerItemProxy */;
+		};
+		A62D725F1A254D1A00846A33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A62D72511A254D1A00846A33 /* Cuppa-Today */;
+			targetProxy = A62D725E1A254D1A00846A33 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -395,6 +524,30 @@
 			};
 			name = Release;
 		};
+		A62D72621A254D1A00846A33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Cuppa-Today/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A62D72631A254D1A00846A33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Cuppa-Today/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -420,6 +573,14 @@
 			buildConfigurations = (
 				A62D72491A254C6500846A33 /* Debug */,
 				A62D724A1A254C6500846A33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A62D72611A254D1A00846A33 /* Build configuration list for PBXNativeTarget "Cuppa-Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A62D72621A254D1A00846A33 /* Debug */,
+				A62D72631A254D1A00846A33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
