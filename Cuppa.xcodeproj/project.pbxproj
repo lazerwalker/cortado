@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6E805C9BC0D1E3015077C35D /* libPods-Cuppa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A91AEC6A7F618585139F8C7 /* libPods-Cuppa.a */; };
-		A60E24CE1A27E6DA0014628C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60E24CD1A27E6DA0014628C /* HealthKit.framework */; };
-		A60E24CF1A27E6E90014628C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60E24CD1A27E6DA0014628C /* HealthKit.framework */; };
 		A62D72281A254C6500846A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72271A254C6500846A33 /* main.m */; };
 		A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722A1A254C6500846A33 /* AppDelegate.m */; };
 		A62D722E1A254C6500846A33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722D1A254C6500846A33 /* ViewController.m */; };
@@ -54,7 +52,6 @@
 		4D0BED7E9130552C27A9DE24 /* Pods-Cuppa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuppa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cuppa/Pods-Cuppa.release.xcconfig"; sourceTree = "<group>"; };
 		89D5EEBB897CA0B0AB73E730 /* libPods-Cuppa-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cuppa-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60E24CC1A27E6DA0014628C /* Cuppa-Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cuppa-Today.entitlements"; sourceTree = "<group>"; };
-		A60E24CD1A27E6DA0014628C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		A60E24D01A27E6E90014628C /* Cuppa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cuppa.entitlements; sourceTree = "<group>"; };
 		A62D72221A254C6500846A33 /* Cuppa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuppa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62D72261A254C6500846A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,7 +78,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E805C9BC0D1E3015077C35D /* libPods-Cuppa.a in Frameworks */,
-				A60E24CF1A27E6E90014628C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A60E24CE1A27E6DA0014628C /* HealthKit.framework in Frameworks */,
 				A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */,
 				EB729F58C225F1E475AFD9A4 /* libPods-Cuppa-Today.a in Frameworks */,
 			);
@@ -155,7 +150,6 @@
 		A62D72531A254D1A00846A33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A60E24CD1A27E6DA0014628C /* HealthKit.framework */,
 				A62D72541A254D1A00846A33 /* NotificationCenter.framework */,
 				2A91AEC6A7F618585139F8C7 /* libPods-Cuppa.a */,
 				89D5EEBB897CA0B0AB73E730 /* libPods-Cuppa-Today.a */,
@@ -250,6 +244,9 @@
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 48WB56AE4K;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -259,8 +256,11 @@
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 48WB56AE4K;
 						SystemCapabilities = {
-							com.apple.HealthKit = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
 							};
 						};
 					};
