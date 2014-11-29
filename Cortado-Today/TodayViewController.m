@@ -37,10 +37,11 @@
 
 #pragma mark -
 - (IBAction)didTapCortadoButton:(id)sender {
-    self.cortadoButton.backgroundColor = UIColor.greenColor;
+    self.cortadoButton.enabled = NO;
+    [self.cortadoButton setTitle:@"Adding..." forState:UIControlStateDisabled];
     [self.interface saveBeverage:@"Cortado"
                     withCaffeine:150.0
-     completion:^{
+                      completion:^{
          NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cortado"];
          NSString *channel = [defaults objectForKey:@"channel"];
 
@@ -50,7 +51,7 @@
          [push setData:@{@"content-available":@1,
                         @"sound":@""}];
          [push sendPushInBackground];
-         self.cortadoButton.backgroundColor = UIColor.grayColor;
+                          [self.cortadoButton setTitle:@"Added! ✓" forState:UIControlStateDisabled];
      }];
 }
 
