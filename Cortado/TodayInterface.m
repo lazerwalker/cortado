@@ -22,7 +22,6 @@
                                          options:0
                                            error:&error
                                       byAccessor:^(NSURL *newURL) {
-                                          NSLog(@"================> %@", self.presentedItemURL);
         [NSFileCoordinator addFilePresenter:self];
     }];
 
