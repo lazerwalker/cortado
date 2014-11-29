@@ -1,5 +1,0 @@
-#include "Pods-Cuppa-Today-Mantle.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Mantle" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Mantle" "${PODS_ROOT}/Headers/Public/ReactiveCocoa" "${PODS_ROOT}/Headers/Public/ReactiveCocoa/ReactiveCocoa"
-OTHER_LDFLAGS = ${PODS_CUPPA_TODAY_MANTLE_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}
