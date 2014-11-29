@@ -12,9 +12,11 @@
 
 @implementation TodayInterface
 
-- (id)init {
+- (id)initWithProcessor:(BeverageProcessor *)processor {
     self = [super init];
     if (!self) return nil;
+
+    _processor = processor;
 
     NSError *error;
     self.coordinator = [[NSFileCoordinator alloc] initWithFilePresenter:self];
@@ -43,8 +45,7 @@
             return;
         }
 
-        BeverageProcessor *processor = [[BeverageProcessor alloc] init];
-        [processor processBeverages:array];
+        [self.processor processBeverages:array];
 
         [self.coordinator coordinateWritingItemAtURL:self.presentedItemURL
                                              options:NSFileCoordinatorWritingForReplacing

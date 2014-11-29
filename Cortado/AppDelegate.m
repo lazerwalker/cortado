@@ -1,6 +1,8 @@
 #import <CocoaPods-Keys/CortadoKeys.h>
+@import HealthKit;
 #import <Parse/Parse.h>
 
+#import "BeverageProcessor.h"
 #import "TodayInterface.h"
 
 #import "AppDelegate.h"
@@ -8,6 +10,7 @@
 @interface AppDelegate ()
 
 @property (nonatomic, strong) TodayInterface *interface;
+@property (nonatomic, strong) BeverageProcessor *processor;
 
 @end
 
@@ -16,7 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.interface = [[TodayInterface alloc] init];
+    self.processor = [[BeverageProcessor alloc] init];
+    self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
 
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
 
@@ -36,7 +40,7 @@
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     if (!self.interface) {
-        self.interface = [[TodayInterface alloc] init];
+        self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
     }
 
     [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
@@ -78,7 +82,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     if (!self.interface) {
-        self.interface = [[TodayInterface alloc] init];
+        self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
     }
 
     [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
