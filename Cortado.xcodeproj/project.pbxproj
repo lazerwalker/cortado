@@ -151,15 +151,14 @@
 				A62D72261A254C6500846A33 /* Info.plist */,
 				A62D72271A254C6500846A33 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A62D724D1A254CCC00846A33 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Shared;
-			path = Cuppa;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		A62D72531A254D1A00846A33 /* Frameworks */ = {
@@ -193,7 +192,7 @@
 			children = (
 				A62D72581A254D1A00846A33 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		B1306759647D75FFCB56B59F /* Pods */ = {
@@ -423,7 +422,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -436,7 +435,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Cortado-Today/Cortado-Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -487,7 +486,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -500,7 +499,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Cortado-Today/Cortado-Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
