@@ -28,21 +28,25 @@
 - (void)saveBeverage:(NSString *)beverage
         withCaffeine:(CGFloat)caffeine
           completion:(void (^)())completionBlock {
-    NSError *error;
-    [self.coordinator coordinateWritingItemAtURL:self.presentedItemURL
-                                         options:NSFileCoordinatorWritingForReplacing
-                                           error:&error
-                                      byAccessor:^(NSURL *newURL) {
-        NSArray *drink = @[beverage, @(caffeine), NSDate.date];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drink];
-        [data writeToURL:newURL atomically:YES];
-        if (completionBlock) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completionBlock();
-            });
-        }
+
+    [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
+        NSMutableArray *array = [[NSKeyedUnarchiver unarchiveObjectWithFile:newURL.path] mutableCopy] ?: [[NSMutableArray alloc] init];
+
+        [self.coordinator coordinateWritingItemAtURL:self.presentedItemURL
+                                             options:NSFileCoordinatorWritingForReplacing
+                                               error:nil
+                                          byAccessor:^(NSURL *newURL) {
+            NSArray *drink = @[beverage, @(caffeine), NSDate.date];
+            [array addObject:drink];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+            [data writeToURL:newURL atomically:YES];
+            if (completionBlock) {
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  completionBlock();
+              });
+            }
+        }];
     }];
-    NSLog(@"================> %@", error);
 }
 
 @end

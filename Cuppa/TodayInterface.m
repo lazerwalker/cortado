@@ -42,10 +42,26 @@
 }
 
 - (void)presentedItemDidChange {
-    UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.fireDate = [NSDate date];
-    notif.alertBody = @"A thing happened!";
-    [UIApplication.sharedApplication scheduleLocalNotification:notif];
+    [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
+        NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:newURL.path];
+        if (!array) return;
+
+        for (NSArray *beverage in array) {
+            UILocalNotification *notif = [[UILocalNotification alloc] init];
+            notif.fireDate = [NSDate date];
+            notif.alertBody = [NSString stringWithFormat:@"Drank a %@ (%@mg) at %@", beverage[0], beverage[1], beverage[2]];
+            [UIApplication.sharedApplication scheduleLocalNotification:notif];
+        }
+
+        [self.coordinator coordinateWritingItemAtURL:self.presentedItemURL
+                                             options:NSFileCoordinatorWritingForReplacing
+                                               error:nil
+                                          byAccessor:^(NSURL *newURL) {
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@[]];
+            [data writeToURL:newURL atomically:YES];
+        }];
+    }];
+
 }
 
 @end
