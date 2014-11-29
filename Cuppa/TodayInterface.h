@@ -3,5 +3,6 @@
 @interface TodayInterface : NSObject
 
 - (void)stopListening;
+- (void)processBeverages;
 
 @end

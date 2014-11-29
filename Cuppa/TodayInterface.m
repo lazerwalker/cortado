@@ -31,17 +31,7 @@
     [NSFileCoordinator removeFilePresenter:self];
 }
 
-#pragma mark - NSFilePresenter
-- (NSURL *)presentedItemURL {
-    NSURL *containerURL = [NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.cuppa"];
-    return [containerURL URLByAppendingPathComponent:@"addCaffeine"];
-}
-
-- (NSOperationQueue *)presentedItemOperationQueue {
-    return [NSOperationQueue mainQueue];
-}
-
-- (void)presentedItemDidChange {
+- (void)processBeverages {
     [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
         NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:newURL.path];
         if (!array) return;
@@ -57,11 +47,24 @@
                                              options:NSFileCoordinatorWritingForReplacing
                                                error:nil
                                           byAccessor:^(NSURL *newURL) {
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@[]];
-            [data writeToURL:newURL atomically:YES];
-        }];
+                                              NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@[]];
+                                              [data writeToURL:newURL atomically:YES];
+                                          }];
     }];
+}
 
+#pragma mark - NSFilePresenter
+- (NSURL *)presentedItemURL {
+    NSURL *containerURL = [NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:@"group.cuppa"];
+    return [containerURL URLByAppendingPathComponent:@"addCaffeine"];
+}
+
+- (NSOperationQueue *)presentedItemOperationQueue {
+    return [NSOperationQueue mainQueue];
+}
+
+- (void)presentedItemDidChange {
+    [self processBeverages];
 }
 
 @end
