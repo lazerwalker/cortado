@@ -1,4 +1,6 @@
+#import <CocoaPods-Keys/CortadoKeys.h>
 #import <NotificationCenter/NotificationCenter.h>
+#import <Parse/Parse.h>
 
 #import "AppInterface.h"
 
@@ -16,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _interface = [[AppInterface alloc] init];
+
+    CortadoKeys *keys = [[CortadoKeys alloc] init];
+    [Parse setApplicationId:keys.parseAppID
+                  clientKey:keys.parseClientKey];
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
@@ -34,6 +40,15 @@
     [self.interface saveBeverage:@"Cortado"
                     withCaffeine:150.0
      completion:^{
+         NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cortado"];
+         NSString *channel = [defaults objectForKey:@"channel"];
+
+         PFPush *push = [[PFPush alloc] init];
+         [push setChannel:channel];
+         [push setMessage:@"addedBeverage"];
+         [push setData:@{@"content-available":@1,
+                        @"sound":@""}];
+         [push sendPushInBackground];
          self.cortadoButton.backgroundColor = UIColor.grayColor;
      }];
 }
