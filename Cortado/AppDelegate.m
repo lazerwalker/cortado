@@ -24,8 +24,6 @@
     [Parse setApplicationId:keys.parseAppID
                   clientKey:keys.parseClientKey];
 
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil];
-    [UIApplication.sharedApplication registerUserNotificationSettings:settings];
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     return YES;
@@ -74,17 +72,11 @@
     [currentInstallation saveInBackground];
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Failed to register for notifs ================> %@", error);
-}
-
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received push: %@", userInfo);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSLog(@"Received BETTER push: %@", userInfo);
-
     if (!self.interface) {
         self.interface = [[TodayInterface alloc] init];
     }
