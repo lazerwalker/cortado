@@ -14,6 +14,7 @@
     self = [super init];
     if (!self) return nil;
 
+
     self.coordinator = [[NSFileCoordinator alloc] initWithFilePresenter:self];
 
     presentedItemOperationQueue = [[NSOperationQueue alloc] init];
