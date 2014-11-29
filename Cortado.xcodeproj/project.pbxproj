@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86CE94D0786340807C5096C5 /* libPods-Cortado-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F06432B03F3973C8E27F2DD6 /* libPods-Cortado-Today.a */; };
 		A60E24D31A2935C30014628C /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
 		A60E24D61A293C340014628C /* TodayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D51A293C340014628C /* TodayInterface.m */; };
 		A62D72281A254C6500846A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72271A254C6500846A33 /* main.m */; };
@@ -98,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */,
+				86CE94D0786340807C5096C5 /* libPods-Cortado-Today.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,9 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A62D72611A254D1A00846A33 /* Build configuration list for PBXNativeTarget "Cortado-Today" */;
 			buildPhases = (
+				B0D8DA9FAB87365D70BDCA65 /* Check Pods Manifest.lock */,
 				A62D724E1A254D1A00846A33 /* Sources */,
 				A62D724F1A254D1A00846A33 /* Frameworks */,
 				A62D72501A254D1A00846A33 /* Resources */,
+				3C3A038A5B1E427E18B37158 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,6 +330,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C3A038A5B1E427E18B37158 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0D8DA9FAB87365D70BDCA65 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A62D721E1A254C6500846A33 /* Sources */ = {
@@ -424,6 +461,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -431,12 +469,14 @@
 		};
 		A62D72631A254D1A00846A33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26BAA134FD0AEC884E3E4616 /* Pods-Cortado-Today.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Cortado-Today/Cortado-Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -488,6 +528,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -495,12 +536,14 @@
 		};
 		A6886C621A2A4EF300BE09DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Cortado-Today/Cortado-Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
