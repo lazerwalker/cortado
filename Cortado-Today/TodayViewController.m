@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     _interface = [[AppInterface alloc] init];
 
     CortadoKeys *keys = [[CortadoKeys alloc] init];

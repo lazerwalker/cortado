@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Double Shot (150mg)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiZ-ce-o2T">
-                                <rect key="frame" x="85" y="61" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double Shot (150mg)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiZ-ce-o2T">
+                                <rect key="frame" x="92" y="61" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -51,6 +51,7 @@
                             <constraint firstItem="UM1-bn-MYK" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="XKL-N1-A2h"/>
                             <constraint firstAttribute="centerX" secondItem="aiZ-ce-o2T" secondAttribute="centerX" id="XTW-HE-1SQ"/>
                             <constraint firstItem="aiZ-ce-o2T" firstAttribute="top" secondItem="UM1-bn-MYK" secondAttribute="bottom" constant="1" id="mcJ-xn-qZ8"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="aiZ-ce-o2T" secondAttribute="bottom" constant="8" id="zfU-8c-VS3"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
