@@ -6,6 +6,12 @@
 // project.
 
 
+// Asterism
+#define COCOAPODS_POD_AVAILABLE_Asterism
+#define COCOAPODS_VERSION_MAJOR_Asterism 1
+#define COCOAPODS_VERSION_MINOR_Asterism 0
+#define COCOAPODS_VERSION_PATCH_Asterism 0
+
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1
