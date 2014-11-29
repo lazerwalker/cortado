@@ -1,5 +1,7 @@
 @import UIKit;
 
+#import "BeverageProcessor.h"
+
 #import "TodayInterface.h"
 
 @interface TodayInterface () <NSFilePresenter>
@@ -31,17 +33,18 @@
     [NSFileCoordinator removeFilePresenter:self];
 }
 
-- (void)processBeverages {
+- (void)processAllNewBeveragesWithCompletion:(void (^)(NSArray *addedItems))completion {
     [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
         NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:newURL.path];
-        if (!array) return;
-
-        for (NSArray *beverage in array) {
-            UILocalNotification *notif = [[UILocalNotification alloc] init];
-            notif.fireDate = [NSDate date];
-            notif.alertBody = [NSString stringWithFormat:@"Drank a %@ (%@mg) at %@", beverage[0], beverage[1], beverage[2]];
-            [UIApplication.sharedApplication scheduleLocalNotification:notif];
+        if (!array)  {
+            if (completion) {
+                completion(nil);
+            }
+            return;
         }
+
+        BeverageProcessor *processor = [[BeverageProcessor alloc] init];
+        [processor processBeverages:array];
 
         [self.coordinator coordinateWritingItemAtURL:self.presentedItemURL
                                              options:NSFileCoordinatorWritingForReplacing
@@ -49,6 +52,9 @@
                                           byAccessor:^(NSURL *newURL) {
                                               NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@[]];
                                               [data writeToURL:newURL atomically:YES];
+                                              if (completion) {
+                                                  completion(array);
+                                              }
                                           }];
     }];
 }
@@ -64,7 +70,7 @@
 }
 
 - (void)presentedItemDidChange {
-    [self processBeverages];
+    [self processAllNewBeveragesWithCompletion:nil];
 }
 
 @end

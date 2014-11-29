@@ -15,26 +15,33 @@
 
     self.interface = [[TodayInterface alloc] init];
 
+    [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
+
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil];
     [UIApplication.sharedApplication registerUserNotificationSettings:settings];
 
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {}
-
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     [self.interface stopListening];
     self.interface = nil;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    if (!self.interface) {
+        self.interface = [[TodayInterface alloc] init];
+    }
+
+    [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
+        if ([addedItems count] > 0) {
+            completionHandler(UIBackgroundFetchResultNewData);
+        } else {
+            completionHandler(UIBackgroundFetchResultNoData);
+        }
+        [self.interface stopListening];
+    }];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-}
 
 @end

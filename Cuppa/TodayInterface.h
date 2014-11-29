@@ -3,6 +3,6 @@
 @interface TodayInterface : NSObject
 
 - (void)stopListening;
-- (void)processBeverages;
+- (void)processAllNewBeveragesWithCompletion:(void (^)(NSArray *addedItems))completion;
 
 @end

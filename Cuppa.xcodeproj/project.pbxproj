@@ -20,6 +20,7 @@
 		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
 		A62D72601A254D1A00846A33 /* Cuppa-Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A62D72521A254D1A00846A33 /* Cuppa-Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A6EBA87D1A2A3B3200344C17 /* BeverageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */; };
 		EB729F58C225F1E475AFD9A4 /* libPods-Cuppa-Today.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D5EEBB897CA0B0AB73E730 /* libPods-Cuppa-Today.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,8 @@
 		A62D72591A254D1A00846A33 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		A62D725A1A254D1A00846A33 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		A62D725C1A254D1A00846A33 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		A6EBA87B1A2A3B3200344C17 /* BeverageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeverageProcessor.h; sourceTree = "<group>"; };
+		A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeverageProcessor.m; sourceTree = "<group>"; };
 		FA13161D5C9467A21EA8BC21 /* Pods-Cuppa-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuppa-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cuppa-Today/Pods-Cuppa-Today.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +137,8 @@
 				A62D72251A254C6500846A33 /* Supporting Files */,
 				A60E24D41A293C340014628C /* TodayInterface.h */,
 				A60E24D51A293C340014628C /* TodayInterface.m */,
+				A6EBA87B1A2A3B3200344C17 /* BeverageProcessor.h */,
+				A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */,
 			);
 			path = Cuppa;
 			sourceTree = "<group>";
@@ -258,7 +263,7 @@
 								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -388,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
+				A6EBA87D1A2A3B3200344C17 /* BeverageProcessor.m in Sources */,
 				A60E24D61A293C340014628C /* TodayInterface.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A62D72281A254C6500846A33 /* main.m in Sources */,
