@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6E805C9BC0D1E3015077C35D /* libPods-Cuppa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A91AEC6A7F618585139F8C7 /* libPods-Cuppa.a */; };
+		A60E24D31A2935C30014628C /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
+		A60E24D61A293C340014628C /* TodayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D51A293C340014628C /* TodayInterface.m */; };
 		A62D72281A254C6500846A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72271A254C6500846A33 /* main.m */; };
 		A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722A1A254C6500846A33 /* AppDelegate.m */; };
 		A62D722E1A254C6500846A33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722D1A254C6500846A33 /* ViewController.m */; };
@@ -53,6 +55,10 @@
 		89D5EEBB897CA0B0AB73E730 /* libPods-Cuppa-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cuppa-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60E24CC1A27E6DA0014628C /* Cuppa-Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cuppa-Today.entitlements"; sourceTree = "<group>"; };
 		A60E24D01A27E6E90014628C /* Cuppa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cuppa.entitlements; sourceTree = "<group>"; };
+		A60E24D11A2935C30014628C /* AppInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInterface.h; sourceTree = "<group>"; };
+		A60E24D21A2935C30014628C /* AppInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInterface.m; sourceTree = "<group>"; };
+		A60E24D41A293C340014628C /* TodayInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayInterface.h; sourceTree = "<group>"; };
+		A60E24D51A293C340014628C /* TodayInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayInterface.m; sourceTree = "<group>"; };
 		A62D72221A254C6500846A33 /* Cuppa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuppa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62D72261A254C6500846A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A62D72271A254C6500846A33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +132,8 @@
 				A62D72321A254C6500846A33 /* Images.xcassets */,
 				A62D72341A254C6500846A33 /* LaunchScreen.xib */,
 				A62D72251A254C6500846A33 /* Supporting Files */,
+				A60E24D41A293C340014628C /* TodayInterface.h */,
+				A60E24D51A293C340014628C /* TodayInterface.m */,
 			);
 			path = Cuppa;
 			sourceTree = "<group>";
@@ -165,6 +173,8 @@
 				A62D725A1A254D1A00846A33 /* TodayViewController.m */,
 				A62D725C1A254D1A00846A33 /* MainInterface.storyboard */,
 				A62D72571A254D1A00846A33 /* Supporting Files */,
+				A60E24D11A2935C30014628C /* AppInterface.h */,
+				A60E24D21A2935C30014628C /* AppInterface.m */,
 			);
 			path = "Cuppa-Today";
 			sourceTree = "<group>";
@@ -246,6 +256,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
 							};
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -375,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
+				A60E24D61A293C340014628C /* TodayInterface.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A62D72281A254C6500846A33 /* main.m in Sources */,
 			);
@@ -385,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */,
+				A60E24D31A2935C30014628C /* AppInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

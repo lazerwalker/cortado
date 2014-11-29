@@ -1,16 +1,21 @@
 #import <NotificationCenter/NotificationCenter.h>
 
+#import "AppInterface.h"
+
 #import "TodayViewController.h"
 
 @interface TodayViewController () <NCWidgetProviding>
+
 @property (weak, nonatomic) IBOutlet UIButton *cortadoButton;
 
+@property (readonly, nonatomic, strong) AppInterface *interface;
 @end
 
 @implementation TodayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _interface = [[AppInterface alloc] init];
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
@@ -25,7 +30,12 @@
 
 #pragma mark -
 - (IBAction)didTapCortadoButton:(id)sender {
-    self.cortadoButton.enabled = NO;
+    self.cortadoButton.backgroundColor = UIColor.greenColor;
+    [self.interface saveBeverage:@"Cortado"
+                    withCaffeine:150.0
+     completion:^{
+         self.cortadoButton.backgroundColor = UIColor.grayColor;
+     }];
 }
 
 
