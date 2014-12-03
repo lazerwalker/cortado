@@ -38,25 +38,9 @@
     self.interface = nil;
 }
 
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    if (!self.interface) {
-        self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
-    }
-
-    [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
-        if ([addedItems count] > 0) {
-            completionHandler(UIBackgroundFetchResultNewData);
-        } else {
-            completionHandler(UIBackgroundFetchResultNoData);
-        }
-        [self.interface stopListening];
-    }];
-}
-
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     NSLog(@"================> %@", notificationSettings);
 }
-
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
@@ -76,11 +60,14 @@
     [currentInstallation saveInBackground];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"Received push: %@", userInfo);
-}
+#pragma mark - Processing
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    BOOL interfaceExisted = (self.interface == nil);
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    UILocalNotification *notif = [[UILocalNotification alloc] init];
+    notif.alertBody = [NSString stringWithFormat:@"Remote notification received. %@", @(interfaceExisted)];
+    [UIApplication.sharedApplication scheduleLocalNotification:notif];
+
     if (!self.interface) {
         self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
     }
@@ -91,7 +78,25 @@
         } else {
             completionHandler(UIBackgroundFetchResultNoData);
         }
-        [self.interface stopListening];
+    }];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    BOOL interfaceExisted = (self.interface == nil);
+    if (!self.interface) {
+        self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
+    }
+
+    UILocalNotification *notif = [[UILocalNotification alloc] init];
+    notif.alertBody = [NSString stringWithFormat:@"Remote notification received. %@", @(interfaceExisted)];
+    [UIApplication.sharedApplication scheduleLocalNotification:notif];
+
+    [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
+        if ([addedItems count] > 0) {
+            completionHandler(UIBackgroundFetchResultNewData);
+        } else {
+            completionHandler(UIBackgroundFetchResultNoData);
+        }
     }];
 }
 
