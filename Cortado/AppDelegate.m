@@ -62,15 +62,10 @@
 
 #pragma mark - Processing
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    BOOL interfaceExisted = (self.interface == nil);
 
     UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.alertBody = [NSString stringWithFormat:@"Remote notification received. %@", @(interfaceExisted)];
+    notif.alertBody = @"Remote notification received.";
     [UIApplication.sharedApplication scheduleLocalNotification:notif];
-
-    if (!self.interface) {
-        self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
-    }
 
     [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
         if ([addedItems count] > 0) {
@@ -82,13 +77,9 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    BOOL interfaceExisted = (self.interface == nil);
-    if (!self.interface) {
-        self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
-    }
 
     UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.alertBody = [NSString stringWithFormat:@"Remote notification received. %@", @(interfaceExisted)];
+    notif.alertBody = @"Remote notification received.";
     [UIApplication.sharedApplication scheduleLocalNotification:notif];
 
     [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
