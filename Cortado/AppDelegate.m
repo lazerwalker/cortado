@@ -73,6 +73,7 @@
         } else {
             completionHandler(UIBackgroundFetchResultNoData);
         }
+        [self.interface stopListening];
     }];
 }
 
@@ -88,6 +89,7 @@
         } else {
             completionHandler(UIBackgroundFetchResultNoData);
         }
+        [self.interface stopListening];
     }];
 }
 
