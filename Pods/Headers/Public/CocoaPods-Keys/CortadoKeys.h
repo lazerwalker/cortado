@@ -10,5 +10,7 @@
 
 - (NSString *)parseAppID;
 - (NSString *)parseClientKey;
+- (NSString *)foursquareClientID;
+- (NSString *)foursquareClientSecret;
 
 @end
