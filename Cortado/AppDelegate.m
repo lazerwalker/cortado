@@ -1,16 +1,22 @@
-#import <CocoaPods-Keys/CortadoKeys.h>
+@import CoreLocation;
 @import HealthKit;
+
+#import <CocoaPods-Keys/CortadoKeys.h>
 #import <Parse/Parse.h>
 
 #import "BeverageProcessor.h"
+#import "FoursquareClient.h"
+#import "FoursquareVenue.h"
 #import "TodayInterface.h"
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) TodayInterface *interface;
 @property (nonatomic, strong) BeverageProcessor *processor;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -21,6 +27,10 @@
 
     self.processor = [[BeverageProcessor alloc] init];
     self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestAlwaysAuthorization];
 
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
 
@@ -91,6 +101,32 @@
         }
         [self.interface stopListening];
     }];
+}
+
+#pragma mark - CLLocationDelegate
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [manager startMonitoringVisits];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
+    UILocalNotification *notif = [[UILocalNotification alloc] init];
+    notif.alertBody = [NSString stringWithFormat:@"Received CLVisit. Start? %@", @([visit.departureDate isEqualToDate:NSDate.distantFuture])];
+    [UIApplication.sharedApplication scheduleLocalNotification:notif];
+
+    CortadoKeys *keys = [[CortadoKeys alloc] init];
+    FoursquareClient *client = [[FoursquareClient alloc] initWithClientID:keys.foursquareClientID
+                                                             clientSecret:keys.foursquareClientSecret];
+    NSString *coffeeShops = @"4bf58dd8d48988d1e0931735";
+    [client fetchVenuesOfCategory:coffeeShops nearCoordinate:visit.coordinate completion:^(NSArray *results, NSError *error) {
+        for (FoursquareVenue *result in results) {
+            UILocalNotification *notif = [[UILocalNotification alloc] init];
+            notif.alertBody = [NSString stringWithFormat:@"Near venue: %@", result.name];
+            [UIApplication.sharedApplication scheduleLocalNotification:notif];
+        }
+    }];
+
 }
 
 
