@@ -10,6 +10,7 @@
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
 #import "TodayInterface.h"
+#import "DrinkSelectionViewController.h"
 
 #import "AppDelegate.h"
 
@@ -73,6 +74,11 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:notificationType categories:category];
     [UIApplication.sharedApplication registerUserNotificationSettings:notificationSettings];
     [UIApplication.sharedApplication registerForRemoteNotifications];
+
+    DrinkSelectionViewController *vc = [[DrinkSelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.window = [[UIWindow alloc] init];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
 
     return YES;
 }

@@ -1,0 +1,64 @@
+[
+{
+  "name": "Espresso",
+  "drinkTypes": [
+    {
+      "name": "Latte",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine":75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Espresso",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Cortado",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Flat White",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    }
+  ]
+},
+{
+  "name": "Basic Coffee and Tea",
+  "drinkTypes": [
+    {
+      "name": "Coffee",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 95.0},
+        {"name": "12 fl oz", "caffeine": 150.0},
+        {"name": "16 fl oz", "caffeine": 190.0}
+      ]
+    },
+    {
+      "name": "Iced Coffee",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 95.0},
+        {"name": "12 fl oz", "caffeine": 150.0},
+        {"name": "16 fl oz", "caffeine": 190.0}
+      ]
+    },
+    {
+      "name": "Black Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 50.0},
+        {"name": "12 fl oz", "caffeine": 70.0},
+        {"name": "16 fl oz", "caffeine": 90.0}
+      ]
+    }
+  ]
+}
+]
