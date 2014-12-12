@@ -1,10 +1,11 @@
 @import Foundation;
 @import UIKit;
 
+@class Beverage;
+
 @interface AppInterface : NSObject
 
-- (void)saveBeverage:(NSString *)beverage
-        withCaffeine:(CGFloat)caffeine
+- (void)saveBeverage:(Beverage *)beverage
           completion:(void (^)())completionBlock;
 
 @end

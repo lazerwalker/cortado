@@ -19,6 +19,10 @@
 		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
 		A62D72601A254D1A00846A33 /* Cortado-Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A62D72521A254D1A00846A33 /* Cortado-Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A66A3A111A3B7C0200849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
+		A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
+		A66A3A151A3B80A800849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
+		A66A3A161A3B80A800849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
 		A6BA44B91A2A5B6D006B89E3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA44B81A2A5B6D006B89E3 /* libPods.a */; };
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
@@ -82,6 +86,10 @@
 		A62D72591A254D1A00846A33 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		A62D725A1A254D1A00846A33 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		A62D725C1A254D1A00846A33 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		A66A3A0F1A3B7C0200849705 /* Beverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beverage.h; sourceTree = "<group>"; };
+		A66A3A101A3B7C0200849705 /* Beverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beverage.m; sourceTree = "<group>"; };
+		A66A3A121A3B7D5C00849705 /* BeverageConsumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeverageConsumption.h; sourceTree = "<group>"; };
+		A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeverageConsumption.m; sourceTree = "<group>"; };
 		A6BA44B81A2A5B6D006B89E3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		A6E234661A320FFB00B57E16 /* FoursquareClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareClient.h; sourceTree = "<group>"; };
 		A6E234671A320FFB00B57E16 /* FoursquareClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareClient.m; sourceTree = "<group>"; };
@@ -142,10 +150,9 @@
 		A62D72241A254C6500846A33 /* Cortado */ = {
 			isa = PBXGroup;
 			children = (
+				A66A3A0E1A3B7BF500849705 /* Models */,
 				A6E234661A320FFB00B57E16 /* FoursquareClient.h */,
 				A6E234671A320FFB00B57E16 /* FoursquareClient.m */,
-				A6E234691A32100700B57E16 /* FoursquareVenue.h */,
-				A6E2346A1A32100700B57E16 /* FoursquareVenue.m */,
 				A60E24D01A27E6E90014628C /* Cortado.entitlements */,
 				A62D72291A254C6500846A33 /* AppDelegate.h */,
 				A62D722A1A254C6500846A33 /* AppDelegate.m */,
@@ -213,6 +220,19 @@
 				A62D72581A254D1A00846A33 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A66A3A0E1A3B7BF500849705 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6E234691A32100700B57E16 /* FoursquareVenue.h */,
+				A6E2346A1A32100700B57E16 /* FoursquareVenue.m */,
+				A66A3A0F1A3B7C0200849705 /* Beverage.h */,
+				A66A3A101A3B7C0200849705 /* Beverage.m */,
+				A66A3A121A3B7D5C00849705 /* BeverageConsumption.h */,
+				A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		B1306759647D75FFCB56B59F /* Pods */ = {
@@ -390,11 +410,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
+				A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */,
 				A6EBA87D1A2A3B3200344C17 /* BeverageProcessor.m in Sources */,
 				A60E24D61A293C340014628C /* TodayInterface.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */,
 				A62D72281A254C6500846A33 /* main.m in Sources */,
+				A66A3A111A3B7C0200849705 /* Beverage.m in Sources */,
 				A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +425,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A66A3A161A3B80A800849705 /* BeverageConsumption.m in Sources */,
 				A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */,
+				A66A3A151A3B80A800849705 /* Beverage.m in Sources */,
 				A60E24D31A2935C30014628C /* AppInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

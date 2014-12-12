@@ -1,6 +1,9 @@
 #import <Asterism/Asterism.h>
 @import HealthKit;
 
+#import "Beverage.h"
+#import "BeverageConsumption.h"
+
 #import "BeverageProcessor.h"
 
 @interface BeverageProcessor ()
@@ -18,6 +21,7 @@
     if ([HKHealthStore isHealthDataAvailable]) {
         self.healthStore = [[HKHealthStore alloc] init];
         self.caffeineType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
+
         if ([self.healthStore authorizationStatusForType:self.caffeineType] == HKAuthorizationStatusNotDetermined) {
             NSSet *set = [NSSet setWithObject:self.caffeineType];
             [self.healthStore requestAuthorizationToShareTypes:set readTypes:nil completion:^(BOOL success, NSError *error) {
@@ -34,41 +38,35 @@
         return;
     }
 
-    array = ASTMap(array, ^id(NSArray *beverage) {
-        NSString *name = beverage[0];
-        NSNumber *caffeine = beverage[1];
-        NSDate *timestamp = beverage[2];
-
-        HKUnit *unit = [HKUnit unitFromString:@"mg"];
-        HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:caffeine.doubleValue];
-        HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
-        return [HKQuantitySample quantitySampleWithType:type
-                                                                   quantity:quantity
-                                                                  startDate:timestamp
-                                                                    endDate:timestamp
-                                                                   metadata:@{@"name": name}];
+    array = ASTFilter(array, ^BOOL(BeverageConsumption *drink) {
+        return [drink isKindOfClass:BeverageConsumption.class];
     });
+    array = ASTMap(array, ^id(BeverageConsumption *drink) {
+        return [self sampleFromBeverage:drink];
+    });
+
     [self.healthStore saveObjects:array withCompletion:^(BOOL success, NSError *error) {
         NSLog(@"================> %@", @(success));
     }];
 
 }
 
-- (void)processBeverage:(NSArray *)beverage
+- (void)processBeverage:(BeverageConsumption *)beverage
          withCompletion:(void(^)(BOOL success, NSError *error))completion {
-    NSString *name = beverage[0];
-    NSNumber *caffeine = beverage[1];
-    NSDate *timestamp = beverage[2];
-
-    HKUnit *unit = [HKUnit unitFromString:@"mg"];
-    HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:caffeine.doubleValue];
-    HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
-    HKQuantitySample *sample = [HKQuantitySample quantitySampleWithType:type
-                                           quantity:quantity
-                                          startDate:timestamp
-                                            endDate:timestamp
-                                           metadata:@{@"name": name}];
+    HKQuantitySample *sample = [self sampleFromBeverage:beverage];
     [self.healthStore saveObject:sample withCompletion:completion];
+}
+
+#pragma mark -
+- (HKQuantitySample *)sampleFromBeverage:(BeverageConsumption *)beverage {
+    HKUnit *unit = [HKUnit unitFromString:@"mg"];
+    HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:beverage.caffeine.doubleValue];
+    HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
+    return [HKQuantitySample quantitySampleWithType:type
+                                           quantity:quantity
+                                          startDate:beverage.timestamp
+                                            endDate:beverage.timestamp
+                                           metadata:@{@"name": beverage.name}];
 }
 
 @end

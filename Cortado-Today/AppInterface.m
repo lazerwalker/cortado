@@ -1,3 +1,6 @@
+#import "Beverage.h"
+#import "BeverageConsumption.h"
+
 #import "AppInterface.h"
 
 @interface AppInterface () <NSFilePresenter>
@@ -26,8 +29,7 @@
     return [containerURL URLByAppendingPathComponent:@"addCaffeine"];
 }
 
-- (void)saveBeverage:(NSString *)beverage
-        withCaffeine:(CGFloat)caffeine
+- (void)saveBeverage:(Beverage *)beverage
           completion:(void (^)())completionBlock {
 
     [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
@@ -37,7 +39,8 @@
                                              options:NSFileCoordinatorWritingForReplacing
                                                error:nil
                                           byAccessor:^(NSURL *newURL) {
-            NSArray *drink = @[beverage, @(caffeine), NSDate.date];
+
+            BeverageConsumption *drink = [[BeverageConsumption alloc] initWithBeverage:beverage timestamp:NSDate.date];
             [array addObject:drink];
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
             [data writeToURL:newURL atomically:YES];

@@ -4,6 +4,8 @@
 #import <CocoaPods-Keys/CortadoKeys.h>
 #import <Parse/Parse.h>
 
+#import "Beverage.h"
+#import "BeverageConsumption.h"
 #import "BeverageProcessor.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
@@ -137,17 +139,19 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
     NSDate *timestamp = notification.userInfo[@"timestamp"];
-    NSString *name;
+    Beverage *beverage;
     if ([identifier isEqualToString:NotificationActionOne]) {
-        name = @"Cortado";
+        beverage = [[Beverage alloc] initWithName:@"Cortado" caffeine:@150];
     } else {
-        name = @"Iced Latte";
+        beverage = [[Beverage alloc] initWithName:@"Iced Latte" caffeine:@150];
     }
-    NSArray *beverage = @[name, @150.0, timestamp];
-    [self.processor processBeverage:beverage
+
+    BeverageConsumption *consumption = [[BeverageConsumption alloc] initWithBeverage:beverage timestamp:timestamp];
+
+    [self.processor processBeverage:consumption
                      withCompletion:^(BOOL success, NSError *error) {
         UILocalNotification *notif = [[UILocalNotification alloc] init];
-        notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@? %@", name, timestamp, @(success)];
+        notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@? %@", consumption.name, timestamp, @(success)];
         [UIApplication.sharedApplication scheduleLocalNotification:notif];
 
         completionHandler();

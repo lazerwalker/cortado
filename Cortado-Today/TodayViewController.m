@@ -3,6 +3,7 @@
 #import <Parse/Parse.h>
 
 #import "AppInterface.h"
+#import "Beverage.h"
 
 #import "TodayViewController.h"
 
@@ -11,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *cortadoButton;
 
 @property (readonly, nonatomic, strong) AppInterface *interface;
+@property (readonly, nonatomic, strong) Beverage *beverage;
+
 @end
 
 @implementation TodayViewController
@@ -19,6 +22,8 @@
     [super viewDidLoad];
 
     _interface = [[AppInterface alloc] init];
+
+    _beverage = [[Beverage alloc] initWithName:@"Cortado" caffeine:@150.0];
 
     CortadoKeys *keys = [[CortadoKeys alloc] init];
     [Parse setApplicationId:keys.parseAppID
@@ -39,8 +44,7 @@
 - (IBAction)didTapCortadoButton:(id)sender {
     self.cortadoButton.enabled = NO;
     [self.cortadoButton setTitle:@"Adding..." forState:UIControlStateDisabled];
-    [self.interface saveBeverage:@"Cortado"
-                    withCaffeine:150.0
+    [self.interface saveBeverage:self.beverage
                       completion:^{
          NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cortado"];
          NSString *channel = [defaults objectForKey:@"channel"];
