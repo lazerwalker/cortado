@@ -56,7 +56,7 @@ static NSString * const APIDate = @"20141205";
 }
 
 - (NSURL *)searchURLForCoordinate:(CLLocationCoordinate2D)coordinate categoryId:(NSString *)categoryId {
-    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&ll=%f,%f&radius=100&categoryId=%@",
+    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=40&limit=1&ll=%f,%f&categoryId=%@",
                            self.clientID,
                            self.clientSecret,
                            APIDate,
