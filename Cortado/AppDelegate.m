@@ -112,7 +112,7 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
     UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.alertBody = @"Remote notification received.";
+    notif.alertBody = @"Perform background fetch.";
     [UIApplication.sharedApplication scheduleLocalNotification:notif];
 
     [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
