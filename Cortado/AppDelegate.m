@@ -86,6 +86,10 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
     NSLog(@"================> %@", notificationSettings);
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [self.interface processAllNewBeveragesWithCompletion:nil];
+}
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
 
