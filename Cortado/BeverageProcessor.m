@@ -54,4 +54,21 @@
 
 }
 
+- (void)processBeverage:(NSArray *)beverage
+         withCompletion:(void(^)(BOOL success, NSError *error))completion {
+    NSString *name = beverage[0];
+    NSNumber *caffeine = beverage[1];
+    NSDate *timestamp = beverage[2];
+
+    HKUnit *unit = [HKUnit unitFromString:@"mg"];
+    HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:caffeine.doubleValue];
+    HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
+    HKQuantitySample *sample = [HKQuantitySample quantitySampleWithType:type
+                                           quantity:quantity
+                                          startDate:timestamp
+                                            endDate:timestamp
+                                           metadata:@{@"name": name}];
+    [self.healthStore saveObject:sample withCompletion:completion];
+}
+
 @end

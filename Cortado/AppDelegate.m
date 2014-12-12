@@ -11,6 +11,10 @@
 
 #import "AppDelegate.h"
 
+NSString * const NotificationCategoryBeverage  = @"BEVERAGE";
+NSString * const NotificationActionOne = @"DRINK_ONE";
+NSString * const NotificationActionTwo = @"DRINK_TWO";
+
 @interface AppDelegate () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) TodayInterface *interface;
@@ -28,16 +32,44 @@
     self.processor = [[BeverageProcessor alloc] init];
     self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
 
+    // CLVisit
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestAlwaysAuthorization];
 
+    // Background fetch
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
 
     CortadoKeys *keys = [[CortadoKeys alloc] init];
     [Parse setApplicationId:keys.parseAppID
                   clientKey:keys.parseClientKey];
 
+
+    // Notifications
+    UIMutableUserNotificationAction *notificationAction1 = [[UIMutableUserNotificationAction alloc] init];
+    notificationAction1.identifier = NotificationActionOne;
+    notificationAction1.title = @"Cortado";
+    notificationAction1.activationMode = UIUserNotificationActivationModeBackground;
+    notificationAction1.destructive = NO;
+    notificationAction1.authenticationRequired = NO;
+
+    UIMutableUserNotificationAction *notificationAction2 = [[UIMutableUserNotificationAction alloc] init];
+    notificationAction2.identifier = NotificationActionTwo;
+    notificationAction2.title = @"Iced Latte";
+    notificationAction2.activationMode = UIUserNotificationActivationModeBackground;
+    notificationAction2.destructive = NO;
+    notificationAction2.authenticationRequired = NO;
+
+    UIMutableUserNotificationCategory *notificationCategory = [[UIMutableUserNotificationCategory alloc] init];
+    notificationCategory.identifier = NotificationCategoryBeverage;
+    [notificationCategory setActions:@[notificationAction1,notificationAction2] forContext:UIUserNotificationActionContextDefault];
+    [notificationCategory setActions:@[notificationAction1,notificationAction2] forContext:UIUserNotificationActionContextMinimal];
+
+    NSSet *category = [NSSet setWithObject:notificationCategory];
+
+    UIUserNotificationType notificationType = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:notificationType categories:category];
+    [UIApplication.sharedApplication registerUserNotificationSettings:notificationSettings];
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     return YES;
@@ -103,6 +135,26 @@
     }];
 }
 
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
+    NSDate *timestamp = notification.userInfo[@"timestamp"];
+    NSString *name;
+    if ([identifier isEqualToString:NotificationActionOne]) {
+        name = @"Cortado";
+    } else {
+        name = @"Iced Latte";
+    }
+    NSArray *beverage = @[name, @150.0, timestamp];
+    [self.processor processBeverage:beverage
+                     withCompletion:^(BOOL success, NSError *error) {
+        UILocalNotification *notif = [[UILocalNotification alloc] init];
+        notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@? %@", name, timestamp, @(success)];
+        [UIApplication.sharedApplication scheduleLocalNotification:notif];
+
+        completionHandler();
+    }];
+
+}
+
 #pragma mark - CLLocationDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
@@ -111,22 +163,27 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
-    UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.alertBody = [NSString stringWithFormat:@"Received CLVisit. Start? %@", @([visit.departureDate isEqualToDate:NSDate.distantFuture])];
-    [UIApplication.sharedApplication scheduleLocalNotification:notif];
+    BOOL isStart = [visit.departureDate isEqualToDate:NSDate.distantFuture];
+    if (!isStart) return;
 
+    [self checkForCoordinate:visit.coordinate];
+}
+
+- (void)checkForCoordinate:(CLLocationCoordinate2D)coordinate {
     CortadoKeys *keys = [[CortadoKeys alloc] init];
     FoursquareClient *client = [[FoursquareClient alloc] initWithClientID:keys.foursquareClientID
                                                              clientSecret:keys.foursquareClientSecret];
     NSString *coffeeShops = @"4bf58dd8d48988d1e0931735";
-    [client fetchVenuesOfCategory:coffeeShops nearCoordinate:visit.coordinate completion:^(NSArray *results, NSError *error) {
-        for (FoursquareVenue *result in results) {
-            UILocalNotification *notif = [[UILocalNotification alloc] init];
-            notif.alertBody = [NSString stringWithFormat:@"Near venue: %@", result.name];
-            [UIApplication.sharedApplication scheduleLocalNotification:notif];
-        }
-    }];
+    [client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate completion:^(NSArray *results, NSError *error) {
+        FoursquareVenue *result = results.firstObject;
+        if (result == nil) return;
 
+        UILocalNotification *notif = [[UILocalNotification alloc] init];
+        notif.category = NotificationCategoryBeverage;
+        notif.userInfo = @{@"timestamp":NSDate.date};
+        notif.alertBody = [NSString stringWithFormat:@"It looks like you're at %@. Whatcha drinkin'?", result.name];
+        [UIApplication.sharedApplication scheduleLocalNotification:notif];
+    }];
 }
 
 
