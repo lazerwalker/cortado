@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A60585DC1A3E120500FF267F /* LocationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DB1A3E120500FF267F /* LocationDetector.m */; };
+		A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
 		A60E24D31A2935C30014628C /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
 		A60E24D61A293C340014628C /* TodayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D51A293C340014628C /* TodayInterface.m */; };
 		A62D72281A254C6500846A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72271A254C6500846A33 /* main.m */; };
@@ -66,6 +68,10 @@
 		4D0BED7E9130552C27A9DE24 /* Pods-Cuppa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuppa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cuppa/Pods-Cuppa.release.xcconfig"; sourceTree = "<group>"; };
 		89D5EEBB897CA0B0AB73E730 /* libPods-Cuppa-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cuppa-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACA2095E006D36B7D28EFC2 /* Pods-Cortado.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.debug.xcconfig"; sourceTree = "<group>"; };
+		A60585DA1A3E120500FF267F /* LocationDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetector.h; sourceTree = "<group>"; };
+		A60585DB1A3E120500FF267F /* LocationDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetector.m; sourceTree = "<group>"; };
+		A60585DD1A3E131900FF267F /* CoffeeShopNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeShopNotification.h; sourceTree = "<group>"; };
+		A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeShopNotification.m; sourceTree = "<group>"; };
 		A60E24CC1A27E6DA0014628C /* Cortado-Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cortado-Today.entitlements"; sourceTree = "<group>"; };
 		A60E24D01A27E6E90014628C /* Cortado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cortado.entitlements; sourceTree = "<group>"; };
 		A60E24D11A2935C30014628C /* AppInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInterface.h; sourceTree = "<group>"; };
@@ -138,6 +144,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A60585D91A3E11C800FF267F /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				A60E24D41A293C340014628C /* TodayInterface.h */,
+				A60E24D51A293C340014628C /* TodayInterface.m */,
+				A6EBA87B1A2A3B3200344C17 /* BeverageProcessor.h */,
+				A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */,
+				A60585DA1A3E120500FF267F /* LocationDetector.h */,
+				A60585DB1A3E120500FF267F /* LocationDetector.m */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
 		A62D72191A254C6500846A33 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +181,7 @@
 		A62D72241A254C6500846A33 /* Cortado */ = {
 			isa = PBXGroup;
 			children = (
+				A60585D91A3E11C800FF267F /* Interfaces */,
 				A66A3A191A3B8F0100849705 /* View Controllers */,
 				A66A3A0E1A3B7BF500849705 /* Models */,
 				A6E234661A320FFB00B57E16 /* FoursquareClient.h */,
@@ -174,10 +194,6 @@
 				A62D72321A254C6500846A33 /* Images.xcassets */,
 				A62D72341A254C6500846A33 /* LaunchScreen.xib */,
 				A62D72251A254C6500846A33 /* Supporting Files */,
-				A60E24D41A293C340014628C /* TodayInterface.h */,
-				A60E24D51A293C340014628C /* TodayInterface.m */,
-				A6EBA87B1A2A3B3200344C17 /* BeverageProcessor.h */,
-				A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */,
 				A66A3A171A3B8DEF00849705 /* drinks.json */,
 			);
 			path = Cortado;
@@ -252,6 +268,8 @@
 				A66A3A251A3B918200849705 /* DrinkSubtype.m */,
 				A66A3A281A3B929A00849705 /* DrinkCategoryList.h */,
 				A66A3A291A3B929A00849705 /* DrinkCategoryList.m */,
+				A60585DD1A3E131900FF267F /* CoffeeShopNotification.h */,
+				A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -442,6 +460,7 @@
 				A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */,
 				A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */,
 				A6EBA87D1A2A3B3200344C17 /* BeverageProcessor.m in Sources */,
+				A60585DC1A3E120500FF267F /* LocationDetector.m in Sources */,
 				A66A3A231A3B907900849705 /* DrinkType.m in Sources */,
 				A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */,
 				A60E24D61A293C340014628C /* TodayInterface.m in Sources */,
@@ -449,6 +468,7 @@
 				A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */,
 				A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */,
 				A62D72281A254C6500846A33 /* main.m in Sources */,
+				A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */,
 				A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */,
 				A66A3A111A3B7C0200849705 /* Beverage.m in Sources */,
 				A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */,
