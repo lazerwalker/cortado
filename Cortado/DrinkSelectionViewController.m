@@ -20,6 +20,8 @@ static NSString * const CellIdentifier = @"cell";
     self.categories = [[[DrinkCategoryList alloc] initWithDefaultList] categories];
 
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:CellIdentifier];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(checkCurrentLocation)];
 }
 
 - (void)didReceiveMemoryWarning {

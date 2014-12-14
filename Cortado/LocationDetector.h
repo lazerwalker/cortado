@@ -1,4 +1,5 @@
-#import <Foundation/Foundation.h>
+@import CoreLocation;
+@import Foundation;
 
 @class FoursquareClient;
 

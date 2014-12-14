@@ -59,8 +59,9 @@
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     DrinkSelectionViewController *vc = [[DrinkSelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    self.window = [[UIWindow alloc] init];
-    self.window.rootViewController = vc;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -155,6 +156,13 @@
     if (!isStart) return;
 
     [self.detector checkForCoordinate:visit.coordinate];
+}
+
+#pragma mark -
+// TODO: This shouldn't be the purview of the app delegate,
+// but this will make debugging easy for now.
+- (void)checkCurrentLocation {
+    [self.detector checkForCoordinate:self.locationManager.location.coordinate];
 }
 
 @end
