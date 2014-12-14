@@ -6,6 +6,7 @@
     return @{@"foursquareId": @"id",
              @"iconPrefix": @"categories.icon.prefix",
              @"iconSuffix": @"categories.icon.suffix",
+             @"categoryId": @"categories.id",
              @"latitude": @"location.lat",
              @"longitude": @"location.lng"};
 }

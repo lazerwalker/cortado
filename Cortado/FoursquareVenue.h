@@ -9,6 +9,7 @@
 
 @property (nonatomic, readonly) NSURL *iconURL;
 
+@property (nonatomic, strong) NSArray *categoryId;
 @property (nonatomic, strong) NSArray *iconPrefix;
 @property (nonatomic, strong) NSArray *iconSuffix;
 

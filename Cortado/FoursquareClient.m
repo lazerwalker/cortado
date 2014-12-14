@@ -1,3 +1,5 @@
+#import <Asterism/Asterism.h>
+
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
 
@@ -41,7 +43,21 @@ static NSString * const APIDate = @"20141205";
                nearCoordinate:(CLLocationCoordinate2D)coordinate
                    completion:(void(^)(NSArray *results, NSError *error))completion {
     [self makeRequest:[self searchURLForCoordinate:coordinate categoryId:categoryId]
-           completion:completion];
+           completion:^(NSArray *results, NSError *error) {
+               if (error) {
+                   if (completion) {
+                       completion(results, error);
+                   }
+               }
+
+               NSArray *categoryVenues = ASTFilter(results, ^BOOL(FoursquareVenue *venue) {
+                   return [venue.categoryId containsObject:categoryId];
+               });
+
+               if (completion) {
+                   completion(categoryVenues, error);
+               }
+           }];
 }
 
 #pragma mark - Private
@@ -56,13 +72,12 @@ static NSString * const APIDate = @"20141205";
 }
 
 - (NSURL *)searchURLForCoordinate:(CLLocationCoordinate2D)coordinate categoryId:(NSString *)categoryId {
-    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=40&limit=1&ll=%f,%f&categoryId=%@",
+    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=40&limit=1&ll=%f,%f",
                            self.clientID,
                            self.clientSecret,
                            APIDate,
                            coordinate.latitude,
-                           coordinate.longitude,
-                           categoryId];
+                           coordinate.longitude];
     return [NSURL URLWithString:urlString];
 }
 
@@ -90,14 +105,13 @@ static NSString * const APIDate = @"20141205";
                 error = jsonError;
             }
 
-            NSMutableArray *mutableResults = [NSMutableArray new];
-            for (NSDictionary *result in jsonResults[@"response"][@"venues"]) {
-                FoursquareVenue *venue = [MTLJSONAdapter modelOfClass:FoursquareVenue.class fromJSONDictionary:result error:&error];
-                [mutableResults addObject:venue];
-            }
+            NSArray *venueJSON = jsonResults[@"response"][@"venues"];
+            NSArray *results = ASTMap(venueJSON, ^id(id obj) {
+                return [MTLJSONAdapter modelOfClass:FoursquareVenue.class fromJSONDictionary:obj error:nil];
+            });
 
             if (completion) {
-                completion([mutableResults copy], error);
+                completion(results, error);
             }
         }
     }];
