@@ -16,7 +16,6 @@
 		A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62D72541A254D1A00846A33 /* NotificationCenter.framework */; };
 		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
-		A62D72601A254D1A00846A33 /* Cortado-Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A62D72521A254D1A00846A33 /* Cortado-Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A66A3A111A3B7C0200849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
 		A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
 		A66A3A151A3B80A800849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
@@ -51,7 +50,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A62D72601A254D1A00846A33 /* Cortado-Today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
