@@ -3,9 +3,16 @@
   "name": "Espresso",
   "drinkTypes": [
     {
-      "name": "Latte",
+      "name": "Americano",
       "subtypes": [
-        {"name": "Single Shot", "caffeine":75.0},
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Cappuccino",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
         {"name": "Double Shot", "caffeine": 150.0}
       ]
     },
@@ -17,14 +24,28 @@
       ]
     },
     {
-      "name": "Cortado",
+      "name": "Flat White",
       "subtypes": [
         {"name": "Single Shot", "caffeine": 75.0},
         {"name": "Double Shot", "caffeine": 150.0}
       ]
     },
     {
-      "name": "Flat White",
+      "name": "Latte",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Long Black",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Macchiato",
       "subtypes": [
         {"name": "Single Shot", "caffeine": 75.0},
         {"name": "Double Shot", "caffeine": 150.0}
@@ -57,6 +78,38 @@
         {"name": "8 fl oz", "caffeine": 50.0},
         {"name": "12 fl oz", "caffeine": 70.0},
         {"name": "16 fl oz", "caffeine": 90.0}
+      ]
+    },
+    {
+      "name": "White Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 10.0},
+        {"name": "12 fl oz", "caffeine": 15.0},
+        {"name": "16 fl oz", "caffeine": 20.0}
+      ]
+    },
+    {
+      "name": "Green Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 30.0},
+        {"name": "12 fl oz", "caffeine": 45.0},
+        {"name": "16 fl oz", "caffeine": 60.0}
+      ]
+    },
+    {
+      "name": "Chai Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 45.0},
+        {"name": "12 fl oz", "caffeine": 70.0},
+        {"name": "16 fl oz", "caffeine": 90.0}
+      ]
+    },
+    {
+      "name": "Yerba Mate",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 85.0},
+        {"name": "12 fl oz", "caffeine": 130.0},
+        {"name": "16 fl oz", "caffeine": 170.0}
       ]
     }
   ]
