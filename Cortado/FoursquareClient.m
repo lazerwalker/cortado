@@ -50,16 +50,14 @@ static NSString * const APIDate = @"20141205";
                    }
                }
 
-               UILocalNotification *notif = [[UILocalNotification alloc] init];
-               notif.alertBody = [NSString stringWithFormat:@"Near venue: %@",[results.firstObject name]];
-               [UIApplication.sharedApplication scheduleLocalNotification:notif];
-
-               NSArray *categoryVenues = ASTFilter(results, ^BOOL(FoursquareVenue *venue) {
-                   return [venue.categoryId containsObject:categoryId];
-               });
+               for (FoursquareVenue *venue in results) {
+                   UILocalNotification *notif = [[UILocalNotification alloc] init];
+                   notif.alertBody = [NSString stringWithFormat:@"Near venue: %@",[venue name]];
+                   [UIApplication.sharedApplication scheduleLocalNotification:notif];
+               }
 
                if (completion) {
-                   completion(categoryVenues, error);
+                   completion(results, error);
                }
            }];
 }
@@ -76,12 +74,13 @@ static NSString * const APIDate = @"20141205";
 }
 
 - (NSURL *)searchURLForCoordinate:(CLLocationCoordinate2D)coordinate categoryId:(NSString *)categoryId {
-    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=40&limit=1&ll=%f,%f",
+    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=40&limit=3&ll=%f,%f",
                            self.clientID,
                            self.clientSecret,
                            APIDate,
                            coordinate.latitude,
                            coordinate.longitude];
+    NSLog(@"================> %@", urlString);
     return [NSURL URLWithString:urlString];
 }
 
