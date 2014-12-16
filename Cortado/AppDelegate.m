@@ -101,37 +101,6 @@
 }
 
 #pragma mark - Processing
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-
-    UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.alertBody = @"Perform background fetch.";
-    [UIApplication.sharedApplication scheduleLocalNotification:notif];
-
-    [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
-        if ([addedItems count] > 0) {
-            completionHandler(UIBackgroundFetchResultNewData);
-        } else {
-            completionHandler(UIBackgroundFetchResultNoData);
-        }
-        [self.interface stopListening];
-    }];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-
-    UILocalNotification *notif = [[UILocalNotification alloc] init];
-    notif.alertBody = @"Remote notification received.";
-    [UIApplication.sharedApplication scheduleLocalNotification:notif];
-
-    [self.interface processAllNewBeveragesWithCompletion:^(NSArray *addedItems) {
-        if ([addedItems count] > 0) {
-            completionHandler(UIBackgroundFetchResultNewData);
-        } else {
-            completionHandler(UIBackgroundFetchResultNoData);
-        }
-        [self.interface stopListening];
-    }];
-}
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
     BeverageConsumption *consumption = [CoffeeShopNotification drinkForIdentifier:identifier notification:notification];

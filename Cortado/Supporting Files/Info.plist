@@ -26,7 +26,6 @@
 	<string>We use your location to determine when you are in a coffee shop.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
 		<string>location</string>
 		<string>remote-notification</string>
 	</array>
