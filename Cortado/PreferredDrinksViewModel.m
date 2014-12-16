@@ -1,9 +1,15 @@
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "Beverage.h"
+#import "CoffeeShopNotification.h"
+#import "PreferredDrinks.h"
 
 #import "PreferredDrinksViewModel.h"
 
+static NSString * const PreferencesKey = @"preferredDrinks";
+
 @interface PreferredDrinksViewModel ()
-@property (readwrite, nonatomic, strong) NSArray *drinks;
+@property (readwrite, nonatomic, strong) PreferredDrinks *drinks;
 @end
 
 @implementation PreferredDrinksViewModel
@@ -12,7 +18,16 @@
     self = [super init];
     if (!self) return nil;
 
-    _drinks = @[NSNull.null, NSNull.null];
+    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:PreferencesKey];
+    self.drinks = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
+        [[PreferredDrinks alloc] initWithFirst:nil second:nil];
+
+    [RACObserve(self, drinks) subscribeNext:^(id x) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.drinks];
+        [NSUserDefaults.standardUserDefaults setObject:data forKey:PreferencesKey];
+
+        [CoffeeShopNotification registerNotificationTypeWithPreferences:self.drinks];
+    }];
 
     return self;
 }
@@ -22,16 +37,13 @@
 }
 
 - (Beverage *)drinkAtIndex:(NSUInteger)index {
-    if (self.drinks.count <= index) {
+    if (index == 0) {
+        return self.drinks.first;
+    } else if (index == 1) {
+        return self.drinks.second;
+    } else {
         return nil;
     }
-    
-    Beverage *drink = self.drinks[index];
-    if (drink == (Beverage *)NSNull.null) {
-        return nil;
-    }
-
-    return drink;
 }
 
 - (NSString *)titleAtIndex:(NSUInteger)index {
@@ -48,11 +60,7 @@
 
 }
 - (void)setDrink:(Beverage *)drink forIndex:(NSUInteger)index {
-    if (index >= self.numberOfDrinks) return;
-
-    NSMutableArray *newDrinks = self.drinks.mutableCopy;
-    newDrinks[index] = drink;
-    self.drinks = newDrinks.copy;
+    self.drinks = [self.drinks preferenceByReplacingDrinkAtIndex:index withDrink:drink];
 }
 
 @end

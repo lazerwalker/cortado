@@ -56,7 +56,6 @@
                   clientKey:keys.parseClientKey];
 
 
-    [CoffeeShopNotification registerNotificationType];
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     PreferredDrinksViewModel *viewModel = [[PreferredDrinksViewModel alloc] init];

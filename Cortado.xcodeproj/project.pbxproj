@@ -22,6 +22,7 @@
 		A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62D72541A254D1A00846A33 /* NotificationCenter.framework */; };
 		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
+		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		A66A3A111A3B7C0200849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
 		A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
 		A66A3A151A3B80A800849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
@@ -105,6 +106,8 @@
 		A62D72591A254D1A00846A33 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		A62D725A1A254D1A00846A33 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		A62D725C1A254D1A00846A33 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		A643D5891A40A231006ACF0A /* PreferredDrinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferredDrinks.h; sourceTree = "<group>"; };
+		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
 		A66A3A0F1A3B7C0200849705 /* Beverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beverage.h; sourceTree = "<group>"; };
 		A66A3A101A3B7C0200849705 /* Beverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beverage.m; sourceTree = "<group>"; };
 		A66A3A121A3B7D5C00849705 /* BeverageConsumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeverageConsumption.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				A66A3A291A3B929A00849705 /* DrinkCategoryList.m */,
 				A60585DD1A3E131900FF267F /* CoffeeShopNotification.h */,
 				A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */,
+				A643D5891A40A231006ACF0A /* PreferredDrinks.h */,
+				A643D58A1A40A231006ACF0A /* PreferredDrinks.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				A60E24D61A293C340014628C /* TodayInterface.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
+				A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */,
 				A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */,
 				A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */,
 				A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */,

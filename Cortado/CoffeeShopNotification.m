@@ -2,6 +2,8 @@
 
 #import "Beverage.h"
 #import "BeverageConsumption.h"
+#import "PreferredDrinks.h"
+
 #import "CoffeeShopNotification.h"
 
 NSString * const NotificationCategoryBeverage  = @"BEVERAGE";
@@ -17,17 +19,19 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
 @implementation CoffeeShopNotification
 
 #pragma mark -
-+ (void)registerNotificationType {
++ (void)registerNotificationTypeWithPreferences:(PreferredDrinks *)preferences {
+    if (!(preferences.first && preferences.second)) return;
+    
     UIMutableUserNotificationAction *notificationAction1 = [[UIMutableUserNotificationAction alloc] init];
     notificationAction1.identifier = NotificationActionOne;
-    notificationAction1.title = @"Cortado";
+    notificationAction1.title = preferences.first.name;
     notificationAction1.activationMode = UIUserNotificationActivationModeBackground;
     notificationAction1.destructive = NO;
     notificationAction1.authenticationRequired = NO;
 
     UIMutableUserNotificationAction *notificationAction2 = [[UIMutableUserNotificationAction alloc] init];
     notificationAction2.identifier = NotificationActionTwo;
-    notificationAction2.title = @"Iced Latte";
+    notificationAction2.title = preferences.second.name;
     notificationAction2.activationMode = UIUserNotificationActivationModeBackground;
     notificationAction2.destructive = NO;
     notificationAction2.authenticationRequired = NO;
@@ -42,15 +46,21 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
     UIUserNotificationType notificationType = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:notificationType categories:category];
     [UIApplication.sharedApplication registerUserNotificationSettings:notificationSettings];
+
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:preferences];
+    [NSUserDefaults.standardUserDefaults setObject:data forKey:@"notificationPreferences"];
 }
 
 + (BeverageConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif {
+    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
+    PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
     NSDate *timestamp = notif.userInfo[@"timestamp"];
     Beverage *beverage;
     if ([identifier isEqualToString:NotificationActionOne]) {
-        beverage = [[Beverage alloc] initWithName:@"Cortado" caffeine:@150];
+        beverage = preferences.first;
     } else {
-        beverage = [[Beverage alloc] initWithName:@"Iced Latte" caffeine:@150];
+        beverage = preferences.second;
     }
 
     return [[BeverageConsumption alloc] initWithBeverage:beverage timestamp:timestamp];
