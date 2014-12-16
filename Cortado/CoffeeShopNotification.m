@@ -24,14 +24,14 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
     
     UIMutableUserNotificationAction *notificationAction1 = [[UIMutableUserNotificationAction alloc] init];
     notificationAction1.identifier = NotificationActionOne;
-    notificationAction1.title = preferences.first.name;
+    notificationAction1.title = preferences.second.name;
     notificationAction1.activationMode = UIUserNotificationActivationModeBackground;
     notificationAction1.destructive = NO;
     notificationAction1.authenticationRequired = NO;
 
     UIMutableUserNotificationAction *notificationAction2 = [[UIMutableUserNotificationAction alloc] init];
     notificationAction2.identifier = NotificationActionTwo;
-    notificationAction2.title = preferences.second.name;
+    notificationAction2.title = preferences.first.name;
     notificationAction2.activationMode = UIUserNotificationActivationModeBackground;
     notificationAction2.destructive = NO;
     notificationAction2.authenticationRequired = NO;
@@ -58,9 +58,9 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
     NSDate *timestamp = notif.userInfo[@"timestamp"];
     Beverage *beverage;
     if ([identifier isEqualToString:NotificationActionOne]) {
-        beverage = preferences.first;
-    } else {
         beverage = preferences.second;
+    } else {
+        beverage = preferences.first;
     }
 
     return [[BeverageConsumption alloc] initWithBeverage:beverage timestamp:timestamp];
