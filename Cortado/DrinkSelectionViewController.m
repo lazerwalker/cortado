@@ -1,5 +1,12 @@
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import "UINavigationController+ReactiveCocoa.h"
+
+#import "Beverage.h"
 #import "DrinkCategory.h"
 #import "DrinkCategoryList.h"
+#import "DrinkSubtype.h"
+#import "DrinkSubtypeSelectionViewController.h"
 #import "DrinkType.h"
 
 #import "DrinkSelectionViewController.h"
@@ -14,19 +21,25 @@ static NSString * const CellIdentifier = @"cell";
 
 @implementation DrinkSelectionViewController
 
+- (id)init {
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (!self) return nil;
+
+    _selectedDrinkSignal = [RACSubject subject];
+
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.categories = [[[DrinkCategoryList alloc] initWithDefaultList] categories];
 
+
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:CellIdentifier];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(checkCurrentLocation)];
-}
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(checkCurrentLocation)];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDelegate
@@ -35,6 +48,31 @@ static NSString * const CellIdentifier = @"cell";
     DrinkCategory *category = self.categories[indexPath.section];
     DrinkType *type = category.drinkTypes[indexPath.row];
     cell.textLabel.text = type.name;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkCategory *category = self.categories[indexPath.section];
+    DrinkType *type = category.drinkTypes[indexPath.row];
+
+    RACSignal *subtypeSignal;
+    if (type.subtypes.count == 1) {
+        subtypeSignal = [RACSignal return:type.subtypes.firstObject];
+    } else {
+        DrinkSubtypeSelectionViewController *drinkVC = [[DrinkSubtypeSelectionViewController alloc] initWithSubtypes:type.subtypes];
+        subtypeSignal = [[[self.navigationController rac_pushViewController:drinkVC animated:YES]
+            concat:drinkVC.subtypeSelectedSignal]
+            take:1];
+    }
+
+    [[subtypeSignal
+        map:^id(DrinkSubtype *subtype) {
+            return [[Beverage alloc] initWithName:type.name
+                                          subtype:subtype.name
+                                         caffeine:subtype.caffeine];
+        }]
+        subscribeNext:^(Beverage *drink) {
+            [_selectedDrinkSignal sendNext:drink];
+        }];
 }
 
 #pragma mark - UITableViewDataSource

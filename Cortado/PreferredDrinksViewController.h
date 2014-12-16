@@ -1,13 +1,11 @@
-//
-//  PreferredDrinksViewController.h
-//  Cortado
-//
-//  Created by Michael Walker on 12/14/14.
-//  Copyright (c) 2014 Lazerwalker. All rights reserved.
-//
+@import UIKit;
 
-#import <UIKit/UIKit.h>
+@class PreferredDrinksViewModel;
 
 @interface PreferredDrinksViewController : UITableViewController
+
+@property (readonly, nonatomic, strong) PreferredDrinksViewModel *viewModel;
+
+- (id)initWithViewModel:(PreferredDrinksViewModel *)viewModel;
 
 @end

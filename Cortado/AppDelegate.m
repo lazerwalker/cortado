@@ -11,8 +11,9 @@
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
 #import "LocationDetector.h"
+#import "PreferredDrinksViewController.h"
+#import "PreferredDrinksViewModel.h"
 #import "TodayInterface.h"
-#import "DrinkSelectionViewController.h"
 
 #import "AppDelegate.h"
 
@@ -58,7 +59,8 @@
     [CoffeeShopNotification registerNotificationType];
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
-    DrinkSelectionViewController *vc = [[DrinkSelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    PreferredDrinksViewModel *viewModel = [[PreferredDrinksViewModel alloc] init];
+    PreferredDrinksViewController *vc = [[PreferredDrinksViewController alloc] initWithViewModel:viewModel];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navController;

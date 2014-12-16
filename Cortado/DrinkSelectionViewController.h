@@ -1,13 +1,9 @@
-//
-//  DrinkSelectionViewController.h
-//  Cortado
-//
-//  Created by Michael Walker on 12/12/14.
-//  Copyright (c) 2014 Lazerwalker. All rights reserved.
-//
+@import UIKit;
 
-#import <UIKit/UIKit.h>
+@class RACSignal;
 
 @interface DrinkSelectionViewController : UITableViewController
+
+@property (readonly) RACSubject *selectedDrinkSignal;
 
 @end

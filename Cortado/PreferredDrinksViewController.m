@@ -1,6 +1,12 @@
 #import <Mantle/Mantle.h>
+#import <ReactiveCocoa/RACEXTScope.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import "UINavigationController+ReactiveCocoa.h"
 
 #import "Beverage.h"
+#import "DrinkSelectionViewController.h"
+#import "PreferredDrinksViewModel.h"
 
 #import "PreferredDrinksViewController.h"
 
@@ -8,19 +14,15 @@ static NSString * const CellIdentifier = @"cell";
 
 @interface PreferredDrinksViewController ()
 
-@property (readonly, nonatomic, strong) NSArray *drinks;
-
 @end
 
 @implementation PreferredDrinksViewController
 
-- (id)init {
+- (id)initWithViewModel:(PreferredDrinksViewModel *)viewModel {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [defaults valueForKey:@"preferredDrinks"];
-    _drinks = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?: @[];
+    _viewModel = viewModel;
 
     return self;
 }
@@ -30,18 +32,33 @@ static NSString * const CellIdentifier = @"cell";
 
     self.title = @"My Drinks";
 
+    @weakify(self)
+    [RACObserve(self, viewModel.drinks) subscribeNext:^(id x) {
+        @strongify(self)
+        [self.tableView reloadData];
+    }];
+
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(checkCurrentLocation)];
+
+    self.tableView.delegate = nil;
+    self.tableView.delegate = self;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    BOOL beverageExists = (self.drinks.count > indexPath.section && self.drinks[indexPath.section] != nil);
-    if (beverageExists) {
-        Beverage *beverage = self.drinks[indexPath.section];
-        cell.textLabel.text = beverage.name;
-    } else {
-        cell.textLabel.text = @"No drink selected.";
-    }
+    cell.textLabel.text = [self.viewModel titleAtIndex:indexPath.section];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] init];
+    [[[[[self.navigationController rac_pushViewController:drinkVC animated:YES]
+        concat:drinkVC.selectedDrinkSignal]
+        take:1]
+        concat:[self.navigationController rac_popToViewController:self animated:YES]]
+        subscribeNext:^(Beverage *drink) {
+            [self.viewModel setDrink:drink.copy forIndex:indexPath.section];
+        }];
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -51,7 +68,7 @@ static NSString * const CellIdentifier = @"cell";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return self.viewModel.numberOfDrinks;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
