@@ -72,6 +72,7 @@ static NSString * const CellIdentifier = @"cell";
         }]
         subscribeNext:^(Beverage *drink) {
             [_selectedDrinkSignal sendNext:drink];
+            [_selectedDrinkSignal sendCompleted];
         }];
 }
 
