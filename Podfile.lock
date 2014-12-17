@@ -2,6 +2,7 @@ PODS:
   - Asterism (1.0.0)
   - Bolts (1.1.3)
   - FLKAutoLayout (0.2.1)
+  - FXForms (1.2.10)
   - Mantle (1.5.1):
     - Mantle/extobjc (= 1.5.1)
   - Mantle/extobjc (1.5.1)
@@ -20,6 +21,7 @@ PODS:
 DEPENDENCIES:
   - Asterism (~> 1.0.0)
   - FLKAutoLayout (~> 0.2)
+  - FXForms (~> 1.2)
   - Mantle (~> 1.5)
   - Parse (~> 1.5.0)
   - ReactiveCocoa (~> 2.3)
@@ -29,6 +31,7 @@ SPEC CHECKSUMS:
   Asterism: 26783427dc5b3ff144cbabb87485456458797350
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   FLKAutoLayout: 8a973ab83832a8527626127193643f3c8ea157d5
+  FXForms: 758fe50c354f10e707cd1a47e5c4ac9198404427
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   Parse: 7de25b6f70f0b233e5d25835f62eabfa91e4f9d7
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
