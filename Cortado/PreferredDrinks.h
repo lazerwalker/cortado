@@ -1,16 +1,16 @@
 #import <Mantle/Mantle.h>
 
-@class Beverage;
+@class Drink;
 
 @interface PreferredDrinks : MTLModel
 
-@property (readonly, nonatomic, strong) Beverage *first;
-@property (readonly, nonatomic, strong) Beverage *second;
+@property (readonly, nonatomic, strong) Drink *first;
+@property (readonly, nonatomic, strong) Drink *second;
 
-- (id)initWithFirst:(Beverage *)first
-             second:(Beverage *)second;
+- (id)initWithFirst:(Drink *)first
+             second:(Drink *)second;
 
 - (id)preferenceByReplacingDrinkAtIndex:(NSUInteger)index
-                              withDrink:(Beverage *)drink;
+                              withDrink:(Drink *)drink;
 
 @end

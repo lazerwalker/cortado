@@ -1,14 +1,14 @@
 @import Foundation;
 
-@class BeverageProcessor;
+@class DrinkProcessor;
 
 @interface TodayInterface : NSObject
 
-- (id)initWithProcessor:(BeverageProcessor*)processor;
+- (id)initWithProcessor:(DrinkProcessor*)processor;
 
-@property (readonly, nonatomic) BeverageProcessor *processor;
+@property (readonly, nonatomic) DrinkProcessor *processor;
 
 - (void)stopListening;
-- (void)processAllNewBeveragesWithCompletion:(void (^)(NSArray *addedItems))completion;
+- (void)processAllNewDrinksWithCompletion:(void (^)(NSArray *addedItems))completion;
 
 @end

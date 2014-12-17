@@ -1,7 +1,7 @@
 @import UIKit;
 
-#import "Beverage.h"
-#import "BeverageConsumption.h"
+#import "Drink.h"
+#import "DrinkConsumption.h"
 #import "PreferredDrinks.h"
 
 #import "CoffeeShopNotification.h"
@@ -72,21 +72,21 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
     [NSUserDefaults.standardUserDefaults setObject:data forKey:@"notificationPreferences"];
 }
 
-+ (BeverageConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif {
++ (DrinkConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif {
     if ([identifier isEqualToString:NotificationActionNone]) return nil;
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
     PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
     NSDate *timestamp = notif.userInfo[@"timestamp"];
-    Beverage *beverage;
+    Drink *drink;
     if ([identifier isEqualToString:NotificationActionOne]) {
-        beverage = preferences.second;
+        drink = preferences.second;
     } else {
-        beverage = preferences.first;
+        drink = preferences.first;
     }
 
-    return [[BeverageConsumption alloc] initWithBeverage:beverage timestamp:timestamp];
+    return [[DrinkConsumption alloc] initWithDrink:drink timestamp:timestamp];
 }
 
 #pragma mark -

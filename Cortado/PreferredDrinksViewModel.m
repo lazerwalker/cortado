@@ -1,6 +1,6 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "Beverage.h"
+#import "Drink.h"
 #import "CoffeeShopNotification.h"
 #import "PreferredDrinks.h"
 
@@ -36,7 +36,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
     return 2;
 }
 
-- (Beverage *)drinkAtIndex:(NSUInteger)index {
+- (Drink *)drinkAtIndex:(NSUInteger)index {
     if (index == 0) {
         return self.drinks.first;
     } else if (index == 1) {
@@ -47,7 +47,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 - (NSString *)titleAtIndex:(NSUInteger)index {
-    Beverage *drink = [self drinkAtIndex:index];
+    Drink *drink = [self drinkAtIndex:index];
     if (drink == nil) {
         return @"No drink selected";
     }
@@ -56,7 +56,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 - (NSString *)subtitleAtIndex:(NSUInteger)index {
-    Beverage *drink = [self drinkAtIndex:index];
+    Drink *drink = [self drinkAtIndex:index];
     if (drink == nil) {
         return nil;
     }
@@ -69,7 +69,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 #pragma mark -
-- (void)setDrink:(Beverage *)drink forIndex:(NSUInteger)index {
+- (void)setDrink:(Drink *)drink forIndex:(NSUInteger)index {
     self.drinks = [self.drinks preferenceByReplacingDrinkAtIndex:index withDrink:drink];
 }
 

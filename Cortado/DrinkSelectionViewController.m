@@ -3,7 +3,7 @@
 
 #import "UINavigationController+ReactiveCocoa.h"
 
-#import "Beverage.h"
+#import "Drink.h"
 #import "CreateCustomDrinkViewController.h"
 #import "DrinkCategory.h"
 #import "DrinkCategoryList.h"
@@ -77,11 +77,11 @@ static NSString * const CellIdentifier = @"cell";
 
     [[subtypeSignal
         map:^id(DrinkSubtype *subtype) {
-            return [[Beverage alloc] initWithName:type.name
+            return [[Drink alloc] initWithName:type.name
                                           subtype:subtype.name
                                          caffeine:subtype.caffeine];
         }]
-        subscribeNext:^(Beverage *drink) {
+        subscribeNext:^(Drink *drink) {
             [_selectedDrinkSignal sendNext:drink];
             [_selectedDrinkSignal sendCompleted];
         }];
@@ -116,7 +116,7 @@ static NSString * const CellIdentifier = @"cell";
     CreateCustomDrinkViewController *createVC = [[CreateCustomDrinkViewController alloc] init];
     [[[self.navigationController rac_pushViewController:createVC animated:YES]
         concat:createVC.drinkCreatedSignal]
-        subscribeNext:^(Beverage *beverage) {
+        subscribeNext:^(Drink *beverage) {
             [self.selectedDrinkSignal sendNext:beverage];
             [self.selectedDrinkSignal sendCompleted];
         }];

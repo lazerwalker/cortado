@@ -24,10 +24,10 @@
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
 		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
-		A66A3A111A3B7C0200849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
-		A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
-		A66A3A151A3B80A800849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
-		A66A3A161A3B80A800849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
+		A66A3A111A3B7C0200849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
+		A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
+		A66A3A151A3B80A800849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
+		A66A3A161A3B80A800849705 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
 		A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1B1A3B8F3700849705 /* DrinkSelectionViewController.m */; };
 		A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1F1A3B903C00849705 /* DrinkCategory.m */; };
 		A66A3A231A3B907900849705 /* DrinkType.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A221A3B907900849705 /* DrinkType.m */; };
@@ -37,7 +37,7 @@
 		A6BA44B91A2A5B6D006B89E3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA44B81A2A5B6D006B89E3 /* libPods.a */; };
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
-		A6EBA87D1A2A3B3200344C17 /* BeverageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */; };
+		A6EBA87D1A2A3B3200344C17 /* DrinkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* DrinkProcessor.m */; };
 		AD607CCBEC7B40A32C314204 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F974D2DCCF44722399492BB7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -111,10 +111,10 @@
 		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
 		A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCustomDrinkViewController.h; sourceTree = "<group>"; };
 		A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCustomDrinkViewController.m; sourceTree = "<group>"; };
-		A66A3A0F1A3B7C0200849705 /* Beverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beverage.h; sourceTree = "<group>"; };
-		A66A3A101A3B7C0200849705 /* Beverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beverage.m; sourceTree = "<group>"; };
-		A66A3A121A3B7D5C00849705 /* BeverageConsumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeverageConsumption.h; sourceTree = "<group>"; };
-		A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeverageConsumption.m; sourceTree = "<group>"; };
+		A66A3A0F1A3B7C0200849705 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
+		A66A3A101A3B7C0200849705 /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
+		A66A3A121A3B7D5C00849705 /* DrinkConsumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkConsumption.h; sourceTree = "<group>"; };
+		A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumption.m; sourceTree = "<group>"; };
 		A66A3A171A3B8DEF00849705 /* drinks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drinks.json; sourceTree = "<group>"; };
 		A66A3A1A1A3B8F3700849705 /* DrinkSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkSelectionViewController.h; sourceTree = "<group>"; };
 		A66A3A1B1A3B8F3700849705 /* DrinkSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkSelectionViewController.m; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 		A6E234671A320FFB00B57E16 /* FoursquareClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareClient.m; sourceTree = "<group>"; };
 		A6E234691A32100700B57E16 /* FoursquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenue.h; sourceTree = "<group>"; };
 		A6E2346A1A32100700B57E16 /* FoursquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenue.m; sourceTree = "<group>"; };
-		A6EBA87B1A2A3B3200344C17 /* BeverageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeverageProcessor.h; sourceTree = "<group>"; };
-		A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeverageProcessor.m; sourceTree = "<group>"; };
+		A6EBA87B1A2A3B3200344C17 /* DrinkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkProcessor.h; sourceTree = "<group>"; };
+		A6EBA87C1A2A3B3200344C17 /* DrinkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkProcessor.m; sourceTree = "<group>"; };
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
 		D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 			children = (
 				A60E24D41A293C340014628C /* TodayInterface.h */,
 				A60E24D51A293C340014628C /* TodayInterface.m */,
-				A6EBA87B1A2A3B3200344C17 /* BeverageProcessor.h */,
-				A6EBA87C1A2A3B3200344C17 /* BeverageProcessor.m */,
+				A6EBA87B1A2A3B3200344C17 /* DrinkProcessor.h */,
+				A6EBA87C1A2A3B3200344C17 /* DrinkProcessor.m */,
 				A60585DA1A3E120500FF267F /* LocationDetector.h */,
 				A60585DB1A3E120500FF267F /* LocationDetector.m */,
 			);
@@ -294,10 +294,10 @@
 			children = (
 				A6E234691A32100700B57E16 /* FoursquareVenue.h */,
 				A6E2346A1A32100700B57E16 /* FoursquareVenue.m */,
-				A66A3A0F1A3B7C0200849705 /* Beverage.h */,
-				A66A3A101A3B7C0200849705 /* Beverage.m */,
-				A66A3A121A3B7D5C00849705 /* BeverageConsumption.h */,
-				A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */,
+				A66A3A0F1A3B7C0200849705 /* Drink.h */,
+				A66A3A101A3B7C0200849705 /* Drink.m */,
+				A66A3A121A3B7D5C00849705 /* DrinkConsumption.h */,
+				A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */,
 				A66A3A1E1A3B903C00849705 /* DrinkCategory.h */,
 				A66A3A1F1A3B903C00849705 /* DrinkCategory.m */,
 				A66A3A211A3B907900849705 /* DrinkType.h */,
@@ -504,10 +504,10 @@
 			files = (
 				A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */,
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
-				A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */,
+				A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */,
 				A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */,
 				A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */,
-				A6EBA87D1A2A3B3200344C17 /* BeverageProcessor.m in Sources */,
+				A6EBA87D1A2A3B3200344C17 /* DrinkProcessor.m in Sources */,
 				A623765B1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m in Sources */,
 				A60585DC1A3E120500FF267F /* LocationDetector.m in Sources */,
 				A66A3A231A3B907900849705 /* DrinkType.m in Sources */,
@@ -522,7 +522,7 @@
 				A62D72281A254C6500846A33 /* main.m in Sources */,
 				A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */,
 				A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */,
-				A66A3A111A3B7C0200849705 /* Beverage.m in Sources */,
+				A66A3A111A3B7C0200849705 /* Drink.m in Sources */,
 				A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,9 +531,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A66A3A161A3B80A800849705 /* BeverageConsumption.m in Sources */,
+				A66A3A161A3B80A800849705 /* DrinkConsumption.m in Sources */,
 				A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */,
-				A66A3A151A3B80A800849705 /* Beverage.m in Sources */,
+				A66A3A151A3B80A800849705 /* Drink.m in Sources */,
 				A60E24D31A2935C30014628C /* AppInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

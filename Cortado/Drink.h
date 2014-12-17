@@ -1,6 +1,6 @@
 #import <Mantle/Mantle.h>
 
-@interface Beverage : MTLModel
+@interface Drink : MTLModel
 
 - (id)initWithName:(NSString *)name
           caffeine:(NSNumber *)caffeine;

@@ -2,8 +2,8 @@
 
 @implementation PreferredDrinks
 
-- (id)initWithFirst:(Beverage *)first
-             second:(Beverage *)second {
+- (id)initWithFirst:(Drink *)first
+             second:(Drink *)second {
     self = [super init];
     if (!self) return nil;
 
@@ -14,7 +14,7 @@
 }
 
 - (id)preferenceByReplacingDrinkAtIndex:(NSUInteger)index
-                              withDrink:(Beverage *)drink {
+                              withDrink:(Drink *)drink {
     if (index == 0) {
         return [[PreferredDrinks alloc] initWithFirst:drink second:self.second];
     } else if (index == 1) {

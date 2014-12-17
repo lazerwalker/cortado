@@ -1,6 +1,6 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "Beverage.h"
+#import "Drink.h"
 
 #import "CreateCustomDrinkViewController.h"
 
@@ -38,9 +38,9 @@
 - (void)didTapDoneButton {
     CustomDrinkForm *form = (CustomDrinkForm *)self.formController.form;
 
-    Beverage *beverage = [[Beverage alloc] initWithName:form.name
+    Drink *drink = [[Drink alloc] initWithName:form.name
                                                caffeine:form.caffeine];
-    [self.drinkCreatedSignal sendNext:beverage];
+    [self.drinkCreatedSignal sendNext:drink];
     [self.drinkCreatedSignal sendCompleted];
 }
 

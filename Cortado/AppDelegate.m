@@ -4,9 +4,9 @@
 #import <CocoaPods-Keys/CortadoKeys.h>
 #import <Parse/Parse.h>
 
-#import "Beverage.h"
-#import "BeverageConsumption.h"
-#import "BeverageProcessor.h"
+#import "Drink.h"
+#import "DrinkConsumption.h"
+#import "DrinkProcessor.h"
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
@@ -22,7 +22,7 @@
 @interface AppDelegate () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) TodayInterface *interface;
-@property (nonatomic, strong) BeverageProcessor *processor;
+@property (nonatomic, strong) DrinkProcessor *processor;
 
 @property (nonatomic, strong) FoursquareClient *foursquareClient;
 @property (nonatomic, strong) LocationDetector *detector;
@@ -35,7 +35,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.processor = [[BeverageProcessor alloc] init];
+    self.processor = [[DrinkProcessor alloc] init];
     self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
 
     // CLVisit
@@ -78,7 +78,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self.interface processAllNewBeveragesWithCompletion:nil];
+    [self.interface processAllNewDrinksWithCompletion:nil];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -102,13 +102,13 @@
 #pragma mark - Processing
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
-    BeverageConsumption *consumption = [CoffeeShopNotification drinkForIdentifier:identifier notification:notification];
+    DrinkConsumption *consumption = [CoffeeShopNotification drinkForIdentifier:identifier notification:notification];
     if (!consumption) {
         completionHandler();
         return;
     }
 
-    [self.processor processBeverage:consumption
+    [self.processor processDrink:consumption
                      withCompletion:^(BOOL success, NSError *error) {
         UILocalNotification *notif = [[UILocalNotification alloc] init];
         notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@? %@", consumption.name, consumption.timestamp, @(success)];

@@ -1,18 +1,18 @@
 #import <Asterism/Asterism.h>
 @import HealthKit;
 
-#import "Beverage.h"
-#import "BeverageConsumption.h"
+#import "Drink.h"
+#import "DrinkConsumption.h"
 
-#import "BeverageProcessor.h"
+#import "DrinkProcessor.h"
 
-@interface BeverageProcessor ()
+@interface DrinkProcessor ()
 
 @property (nonatomic, strong) HKHealthStore *healthStore;
 @property (nonatomic, strong) HKQuantityType *caffeineType;
 @end
 
-@implementation BeverageProcessor
+@implementation DrinkProcessor
 
 - (id)init {
     self = [super init];
@@ -33,16 +33,16 @@
     return self;
 }
 
-- (void)processBeverages:(NSArray *)array {
+- (void)processDrinks:(NSArray *)array {
     if (!(self.healthStore && [self.healthStore authorizationStatusForType:self.caffeineType] == HKAuthorizationStatusSharingAuthorized)) {
         return;
     }
 
-    array = ASTFilter(array, ^BOOL(BeverageConsumption *drink) {
-        return [drink isKindOfClass:BeverageConsumption.class];
+    array = ASTFilter(array, ^BOOL(DrinkConsumption *drink) {
+        return [drink isKindOfClass:DrinkConsumption.class];
     });
-    array = ASTMap(array, ^id(BeverageConsumption *drink) {
-        return [self sampleFromBeverage:drink];
+    array = ASTMap(array, ^id(DrinkConsumption *drink) {
+        return [self sampleFromDrink:drink];
     });
 
     [self.healthStore saveObjects:array withCompletion:^(BOOL success, NSError *error) {
@@ -51,22 +51,22 @@
 
 }
 
-- (void)processBeverage:(BeverageConsumption *)beverage
+- (void)processDrink:(DrinkConsumption *)drink
          withCompletion:(void(^)(BOOL success, NSError *error))completion {
-    HKQuantitySample *sample = [self sampleFromBeverage:beverage];
+    HKQuantitySample *sample = [self sampleFromDrink:drink];
     [self.healthStore saveObject:sample withCompletion:completion];
 }
 
 #pragma mark -
-- (HKQuantitySample *)sampleFromBeverage:(BeverageConsumption *)beverage {
+- (HKQuantitySample *)sampleFromDrink:(DrinkConsumption *)drink {
     HKUnit *unit = [HKUnit unitFromString:@"mg"];
-    HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:beverage.caffeine.doubleValue];
+    HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:drink.caffeine.doubleValue];
     HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
     return [HKQuantitySample quantitySampleWithType:type
                                            quantity:quantity
-                                          startDate:beverage.timestamp
-                                            endDate:beverage.timestamp
-                                           metadata:@{@"name": beverage.name}];
+                                          startDate:drink.timestamp
+                                            endDate:drink.timestamp
+                                           metadata:@{@"name": drink.name}];
 }
 
 @end

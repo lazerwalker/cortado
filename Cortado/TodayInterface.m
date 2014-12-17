@@ -1,6 +1,6 @@
 @import UIKit;
 
-#import "BeverageProcessor.h"
+#import "DrinkProcessor.h"
 
 #import "TodayInterface.h"
 
@@ -12,7 +12,7 @@
 
 @implementation TodayInterface
 
-- (id)initWithProcessor:(BeverageProcessor *)processor {
+- (id)initWithProcessor:(DrinkProcessor *)processor {
     self = [super init];
     if (!self) return nil;
 
@@ -35,7 +35,7 @@
     [NSFileCoordinator removeFilePresenter:self];
 }
 
-- (void)processAllNewBeveragesWithCompletion:(void (^)(NSArray *addedItems))completion {
+- (void)processAllNewDrinksWithCompletion:(void (^)(NSArray *addedItems))completion {
     [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
         NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:newURL.path];
         if (!array)  {
@@ -45,7 +45,7 @@
             return;
         }
 
-        [self.processor processBeverages:array];
+        [self.processor processDrinks:array];
 
         [self.coordinator coordinateWritingItemAtURL:self.presentedItemURL
                                              options:NSFileCoordinatorWritingForReplacing
@@ -71,7 +71,7 @@
 }
 
 - (void)presentedItemDidChange {
-    [self processAllNewBeveragesWithCompletion:nil];
+    [self processAllNewDrinksWithCompletion:nil];
 }
 
 @end

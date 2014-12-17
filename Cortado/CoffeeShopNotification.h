@@ -1,13 +1,13 @@
 @import UIKit;
 
-@class BeverageConsumption;
+@class DrinkConsumption;
 @class PreferredDrinks;
 
 @interface CoffeeShopNotification : NSObject
 
 + (void)registerNotificationTypeWithPreferences:(PreferredDrinks *)preferences;
 
-+ (BeverageConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif;
++ (DrinkConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif;
 
 @property (readonly) NSString *name;
 @property (readonly, weak) UIApplication *application;

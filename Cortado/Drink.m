@@ -1,6 +1,6 @@
-#import "Beverage.h"
+#import "Drink.h"
 
-@implementation Beverage
+@implementation Drink
 
 - (id)initWithName:(NSString *)name
            subtype:(NSString *)subtype

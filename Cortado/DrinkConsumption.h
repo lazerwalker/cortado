@@ -1,16 +1,16 @@
 #import <Mantle/Mantle.h>
 
-@class Beverage;
+@class Drink;
 
-@interface BeverageConsumption : MTLModel
+@interface DrinkConsumption : MTLModel
 
 @property (readonly, strong, nonatomic) NSString *name;
 @property (readonly, strong, nonatomic) NSNumber *caffeine;
 @property (readonly, strong, nonatomic) NSDate *timestamp;
 
-- (id)initWithBeverage:(Beverage *)beverage
+- (id)initWithDrink:(Drink *)drink
              timestamp:(NSDate *)timestamp NS_DESIGNATED_INITIALIZER;
 
-- (id)initWithBeverage:(Beverage *)beverage;
+- (id)initWithDrink:(Drink *)drink;
 
 @end

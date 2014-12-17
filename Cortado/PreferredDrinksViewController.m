@@ -4,7 +4,7 @@
 
 #import "UINavigationController+ReactiveCocoa.h"
 
-#import "Beverage.h"
+#import "Drink.h"
 #import "DrinkSelectionViewController.h"
 #import "PreferredDrinksViewModel.h"
 
@@ -56,7 +56,7 @@ static NSString * const CellIdentifier = @"cell";
         concat:drinkVC.selectedDrinkSignal]
         take:1]
         concat:[self.navigationController rac_popToViewController:self animated:YES]]
-        subscribeNext:^(Beverage *drink) {
+        subscribeNext:^(Drink *drink) {
             [self.viewModel setDrink:drink.copy forIndex:indexPath.section];
         }];
 }

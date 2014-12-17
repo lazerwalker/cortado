@@ -1,5 +1,5 @@
-#import "Beverage.h"
-#import "BeverageConsumption.h"
+#import "Drink.h"
+#import "DrinkConsumption.h"
 
 #import "AppInterface.h"
 
@@ -29,7 +29,7 @@
     return [containerURL URLByAppendingPathComponent:@"addCaffeine"];
 }
 
-- (void)saveBeverage:(Beverage *)beverage
+- (void)saveDrink:(Drink *)drink
           completion:(void (^)())completionBlock {
 
     [self.coordinator coordinateReadingItemAtURL:self.presentedItemURL options:0 error:nil byAccessor:^(NSURL *newURL) {
@@ -40,8 +40,8 @@
                                                error:nil
                                           byAccessor:^(NSURL *newURL) {
 
-            BeverageConsumption *drink = [[BeverageConsumption alloc] initWithBeverage:beverage timestamp:NSDate.date];
-            [array addObject:drink];
+            DrinkConsumption *d = [[DrinkConsumption alloc] initWithDrink:drink timestamp:NSDate.date];
+            [array addObject:d];
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
             [data writeToURL:newURL atomically:YES];
             if (completionBlock) {
