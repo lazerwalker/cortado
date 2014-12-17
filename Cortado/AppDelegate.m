@@ -6,7 +6,7 @@
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
-#import "DrinkProcessor.h"
+#import "CaffeineHistoryManager.h"
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
@@ -22,7 +22,7 @@
 @interface AppDelegate () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) TodayInterface *interface;
-@property (nonatomic, strong) DrinkProcessor *processor;
+@property (nonatomic, strong) CaffeineHistoryManager *processor;
 
 @property (nonatomic, strong) FoursquareClient *foursquareClient;
 @property (nonatomic, strong) LocationDetector *detector;
@@ -35,7 +35,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.processor = [[DrinkProcessor alloc] init];
+    self.processor = [[CaffeineHistoryManager alloc] init];
     self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
 
     // CLVisit

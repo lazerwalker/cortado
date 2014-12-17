@@ -1,6 +1,6 @@
 @import UIKit;
 
-#import "DrinkProcessor.h"
+#import "CaffeineHistoryManager.h"
 
 #import "TodayInterface.h"
 
@@ -12,7 +12,7 @@
 
 @implementation TodayInterface
 
-- (id)initWithProcessor:(DrinkProcessor *)processor {
+- (id)initWithProcessor:(CaffeineHistoryManager *)processor {
     self = [super init];
     if (!self) return nil;
 

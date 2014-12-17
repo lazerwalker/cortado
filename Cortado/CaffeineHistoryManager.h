@@ -2,7 +2,7 @@
 
 @class DrinkConsumption;
 
-@interface DrinkProcessor : NSObject
+@interface CaffeineHistoryManager : NSObject
 
 - (void)processDrinks:(NSArray *)array;
 

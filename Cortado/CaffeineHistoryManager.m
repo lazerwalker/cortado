@@ -4,15 +4,15 @@
 #import "Drink.h"
 #import "DrinkConsumption.h"
 
-#import "DrinkProcessor.h"
+#import "CaffeineHistoryManager.h"
 
-@interface DrinkProcessor ()
+@interface CaffeineHistoryManager ()
 
 @property (nonatomic, strong) HKHealthStore *healthStore;
 @property (nonatomic, strong) HKQuantityType *caffeineType;
 @end
 
-@implementation DrinkProcessor
+@implementation CaffeineHistoryManager
 
 - (id)init {
     self = [super init];
@@ -24,7 +24,7 @@
 
         if ([self.healthStore authorizationStatusForType:self.caffeineType] == HKAuthorizationStatusNotDetermined) {
             NSSet *set = [NSSet setWithObject:self.caffeineType];
-            [self.healthStore requestAuthorizationToShareTypes:set readTypes:nil completion:^(BOOL success, NSError *error) {
+            [self.healthStore requestAuthorizationToShareTypes:set readTypes:set completion:^(BOOL success, NSError *error) {
 
             }];
         }

@@ -33,7 +33,7 @@ static NSString * const CellIdentifier = @"Cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     DrinkSubtype *subtype = self.subtypes[indexPath.row];
     [(RACSubject *)self.subtypeSelectedSignal sendNext:subtype];
 }
