@@ -1,8 +1,8 @@
-@import UIKit;
+#import <FXForms/FXForms.h>
 
 @class RACSubject;
 
-@interface CreateCustomDrinkViewController : UIViewController
+@interface CreateCustomDrinkViewController : FXFormViewController
 
 @property (readonly) RACSubject *drinkCreatedSignal;
 
