@@ -1,4 +1,5 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <FLKAutoLayout/UIView+FLKAutoLayout.h>
 
 #import "UINavigationController+ReactiveCocoa.h"
 
@@ -21,11 +22,12 @@ static NSString * const CellIdentifier = @"cell";
 
 @implementation DrinkSelectionViewController
 
-- (id)init {
+- (id)initWithNoBeverageEnabled:(BOOL)enabled {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 
     _selectedDrinkSignal = [RACSubject subject];
+    _noBeverageEnabled = enabled;
 
     return self;
 }
@@ -35,11 +37,18 @@ static NSString * const CellIdentifier = @"cell";
 
     self.categories = [[[DrinkCategoryList alloc] initWithDefaultList] categories];
 
+    if (self.noBeverageEnabled) {
+        UIButton *footer = [UIButton buttonWithType:UIButtonTypeSystem];
+        footer.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 60.0);
+        [footer setTitle:@"No Beverage" forState:UIControlStateNormal];
+        [footer addTarget:self action:@selector(didTapNoBeverage) forControlEvents:UIControlEventTouchUpInside];
+        footer.titleLabel.font = [UIFont systemFontOfSize:16.0];
+        self.tableView.tableFooterView = footer;
+    }
 
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:CellIdentifier];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(checkCurrentLocation)];
-
 }
 
 #pragma mark - UITableViewDelegate
@@ -95,4 +104,9 @@ static NSString * const CellIdentifier = @"cell";
     return [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 }
 
+#pragma mark -
+- (void)didTapNoBeverage {
+    [self.selectedDrinkSignal sendNext:nil];
+    [self.selectedDrinkSignal sendCompleted];
+}
 @end

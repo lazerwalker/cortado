@@ -9,6 +9,8 @@
 NSString * const NotificationCategoryBeverage  = @"BEVERAGE";
 NSString * const NotificationActionOne = @"DRINK_ONE";
 NSString * const NotificationActionTwo = @"DRINK_TWO";
+NSString * const NotificationActionNone = @"DRINK_NONE";
+
 
 @interface CoffeeShopNotification ()
 
@@ -20,26 +22,45 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
 
 #pragma mark -
 + (void)registerNotificationTypeWithPreferences:(PreferredDrinks *)preferences {
-    if (!(preferences.first && preferences.second)) return;
-    
-    UIMutableUserNotificationAction *notificationAction1 = [[UIMutableUserNotificationAction alloc] init];
-    notificationAction1.identifier = NotificationActionOne;
-    notificationAction1.title = preferences.second.name;
-    notificationAction1.activationMode = UIUserNotificationActivationModeBackground;
-    notificationAction1.destructive = NO;
-    notificationAction1.authenticationRequired = NO;
+    NSMutableArray *actions = [[NSMutableArray alloc] init];
 
-    UIMutableUserNotificationAction *notificationAction2 = [[UIMutableUserNotificationAction alloc] init];
-    notificationAction2.identifier = NotificationActionTwo;
-    notificationAction2.title = preferences.first.name;
-    notificationAction2.activationMode = UIUserNotificationActivationModeBackground;
-    notificationAction2.destructive = NO;
-    notificationAction2.authenticationRequired = NO;
+    if (preferences.second) {
+        UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
+        action.identifier = NotificationActionOne;
+        action.title = preferences.second.name;
+        action.activationMode = UIUserNotificationActivationModeBackground;
+        action.destructive = NO;
+        action.authenticationRequired = NO;
+
+        [actions addObject:action];
+    }
+
+    if (preferences.first) {
+        UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
+        action.identifier = NotificationActionTwo;
+        action.title = preferences.first.name;
+        action.activationMode = UIUserNotificationActivationModeBackground;
+        action.destructive = NO;
+        action.authenticationRequired = NO;
+
+        [actions addObject:action];
+    }
+
+    if (actions.count == 0) {
+        UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
+        action.identifier = NotificationActionNone;
+        action.title = @"Enter Drink";
+        action.activationMode = UIUserNotificationActivationModeForeground;
+        action.destructive = NO;
+
+        [actions addObject:action];
+
+    }
 
     UIMutableUserNotificationCategory *notificationCategory = [[UIMutableUserNotificationCategory alloc] init];
     notificationCategory.identifier = NotificationCategoryBeverage;
-    [notificationCategory setActions:@[notificationAction1,notificationAction2] forContext:UIUserNotificationActionContextDefault];
-    [notificationCategory setActions:@[notificationAction1,notificationAction2] forContext:UIUserNotificationActionContextMinimal];
+    [notificationCategory setActions:actions.copy forContext:UIUserNotificationActionContextDefault];
+    [notificationCategory setActions:actions.copy forContext:UIUserNotificationActionContextMinimal];
 
     NSSet *category = [NSSet setWithObject:notificationCategory];
 
@@ -52,6 +73,8 @@ NSString * const NotificationActionTwo = @"DRINK_TWO";
 }
 
 + (BeverageConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif {
+    if ([identifier isEqualToString:NotificationActionNone]) return nil;
+
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
     PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 

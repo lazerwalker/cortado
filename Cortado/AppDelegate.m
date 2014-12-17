@@ -103,6 +103,11 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
     BeverageConsumption *consumption = [CoffeeShopNotification drinkForIdentifier:identifier notification:notification];
+    if (!consumption) {
+        completionHandler();
+        return;
+    }
+
     [self.processor processBeverage:consumption
                      withCompletion:^(BOOL success, NSError *error) {
         UILocalNotification *notif = [[UILocalNotification alloc] init];
