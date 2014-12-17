@@ -54,13 +54,8 @@ static NSString * const APIDate = @"20141205";
                notif.alertBody = [NSString stringWithFormat:@"Near venue: %@",[results.firstObject name]];
                [UIApplication.sharedApplication scheduleLocalNotification:notif];
 
-//               NSArray *categoryVenues = ASTFilter(results, ^BOOL(FoursquareVenue *venue) {
-//                   return [venue.categoryId containsObject:categoryId];
-//               });
-               NSArray *categoryVenues = results.copy;
-
                if (completion) {
-                   completion(categoryVenues, error);
+                   completion(results, error);
                }
            }];
 }
@@ -77,10 +72,11 @@ static NSString * const APIDate = @"20141205";
 }
 
 - (NSURL *)searchURLForCoordinate:(CLLocationCoordinate2D)coordinate categoryId:(NSString *)categoryId {
-    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=40&limit=1&ll=%f,%f",
+    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&intent=checkin&radius=10&categoryId=%@&limit=1&ll=%f,%f",
                            self.clientID,
                            self.clientSecret,
                            APIDate,
+                           categoryId,
                            coordinate.latitude,
                            coordinate.longitude];
     return [NSURL URLWithString:urlString];
