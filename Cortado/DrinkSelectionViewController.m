@@ -62,6 +62,8 @@ static NSString * const CellIdentifier = @"cell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     DrinkCategory *category = self.categories[indexPath.section];
     DrinkType *type = category.drinkTypes[indexPath.row];
 

@@ -51,6 +51,8 @@ static NSString * const CellIdentifier = @"cell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] initWithNoBeverageEnabled:YES];
     [[[[[self.navigationController rac_pushViewController:drinkVC animated:YES]
         concat:drinkVC.selectedDrinkSignal]
