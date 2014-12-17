@@ -2,9 +2,10 @@
 
 @class Drink;
 
-@interface DrinkConsumption : MTLModel
+@interface DrinkConsumption : MTLModel<MTLJSONSerializing>
 
 @property (readonly, strong, nonatomic) NSString *name;
+@property (readonly, strong, nonatomic) NSString *subtype;
 @property (readonly, strong, nonatomic) NSNumber *caffeine;
 @property (readonly, strong, nonatomic) NSDate *timestamp;
 

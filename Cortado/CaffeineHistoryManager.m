@@ -1,5 +1,7 @@
-#import <Asterism/Asterism.h>
 @import HealthKit;
+
+#import <Asterism/Asterism.h>
+#import <Mantle/Mantle.h>
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
@@ -62,11 +64,23 @@
     HKUnit *unit = [HKUnit unitFromString:@"mg"];
     HKQuantity *quantity = [HKQuantity quantityWithUnit:unit doubleValue:drink.caffeine.doubleValue];
     HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
+
+    NSString *name = drink.name;
+    if (drink.subtype) {
+        name = [NSString stringWithFormat:@"%@ (%@)", drink.name, drink.subtype];
+    }
+    
+    NSDictionary *metadata = ASTExtend(@{
+        HKMetadataKeyFoodType: name,
+        HKMetadataKeyWasUserEntered: @YES
+    },
+    [MTLJSONAdapter JSONDictionaryFromModel:drink]);
+
     return [HKQuantitySample quantitySampleWithType:type
                                            quantity:quantity
                                           startDate:drink.timestamp
                                             endDate:drink.timestamp
-                                           metadata:@{@"name": drink.name}];
+                                           metadata:metadata];
 }
 
 @end
