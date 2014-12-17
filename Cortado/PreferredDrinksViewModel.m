@@ -52,13 +52,23 @@ static NSString * const PreferencesKey = @"preferredDrinks";
         return @"No drink selected";
     }
 
-    if (drink.subtype == nil) {
-        return drink.name;
-    } else {
-        return [NSString stringWithFormat:@"%@ (%@)", drink.name, drink.subtype];
+    return drink.name;
+}
+
+- (NSString *)subtitleAtIndex:(NSUInteger)index {
+    Beverage *drink = [self drinkAtIndex:index];
+    if (drink == nil) {
+        return nil;
     }
 
+    if (drink.subtype == nil) {
+        return [NSString stringWithFormat:@"%@ mg", drink.caffeine];
+    }
+
+    return [NSString stringWithFormat:@"%@ (%@ mg)", drink.subtype, drink.caffeine];
 }
+
+#pragma mark -
 - (void)setDrink:(Beverage *)drink forIndex:(NSUInteger)index {
     self.drinks = [self.drinks preferenceByReplacingDrinkAtIndex:index withDrink:drink];
 }

@@ -9,7 +9,10 @@
 @property (readonly) NSUInteger numberOfDrinks;
 
 - (Beverage *)drinkAtIndex:(NSUInteger)index;
+
 - (NSString *)titleAtIndex:(NSUInteger)index;
+- (NSString *)subtitleAtIndex:(NSUInteger)index;
+
 - (void)setDrink:(Beverage *)drink forIndex:(NSUInteger)index;
 
 @end

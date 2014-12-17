@@ -47,6 +47,7 @@ static NSString * const CellIdentifier = @"cell";
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.textLabel.text = [self.viewModel titleAtIndex:indexPath.section];
+    cell.detailTextLabel.text = [self.viewModel subtitleAtIndex:indexPath.section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,7 +59,6 @@ static NSString * const CellIdentifier = @"cell";
         subscribeNext:^(Beverage *drink) {
             [self.viewModel setDrink:drink.copy forIndex:indexPath.section];
         }];
-
 }
 
 #pragma mark - UITableViewDataSource
@@ -78,8 +78,9 @@ static NSString * const CellIdentifier = @"cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.textColor = [UIColor darkGrayColor];
     }
 
     return cell;
