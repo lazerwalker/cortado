@@ -23,6 +23,7 @@
 		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
 		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
+		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
 		A66A3A111A3B7C0200849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
 		A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* BeverageConsumption.m */; };
 		A66A3A151A3B80A800849705 /* Beverage.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Beverage.m */; };
@@ -108,6 +109,8 @@
 		A62D725C1A254D1A00846A33 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		A643D5891A40A231006ACF0A /* PreferredDrinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferredDrinks.h; sourceTree = "<group>"; };
 		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
+		A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCustomDrinkViewController.h; sourceTree = "<group>"; };
+		A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCustomDrinkViewController.m; sourceTree = "<group>"; };
 		A66A3A0F1A3B7C0200849705 /* Beverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beverage.h; sourceTree = "<group>"; };
 		A66A3A101A3B7C0200849705 /* Beverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beverage.m; sourceTree = "<group>"; };
 		A66A3A121A3B7D5C00849705 /* BeverageConsumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeverageConsumption.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				A60585E11A3E1BB700FF267F /* PreferredDrinksViewController.m */,
 				A62376591A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.h */,
 				A623765A1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m */,
+				A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */,
+				A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -497,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */,
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
 				A66A3A141A3B7D5C00849705 /* BeverageConsumption.m in Sources */,
 				A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */,

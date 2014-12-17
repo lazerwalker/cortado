@@ -4,6 +4,7 @@
 #import "UINavigationController+ReactiveCocoa.h"
 
 #import "Beverage.h"
+#import "CreateCustomDrinkViewController.h"
 #import "DrinkCategory.h"
 #import "DrinkCategoryList.h"
 #import "DrinkSubtype.h"
@@ -48,7 +49,8 @@ static NSString * const CellIdentifier = @"cell";
 
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:CellIdentifier];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(checkCurrentLocation)];
+    UIBarButtonItem *addCustom = [[UIBarButtonItem alloc] initWithTitle:@"Add Other" style:UIBarButtonItemStylePlain target:self action:@selector(didTapAddOther)];
+    self.navigationItem.rightBarButtonItem = addCustom;
 }
 
 #pragma mark - UITableViewDelegate
@@ -109,4 +111,16 @@ static NSString * const CellIdentifier = @"cell";
     [self.selectedDrinkSignal sendNext:nil];
     [self.selectedDrinkSignal sendCompleted];
 }
+
+- (void)didTapAddOther {
+    CreateCustomDrinkViewController *createVC = [[CreateCustomDrinkViewController alloc] init];
+    [[[self.navigationController rac_pushViewController:createVC animated:YES]
+        concat:createVC.drinkCreatedSignal]
+        subscribeNext:^(Beverage *beverage) {
+            [self.selectedDrinkSignal sendNext:beverage];
+            [self.selectedDrinkSignal sendCompleted];
+        }];
+    
+}
+
 @end
