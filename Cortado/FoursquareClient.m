@@ -54,9 +54,10 @@ static NSString * const APIDate = @"20141205";
                notif.alertBody = [NSString stringWithFormat:@"Near venue: %@",[results.firstObject name]];
                [UIApplication.sharedApplication scheduleLocalNotification:notif];
 
-               NSArray *categoryVenues = ASTFilter(results, ^BOOL(FoursquareVenue *venue) {
-                   return [venue.categoryId containsObject:categoryId];
-               });
+//               NSArray *categoryVenues = ASTFilter(results, ^BOOL(FoursquareVenue *venue) {
+//                   return [venue.categoryId containsObject:categoryId];
+//               });
+               NSArray *categoryVenues = results.copy;
 
                if (completion) {
                    completion(categoryVenues, error);
