@@ -43,6 +43,10 @@ static NSString * const CellIdentifier = @"Cell";
     cell.detailTextLabel.text = [self.viewModel subtitleAtIndex:indexPath.row];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
