@@ -13,6 +13,7 @@
 		A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E51A3E587B00FF267F /* PreferredDrinksViewModel.m */; };
 		A60E24D31A2935C30014628C /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
 		A60E24D61A293C340014628C /* TodayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D51A293C340014628C /* TodayInterface.m */; };
+		A6231E621A424389004B8797 /* HistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6231E611A424389004B8797 /* HistoryViewModel.m */; };
 		A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A62376571A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m */; };
 		A623765B1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A623765A1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m */; };
 		A62D72281A254C6500846A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72271A254C6500846A33 /* main.m */; };
@@ -24,6 +25,7 @@
 		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
 		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
+		A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
 		A66A3A111A3B7C0200849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
 		A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
 		A66A3A151A3B80A800849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
@@ -88,6 +90,8 @@
 		A60E24D21A2935C30014628C /* AppInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInterface.m; sourceTree = "<group>"; };
 		A60E24D41A293C340014628C /* TodayInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayInterface.h; sourceTree = "<group>"; };
 		A60E24D51A293C340014628C /* TodayInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayInterface.m; sourceTree = "<group>"; };
+		A6231E601A424389004B8797 /* HistoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewModel.h; sourceTree = "<group>"; };
+		A6231E611A424389004B8797 /* HistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewModel.m; sourceTree = "<group>"; };
 		A62376561A3F7BC200661201 /* UINavigationController+ReactiveCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ReactiveCocoa.h"; sourceTree = "<group>"; };
 		A62376571A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ReactiveCocoa.m"; sourceTree = "<group>"; };
 		A62376591A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkSubtypeSelectionViewController.h; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
 		A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCustomDrinkViewController.h; sourceTree = "<group>"; };
 		A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCustomDrinkViewController.m; sourceTree = "<group>"; };
+		A643D58F1A422C77006ACF0A /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		A643D5901A422C77006ACF0A /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		A66A3A0F1A3B7C0200849705 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
 		A66A3A101A3B7C0200849705 /* Drink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drink.m; sourceTree = "<group>"; };
 		A66A3A121A3B7D5C00849705 /* DrinkConsumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkConsumption.h; sourceTree = "<group>"; };
@@ -180,6 +186,8 @@
 			children = (
 				A60585E41A3E587B00FF267F /* PreferredDrinksViewModel.h */,
 				A60585E51A3E587B00FF267F /* PreferredDrinksViewModel.m */,
+				A6231E601A424389004B8797 /* HistoryViewModel.h */,
+				A6231E611A424389004B8797 /* HistoryViewModel.m */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -325,6 +333,8 @@
 				A623765A1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m */,
 				A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */,
 				A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */,
+				A643D58F1A422C77006ACF0A /* HistoryViewController.h */,
+				A643D5901A422C77006ACF0A /* HistoryViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -521,6 +531,7 @@
 				A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */,
 				A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */,
 				A62D72281A254C6500846A33 /* main.m in Sources */,
+				A6231E621A424389004B8797 /* HistoryViewModel.m in Sources */,
 				A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */,
 				A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */,
 				A66A3A111A3B7C0200849705 /* Drink.m in Sources */,

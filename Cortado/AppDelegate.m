@@ -3,6 +3,7 @@
 
 #import <CocoaPods-Keys/CortadoKeys.h>
 #import <Parse/Parse.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
@@ -10,6 +11,8 @@
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
+#import "HistoryViewController.h"
+#import "HistoryViewModel.h"
 #import "LocationDetector.h"
 #import "PreferredDrinksViewController.h"
 #import "PreferredDrinksViewModel.h"
@@ -27,6 +30,8 @@
 @property (nonatomic, strong) FoursquareClient *foursquareClient;
 @property (nonatomic, strong) LocationDetector *detector;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property (nonatomic, strong) UITabBarController *tabBar;
 
 @end
 
@@ -58,11 +63,26 @@
 
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
-    PreferredDrinksViewModel *viewModel = [[PreferredDrinksViewModel alloc] init];
-    PreferredDrinksViewController *vc = [[PreferredDrinksViewController alloc] initWithViewModel:viewModel];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    // TODO: Abstract this out somewhere else
+
+    // Preferred drinks
+    PreferredDrinksViewModel *preferredVM = [[PreferredDrinksViewModel alloc] init];
+    PreferredDrinksViewController *preferredVC = [[PreferredDrinksViewController alloc] initWithViewModel:preferredVM];
+    UINavigationController *preferredNav = [[UINavigationController alloc] initWithRootViewController:preferredVC];
+
+    // History
+    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithCaffeineHistoryManager:self.processor];
+    HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
+    UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
+    self.tabBar = [[UITabBarController alloc] init];
+    self.tabBar.viewControllers = @[preferredNav, historyNav];
+
+    [RACObserve(self.tabBar, selectedViewController) subscribeNext:^(UINavigationController *navController) {
+        [navController popToRootViewControllerAnimated:NO];
+    }];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = navController;
+    self.window.rootViewController = self.tabBar;
     [self.window makeKeyAndVisible];
 
     return YES;
@@ -74,7 +94,6 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-    NSLog(@"================> %@", notificationSettings);
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -88,7 +107,6 @@
         stringByReplacingOccurrencesOfString:@"<" withString:@""]
         stringByReplacingOccurrencesOfString:@">" withString:@""]
         stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"===============> Registered PNs with token: %@", tokenString);
 
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cortado"];
     [defaults setObject:tokenString forKey:@"channel"];
