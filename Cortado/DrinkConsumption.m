@@ -1,3 +1,5 @@
+#import <CoreLocation/CoreLocation.h>
+
 #import "Drink.h"
 
 #import "DrinkConsumption.h"
@@ -8,14 +10,18 @@
     return @{@"timestamp": NSNull.null,
              @"caffeine": NSNull.null,
              @"name": @"Name",
-             @"subtype": @"Subtype"
+             @"subtype": @"Subtype",
+             @"venue": @"Venue",
+             @"coordinateString": @"Coordinates"
             };
 }
 
 #pragma mark -
 
 - (id)initWithDrink:(Drink *)drink
-             timestamp:(NSDate *)timestamp {
+          timestamp:(NSDate *)timestamp
+              venue:(NSString *)venue
+         coordinate:(NSString *)coordinate {
     self = [super init];
     if (!self) return nil;
 
@@ -23,13 +29,26 @@
     _subtype = drink.subtype;
     _caffeine = drink.caffeine;
     _timestamp = timestamp;
+    _venue = venue;
+    _coordinateString = coordinate;
 
     return self;
 }
 
 - (id)initWithDrink:(Drink *)drink {
     return [self initWithDrink:drink
-                        timestamp:NSDate.date];
+                     timestamp:NSDate.date
+                         venue:nil
+                    coordinate:nil];
+}
+
+- (CLLocationCoordinate2D)coordinate {
+    NSArray *strings = [self.coordinateString componentsSeparatedByString:@","];
+    if (strings.count != 2) { return CLLocationCoordinate2DMake(0, 0); }
+
+    CLLocationDegrees lat = [strings.firstObject floatValue];
+    CLLocationDegrees lng = [strings.lastObject floatValue];
+    return CLLocationCoordinate2DMake(lat, lng);
 }
 
 @end

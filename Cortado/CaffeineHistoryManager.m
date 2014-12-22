@@ -109,10 +109,14 @@
                         NSString *name = result.metadata[@"Name"] ?: result.metadata[HKMetadataKeyFoodType] ?: @"Unknown Beverage";
                         NSString *subtype = result.metadata[@"Subtype"];
                         NSNumber *caffeine = @([result.quantity doubleValueForUnit:self.mgUnit]);
+                        NSString *venue = result.metadata[@"Venue"];
+                        NSString *coordinate = result.metadata[@"Coordinate"];
 
                         Drink *drink = [[Drink alloc] initWithName:name subtype:subtype caffeine:caffeine];
                         return [[DrinkConsumption alloc] initWithDrink:drink
-                                                             timestamp:result.startDate];
+                                                             timestamp:result.startDate
+                                                                 venue:venue
+                                                            coordinate:coordinate];
                     });
 
                     for (id result in parsedResults) {

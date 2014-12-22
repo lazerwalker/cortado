@@ -79,6 +79,9 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
     PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
     NSDate *timestamp = notif.userInfo[@"timestamp"];
+    NSString *venue = notif.userInfo[@"venue"];
+    NSString *coordinate = notif.userInfo[@"latLng"];
+
     Drink *drink;
     if ([identifier isEqualToString:NotificationActionOne]) {
         drink = preferences.second;
@@ -86,7 +89,10 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
         drink = preferences.first;
     }
 
-    return [[DrinkConsumption alloc] initWithDrink:drink timestamp:timestamp];
+    return [[DrinkConsumption alloc] initWithDrink:drink
+                                         timestamp:timestamp
+                                             venue:venue
+                                        coordinate:coordinate];
 }
 
 #pragma mark -

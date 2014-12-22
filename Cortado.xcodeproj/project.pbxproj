@@ -11,7 +11,6 @@
 		A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
 		A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E11A3E1BB700FF267F /* PreferredDrinksViewController.m */; };
 		A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E51A3E587B00FF267F /* PreferredDrinksViewModel.m */; };
-		A60E24D31A2935C30014628C /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
 		A60E24D61A293C340014628C /* TodayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D51A293C340014628C /* TodayInterface.m */; };
 		A6231E621A424389004B8797 /* HistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6231E611A424389004B8797 /* HistoryViewModel.m */; };
 		A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A62376571A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m */; };
@@ -37,6 +36,7 @@
 		A66A3A271A3B925B00849705 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A291A3B929A00849705 /* DrinkCategoryList.m */; };
 		A6BA44B91A2A5B6D006B89E3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA44B81A2A5B6D006B89E3 /* libPods.a */; };
+		A6C938841A47BC0200E96951 /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
 		A6EBA87D1A2A3B3200344C17 /* CaffeineHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */; };
@@ -546,7 +546,7 @@
 				A66A3A161A3B80A800849705 /* DrinkConsumption.m in Sources */,
 				A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */,
 				A66A3A151A3B80A800849705 /* Drink.m in Sources */,
-				A60E24D31A2935C30014628C /* AppInterface.m in Sources */,
+				A6C938841A47BC0200E96951 /* AppInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
