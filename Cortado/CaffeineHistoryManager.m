@@ -8,6 +8,7 @@
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
+#import "DrinkConsumptionSerializer.h"
 
 #import "CaffeineHistoryManager.h"
 
@@ -105,18 +106,8 @@
                                                        limit:HKObjectQueryNoLimit
                                              sortDescriptors:nil];
         }] map:^id(HKQuantitySample *result) {
-            NSString *name = result.metadata[@"Name"] ?: result.metadata[HKMetadataKeyFoodType] ?: @"Unknown Beverage";
-            NSString *subtype = result.metadata[@"Subtype"];
-            NSNumber *caffeine = @([result.quantity doubleValueForUnit:self.mgUnit]);
-            NSString *venue = result.metadata[@"Venue"];
-            NSString *coordinate = result.metadata[@"Coordinate"];
-
-            Drink *drink = [[Drink alloc] initWithName:name subtype:subtype caffeine:caffeine];
-            return [[DrinkConsumption alloc] initWithDrink:drink
-                                                 timestamp:result.startDate
-                                                     venue:venue
-                                                coordinate:coordinate];
-    }];
+            return [DrinkConsumptionSerializer drinkFromQuantitySample:result];
+        }];
 }
 
 
