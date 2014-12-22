@@ -5,7 +5,7 @@
 
 @implementation DrinkConsumptionSerializer
 
-+ (DrinkConsumption *)drinkFromQuantitySample:(HKQuantitySample *)sample {
++ (DrinkConsumption *)consumptionFromQuantitySample:(HKQuantitySample *)sample {
     NSString *name = sample.metadata[@"Name"] ?: sample.metadata[HKMetadataKeyFoodType] ?: @"Unknown Beverage";
     NSString *subtype = sample.metadata[@"Subtype"];
 
@@ -20,6 +20,17 @@
                                          timestamp:sample.startDate
                                              venue:venue
                                         coordinate:coordinate];
+}
 
++ (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
+                                        drink:(Drink *)drink {
+    NSDate *timestamp = userInfo[@"timestamp"];
+    NSString *venue = userInfo[@"venue"];
+    NSString *coordinate = userInfo[@"latLng"];
+
+    return [[DrinkConsumption alloc] initWithDrink:drink
+                                         timestamp:timestamp
+                                             venue:venue
+                                        coordinate:coordinate];
 }
 @end

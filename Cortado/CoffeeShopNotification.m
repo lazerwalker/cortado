@@ -2,6 +2,7 @@
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
+#import "DrinkConsumptionSerializer.h"
 #import "PreferredDrinks.h"
 
 #import "CoffeeShopNotification.h"
@@ -78,10 +79,8 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
     PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
-    NSDate *timestamp = notif.userInfo[@"timestamp"];
-    NSString *venue = notif.userInfo[@"venue"];
-    NSString *coordinate = notif.userInfo[@"latLng"];
-
+    // TODO: Once drink data is stored inside the userInfo, remove this.
+    // DrinkConsumptionSerializer consumptionFromUserInfo:drinkNumber:
     Drink *drink;
     if ([identifier isEqualToString:NotificationActionOne]) {
         drink = preferences.second;
@@ -89,10 +88,8 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
         drink = preferences.first;
     }
 
-    return [[DrinkConsumption alloc] initWithDrink:drink
-                                         timestamp:timestamp
-                                             venue:venue
-                                        coordinate:coordinate];
+    return [DrinkConsumptionSerializer consumptionFromUserInfo:notif.userInfo
+                                                         drink:drink];
 }
 
 #pragma mark -

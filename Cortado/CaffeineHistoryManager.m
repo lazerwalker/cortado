@@ -106,7 +106,7 @@
                                                        limit:HKObjectQueryNoLimit
                                              sortDescriptors:nil];
         }] map:^id(HKQuantitySample *result) {
-            return [DrinkConsumptionSerializer drinkFromQuantitySample:result];
+            return [DrinkConsumptionSerializer consumptionFromQuantitySample:result];
         }];
 }
 

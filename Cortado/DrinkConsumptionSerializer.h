@@ -1,10 +1,14 @@
 @import Foundation;
 @import HealthKit;
 
+@class Drink;
 @class DrinkConsumption;
 
 @interface DrinkConsumptionSerializer : NSObject
 
-+ (DrinkConsumption *)drinkFromQuantitySample:(HKQuantitySample *)sample;
++ (DrinkConsumption *)consumptionFromQuantitySample:(HKQuantitySample *)sample;
+
++ (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
+                                        drink:(Drink *)drink;
 
 @end
