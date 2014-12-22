@@ -4,6 +4,8 @@
 #import <Mantle/Mantle.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "HKHealthStore+ReactiveCocoa.h"
+
 #import "Drink.h"
 #import "DrinkConsumption.h"
 
@@ -94,43 +96,27 @@
 }
 
 - (RACSignal *)fetchHistory {
-    return [[[[RACObserve(self, isAuthorized) startWith:@(self.isAuthorized)]
+    return [[[[[RACObserve(self, isAuthorized) startWith:@(self.isAuthorized)]
         ignore:@NO]
         take:1]
         flattenMap:^RACStream *(id value) {
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:self.caffeineType
-                                                                       predicate:nil
-                                                                           limit:HKObjectQueryNoLimit
-                                                                 sortDescriptors:nil
-                                                                  resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
+            return [self.healthStore rac_queryWithSampleType:self.caffeineType
+                                                   predicate:nil
+                                                       limit:HKObjectQueryNoLimit
+                                             sortDescriptors:nil];
+        }] map:^id(HKQuantitySample *result) {
+            NSString *name = result.metadata[@"Name"] ?: result.metadata[HKMetadataKeyFoodType] ?: @"Unknown Beverage";
+            NSString *subtype = result.metadata[@"Subtype"];
+            NSNumber *caffeine = @([result.quantity doubleValueForUnit:self.mgUnit]);
+            NSString *venue = result.metadata[@"Venue"];
+            NSString *coordinate = result.metadata[@"Coordinate"];
 
-                    NSArray *parsedResults = ASTMap(results, ^id(HKQuantitySample *result) {
-                        NSString *name = result.metadata[@"Name"] ?: result.metadata[HKMetadataKeyFoodType] ?: @"Unknown Beverage";
-                        NSString *subtype = result.metadata[@"Subtype"];
-                        NSNumber *caffeine = @([result.quantity doubleValueForUnit:self.mgUnit]);
-                        NSString *venue = result.metadata[@"Venue"];
-                        NSString *coordinate = result.metadata[@"Coordinate"];
-
-                        Drink *drink = [[Drink alloc] initWithName:name subtype:subtype caffeine:caffeine];
-                        return [[DrinkConsumption alloc] initWithDrink:drink
-                                                             timestamp:result.startDate
-                                                                 venue:venue
-                                                            coordinate:coordinate];
-                    });
-
-                    for (id result in parsedResults) {
-                      [subscriber sendNext:result];
-                    }
-
-                    [subscriber sendCompleted];
-                }];
-                [self.healthStore executeQuery:query];
-
-                return (RACDisposable *)nil;
-            }];
+            Drink *drink = [[Drink alloc] initWithName:name subtype:subtype caffeine:caffeine];
+            return [[DrinkConsumption alloc] initWithDrink:drink
+                                                 timestamp:result.startDate
+                                                     venue:venue
+                                                coordinate:coordinate];
     }];
-    return nil;
 }
 
 
