@@ -100,12 +100,12 @@
     return [[[[[RACObserve(self, isAuthorized) startWith:@(self.isAuthorized)]
         ignore:@NO]
         take:1]
-        flattenMap:^RACStream *(id value) {
+        flattenMap:^(id _) {
             return [self.healthStore rac_queryWithSampleType:self.caffeineType
                                                    predicate:nil
                                                        limit:HKObjectQueryNoLimit
                                              sortDescriptors:nil];
-        }] map:^id(HKQuantitySample *result) {
+        }] map:^(HKQuantitySample *result) {
             return [DrinkConsumptionSerializer consumptionFromQuantitySample:result];
         }];
 }
