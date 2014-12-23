@@ -9,6 +9,9 @@
 
 - (void)checkForCoordinate:(CLLocationCoordinate2D)coordinate;
 
+// Temporary, for debug purposes
+- (void)manuallyCheckForCoordinate:(CLLocationCoordinate2D)coordinate;
+
 @property (readonly) FoursquareClient *client;
 
 @end

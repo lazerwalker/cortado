@@ -154,8 +154,8 @@
 #pragma mark -
 // TODO: This shouldn't be the purview of the app delegate,
 // but this will make debugging easy for now.
-- (void)checkCurrentLocation {
-    [self.detector checkForCoordinate:self.locationManager.location.coordinate];
+- (void)manuallyCheckCurrentLocation {
+    [self.detector manuallyCheckForCoordinate:self.locationManager.location.coordinate];
 }
 
 @end

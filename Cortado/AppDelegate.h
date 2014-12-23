@@ -4,7 +4,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void)checkCurrentLocation;
+- (void)manuallyCheckCurrentLocation;
 
 @end
 

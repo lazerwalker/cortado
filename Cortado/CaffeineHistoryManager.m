@@ -93,6 +93,7 @@
                                            quantity:quantity
                                           startDate:drink.timestamp
                                             endDate:drink.timestamp
+
                                            metadata:metadata];
 }
 
@@ -105,10 +106,10 @@
                                                    predicate:nil
                                                        limit:HKObjectQueryNoLimit
                                              sortDescriptors:nil];
-        }] map:^(HKQuantitySample *result) {
+        }]
+            map:^(HKQuantitySample *result) {
             return [DrinkConsumptionSerializer consumptionFromQuantitySample:result];
         }];
 }
-
 
 @end
