@@ -30,12 +30,14 @@
                 FoursquareVenue *result2 = results2.firstObject;
                 if (result2 == nil) return;
 
-                CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result2.name];
+                CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result2.name
+                                                 coordinate:coordinate];
                 [notif schedule];
             }];
         } else {
             alert.message = [NSString stringWithFormat:@"You are at %@", result.name];
-            CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name];
+            CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
+                                                                              coordinate:coordinate];
             [notif schedule];
         }
 
@@ -49,7 +51,8 @@
         FoursquareVenue *result = results.firstObject;
         if (result == nil) return;
 
-        CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name];
+        CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
+                                                                          coordinate:coordinate];
         [notif schedule];
     }];
 }

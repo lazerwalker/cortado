@@ -94,23 +94,32 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
 
 #pragma mark -
 - (id)initWithName:(NSString *)name
+        coordinate:(CLLocationCoordinate2D)coordinate
        application:(UIApplication *)application {
     self = [super init];
     if (!self) return nil;
 
     _name = name;
+    _coordinate = coordinate;
     _application = application;
+
+    NSString *coordinateString = [NSString stringWithFormat:@"%@,%@", @(coordinate.latitude), @(coordinate.longitude)];
 
     _notif = [[UILocalNotification alloc] init];
     _notif.category = NotificationCategoryBeverage;
-    _notif.userInfo = @{@"timestamp":NSDate.date};
+    _notif.userInfo = @{@"timestamp":NSDate.date,
+                        @"venue": name,
+                        @"latLng": coordinateString};
     _notif.alertBody = [NSString stringWithFormat:@"It looks like you're at %@. Whatcha drinkin'?", name];
 
     return self;
 }
 
-- (id)initWithName:(NSString *)name {
-    return [self initWithName:name application:UIApplication.sharedApplication];
+- (id)initWithName:(NSString *)name
+        coordinate:(CLLocationCoordinate2D)coordinate {
+    return [self initWithName:name
+                  coordinate:coordinate
+                  application:UIApplication.sharedApplication];
 }
 
 - (void)schedule {
