@@ -45,13 +45,13 @@
 
 - (NSString *)titleAtIndex:(NSUInteger)index {
     DrinkConsumption *drink = [self drinkAtIndex:index];
-    if ([drink.name isEqualToString:@"Unknown Beverage"] || drink.subtype == nil) {
-        return [drink.name stringByAppendingFormat:@" (%@ mg)", drink.caffeine];
-    } else {
-        return [drink.name stringByAppendingFormat:@" (%@ · %@ mg)", drink.subtype, drink.caffeine];
+    NSString *title = [drink.name stringByAppendingFormat:@" (%@ mg)", drink.caffeine];
+
+    if (drink.venue) {
+        title = [title stringByAppendingFormat:@" at %@", drink.venue];
     }
 
-    return drink.name;
+    return title;
 }
 
 - (NSString *)subtitleAtIndex:(NSUInteger)index {
