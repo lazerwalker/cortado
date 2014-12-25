@@ -1,4 +1,4 @@
-#import <Asterism/Asterism.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
@@ -26,34 +26,14 @@ static NSString * const APIDate = @"20141205";
     return self;
 }
 
-- (void)fetchVenuesNearCoordinate:(CLLocationCoordinate2D)coordinate
-                       completion:(void(^)(NSArray *results, NSError *error))completion {
-    [self makeRequest:[self searchURLForCoordinate:coordinate]
-           completion:completion];
+- (RACSignal *)fetchVenuesNearCoordinate:(CLLocationCoordinate2D)coordinate {
+//                       completion:(void(^)(NSArray *results, NSError *error))completion {
+    return [self makeRequest:[self searchURLForCoordinate:coordinate]];
 }
 
-- (void)searchFor:(NSString *)query
-   nearCoordinate:(CLLocationCoordinate2D)coordinate
-       completion:(void(^)(NSArray *results, NSError *error))completion {
-    [self makeRequest:[self searchURLForCoordinate:coordinate query:query]
-           completion:completion];
-}
-
-- (void)fetchVenuesOfCategory:(NSString *)categoryId
-               nearCoordinate:(CLLocationCoordinate2D)coordinate
-                   completion:(void(^)(NSArray *results, NSError *error))completion {
-    [self makeRequest:[self searchURLForCoordinate:coordinate categoryId:categoryId]
-           completion:^(NSArray *results, NSError *error) {
-               if (error) {
-                   if (completion) {
-                       completion(results, error);
-                   }
-               }
-
-               if (completion) {
-                   completion(results, error);
-               }
-           }];
+- (RACSignal *)fetchVenuesOfCategory:(NSString *)categoryId
+                      nearCoordinate:(CLLocationCoordinate2D)coordinate {
+    return [self makeRequest:[self searchURLForCoordinate:coordinate categoryId:categoryId]];
 }
 
 #pragma mark - Private
@@ -78,39 +58,39 @@ static NSString * const APIDate = @"20141205";
     return [NSURL URLWithString:urlString];
 }
 
-- (NSURL *)searchURLForCoordinate:(CLLocationCoordinate2D)coordinate query:(NSString *)query {
-    NSString *urlString = [BaseURL stringByAppendingFormat:@"?client_id=%@&client_secret=%@&v=%@&ll=%f,%f&query=%@",
-                           self.clientID,
-                           self.clientSecret,
-                           APIDate,
-                           coordinate.latitude,
-                           coordinate.longitude,
-                           query];
-    return [NSURL URLWithString:urlString];
-}
+- (RACSignal *)makeRequest:(NSURL *)url {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 
-- (void)makeRequest:(NSURL *)url
-            completion:(void (^)(NSArray *results, NSError *error))completion {
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (data) {
+                NSError *jsonError;
+                NSDictionary *jsonResults = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 
-        if (data) {
-            NSError *jsonError;
-            NSDictionary *jsonResults = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+                if (jsonError && !error) {
+                    error = jsonError;
+                }
 
-            if (jsonError && !error) {
-                error = jsonError;
+                if (error) {
+                    [subscriber sendError:error];
+                    return;
+                }
+
+                NSArray *venueJSON = jsonResults[@"response"][@"venues"];
+                for (NSDictionary *venueDict in venueJSON) {
+                    FoursquareVenue *venue = [MTLJSONAdapter modelOfClass:FoursquareVenue.class fromJSONDictionary:venueDict error:&error];
+                    if (error) {
+                        [subscriber sendError:error];
+                    } else {
+                        [subscriber sendNext:venue];
+                    }
+                }
+                [subscriber sendCompleted];
             }
+        }];
 
-            NSArray *venueJSON = jsonResults[@"response"][@"venues"];
-            NSArray *results = ASTMap(venueJSON, ^id(id obj) {
-                return [MTLJSONAdapter modelOfClass:FoursquareVenue.class fromJSONDictionary:obj error:nil];
-            });
-
-            if (completion) {
-                completion(results, error);
-            }
-        }
+        // TODO: This should be disposable.
+        return (RACDisposable *)nil;
     }];
 }
 

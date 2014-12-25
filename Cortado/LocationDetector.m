@@ -1,4 +1,5 @@
 #import <CocoaPods-Keys/CortadoKeys.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
@@ -19,41 +20,42 @@
 
 - (void)manuallyCheckForCoordinate:(CLLocationCoordinate2D)coordinate {
     NSString *coffeeShops = @"4bf58dd8d48988d1e0931735";
-    [self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate completion:^(NSArray *results, NSError *error) {
-        FoursquareVenue *result = results.firstObject;
 
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        if (result == nil) {
-            alert.message = @"You're not at a coffee shop.";
+    RACSignal *signals = [RACSignal concat:@[
+        [self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate],
+        [self.client fetchVenuesNearCoordinate:coordinate],
+        [RACSignal return:[NSNull null]]
+    ]];
 
-            [self.client fetchVenuesNearCoordinate:coordinate completion:^(NSArray *results2, NSError *error) {
-                FoursquareVenue *result2 = results2.firstObject;
-                NSString *name = result2.name ?: @"Unknown Venue";
 
-                CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:name
-                                                 coordinate:coordinate];
-                [notif schedule];
-            }];
-        } else {
-            alert.message = [NSString stringWithFormat:@"You are at %@", result.name];
-            CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
+    [[signals take:1]
+        subscribeNext:^(FoursquareVenue *result) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            NSString *name;
+            if (result == (FoursquareVenue *)[NSNull null]) {
+                alert.message = @"We don't know where you are.";
+                name = @"no venue";
+            } else {
+                alert.message = [NSString stringWithFormat:@"You are at %@", result.name];
+                name = result.name;
+            }
+
+            CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:name
                                                                               coordinate:coordinate];
             [notif schedule];
-        }
 
-        [alert show];
-    }];
+            [alert show];
+        }];
 }
 
 - (void)checkForCoordinate:(CLLocationCoordinate2D)coordinate {
     NSString *coffeeShops = @"4bf58dd8d48988d1e0931735";
-    [self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate completion:^(NSArray *results, NSError *error) {
-        FoursquareVenue *result = results.firstObject;
-        if (result == nil) return;
-
-        CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
+    [[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
+        take:1]
+        subscribeNext:^(FoursquareVenue *result) {
+            CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
                                                                           coordinate:coordinate];
-        [notif schedule];
-    }];
+            [notif schedule];
+        }];
 }
 @end
