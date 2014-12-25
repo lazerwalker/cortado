@@ -42,6 +42,8 @@
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
 		A6EBA87D1A2A3B3200344C17 /* CaffeineHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */; };
+		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
+		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		AD607CCBEC7B40A32C314204 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F974D2DCCF44722399492BB7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,10 @@
 		A6E2346A1A32100700B57E16 /* FoursquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenue.m; sourceTree = "<group>"; };
 		A6EBA87B1A2A3B3200344C17 /* CaffeineHistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaffeineHistoryManager.h; sourceTree = "<group>"; };
 		A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaffeineHistoryManager.m; sourceTree = "<group>"; };
+		A6F3D69F1A4B98E200BA15A9 /* AddConsumptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddConsumptionViewController.h; sourceTree = "<group>"; };
+		A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddConsumptionViewController.m; sourceTree = "<group>"; };
+		A6F3D6A21A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ReactiveCocoa.h"; sourceTree = "<group>"; };
+		A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ReactiveCocoa.m"; sourceTree = "<group>"; };
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
 		D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 				A62376571A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m */,
 				A6C938851A47C03700E96951 /* HKHealthStore+ReactiveCocoa.h */,
 				A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */,
+				A6F3D6A21A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.h */,
+				A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -345,6 +353,8 @@
 				A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */,
 				A643D58F1A422C77006ACF0A /* HistoryViewController.h */,
 				A643D5901A422C77006ACF0A /* HistoryViewController.m */,
+				A6F3D69F1A4B98E200BA15A9 /* AddConsumptionViewController.h */,
+				A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -524,6 +534,7 @@
 			files = (
 				A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */,
 				A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */,
+				A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */,
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
 				A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */,
 				A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */,
@@ -539,6 +550,7 @@
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
 				A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */,
+				A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */,
 				A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */,
 				A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */,
 				A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */,

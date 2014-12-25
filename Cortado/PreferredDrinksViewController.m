@@ -3,7 +3,9 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "UINavigationController+ReactiveCocoa.h"
+#import "UIViewController+ReactiveCocoa.h"
 
+#import "AddConsumptionViewController.h"
 #import "Drink.h"
 #import "DrinkSelectionViewController.h"
 #import "PreferredDrinksViewModel.h"
@@ -39,6 +41,9 @@ static NSString * const CellIdentifier = @"cell";
     }];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
+
+    UIImage *addImage = [UIImage imageNamed:@"add"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addImage style:UIBarButtonItemStyleDone target:self action:@selector(didTapAddButton)];
 
     self.tableView.delegate = nil;
     self.tableView.delegate = self;
@@ -86,6 +91,18 @@ static NSString * const CellIdentifier = @"cell";
     }
 
     return cell;
+}
+
+#pragma mark -
+
+- (void)didTapAddButton {
+    AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addVC];
+
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    [addVC.completedSignal subscribeNext:^(id x) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 
