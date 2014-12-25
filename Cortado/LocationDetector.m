@@ -28,9 +28,9 @@
 
             [self.client fetchVenuesNearCoordinate:coordinate completion:^(NSArray *results2, NSError *error) {
                 FoursquareVenue *result2 = results2.firstObject;
-                if (result2 == nil) return;
+                NSString *name = result2.name ?: @"Unknown Venue";
 
-                CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result2.name
+                CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:name
                                                  coordinate:coordinate];
                 [notif schedule];
             }];
