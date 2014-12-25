@@ -9,6 +9,5 @@
 + (DrinkConsumption *)consumptionFromQuantitySample:(HKQuantitySample *)sample;
 
 + (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
-                                        drink:(Drink *)drink;
-
+                                   identifier:(NSString *)identifier;
 @end

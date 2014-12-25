@@ -1,6 +1,6 @@
 #import <Mantle/Mantle.h>
 
-@interface Drink : MTLModel
+@interface Drink : MTLModel <MTLJSONSerializing>
 
 - (id)initWithName:(NSString *)name
           caffeine:(NSNumber *)caffeine;

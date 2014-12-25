@@ -2,6 +2,12 @@
 
 @implementation Drink
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{};
+}
+
+#pragma mark -
+
 - (id)initWithName:(NSString *)name
            subtype:(NSString *)subtype
           caffeine:(NSNumber *)caffeine {

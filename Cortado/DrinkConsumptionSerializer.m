@@ -23,10 +23,16 @@
 }
 
 + (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
-                                        drink:(Drink *)drink {
+                                   identifier:(NSString *)identifier {
+    if (!userInfo[identifier]) return nil;
+
     NSDate *timestamp = userInfo[@"timestamp"];
     NSString *venue = userInfo[@"venue"];
     NSString *coordinate = userInfo[@"latLng"];
+
+    Drink *drink = [MTLJSONAdapter modelOfClass:Drink.class
+                             fromJSONDictionary:userInfo[identifier]
+                                          error:nil];
 
     return [[DrinkConsumption alloc] initWithDrink:drink
                                          timestamp:timestamp

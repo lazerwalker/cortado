@@ -74,22 +74,8 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
 }
 
 + (DrinkConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif {
-    if ([identifier isEqualToString:NotificationActionNone]) return nil;
-
-    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
-    PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-
-    // TODO: Once drink data is stored inside the userInfo, remove this.
-    // DrinkConsumptionSerializer consumptionFromUserInfo:drinkNumber:
-    Drink *drink;
-    if ([identifier isEqualToString:NotificationActionOne]) {
-        drink = preferences.second;
-    } else {
-        drink = preferences.first;
-    }
-
-    return [DrinkConsumptionSerializer consumptionFromUserInfo:notif.userInfo
-                                                         drink:drink];
+    if (![@[NotificationActionOne, NotificationActionTwo] containsObject:identifier]) return nil;
+    return [DrinkConsumptionSerializer consumptionFromUserInfo:notif.userInfo identifier:identifier];
 }
 
 #pragma mark -
@@ -105,11 +91,22 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
 
     NSString *coordinateString = [NSString stringWithFormat:@"%@,%@", @(coordinate.latitude), @(coordinate.longitude)];
 
+    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
+    PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    Drink *drink1 = preferences.second;
+    Drink *drink2 = preferences.first;
+    NSDictionary *drinkOneDict = [MTLJSONAdapter JSONDictionaryFromModel:drink1];
+    NSDictionary *drinkTwoDict = [MTLJSONAdapter JSONDictionaryFromModel:drink2];
+
     _notif = [[UILocalNotification alloc] init];
     _notif.category = NotificationCategoryBeverage;
     _notif.userInfo = @{@"timestamp":NSDate.date,
-                        @"venue": name,
-                        @"latLng": coordinateString};
+                        @"venue":name,
+                        @"latLng":coordinateString,
+                        NotificationActionOne:drinkOneDict,
+                        NotificationActionTwo:drinkTwoDict
+                      };
+
     _notif.alertBody = [NSString stringWithFormat:@"It looks like you're at %@. Whatcha drinkin'?", name];
 
     return self;
