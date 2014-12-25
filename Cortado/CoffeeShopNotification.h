@@ -14,13 +14,9 @@
 @property (readonly) CLLocationCoordinate2D coordinate;
 @property (readonly, weak) UIApplication *application;
 
+@property (readonly) UILocalNotification *notif;
+
 - (id)initWithName:(NSString *)name
         coordinate:(CLLocationCoordinate2D)coordinate;
-
-- (id)initWithName:(NSString *)name
-        coordinate:(CLLocationCoordinate2D)coordinate
-       application:(UIApplication *)application NS_DESIGNATED_INITIALIZER;
-
-- (void)schedule;
 
 @end

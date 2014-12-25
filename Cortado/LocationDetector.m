@@ -42,7 +42,7 @@
 
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:name
                                                                               coordinate:coordinate];
-            [notif schedule];
+            [UIApplication.sharedApplication scheduleLocalNotification:notif.notif];
 
             [alert show];
         }];
@@ -55,7 +55,7 @@
         subscribeNext:^(FoursquareVenue *result) {
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
                                                                           coordinate:coordinate];
-            [notif schedule];
+            [UIApplication.sharedApplication scheduleLocalNotification:notif.notif];
         }];
 }
 @end

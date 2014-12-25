@@ -14,9 +14,6 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
 
 
 @interface CoffeeShopNotification ()
-
-@property (readonly, nonatomic, strong) UILocalNotification *notif;
-
 @end
 
 @implementation CoffeeShopNotification
@@ -80,14 +77,12 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
 
 #pragma mark -
 - (id)initWithName:(NSString *)name
-        coordinate:(CLLocationCoordinate2D)coordinate
-       application:(UIApplication *)application {
+        coordinate:(CLLocationCoordinate2D)coordinate {
     self = [super init];
     if (!self) return nil;
 
     _name = name;
     _coordinate = coordinate;
-    _application = application;
 
     NSString *coordinateString = [NSString stringWithFormat:@"%@,%@", @(coordinate.latitude), @(coordinate.longitude)];
 
@@ -112,15 +107,5 @@ NSString * const NotificationActionNone = @"DRINK_NONE";
     return self;
 }
 
-- (id)initWithName:(NSString *)name
-        coordinate:(CLLocationCoordinate2D)coordinate {
-    return [self initWithName:name
-                  coordinate:coordinate
-                  application:UIApplication.sharedApplication];
-}
-
-- (void)schedule {
-    [self.application scheduleLocalNotification:self.notif];
-}
 
 @end
