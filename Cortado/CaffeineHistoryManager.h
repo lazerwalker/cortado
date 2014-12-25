@@ -7,11 +7,10 @@
 
 @property (readonly) BOOL isAuthorized;
 
-- (void)processDrinks:(NSArray *)array;
+- (RACSignal *)processDrink:(DrinkConsumption *)drink;
 
-// TODO: Refactor to use RACSignal for consistency
-- (void)processDrink:(DrinkConsumption *)array
-         withCompletion:(void(^)(BOOL success, NSError *error))completion;
+// TODO: Remove? Only used by today extension
+- (void)processDrinks:(NSArray *)array;
 
 - (RACSignal *)fetchHistory;
 

@@ -67,10 +67,18 @@
 
 }
 
-- (void)processDrink:(DrinkConsumption *)drink
-         withCompletion:(void(^)(BOOL success, NSError *error))completion {
-    HKQuantitySample *sample = [self sampleFromDrink:drink];
-    [self.healthStore saveObject:sample withCompletion:completion];
+- (RACSignal *)processDrink:(DrinkConsumption *)drink {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        HKQuantitySample *sample = [self sampleFromDrink:drink];
+        [self.healthStore saveObject:sample withCompletion:^(BOOL success, NSError *error) {
+            if (success) {
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:error];
+            }
+        }];
+        return (RACDisposable *)nil;
+    }];
 }
 
 #pragma mark -

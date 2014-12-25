@@ -126,10 +126,9 @@
         return;
     }
 
-    [self.processor processDrink:consumption
-                     withCompletion:^(BOOL success, NSError *error) {
+    [[self.processor processDrink:consumption] subscribeCompleted:^{
         UILocalNotification *notif = [[UILocalNotification alloc] init];
-        notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@? %@", consumption.name, consumption.timestamp, @(success)];
+        notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@?", consumption.name, consumption.timestamp];
         [UIApplication.sharedApplication scheduleLocalNotification:notif];
 
         completionHandler();
