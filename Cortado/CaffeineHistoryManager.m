@@ -49,24 +49,6 @@
     return self;
 }
 
-- (void)processDrinks:(NSArray *)array {
-    if (!(self.healthStore && [self.healthStore authorizationStatusForType:self.caffeineType] == HKAuthorizationStatusSharingAuthorized)) {
-        return;
-    }
-
-    array = ASTFilter(array, ^BOOL(DrinkConsumption *drink) {
-        return [drink isKindOfClass:DrinkConsumption.class];
-    });
-    array = ASTMap(array, ^id(DrinkConsumption *drink) {
-        return [self sampleFromDrink:drink];
-    });
-
-    [self.healthStore saveObjects:array withCompletion:^(BOOL success, NSError *error) {
-        NSLog(@"================> %@", @(success));
-    }];
-
-}
-
 - (RACSignal *)processDrink:(DrinkConsumption *)drink {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         HKQuantitySample *sample = [self sampleFromDrink:drink];

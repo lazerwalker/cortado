@@ -16,7 +16,6 @@
 #import "LocationDetector.h"
 #import "PreferredDrinksViewController.h"
 #import "PreferredDrinksViewModel.h"
-#import "TodayInterface.h"
 
 #import "AppDelegate.h"
 
@@ -24,7 +23,6 @@
 
 @interface AppDelegate () <CLLocationManagerDelegate>
 
-@property (nonatomic, strong) TodayInterface *interface;
 @property (nonatomic, strong) CaffeineHistoryManager *processor;
 
 @property (nonatomic, strong) FoursquareClient *foursquareClient;
@@ -41,7 +39,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.processor = [[CaffeineHistoryManager alloc] init];
-    self.interface = [[TodayInterface alloc] initWithProcessor:self.processor];
 
     // CLVisit
     self.locationManager = [[CLLocationManager alloc] init];
@@ -88,17 +85,9 @@
     return YES;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self.interface stopListening];
-    self.interface = nil;
-}
-
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self.interface processAllNewDrinksWithCompletion:nil];
-}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];

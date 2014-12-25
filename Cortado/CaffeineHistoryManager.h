@@ -9,9 +9,6 @@
 
 - (RACSignal *)processDrink:(DrinkConsumption *)drink;
 
-// TODO: Remove? Only used by today extension
-- (void)processDrinks:(NSArray *)array;
-
 - (RACSignal *)fetchHistory;
 
 @end

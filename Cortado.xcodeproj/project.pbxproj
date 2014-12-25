@@ -11,7 +11,6 @@
 		A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
 		A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E11A3E1BB700FF267F /* PreferredDrinksViewController.m */; };
 		A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E51A3E587B00FF267F /* PreferredDrinksViewModel.m */; };
-		A60E24D61A293C340014628C /* TodayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D51A293C340014628C /* TodayInterface.m */; };
 		A6231E621A424389004B8797 /* HistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6231E611A424389004B8797 /* HistoryViewModel.m */; };
 		A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A62376571A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m */; };
 		A623765B1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A623765A1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m */; };
@@ -19,24 +18,17 @@
 		A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722A1A254C6500846A33 /* AppDelegate.m */; };
 		A62D722E1A254C6500846A33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722D1A254C6500846A33 /* ViewController.m */; };
 		A62D72331A254C6500846A33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62D72321A254C6500846A33 /* Images.xcassets */; };
-		A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62D72541A254D1A00846A33 /* NotificationCenter.framework */; };
-		A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D725A1A254D1A00846A33 /* TodayViewController.m */; };
-		A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62D725C1A254D1A00846A33 /* MainInterface.storyboard */; };
 		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
 		A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
 		A66A3A111A3B7C0200849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
 		A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
-		A66A3A151A3B80A800849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
-		A66A3A161A3B80A800849705 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
 		A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1B1A3B8F3700849705 /* DrinkSelectionViewController.m */; };
 		A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1F1A3B903C00849705 /* DrinkCategory.m */; };
 		A66A3A231A3B907900849705 /* DrinkType.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A221A3B907900849705 /* DrinkType.m */; };
 		A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A251A3B918200849705 /* DrinkSubtype.m */; };
 		A66A3A271A3B925B00849705 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A291A3B929A00849705 /* DrinkCategoryList.m */; };
-		A6BA44B91A2A5B6D006B89E3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA44B81A2A5B6D006B89E3 /* libPods.a */; };
-		A6C938841A47BC0200E96951 /* AppInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E24D21A2935C30014628C /* AppInterface.m */; };
 		A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */; };
 		A6C9388A1A485E1C00E96951 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
@@ -46,16 +38,6 @@
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		AD607CCBEC7B40A32C314204 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F974D2DCCF44722399492BB7 /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A62D725E1A254D1A00846A33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A62D72511A254D1A00846A33;
-			remoteInfo = "Cuppa-Today";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A62D72641A254D1A00846A33 /* Embed App Extensions */ = {
@@ -88,12 +70,7 @@
 		A60585E11A3E1BB700FF267F /* PreferredDrinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinksViewController.m; sourceTree = "<group>"; };
 		A60585E41A3E587B00FF267F /* PreferredDrinksViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferredDrinksViewModel.h; sourceTree = "<group>"; };
 		A60585E51A3E587B00FF267F /* PreferredDrinksViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinksViewModel.m; sourceTree = "<group>"; };
-		A60E24CC1A27E6DA0014628C /* Cortado-Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cortado-Today.entitlements"; sourceTree = "<group>"; };
 		A60E24D01A27E6E90014628C /* Cortado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Cortado.entitlements; sourceTree = "<group>"; };
-		A60E24D11A2935C30014628C /* AppInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInterface.h; sourceTree = "<group>"; };
-		A60E24D21A2935C30014628C /* AppInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInterface.m; sourceTree = "<group>"; };
-		A60E24D41A293C340014628C /* TodayInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayInterface.h; sourceTree = "<group>"; };
-		A60E24D51A293C340014628C /* TodayInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayInterface.m; sourceTree = "<group>"; };
 		A6231E601A424389004B8797 /* HistoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewModel.h; sourceTree = "<group>"; };
 		A6231E611A424389004B8797 /* HistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewModel.m; sourceTree = "<group>"; };
 		A62376561A3F7BC200661201 /* UINavigationController+ReactiveCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ReactiveCocoa.h"; sourceTree = "<group>"; };
@@ -109,12 +86,7 @@
 		A62D722D1A254C6500846A33 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A62D72321A254C6500846A33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A62D72351A254C6500846A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A62D72521A254D1A00846A33 /* Cortado-Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cortado-Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62D72541A254D1A00846A33 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		A62D72581A254D1A00846A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A62D72591A254D1A00846A33 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		A62D725A1A254D1A00846A33 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		A62D725C1A254D1A00846A33 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		A643D5891A40A231006ACF0A /* PreferredDrinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferredDrinks.h; sourceTree = "<group>"; };
 		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
 		A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCustomDrinkViewController.h; sourceTree = "<group>"; };
@@ -168,23 +140,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A62D724F1A254D1A00846A33 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6BA44B91A2A5B6D006B89E3 /* libPods.a in Frameworks */,
-				A62D72551A254D1A00846A33 /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A60585D91A3E11C800FF267F /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				A60E24D41A293C340014628C /* TodayInterface.h */,
-				A60E24D51A293C340014628C /* TodayInterface.m */,
 				A6EBA87B1A2A3B3200344C17 /* CaffeineHistoryManager.h */,
 				A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */,
 				A60585DA1A3E120500FF267F /* LocationDetector.h */,
@@ -222,9 +183,7 @@
 		A62D72191A254C6500846A33 = {
 			isa = PBXGroup;
 			children = (
-				A62D724D1A254CCC00846A33 /* Shared */,
 				A62D72241A254C6500846A33 /* Cortado */,
-				A62D72561A254D1A00846A33 /* Cortado-Today */,
 				A62D72531A254D1A00846A33 /* Frameworks */,
 				A62D72231A254C6500846A33 /* Products */,
 				B1306759647D75FFCB56B59F /* Pods */,
@@ -235,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				A62D72221A254C6500846A33 /* Cortado.app */,
-				A62D72521A254D1A00846A33 /* Cortado-Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,13 +230,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A62D724D1A254CCC00846A33 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
 		A62D72531A254D1A00846A33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,28 +242,6 @@
 				F974D2DCCF44722399492BB7 /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A62D72561A254D1A00846A33 /* Cortado-Today */ = {
-			isa = PBXGroup;
-			children = (
-				A60E24CC1A27E6DA0014628C /* Cortado-Today.entitlements */,
-				A62D72591A254D1A00846A33 /* TodayViewController.h */,
-				A62D725A1A254D1A00846A33 /* TodayViewController.m */,
-				A62D725C1A254D1A00846A33 /* MainInterface.storyboard */,
-				A62D72571A254D1A00846A33 /* Supporting Files */,
-				A60E24D11A2935C30014628C /* AppInterface.h */,
-				A60E24D21A2935C30014628C /* AppInterface.m */,
-			);
-			path = "Cortado-Today";
-			sourceTree = "<group>";
-		};
-		A62D72571A254D1A00846A33 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A62D72581A254D1A00846A33 /* Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A66A3A0E1A3B7BF500849705 /* Models */ = {
@@ -393,29 +322,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				A62D725F1A254D1A00846A33 /* PBXTargetDependency */,
 			);
 			name = Cortado;
 			productName = Cuppa;
 			productReference = A62D72221A254C6500846A33 /* Cortado.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A62D72511A254D1A00846A33 /* Cortado-Today */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A62D72611A254D1A00846A33 /* Build configuration list for PBXNativeTarget "Cortado-Today" */;
-			buildPhases = (
-				A62D724E1A254D1A00846A33 /* Sources */,
-				A62D724F1A254D1A00846A33 /* Frameworks */,
-				A62D72501A254D1A00846A33 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Cortado-Today";
-			productName = "Cuppa-Today";
-			productReference = A62D72521A254D1A00846A33 /* Cortado-Today.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -441,18 +352,6 @@
 							};
 						};
 					};
-					A62D72511A254D1A00846A33 = {
-						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 48WB56AE4K;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-							com.apple.HealthKit = {
-								enabled = 0;
-							};
-						};
-					};
 				};
 			};
 			buildConfigurationList = A62D721D1A254C6500846A33 /* Build configuration list for PBXProject "Cortado" */;
@@ -469,7 +368,6 @@
 			projectRoot = "";
 			targets = (
 				A62D72211A254C6500846A33 /* Cortado */,
-				A62D72511A254D1A00846A33 /* Cortado-Today */,
 			);
 		};
 /* End PBXProject section */
@@ -481,14 +379,6 @@
 			files = (
 				A62D72331A254C6500846A33 /* Images.xcassets in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A62D72501A254D1A00846A33 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A62D725D1A254D1A00846A33 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +436,6 @@
 				A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */,
 				A66A3A231A3B907900849705 /* DrinkType.m in Sources */,
 				A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */,
-				A60E24D61A293C340014628C /* TodayInterface.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
 				A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */,
@@ -563,26 +452,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A62D724E1A254D1A00846A33 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A66A3A161A3B80A800849705 /* DrinkConsumption.m in Sources */,
-				A62D725B1A254D1A00846A33 /* TodayViewController.m in Sources */,
-				A66A3A151A3B80A800849705 /* Drink.m in Sources */,
-				A6C938841A47BC0200E96951 /* AppInterface.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A62D725F1A254D1A00846A33 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A62D72511A254D1A00846A33 /* Cortado-Today */;
-			targetProxy = A62D725E1A254D1A00846A33 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A62D72341A254C6500846A33 /* LaunchScreen.xib */ = {
@@ -648,26 +518,6 @@
 			};
 			name = Release;
 		};
-		A62D72631A254D1A00846A33 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46FF4552A358097D7F8675E4 /* Pods.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Cortado-Today/Cortado-Today.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		A6886C601A2A4EF300BE09DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -721,26 +571,6 @@
 			};
 			name = Debug;
 		};
-		A6886C621A2A4EF300BE09DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0337664A1406DC2AD11AF5A2 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Cortado-Today/Cortado-Today.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/Cortado-Today/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -758,15 +588,6 @@
 			buildConfigurations = (
 				A62D72471A254C6500846A33 /* Release */,
 				A6886C611A2A4EF300BE09DC /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A62D72611A254D1A00846A33 /* Build configuration list for PBXNativeTarget "Cortado-Today" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A62D72631A254D1A00846A33 /* Release */,
-				A6886C621A2A4EF300BE09DC /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
