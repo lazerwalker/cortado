@@ -9,4 +9,6 @@
                              limit:(NSUInteger)limit
                    sortDescriptors:(NSArray *)sortDescriptors;
 
+- (RACSignal *)rac_deleteObject:(HKObject *)object;
+
 @end

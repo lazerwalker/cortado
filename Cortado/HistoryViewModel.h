@@ -17,5 +17,7 @@
 - (NSString *)subtitleAtIndex:(NSUInteger)index;
 - (DrinkConsumption *)drinkAtIndex:(NSUInteger)index;
 
+#pragma mark - Actions
+- (void)deleteAtIndex:(NSUInteger)index;
 
 @end

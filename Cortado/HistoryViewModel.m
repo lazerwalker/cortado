@@ -1,3 +1,4 @@
+#import <Asterism/Asterism.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
@@ -62,6 +63,17 @@
 - (DrinkConsumption *)drinkAtIndex:(NSUInteger)index {
     if (index >= self.drinks.count) return nil;
     return self.drinks[index];
+}
+
+#pragma mark - Actions
+- (void)deleteAtIndex:(NSUInteger)index {
+    DrinkConsumption *drink = [self drinkAtIndex:index];
+
+    @weakify(self)
+    [[self.manager deleteDrink:drink] subscribeCompleted:^{
+        @strongify(self)
+        self.drinks = ASTWithout(self.drinks, drink);
+    }];
 }
 
 #pragma mark - Noop

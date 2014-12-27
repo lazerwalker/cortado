@@ -8,6 +8,7 @@
 @property (readonly) BOOL isAuthorized;
 
 - (RACSignal *)processDrink:(DrinkConsumption *)drink;
+- (RACSignal *)deleteDrink:(DrinkConsumption *)drink;
 
 - (RACSignal *)fetchHistory;
 

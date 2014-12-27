@@ -51,7 +51,7 @@
 
 - (RACSignal *)processDrink:(DrinkConsumption *)drink {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        HKQuantitySample *sample = [self sampleFromDrink:drink];
+        HKQuantitySample *sample = [self createSampleFromDrink:drink];
         [self.healthStore saveObject:sample withCompletion:^(BOOL success, NSError *error) {
             if (success) {
                 [subscriber sendCompleted];
@@ -63,8 +63,39 @@
     }];
 }
 
+- (RACSignal *)deleteDrink:(DrinkConsumption *)drink {
+    return [[self fetchSampleFromDrink:drink]
+        flattenMap:^RACStream *(HKQuantitySample *sample) {
+            return [self.healthStore rac_deleteObject:sample];
+        }];
+}
+
+- (RACSignal *)fetchHistory {
+    return [[[[[RACObserve(self, isAuthorized) startWith:@(self.isAuthorized)]
+               ignore:@NO]
+              take:1]
+             flattenMap:^(id _) {
+                 return [self.healthStore rac_queryWithSampleType:self.caffeineType
+                                                        predicate:nil
+                                                            limit:HKObjectQueryNoLimit
+                                                  sortDescriptors:nil];
+             }]
+            map:^(HKQuantitySample *result) {
+                return [DrinkConsumptionSerializer consumptionFromQuantitySample:result];
+            }];
+}
+
 #pragma mark -
-- (HKQuantitySample *)sampleFromDrink:(DrinkConsumption *)drink {
+- (RACSignal *)fetchSampleFromDrink:(DrinkConsumption *)drink {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"startDate == %@", drink.timestamp];
+    return [self.healthStore rac_queryWithSampleType:self.caffeineType
+                                           predicate:predicate
+                                               limit:HKObjectQueryNoLimit
+                                     sortDescriptors:nil];
+
+}
+
+- (HKQuantitySample *)createSampleFromDrink:(DrinkConsumption *)drink {
     HKQuantity *quantity = [HKQuantity quantityWithUnit:self.mgUnit doubleValue:drink.caffeine.doubleValue];
     HKQuantityType *type = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryCaffeine];
 
@@ -85,21 +116,6 @@
                                             endDate:drink.timestamp
 
                                            metadata:metadata];
-}
-
-- (RACSignal *)fetchHistory {
-    return [[[[[RACObserve(self, isAuthorized) startWith:@(self.isAuthorized)]
-        ignore:@NO]
-        take:1]
-        flattenMap:^(id _) {
-            return [self.healthStore rac_queryWithSampleType:self.caffeineType
-                                                   predicate:nil
-                                                       limit:HKObjectQueryNoLimit
-                                             sortDescriptors:nil];
-        }]
-            map:^(HKQuantitySample *result) {
-            return [DrinkConsumptionSerializer consumptionFromQuantitySample:result];
-        }];
 }
 
 @end

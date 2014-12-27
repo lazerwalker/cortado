@@ -2,6 +2,7 @@
 #import <Mantle/Mantle.h>
 
 @class CLLocation;
+
 @class Drink;
 
 @interface DrinkConsumption : MTLModel<MTLJSONSerializing>

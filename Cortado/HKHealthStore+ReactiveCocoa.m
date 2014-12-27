@@ -28,4 +28,17 @@
     }];
 }
 
+- (RACSignal *)rac_deleteObject:(HKObject *)object {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self deleteObject:object withCompletion:^(BOOL success, NSError *error) {
+            if (success) {
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:error];
+            }
+        }];
+        return (RACDisposable *)nil;
+    }];
+}
+
 @end
