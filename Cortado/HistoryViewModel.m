@@ -70,7 +70,18 @@
     DrinkConsumption *drink = [self drinkAtIndex:index];
 
     @weakify(self)
-    [[self.manager deleteDrink:drink] subscribeCompleted:^{
+    [[self.manager deleteDrink:drink]
+     subscribeError:^(NSError *error) {
+        NSString *message = @"This entry wasn't created by Cortado. You can only delete it from within Apple's Health app.";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [alert show];
+         });
+     } completed:^{
         @strongify(self)
         self.drinks = ASTWithout(self.drinks, drink);
     }];

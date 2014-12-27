@@ -58,6 +58,7 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.viewModel deleteAtIndex:indexPath.row];
+        [self.tableView setEditing:NO];
     }
 }
 
