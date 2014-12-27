@@ -43,7 +43,7 @@ static NSString * const CellIdentifier = @"cell";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
 
     UIImage *addImage = [UIImage imageNamed:@"add"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addImage style:UIBarButtonItemStyleDone target:self action:@selector(didTapAddButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didTapAddButton)];
 
     self.tableView.delegate = nil;
     self.tableView.delegate = self;
@@ -101,6 +101,8 @@ static NSString * const CellIdentifier = @"cell";
 
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [addVC.completedSignal subscribeNext:^(id x) {
+        NSLog(@"================> %@", x);
+    } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];
 }

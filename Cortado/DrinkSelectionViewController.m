@@ -30,6 +30,8 @@ static NSString * const CellIdentifier = @"cell";
     _selectedDrinkSignal = [RACSubject subject];
     _noBeverageEnabled = enabled;
 
+    self.title = @"Select Drink";
+
     return self;
 }
 

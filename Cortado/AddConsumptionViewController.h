@@ -1,13 +1,10 @@
-@import UIKit;
+#import <FXForms/FXForms.h>
 
 @class Drink;
 @class RACSubject;
 
-@interface AddConsumptionViewController : UITableViewController
+@interface AddConsumptionViewController : FXFormViewController
 
 @property (readonly) RACSubject *completedSignal;
-
-@property (readwrite, nonatomic, strong) Drink *drink;
-@property (readwrite, nonatomic, strong) NSDate *date;
 
 @end
