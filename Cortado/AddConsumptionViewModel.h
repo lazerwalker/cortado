@@ -11,6 +11,7 @@
 @property (nonatomic, strong) NSString *venue;
 
 @property (readonly) NSString *timeString;
+@property (readonly) BOOL inputValid;
 @property (readonly) DrinkCellViewModel *drinkCellViewModel;
 
 @property (readonly) RACSubject *completedSignal;

@@ -23,7 +23,7 @@
     self.timestamp = [NSDate date];
 
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 
     RAC(self, drinkCellViewModel) = [RACObserve(self, drink) map:^id(Drink *drink) {
@@ -38,6 +38,10 @@
     return [NSSet setWithObject:@keypath(AddConsumptionViewModel.new, timestamp)];
 }
 
++ (NSSet *)keyPathsForValuesAffectingInputValid {
+    return [NSSet setWithObject:@keypath(AddConsumptionViewModel.new, drink)];
+}
+
 #pragma mark - Data accessors
 - (NSString *)timeString {
     return [self.dateFormatter stringFromDate:self.timestamp];
@@ -49,6 +53,10 @@
 
 - (NSString *)timestampTitle {
     return @"Time";
+}
+
+- (BOOL)inputValid {
+    return self.drink != nil;
 }
 
 #pragma mark - Event handlers
