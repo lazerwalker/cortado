@@ -24,4 +24,7 @@
 
 - (id)initWithDrink:(Drink *)drink;
 
+- (id)initWithDrink:(Drink *)drink
+          timestamp:(NSDate *)timestamp;
+
 @end

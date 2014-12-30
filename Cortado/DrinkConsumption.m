@@ -42,6 +42,14 @@
                     coordinate:nil];
 }
 
+- (id)initWithDrink:(Drink *)drink
+          timestamp:(NSDate *)timestamp {
+    return [self initWithDrink:drink
+                     timestamp:timestamp
+                         venue:nil
+                    coordinate:nil];
+}
+
 - (CLLocationCoordinate2D)coordinate {
     NSArray *strings = [self.coordinateString componentsSeparatedByString:@","];
     if (strings.count != 2) { return CLLocationCoordinate2DMake(0, 0); }
