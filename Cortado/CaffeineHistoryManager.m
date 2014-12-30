@@ -114,6 +114,10 @@
     },
     [MTLJSONAdapter JSONDictionaryFromModel:drink]);
 
+    metadata = ASTReject(metadata, ^BOOL(id obj) {
+        return obj == NSNull.null;
+    });
+    
     return [HKQuantitySample quantitySampleWithType:type
                                            quantity:quantity
                                           startDate:drink.timestamp
