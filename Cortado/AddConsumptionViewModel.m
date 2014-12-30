@@ -5,6 +5,10 @@
 
 #import "AddConsumptionViewModel.h"
 
+@interface AddConsumptionViewModel ()
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@end
+
 @implementation AddConsumptionViewModel
 
 - (id)init {
@@ -14,6 +18,10 @@
     _completedSignal = [RACSubject subject];
 
     self.timestamp = [NSDate date];
+
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 
     return self;
 }
@@ -38,7 +46,7 @@
             return self.drink.name;
             break;
         case AddConsumptionItemDate:
-            return self.timestamp.description;
+            return [self.dateFormatter stringFromDate:self.timestamp];
             break;
         default:
             return nil;
