@@ -34,6 +34,8 @@
 		A6C9388A1A485E1C00E96951 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
+		A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA44D1A53655400363546 /* DrinkCell.m */; };
+		A6EBA4511A53662E00363546 /* DrinkCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */; };
 		A6EBA87D1A2A3B3200344C17 /* CaffeineHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */; };
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
@@ -120,6 +122,10 @@
 		A6E234671A320FFB00B57E16 /* FoursquareClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareClient.m; sourceTree = "<group>"; };
 		A6E234691A32100700B57E16 /* FoursquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenue.h; sourceTree = "<group>"; };
 		A6E2346A1A32100700B57E16 /* FoursquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenue.m; sourceTree = "<group>"; };
+		A6EBA44C1A53655400363546 /* DrinkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkCell.h; sourceTree = "<group>"; };
+		A6EBA44D1A53655400363546 /* DrinkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkCell.m; sourceTree = "<group>"; };
+		A6EBA44F1A53662E00363546 /* DrinkCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkCellViewModel.h; sourceTree = "<group>"; };
+		A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkCellViewModel.m; sourceTree = "<group>"; };
 		A6EBA87B1A2A3B3200344C17 /* CaffeineHistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaffeineHistoryManager.h; sourceTree = "<group>"; };
 		A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaffeineHistoryManager.m; sourceTree = "<group>"; };
 		A6F3D69F1A4B98E200BA15A9 /* AddConsumptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddConsumptionViewController.h; sourceTree = "<group>"; };
@@ -168,6 +174,8 @@
 				A6231E611A424389004B8797 /* HistoryViewModel.m */,
 				A6BD5A0F1A532BF9001B5FD0 /* AddConsumptionViewModel.h */,
 				A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */,
+				A6EBA44F1A53662E00363546 /* DrinkCellViewModel.h */,
+				A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 		A62D72241A254C6500846A33 /* Cortado */ = {
 			isa = PBXGroup;
 			children = (
+				A6EBA44B1A5364BF00363546 /* Views */,
 				A62376551A3F7BA900661201 /* Categories */,
 				A60585E31A3E586300FF267F /* View Models */,
 				A60585D91A3E11C800FF267F /* Interfaces */,
@@ -291,6 +300,15 @@
 				A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A6EBA44B1A5364BF00363546 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6EBA44C1A53655400363546 /* DrinkCell.h */,
+				A6EBA44D1A53655400363546 /* DrinkCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		B1306759647D75FFCB56B59F /* Pods */ = {
@@ -443,6 +461,7 @@
 				A66A3A231A3B907900849705 /* DrinkType.m in Sources */,
 				A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
+				A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
 				A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */,
 				A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */,
@@ -453,6 +472,7 @@
 				A6231E621A424389004B8797 /* HistoryViewModel.m in Sources */,
 				A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */,
 				A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */,
+				A6EBA4511A53662E00363546 /* DrinkCellViewModel.m in Sources */,
 				A66A3A111A3B7C0200849705 /* Drink.m in Sources */,
 				A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */,
 			);

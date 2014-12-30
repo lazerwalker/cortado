@@ -1,12 +1,15 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
+#import "DrinkCellViewModel.h"
 
 #import "AddConsumptionViewModel.h"
 
 @interface AddConsumptionViewModel ()
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (readwrite) DrinkCellViewModel *drinkCellViewModel;
 @end
 
 @implementation AddConsumptionViewModel
@@ -23,38 +26,29 @@
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
     self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 
+    RAC(self, drinkCellViewModel) = [RACObserve(self, drink) map:^id(Drink *drink) {
+        return [[DrinkCellViewModel alloc] initWithDrink:drink];
+    }];
+
     return self;
 }
 
+#pragma mark - KVO
++ (NSSet *)keyPathsForValuesAffectingTimeString {
+    return [NSSet setWithObject:@keypath(AddConsumptionViewModel.new, timestamp)];
+}
+
 #pragma mark - Data accessors
-- (NSString *)titleForItem:(AddConsumptionItem)item {
-    switch(item) {
-        case AddConsumptionItemDrink:
-            return @"Drink";
-            break;
-        case AddConsumptionItemDate:
-            return @"Time";
-            break;
-        default:
-            return nil;
-    }
+- (NSString *)timeString {
+    return [self.dateFormatter stringFromDate:self.timestamp];
 }
 
-- (NSString *)valueForItem:(AddConsumptionItem)item {
-    switch(item) {
-        case AddConsumptionItemDrink:
-            return self.drink.name;
-            break;
-        case AddConsumptionItemDate:
-            return [self.dateFormatter stringFromDate:self.timestamp];
-            break;
-        default:
-            return nil;
-    }
+- (NSString *)drinkTitle {
+    return @"Drink";
 }
 
-- (NSInteger)numberOfItems {
-    return AddConsumptionItemCount;
+- (NSString *)timestampTitle {
+    return @"Time";
 }
 
 #pragma mark - Event handlers

@@ -1,13 +1,8 @@
 #import <ReactiveViewModel/RVMViewModel.h>
 
 @class Drink;
+@class DrinkCellViewModel;
 @class RACSubject;
-
-typedef NS_ENUM(NSInteger, AddConsumptionItem) {
-    AddConsumptionItemDrink = 0,
-    AddConsumptionItemDate,
-    AddConsumptionItemCount
-};
 
 @interface AddConsumptionViewModel : RVMViewModel
 
@@ -15,12 +10,15 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
 @property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, strong) NSString *venue;
 
+@property (readonly) NSString *timeString;
+@property (readonly) DrinkCellViewModel *drinkCellViewModel;
+
 @property (readonly) RACSubject *completedSignal;
 
 - (void)addDrink;
 - (void)cancel;
 
-- (NSString *)titleForItem:(AddConsumptionItem)item;
-- (NSString *)valueForItem:(AddConsumptionItem)item;
-- (NSInteger)numberOfItems;
+- (NSString *)drinkTitle;
+- (NSString *)timestampTitle;
+
 @end

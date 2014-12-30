@@ -2,10 +2,17 @@
 
 #import "AddConsumptionViewModel.h"
 #import "DrinkSelectionViewController.h"
+#import "DrinkCell.h"
 
 #import "AddConsumptionViewController.h"
 
 static NSString * const CellIdentifier = @"cell";
+
+typedef NS_ENUM(NSInteger, AddConsumptionItem) {
+    AddConsumptionItemDrink = 0,
+    AddConsumptionItemDate,
+    AddConsumptionItemCount
+};
 
 @interface AddConsumptionViewController ()
 
@@ -24,18 +31,24 @@ static NSString * const CellIdentifier = @"cell";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.viewModel action:@selector(addDrink)];
 
+    [self.tableView registerClass:DrinkCell.class forCellReuseIdentifier:NSStringFromClass(DrinkCell.class)];
+
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
     [RACObserve(self, viewModel.drink) subscribeNext:^(id x) {
         [self.navigationController popToViewController:self animated:YES];
         [self.tableView reloadData];
     }];
-
-    return self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-        
 }
 
 #pragma mark -
@@ -55,25 +68,45 @@ static NSString * const CellIdentifier = @"cell";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.numberOfItems;
+    return AddConsumptionItemCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-    }
 
-    return cell;
+    switch(indexPath.section) {
+        case AddConsumptionItemDrink:
+            return [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(DrinkCell.class) forIndexPath:indexPath];
+        case AddConsumptionItemDate:
+            return [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
+        default:
+            return nil;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.viewModel titleForItem:section];
+    switch(section) {
+        case AddConsumptionItemDrink:
+            return self.viewModel.drinkTitle;
+        case AddConsumptionItemDate:
+            return self.viewModel.timestampTitle;
+        default:
+            return nil;
+    }
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.textLabel.text = [self.viewModel valueForItem:indexPath.section];
+    switch(indexPath.section) {
+        case AddConsumptionItemDrink:
+            [(DrinkCell *)cell setViewModel:self.viewModel.drinkCellViewModel];
+            break;
+        case AddConsumptionItemDate:
+            cell.textLabel.text = self.viewModel.timeString;
+            break;
+        default:
+            break;
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
