@@ -49,6 +49,10 @@
     return self;
 }
 
+- (void)processDrinkImmediately:(DrinkConsumption *)drink {
+    [[self processDrink:drink] subscribeCompleted:^{}];
+}
+
 - (RACSignal *)processDrink:(DrinkConsumption *)drink {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         HKQuantitySample *sample = [self createSampleFromDrink:drink];
