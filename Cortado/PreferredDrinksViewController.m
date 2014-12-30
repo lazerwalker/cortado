@@ -6,7 +6,10 @@
 #import "UIViewController+ReactiveCocoa.h"
 
 #import "AddConsumptionViewController.h"
+#import "AddConsumptionViewModel.h"
+#import "CaffeineHistoryManager.h"
 #import "Drink.h"
+#import "DrinkConsumption.h"
 #import "DrinkSelectionViewController.h"
 #import "PreferredDrinksViewModel.h"
 
@@ -96,12 +99,15 @@ static NSString * const CellIdentifier = @"cell";
 #pragma mark -
 
 - (void)didTapAddButton {
-    AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] init];
+    AddConsumptionViewModel *addVM = [[AddConsumptionViewModel alloc] init];
+    AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addVC];
 
     [self.navigationController presentViewController:nav animated:YES completion:nil];
-    [addVC.completedSignal subscribeNext:^(id x) {
-        NSLog(@"================> %@", x);
+    [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
+        // TODO: This belongs elsewhere.
+        CaffeineHistoryManager *manager = [[CaffeineHistoryManager alloc] init];
+        [manager processDrinkImmediately:c];
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];

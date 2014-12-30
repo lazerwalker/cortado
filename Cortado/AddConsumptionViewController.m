@@ -1,42 +1,41 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "AddConsumptionViewModel.h"
 #import "DrinkSelectionViewController.h"
 
 #import "AddConsumptionViewController.h"
 
-@interface DrinkConsumptionForm : NSObject <FXForm>
-@property (nonatomic, strong) Drink *drink;
-@property (nonatomic, strong) NSDate *timestamp;
-@property (nonatomic, strong) NSString *venue;
-@end
+static NSString * const CellIdentifier = @"cell";
 
-@implementation DrinkConsumptionForm
-
-- (NSDictionary *)drinkField {
-    return @{FXFormFieldAction: @"showDrinkPicker"};
-}
+@interface AddConsumptionViewController ()
 
 @end
-
 
 @implementation AddConsumptionViewController
 
-- (id)init {
-    self = [super init];
+- (id)initWithViewModel:(AddConsumptionViewModel *)viewModel {
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 
-    _completedSignal = [RACSubject subject];
-    self.formController.form = [[DrinkConsumptionForm alloc] init];
+    self.title = @"Add Caffeine";
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancelButton)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didTapDoneButton)];
+    _viewModel = viewModel;
 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.viewModel action:@selector(addDrink)];
+
+    [RACObserve(self, viewModel.drink) subscribeNext:^(id x) {
+        [self.navigationController popToViewController:self animated:YES];
+        [self.tableView reloadData];
+    }];
 
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+        
 }
 
 #pragma mark -
@@ -46,22 +45,49 @@
     [self.navigationController pushViewController:drinkVC animated:YES];
     [[drinkVC.selectedDrinkSignal take:1]
         subscribeNext:^(Drink *drink) {
-            [(DrinkConsumptionForm *)self.formController.form setDrink:drink];
-            [self.navigationController popToViewController:self animated:YES];
-            [self.tableView reloadData];
+            self.viewModel.drink = drink;
         }];
-
 }
 
-#pragma mark - Event handlers
-
-- (void)didTapDoneButton {
-    [self.completedSignal sendNext:@YES];
-    [self.completedSignal sendCompleted];
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
-- (void)didTapCancelButton {
-    [self.completedSignal sendCompleted];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.viewModel.numberOfItems;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    }
+
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.viewModel titleForItem:section];
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.textLabel.text = [self.viewModel valueForItem:indexPath.section];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    switch(indexPath.section) {
+        case AddConsumptionItemDrink:
+            [self showDrinkPicker];
+            break;
+        case AddConsumptionItemDate:
+            break;
+        default:
+            break;
+    }
 }
 
 @end

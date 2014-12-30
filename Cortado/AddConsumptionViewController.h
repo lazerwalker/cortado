@@ -1,10 +1,13 @@
-#import <FXForms/FXForms.h>
+@import UIKit;
 
 @class Drink;
 @class RACSubject;
+@class AddConsumptionViewModel;
 
-@interface AddConsumptionViewController : FXFormViewController
+@interface AddConsumptionViewController : UITableViewController
 
-@property (readonly) RACSubject *completedSignal;
+@property (readonly) AddConsumptionViewModel *viewModel;
+
+- (id)initWithViewModel:(AddConsumptionViewModel *)viewModel;
 
 @end
