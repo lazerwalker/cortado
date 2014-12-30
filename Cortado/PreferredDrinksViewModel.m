@@ -1,6 +1,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "Drink.h"
+#import "DrinkCellViewModel.h"
 #import "CoffeeShopNotification.h"
 #import "PreferredDrinks.h"
 
@@ -46,26 +47,9 @@ static NSString * const PreferencesKey = @"preferredDrinks";
     }
 }
 
-- (NSString *)titleAtIndex:(NSUInteger)index {
+- (DrinkCellViewModel *)drinkViewModelAtIndex:(NSUInteger)index {
     Drink *drink = [self drinkAtIndex:index];
-    if (drink == nil) {
-        return @"No drink selected";
-    }
-
-    return drink.name;
-}
-
-- (NSString *)subtitleAtIndex:(NSUInteger)index {
-    Drink *drink = [self drinkAtIndex:index];
-    if (drink == nil) {
-        return nil;
-    }
-
-    if (drink.subtype == nil) {
-        return [NSString stringWithFormat:@"%@ mg", drink.caffeine];
-    }
-
-    return [NSString stringWithFormat:@"%@ (%@ mg)", drink.subtype, drink.caffeine];
+    return [[DrinkCellViewModel alloc] initWithDrink:drink];
 }
 
 #pragma mark -

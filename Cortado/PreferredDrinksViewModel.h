@@ -1,6 +1,7 @@
 #import <ReactiveViewModel/ReactiveViewModel.h>
 
 @class Drink;
+@class DrinkCellViewModel;
 @class PreferredDrinks;
 
 @interface PreferredDrinksViewModel : RVMViewModel
@@ -9,9 +10,7 @@
 @property (readonly) NSUInteger numberOfDrinks;
 
 - (Drink *)drinkAtIndex:(NSUInteger)index;
-
-- (NSString *)titleAtIndex:(NSUInteger)index;
-- (NSString *)subtitleAtIndex:(NSUInteger)index;
+- (DrinkCellViewModel *)drinkViewModelAtIndex:(NSUInteger)index;
 
 - (void)setDrink:(Drink *)drink forIndex:(NSUInteger)index;
 

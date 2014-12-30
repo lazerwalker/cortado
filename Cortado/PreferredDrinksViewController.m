@@ -9,6 +9,8 @@
 #import "AddConsumptionViewModel.h"
 #import "CaffeineHistoryManager.h"
 #import "Drink.h"
+#import "DrinkCell.h"
+#import "DrinkCellViewModel.h"
 #import "DrinkConsumption.h"
 #import "DrinkSelectionViewController.h"
 #import "PreferredDrinksViewModel.h"
@@ -50,12 +52,13 @@ static NSString * const CellIdentifier = @"cell";
 
     self.tableView.delegate = nil;
     self.tableView.delegate = self;
+
+    [self.tableView registerClass:DrinkCell.class forCellReuseIdentifier:NSStringFromClass(DrinkCell.class)];
 }
 
 #pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.textLabel.text = [self.viewModel titleAtIndex:indexPath.section];
-    cell.detailTextLabel.text = [self.viewModel subtitleAtIndex:indexPath.section];
+- (void)tableView:(UITableView *)tableView willDisplayCell:(DrinkCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.viewModel = [self.viewModel drinkViewModelAtIndex:indexPath.section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,13 +90,7 @@ static NSString * const CellIdentifier = @"cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.detailTextLabel.textColor = [UIColor darkGrayColor];
-    }
-
-    return cell;
+    return cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(DrinkCell.class) forIndexPath:indexPath];
 }
 
 #pragma mark -

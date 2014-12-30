@@ -11,6 +11,7 @@
     if (!self) return nil;
 
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.detailTextLabel.textColor = [UIColor darkGrayColor];
 
     return self;
 }
