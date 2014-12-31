@@ -4,7 +4,6 @@
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
-#import "DrinkConsumptionSerializer.h"
 #import "PreferredDrinks.h"
 
 #import "CoffeeShopNotification.h"
@@ -54,12 +53,6 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:preferences];
     [NSUserDefaults.standardUserDefaults setObject:data forKey:@"notificationPreferences"];
-}
-
-+ (DrinkConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif {
-    NSLog(@"================> %@", identifier);
-    if (![identifier isEqualToString:NotificationActionDrink]) return nil;
-    return [DrinkConsumptionSerializer consumptionFromUserInfo:notif.userInfo identifier:identifier];
 }
 
 #pragma mark -

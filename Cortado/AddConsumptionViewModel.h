@@ -1,6 +1,7 @@
 #import <ReactiveViewModel/RVMViewModel.h>
 
 @class Drink;
+@class DrinkConsumption;
 @class DrinkCellViewModel;
 @class RACSubject;
 
@@ -15,6 +16,8 @@
 @property (readonly) DrinkCellViewModel *drinkCellViewModel;
 
 @property (readonly) RACSubject *completedSignal;
+
+- (id)initWithConsumption:(DrinkConsumption *)consumption;
 
 - (void)addDrink;
 - (void)cancel;

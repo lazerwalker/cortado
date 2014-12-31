@@ -5,8 +5,11 @@
 #import <Parse/Parse.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "AddConsumptionViewModel.h"
+#import "AddConsumptionViewController.h"
 #import "Drink.h"
 #import "DrinkConsumption.h"
+#import "DrinkConsumptionSerializer.h"
 #import "CaffeineHistoryManager.h"
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
@@ -109,21 +112,39 @@
 #pragma mark - Processing
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
-    DrinkConsumption *consumption = [CoffeeShopNotification drinkForIdentifier:identifier notification:notification];
-    NSLog(@"================> %@", consumption);
-    if (!consumption) {
-        completionHandler();
-        return;
+
+    DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
+
+    if (consumption.isValid) {
+        [[self.processor processDrink:consumption] subscribeCompleted:^{
+            UILocalNotification *notif = [[UILocalNotification alloc] init];
+            notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@?", consumption.name, consumption.timestamp];
+            [UIApplication.sharedApplication scheduleLocalNotification:notif];
+
+            completionHandler();
+        }];
+    } else {
+        UINavigationController *nav = (UINavigationController *)self.tabBar.selectedViewController;
+        if (nav.presentedViewController) {
+            [nav dismissViewControllerAnimated:NO completion:nil];
+        }
+        [nav popToRootViewControllerAnimated:NO];
+
+        AddConsumptionViewModel *addVM = [[AddConsumptionViewModel alloc] initWithConsumption:(DrinkConsumption *)consumption];
+        AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
+        UINavigationController *addNav = [[UINavigationController alloc] initWithRootViewController:addVC];
+
+        [nav presentViewController:addNav animated:NO completion:nil];
+        [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
+            // TODO: This belongs elsewhere.
+            CaffeineHistoryManager *manager = [[CaffeineHistoryManager alloc] init];
+            [manager processDrinkImmediately:c];
+        } completed:^{
+            [nav dismissViewControllerAnimated:YES completion:nil];
+            completionHandler();
+        }];
+
     }
-
-    [[self.processor processDrink:consumption] subscribeCompleted:^{
-        UILocalNotification *notif = [[UILocalNotification alloc] init];
-        notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@?", consumption.name, consumption.timestamp];
-        [UIApplication.sharedApplication scheduleLocalNotification:notif];
-
-        completionHandler();
-    }];
-
 }
 
 #pragma mark - CLLocationDelegate

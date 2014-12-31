@@ -1,5 +1,5 @@
 #import <CoreLocation/CoreLocation.h>
-
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Drink.h"
 
 #import "DrinkConsumption.h"
@@ -9,11 +9,18 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"timestamp": NSNull.null,
              @"caffeine": NSNull.null,
+             @"drink": NSNull.null,
              @"name": @"Name",
              @"subtype": @"Subtype",
              @"venue": @"Venue",
-             @"coordinateString": @"Coordinates"
+             @"coordinateString": @"Coordinates",
             };
+}
+
+#pragma mark - KVO
+
++ (NSSet *)keyPathsForValuesAffectingIsValid {
+    return [NSSet setWithArray:@[@keypath(DrinkConsumption.new, name), @keypath(DrinkConsumption.new, timestamp)]];
 }
 
 #pragma mark -
@@ -25,6 +32,7 @@
     self = [super init];
     if (!self) return nil;
 
+    _drink = drink;
     _name = drink.name;
     _subtype = drink.subtype;
     _caffeine = drink.caffeine;
@@ -48,6 +56,10 @@
                      timestamp:timestamp
                          venue:nil
                     coordinate:nil];
+}
+
+- (BOOL)isValid {
+    return self.name != nil && self.timestamp != nil;
 }
 
 - (CLLocationCoordinate2D)coordinate {

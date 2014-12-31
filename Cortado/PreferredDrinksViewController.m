@@ -96,6 +96,7 @@ static NSString * const CellIdentifier = @"cell";
 
 - (void)didTapAddButton {
     AddConsumptionViewModel *addVM = [[AddConsumptionViewModel alloc] init];
+    addVM.drink = [self.viewModel drinkAtIndex:0];
     AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addVC];
 

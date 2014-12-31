@@ -7,6 +7,8 @@
 
 @interface DrinkConsumption : MTLModel<MTLJSONSerializing>
 
+@property (readonly, strong, nonatomic) Drink *drink;
+
 @property (readonly, strong, nonatomic) NSString *name;
 @property (readonly, strong, nonatomic) NSString *subtype;
 @property (readonly, strong, nonatomic) NSNumber *caffeine;
@@ -14,6 +16,8 @@
 @property (readonly, strong, nonatomic) NSDate *timestamp;
 @property (readonly, strong, nonatomic) NSString *venue;
 @property (readonly, strong, nonatomic) NSString *coordinateString; //@"lat,lng"
+
+@property (readonly) BOOL isValid;
 
 @property (readonly) CLLocationCoordinate2D coordinate;
 

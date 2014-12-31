@@ -1,14 +1,15 @@
 @import UIKit;
 @import CoreLocation;
 
+extern NSString * const NotificationActionCustom;
+extern NSString * const NotificationActionDrink;
+
 @class DrinkConsumption;
 @class PreferredDrinks;
 
 @interface CoffeeShopNotification : NSObject
 
 + (void)registerNotificationTypeWithPreferences:(PreferredDrinks *)preferences;
-
-+ (DrinkConsumption *)drinkForIdentifier:(NSString *)identifier notification:(UILocalNotification *)notif;
 
 @property (readonly) NSString *name;
 @property (readonly) CLLocationCoordinate2D coordinate;

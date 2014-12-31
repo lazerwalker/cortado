@@ -24,8 +24,6 @@
 
 + (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
                                    identifier:(NSString *)identifier {
-    if (!userInfo[identifier]) return nil;
-
     NSDate *timestamp = userInfo[@"timestamp"];
     NSString *venue = userInfo[@"venue"];
     NSString *coordinate = userInfo[@"latLng"];

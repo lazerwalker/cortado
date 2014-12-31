@@ -20,7 +20,7 @@
 
     _completedSignal = [RACSubject subject];
 
-    self.timestamp = [NSDate date];
+    self.timestamp = NSDate.date;
 
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
@@ -29,6 +29,15 @@
     RAC(self, drinkCellViewModel) = [RACObserve(self, drink) map:^id(Drink *drink) {
         return [[DrinkCellViewModel alloc] initWithDrink:drink];
     }];
+
+    return self;
+}
+
+- (id)initWithConsumption:(DrinkConsumption *)consumption {
+    self = [self init];
+
+    self.timestamp = consumption.timestamp;
+    self.drink = consumption.drink;
 
     return self;
 }
