@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
 };
 
 @interface AddConsumptionViewController ()
-
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UITextField *hiddenTextField;
 @end
 
 @implementation AddConsumptionViewController
@@ -27,6 +28,15 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
     self.title = @"Add Caffeine";
 
     _viewModel = viewModel;
+
+    self.datePicker = [[UIDatePicker alloc] init];
+    self.datePicker.date = self.viewModel.timestamp;
+    [self.datePicker addTarget:self action:@selector(datePickerDidChange) forControlEvents:UIControlEventValueChanged];
+
+    self.hiddenTextField = [[UITextField alloc] init];
+    self.hiddenTextField.inputView = self.datePicker;
+    self.hiddenTextField.hidden = YES;
+    [self.view addSubview:self.hiddenTextField];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.viewModel action:@selector(addDrink)];
@@ -46,11 +56,25 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
         [self.navigationController popToViewController:self animated:YES];
         [self.tableView reloadData];
     }];
+
+    [RACObserve(self, viewModel.timeString) subscribeNext:^(id x) {
+        [self.tableView reloadData];
+    }];
+
+    RAC(self, viewModel.timestamp) = [[self rac_signalForSelector:@selector(datePickerDidChange)] map:^id(id _) {
+        return self.datePicker.date;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.hiddenTextField resignFirstResponder];
+
 }
 
 #pragma mark -
@@ -63,6 +87,13 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             self.viewModel.drink = drink;
         }];
 }
+
+- (void)showDatePicker {
+    [self.hiddenTextField becomeFirstResponder];
+}
+
+# pragma mark - Noop for RAC
+- (void)datePickerDidChange {}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -91,9 +122,8 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             return self.viewModel.drinkTitle;
         case AddConsumptionItemDate:
             return self.viewModel.timestampTitle;
-        default:
-            return nil;
     }
+    return nil;
 }
 
 #pragma mark - UITableViewDelegate
@@ -104,8 +134,6 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             break;
         case AddConsumptionItemDate:
             cell.textLabel.text = self.viewModel.timeString;
-            break;
-        default:
             break;
     }
 
@@ -119,8 +147,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             [self showDrinkPicker];
             break;
         case AddConsumptionItemDate:
-            break;
-        default:
+            [self showDatePicker];
             break;
     }
 }
