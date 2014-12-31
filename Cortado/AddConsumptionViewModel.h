@@ -10,6 +10,7 @@
 @property (nonatomic, strong) Drink *drink;
 @property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, strong) NSString *venue;
+@property (nonatomic, strong) NSString *coordinateString;
 
 @property (readonly) NSString *timeString;
 @property (readonly) BOOL inputValid;

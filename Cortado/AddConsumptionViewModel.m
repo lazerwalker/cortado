@@ -38,6 +38,8 @@
 
     self.timestamp = consumption.timestamp;
     self.drink = consumption.drink;
+    self.venue = consumption.venue;
+    self.coordinateString = consumption.coordinateString;
 
     return self;
 }
@@ -71,7 +73,9 @@
 #pragma mark - Event handlers
 - (void)addDrink {
     DrinkConsumption *consumption = [[DrinkConsumption alloc] initWithDrink:self.drink
-                                                                  timestamp:self.timestamp];
+                                                                  timestamp:self.timestamp
+                                                                      venue:self.venue
+                                                                 coordinate:self.coordinateString];
     [self.completedSignal sendNext:consumption];
     [self.completedSignal sendCompleted];
 }
