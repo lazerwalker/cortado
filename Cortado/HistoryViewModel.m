@@ -21,11 +21,9 @@
 
     _manager = manager;
 
-    RAC(self, drinks) = [[[self rac_signalForSelector:@selector(refetchHistory)]
+    RAC(self, drinks) = [[self rac_signalForSelector:@selector(refetchHistory)]
         flattenMap:^RACStream *(id value) {
             return [[manager fetchHistory] collect];
-        }] map:^id(NSArray *drinks) {
-            return drinks.reverseObjectEnumerator.allObjects;
         }];
 
     _dateFormatter = [[NSDateFormatter alloc] init];

@@ -86,10 +86,11 @@
                ignore:@NO]
               take:1]
              flattenMap:^(id _) {
+                 NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierStartDate ascending:NO];
                  return [self.healthStore rac_queryWithSampleType:self.caffeineType
                                                         predicate:nil
                                                             limit:HKObjectQueryNoLimit
-                                                  sortDescriptors:nil];
+                                                  sortDescriptors:@[sort]];
              }]
             map:^(HKQuantitySample *result) {
                 return [DrinkConsumptionSerializer consumptionFromQuantitySample:result];
