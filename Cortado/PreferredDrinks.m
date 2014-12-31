@@ -2,26 +2,13 @@
 
 @implementation PreferredDrinks
 
-- (id)initWithFirst:(Drink *)first
-             second:(Drink *)second {
+- (id)initWithDrink:(Drink *)drink {
     self = [super init];
     if (!self) return nil;
 
-    _first = first;
-    _second = second;
+    _drink = drink;
 
     return self;
-}
-
-- (id)preferenceByReplacingDrinkAtIndex:(NSUInteger)index
-                              withDrink:(Drink *)drink {
-    if (index == 0) {
-        return [[PreferredDrinks alloc] initWithFirst:drink second:self.second];
-    } else if (index == 1) {
-        return [[PreferredDrinks alloc] initWithFirst:self.first second:drink];
-    } else {
-        return self;
-    }
 }
 
 @end

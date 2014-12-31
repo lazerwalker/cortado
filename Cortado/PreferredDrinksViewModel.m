@@ -21,7 +21,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:PreferencesKey];
     self.drinks = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
-        [[PreferredDrinks alloc] initWithFirst:nil second:nil];
+    [[PreferredDrinks alloc] initWithDrink:nil];
 
     [RACObserve(self, drinks) subscribeNext:^(id x) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.drinks];
@@ -34,17 +34,11 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 - (NSUInteger)numberOfDrinks {
-    return 2;
+    return 1;
 }
 
 - (Drink *)drinkAtIndex:(NSUInteger)index {
-    if (index == 0) {
-        return self.drinks.first;
-    } else if (index == 1) {
-        return self.drinks.second;
-    } else {
-        return nil;
-    }
+    return self.drinks.drink;
 }
 
 - (DrinkCellViewModel *)drinkViewModelAtIndex:(NSUInteger)index {
@@ -53,8 +47,8 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 #pragma mark -
-- (void)setDrink:(Drink *)drink forIndex:(NSUInteger)index {
-    self.drinks = [self.drinks preferenceByReplacingDrinkAtIndex:index withDrink:drink];
+- (void)setDrink:(Drink *)drink {
+    self.drinks = [[PreferredDrinks alloc] initWithDrink:drink];
 }
 
 @end

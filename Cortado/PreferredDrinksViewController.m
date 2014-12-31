@@ -47,7 +47,6 @@ static NSString * const CellIdentifier = @"cell";
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
 
-    UIImage *addImage = [UIImage imageNamed:@"add"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didTapAddButton)];
 
     self.tableView.delegate = nil;
@@ -70,14 +69,14 @@ static NSString * const CellIdentifier = @"cell";
         take:1]
         concat:[self.navigationController rac_popToViewController:self animated:YES]]
         subscribeNext:^(Drink *drink) {
-            [self.viewModel setDrink:drink.copy forIndex:indexPath.section];
+            [self.viewModel setDrink:drink.copy];
         }];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"Drink #%@", @(section + 1)];
+    return [NSString stringWithFormat:@"Preferred Drink"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

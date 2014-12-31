@@ -110,6 +110,7 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
     DrinkConsumption *consumption = [CoffeeShopNotification drinkForIdentifier:identifier notification:notification];
+    NSLog(@"================> %@", consumption);
     if (!consumption) {
         completionHandler();
         return;

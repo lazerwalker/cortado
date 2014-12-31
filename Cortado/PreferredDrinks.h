@@ -4,13 +4,8 @@
 
 @interface PreferredDrinks : MTLModel
 
-@property (readonly, nonatomic, strong) Drink *first;
-@property (readonly, nonatomic, strong) Drink *second;
+@property (readonly, nonatomic, strong) Drink *drink;
 
-- (id)initWithFirst:(Drink *)first
-             second:(Drink *)second;
-
-- (id)preferenceByReplacingDrinkAtIndex:(NSUInteger)index
-                              withDrink:(Drink *)drink;
+- (id)initWithDrink:(Drink *)drink;
 
 @end
