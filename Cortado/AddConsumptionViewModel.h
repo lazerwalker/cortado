@@ -12,6 +12,8 @@
 @property (nonatomic, strong) NSString *venue;
 @property (nonatomic, strong) NSString *coordinateString;
 
+@property (nonatomic, assign) BOOL isEditing;
+
 @property (readonly) NSString *timeString;
 @property (readonly) BOOL inputValid;
 @property (readonly) DrinkCellViewModel *drinkCellViewModel;
@@ -19,6 +21,8 @@
 @property (readonly) RACSubject *completedSignal;
 
 - (id)initWithConsumption:(DrinkConsumption *)consumption;
+- (id)initWithConsumption:(DrinkConsumption *)consumption
+                  editing:(BOOL)editing;
 
 - (void)addDrink;
 - (void)cancel;

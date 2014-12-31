@@ -44,6 +44,14 @@
     return self;
 }
 
+- (id)initWithConsumption:(DrinkConsumption *)consumption editing:(BOOL)editing {
+    self = [self initWithConsumption:consumption];
+
+    _isEditing = editing;
+
+    return self;
+}
+
 #pragma mark - KVO
 + (NSSet *)keyPathsForValuesAffectingTimeString {
     return [NSSet setWithObject:@keypath(AddConsumptionViewModel.new, timestamp)];

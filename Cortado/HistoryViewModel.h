@@ -1,7 +1,8 @@
 #import "RVMViewModel.h"
 
-@class CaffeineHistoryManager;
+@class AddConsumptionViewModel;
 @class DrinkConsumption;
+@class CaffeineHistoryManager;
 
 @interface HistoryViewModel : RVMViewModel
 
@@ -16,8 +17,10 @@
 - (NSString *)titleAtIndex:(NSUInteger)index;
 - (NSString *)subtitleAtIndex:(NSUInteger)index;
 - (DrinkConsumption *)drinkAtIndex:(NSUInteger)index;
+- (AddConsumptionViewModel *)editViewModelAtIndex:(NSUInteger)index;
 
 #pragma mark - Actions
 - (void)deleteAtIndex:(NSUInteger)index;
+- (void)editDrinkAtIndex:(NSUInteger)index to:(DrinkConsumption *)to;
 
 @end

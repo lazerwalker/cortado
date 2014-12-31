@@ -2,6 +2,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
+#import "AddConsumptionViewModel.h"
 #import "CaffeineHistoryManager.h"
 #import "DrinkConsumption.h"
 
@@ -65,6 +66,11 @@
     return self.drinks[index];
 }
 
+- (AddConsumptionViewModel *)editViewModelAtIndex:(NSUInteger)index {
+    DrinkConsumption *drink = [self drinkAtIndex:index];
+    return [[AddConsumptionViewModel alloc] initWithConsumption:drink editing:YES];
+}
+
 #pragma mark - Actions
 - (void)deleteAtIndex:(NSUInteger)index {
     DrinkConsumption *drink = [self drinkAtIndex:index];
@@ -84,6 +90,31 @@
      } completed:^{
         @strongify(self)
         self.drinks = ASTWithout(self.drinks, drink);
+    }];
+}
+
+- (void)editDrinkAtIndex:(NSUInteger)index to:(DrinkConsumption *)to {
+    @weakify(self)
+    DrinkConsumption *from = [self drinkAtIndex:index];
+
+    [[self.manager editDrink:from toDrink:to] subscribeError:^(NSError *error) {
+        NSString *message = @"This entry wasn't created by Cortado. You can only edit it from within Apple's Health app.";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert show];
+        });
+
+    } completed:^{
+        @strongify(self)
+        NSMutableArray *array = self.drinks.mutableCopy;
+        [array replaceObjectAtIndex:index withObject:to];
+
+        NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+        self.drinks = [array.copy sortedArrayUsingDescriptors:@[sort]];
     }];
 }
 

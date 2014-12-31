@@ -74,6 +74,13 @@
         }];
 }
 
+- (RACSignal *)editDrink:(DrinkConsumption *)from
+                 toDrink:(DrinkConsumption *)to {
+    return [[self deleteDrink:from] then:^{
+        return [self processDrink:to];
+    }];
+}
+
 - (RACSignal *)fetchHistory {
     return [[[[[RACObserve(self, isAuthorized) startWith:@(self.isAuthorized)]
                ignore:@NO]

@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 
-    self.title = @"Add Caffeine";
+    self.title = (viewModel.isEditing ? @"Edit" : @"Add Caffeine");
 
     _viewModel = viewModel;
 
@@ -38,8 +38,12 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
     self.hiddenTextField.hidden = YES;
     [self.view addSubview:self.hiddenTextField];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.viewModel action:@selector(addDrink)];
+
+    // TODO: This is bad.
+    if (!self.viewModel.isEditing) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];
+    }
 
     RAC(self, navigationItem.rightBarButtonItem.enabled) = RACObserve(self, viewModel.inputValid);
 

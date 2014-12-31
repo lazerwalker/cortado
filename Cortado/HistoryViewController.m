@@ -1,6 +1,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
+#import "AddConsumptionViewModel.h"
+#import "AddConsumptionViewController.h"
 #import "HistoryViewModel.h"
 
 #import "HistoryViewController.h"
@@ -20,8 +22,8 @@ static NSString * const CellIdentifier = @"Cell";
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self.viewModel refetchHistory];
 }
 
@@ -45,6 +47,15 @@ static NSString * const CellIdentifier = @"Cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    AddConsumptionViewModel *addVM = [self.viewModel editViewModelAtIndex:indexPath.row];
+    AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
+    [self.navigationController pushViewController:addVC animated:YES];
+    [addVM.completedSignal subscribeNext:^(DrinkConsumption *drink) {
+        [self.viewModel editDrinkAtIndex:indexPath.row to:drink];
+    } completed:^{
+        [self.navigationController popToViewController:self animated:YES];
+    }];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {

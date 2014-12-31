@@ -10,6 +10,9 @@
 - (RACSignal *)processDrink:(DrinkConsumption *)drink;
 - (RACSignal *)deleteDrink:(DrinkConsumption *)drink;
 
+- (RACSignal *)editDrink:(DrinkConsumption *)from
+                 toDrink:(DrinkConsumption *)to;
+
 - (void)processDrinkImmediately:(DrinkConsumption *)drink;
 
 - (RACSignal *)fetchHistory;
