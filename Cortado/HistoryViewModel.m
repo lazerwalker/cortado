@@ -13,6 +13,7 @@ static NSString * const HistoryKey = @"History";
 @interface HistoryViewModel ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
 @property (readwrite, nonatomic, strong) NSDictionary *clusteredDrinks;
+@property (readwrite, nonatomic, strong) NSArray *sortedDateKeys;
 @property (readonly, nonatomic, strong) NSDateFormatter *cellDateFormatter;
 @property (readonly, nonatomic, strong) NSDateFormatter *headerDateFormatter;
 @end
@@ -36,9 +37,16 @@ static NSString * const HistoryKey = @"History";
         map:^id(NSArray *drinks) {
             NSCalendar *calendar = [NSCalendar currentCalendar];
             return ASTGroupBy(drinks, ^id<NSCopying>(DrinkConsumption *drink) {
-                return [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:drink.timestamp];
+                NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:drink.timestamp];
+                return [calendar dateFromComponents:components];
             });
         }];
+
+    RAC(self, sortedDateKeys) = [RACObserve(self, clusteredDrinks) map:^id(NSDictionary *dict) {
+        return [dict.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSDate *date1, NSDate *date2) {
+            return [date1 compare:date2];
+        }].reverseObjectEnumerator.allObjects;
+    }];
 
     _cellDateFormatter = [[NSDateFormatter alloc] init];
     _cellDateFormatter.timeStyle = NSDateFormatterShortStyle;
@@ -74,7 +82,7 @@ static NSString * const HistoryKey = @"History";
 
 #pragma mark -
 - (NSArray *)drinksForDateAtIndex:(NSInteger)index {
-    id key = self.clusteredDrinks.allKeys[index];
+    id key = self.sortedDateKeys[index];
     return self.clusteredDrinks[key];
 }
 
@@ -83,12 +91,11 @@ static NSString * const HistoryKey = @"History";
 }
 
 - (NSInteger)numberOfSections {
-    return self.clusteredDrinks.allKeys.count;
+    return self.sortedDateKeys.count;
 }
 
 - (NSString *)dateStringForSection:(NSInteger)section {
-    NSDateComponents *components = self.clusteredDrinks.allKeys[section];
-    NSDate *date = [NSCalendar.currentCalendar dateFromComponents:components];
+    NSDate *date = self.sortedDateKeys[section];
     return [self.headerDateFormatter stringFromDate:date];
 }
 
