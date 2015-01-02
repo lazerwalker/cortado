@@ -8,6 +8,8 @@
 
 #import "HistoryViewModel.h"
 
+static NSString * const HistoryKey = @"History";
+
 @interface HistoryViewModel ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
 @property (readonly, nonatomic, strong) NSDateFormatter *dateFormatter;
@@ -21,14 +23,18 @@
 
     _manager = manager;
 
-    RAC(self, drinks) = [[self rac_signalForSelector:@selector(refetchHistory)]
+    RAC(self, drinks) = [[[self rac_signalForSelector:@selector(refetchHistory)]
         flattenMap:^RACStream *(id value) {
             return [[manager fetchHistory] collect];
+        }] doNext:^(NSArray *drinks) {
+            [self persistDrinks:drinks];
         }];
 
     _dateFormatter = [[NSDateFormatter alloc] init];
     _dateFormatter.timeStyle = NSDateFormatterShortStyle;
     _dateFormatter.dateStyle = NSDateFormatterShortStyle;
+
+    self.drinks = self.cachedDrinks;
 
     return self;
 }
@@ -36,6 +42,22 @@
 #pragma mark - KVO
 + (NSSet *)keyPathsForValuesAffectingNumberOfRows {
     return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinks)];
+}
+
+#pragma mark - Persistence
+- (void)persistDrinks:(NSArray *)drinks {
+    if (!self.drinks) { return; }
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setObject:data forKey:HistoryKey];
+    [defaults synchronize];
+}
+
+- (NSArray *)cachedDrinks {
+    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:HistoryKey];
+    if (!data) return nil;
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 #pragma mark -
