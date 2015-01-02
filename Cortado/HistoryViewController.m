@@ -12,7 +12,7 @@ static NSString * const CellIdentifier = @"Cell";
 @implementation HistoryViewController
 
 - (id)initWithViewModel:(HistoryViewModel *)viewModel {
-    self = [super initWithStyle:UITableViewStyleGrouped];
+    self = [super initWithStyle:UITableViewStylePlain];
     if (!self) return nil;
 
     _viewModel = viewModel;
@@ -41,18 +41,18 @@ static NSString * const CellIdentifier = @"Cell";
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.textLabel.text = [self.viewModel titleAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.viewModel subtitleAtIndex:indexPath.row];
+    cell.textLabel.text = [self.viewModel titleAtIndexPath:indexPath];
+    cell.detailTextLabel.text = [self.viewModel subtitleAtIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    AddConsumptionViewModel *addVM = [self.viewModel editViewModelAtIndex:indexPath.row];
+    AddConsumptionViewModel *addVM = [self.viewModel editViewModelAtIndexPath:indexPath];
     AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
     [self.navigationController pushViewController:addVC animated:YES];
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *drink) {
-        [self.viewModel editDrinkAtIndex:indexPath.row to:drink];
+        [self.viewModel editDrinkAtIndexPath:indexPath to:drink];
     } completed:^{
         [self.navigationController popToViewController:self animated:YES];
     }];
@@ -68,7 +68,7 @@ static NSString * const CellIdentifier = @"Cell";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.viewModel deleteAtIndex:indexPath.row];
+        [self.viewModel deleteAtIndexPath:indexPath];
         [self.tableView setEditing:NO];
     }
 }
@@ -76,11 +76,11 @@ static NSString * const CellIdentifier = @"Cell";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.viewModel.numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.viewModel.numberOfRows;
+    return [self.viewModel numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,4 +93,7 @@ static NSString * const CellIdentifier = @"Cell";
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.viewModel dateStringForSection:section];
+}
 @end

@@ -9,18 +9,22 @@
 - (id)initWithCaffeineHistoryManager:(CaffeineHistoryManager *)manager;
 
 @property (readonly, nonatomic, strong) CaffeineHistoryManager *manager;
-@property (readonly) NSInteger numberOfRows;
+@property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
 
 - (void)refetchHistory;
 
-- (NSString *)titleAtIndex:(NSUInteger)index;
-- (NSString *)subtitleAtIndex:(NSUInteger)index;
-- (DrinkConsumption *)drinkAtIndex:(NSUInteger)index;
-- (AddConsumptionViewModel *)editViewModelAtIndex:(NSUInteger)index;
+// TODO: When history cells are a custom class, should just return a view model
+- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)subtitleAtIndexPath:(NSIndexPath *)indexPath;
+
+- (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
+- (NSString *)dateStringForSection:(NSInteger)section;
 
 #pragma mark - Actions
-- (void)deleteAtIndex:(NSUInteger)index;
-- (void)editDrinkAtIndex:(NSUInteger)index to:(DrinkConsumption *)to;
+- (void)deleteAtIndexPath:(NSIndexPath *)indexPath;
+- (void)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to;
 
 @end

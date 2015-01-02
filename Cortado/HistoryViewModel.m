@@ -12,7 +12,9 @@ static NSString * const HistoryKey = @"History";
 
 @interface HistoryViewModel ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
-@property (readonly, nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (readwrite, nonatomic, strong) NSDictionary *clusteredDrinks;
+@property (readonly, nonatomic, strong) NSDateFormatter *cellDateFormatter;
+@property (readonly, nonatomic, strong) NSDateFormatter *headerDateFormatter;
 @end
 
 @implementation HistoryViewModel
@@ -30,9 +32,19 @@ static NSString * const HistoryKey = @"History";
             [self persistDrinks:drinks];
         }];
 
-    _dateFormatter = [[NSDateFormatter alloc] init];
-    _dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    _dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    RAC(self, clusteredDrinks) = [RACObserve(self, drinks)
+        map:^id(NSArray *drinks) {
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            return ASTGroupBy(drinks, ^id<NSCopying>(DrinkConsumption *drink) {
+                return [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:drink.timestamp];
+            });
+        }];
+
+    _cellDateFormatter = [[NSDateFormatter alloc] init];
+    _cellDateFormatter.timeStyle = NSDateFormatterShortStyle;
+
+    _headerDateFormatter = [[NSDateFormatter alloc] init];
+    _headerDateFormatter.dateStyle = NSDateFormatterMediumStyle;
 
     self.drinks = self.cachedDrinks;
 
@@ -40,7 +52,7 @@ static NSString * const HistoryKey = @"History";
 }
 
 #pragma mark - KVO
-+ (NSSet *)keyPathsForValuesAffectingNumberOfRows {
++ (NSSet *)keyPathsForValuesAffectingNumberOfSections {
     return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinks)];
 }
 
@@ -56,17 +68,32 @@ static NSString * const HistoryKey = @"History";
 - (NSArray *)cachedDrinks {
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:HistoryKey];
     if (!data) return nil;
-    
+
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 #pragma mark -
-- (NSInteger)numberOfRows {
-    return self.drinks.count;
+- (NSArray *)drinksForDateAtIndex:(NSInteger)index {
+    id key = self.clusteredDrinks.allKeys[index];
+    return self.clusteredDrinks[key];
 }
 
-- (NSString *)titleAtIndex:(NSUInteger)index {
-    DrinkConsumption *drink = [self drinkAtIndex:index];
+- (NSInteger)numberOfRowsInSection:(NSInteger)section {
+    return [[self drinksForDateAtIndex:section] count];
+}
+
+- (NSInteger)numberOfSections {
+    return self.clusteredDrinks.allKeys.count;
+}
+
+- (NSString *)dateStringForSection:(NSInteger)section {
+    NSDateComponents *components = self.clusteredDrinks.allKeys[section];
+    NSDate *date = [NSCalendar.currentCalendar dateFromComponents:components];
+    return [self.headerDateFormatter stringFromDate:date];
+}
+
+- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
     NSString *title = [drink.name stringByAppendingFormat:@" (%@ mg)", drink.caffeine];
 
     if (drink.venue) {
@@ -76,24 +103,27 @@ static NSString * const HistoryKey = @"History";
     return title;
 }
 
-- (NSString *)subtitleAtIndex:(NSUInteger)index {
-    DrinkConsumption *drink = [self drinkAtIndex:index];
-    return [self.dateFormatter stringFromDate:drink.timestamp];
+- (NSString *)subtitleAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
+    return [self.cellDateFormatter stringFromDate:drink.timestamp];
 }
 
-- (DrinkConsumption *)drinkAtIndex:(NSUInteger)index {
-    if (index >= self.drinks.count) return nil;
-    return self.drinks[index];
+- (DrinkConsumption *)drinkAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *drinks = [self drinksForDateAtIndex:indexPath.section];
+    if (!drinks) return nil;
+    if (indexPath.row >= drinks.count) return nil;
+
+    return drinks[indexPath.row];
 }
 
-- (AddConsumptionViewModel *)editViewModelAtIndex:(NSUInteger)index {
-    DrinkConsumption *drink = [self drinkAtIndex:index];
+- (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
     return [[AddConsumptionViewModel alloc] initWithConsumption:drink editing:YES];
 }
 
 #pragma mark - Actions
-- (void)deleteAtIndex:(NSUInteger)index {
-    DrinkConsumption *drink = [self drinkAtIndex:index];
+- (void)deleteAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
 
     @weakify(self)
     [[self.manager deleteDrink:drink]
@@ -113,9 +143,9 @@ static NSString * const HistoryKey = @"History";
     }];
 }
 
-- (void)editDrinkAtIndex:(NSUInteger)index to:(DrinkConsumption *)to {
+- (void)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to {
     @weakify(self)
-    DrinkConsumption *from = [self drinkAtIndex:index];
+    DrinkConsumption *from = [self drinkAtIndexPath:indexPath];
 
     [[self.manager editDrink:from toDrink:to] subscribeError:^(NSError *error) {
         NSString *message = @"This entry wasn't created by Cortado. You can only edit it from within Apple's Health app.";
@@ -130,11 +160,7 @@ static NSString * const HistoryKey = @"History";
 
     } completed:^{
         @strongify(self)
-        NSMutableArray *array = self.drinks.mutableCopy;
-        [array replaceObjectAtIndex:index withObject:to];
-
-        NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
-        self.drinks = [array.copy sortedArrayUsingDescriptors:@[sort]];
+        [self refetchHistory];
     }];
 }
 
