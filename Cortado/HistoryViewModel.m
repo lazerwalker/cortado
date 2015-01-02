@@ -5,6 +5,7 @@
 #import "AddConsumptionViewModel.h"
 #import "CaffeineHistoryManager.h"
 #import "DrinkConsumption.h"
+#import "HistoryCellViewModel.h"
 
 #import "HistoryViewModel.h"
 
@@ -14,7 +15,6 @@ static NSString * const HistoryKey = @"History";
 @property (readwrite, nonatomic, strong) NSArray *drinks;
 @property (readwrite, nonatomic, strong) NSDictionary *clusteredDrinks;
 @property (readwrite, nonatomic, strong) NSArray *sortedDateKeys;
-@property (readonly, nonatomic, strong) NSDateFormatter *cellDateFormatter;
 @property (readonly, nonatomic, strong) NSDateFormatter *headerDateFormatter;
 @end
 
@@ -47,9 +47,6 @@ static NSString * const HistoryKey = @"History";
             return [date1 compare:date2];
         }].reverseObjectEnumerator.allObjects;
     }];
-
-    _cellDateFormatter = [[NSDateFormatter alloc] init];
-    _cellDateFormatter.timeStyle = NSDateFormatterShortStyle;
 
     _headerDateFormatter = [[NSDateFormatter alloc] init];
     _headerDateFormatter.dateStyle = NSDateFormatterMediumStyle;
@@ -99,22 +96,6 @@ static NSString * const HistoryKey = @"History";
     return [self.headerDateFormatter stringFromDate:date];
 }
 
-- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath {
-    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
-    NSString *title = [drink.name stringByAppendingFormat:@" (%@ mg)", drink.caffeine];
-
-    if (drink.venue) {
-        title = [title stringByAppendingFormat:@" at %@", drink.venue];
-    }
-
-    return title;
-}
-
-- (NSString *)subtitleAtIndexPath:(NSIndexPath *)indexPath {
-    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
-    return [self.cellDateFormatter stringFromDate:drink.timestamp];
-}
-
 - (DrinkConsumption *)drinkAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *drinks = [self drinksForDateAtIndex:indexPath.section];
     if (!drinks) return nil;
@@ -126,6 +107,11 @@ static NSString * const HistoryKey = @"History";
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath {
     DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
     return [[AddConsumptionViewModel alloc] initWithConsumption:drink editing:YES];
+}
+
+- (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath {
+    DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
+    return [[HistoryCellViewModel alloc] initWithConsumption:drink];
 }
 
 #pragma mark - Actions

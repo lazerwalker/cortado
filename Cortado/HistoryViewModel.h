@@ -3,6 +3,7 @@
 @class AddConsumptionViewModel;
 @class DrinkConsumption;
 @class CaffeineHistoryManager;
+@class HistoryCellViewModel;
 
 @interface HistoryViewModel : RVMViewModel
 
@@ -19,6 +20,7 @@
 - (NSString *)subtitleAtIndexPath:(NSIndexPath *)indexPath;
 
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath;
+- (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSString *)dateStringForSection:(NSInteger)section;

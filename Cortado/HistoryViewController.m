@@ -3,6 +3,7 @@
 
 #import "AddConsumptionViewModel.h"
 #import "AddConsumptionViewController.h"
+#import "HistoryCell.h"
 #import "HistoryViewModel.h"
 
 #import "HistoryViewController.h"
@@ -37,12 +38,13 @@ static NSString * const CellIdentifier = @"Cell";
             @strongify(self)
             [self.tableView reloadData];
         }];
+
+    [self.tableView registerClass:HistoryCell.class forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
 }
 
 #pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.textLabel.text = [self.viewModel titleAtIndexPath:indexPath];
-    cell.detailTextLabel.text = [self.viewModel subtitleAtIndexPath:indexPath];
+- (void)tableView:(UITableView *)tableView willDisplayCell:(HistoryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.viewModel = [self.viewModel cellViewModelAtIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,13 +119,7 @@ static NSString * const CellIdentifier = @"Cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.detailTextLabel.textColor = [UIColor darkGrayColor];
-    }
-
-    return cell;
+    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(HistoryCell.class) forIndexPath:indexPath];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

@@ -37,6 +37,8 @@
 		A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA44D1A53655400363546 /* DrinkCell.m */; };
 		A6EBA4511A53662E00363546 /* DrinkCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */; };
 		A6EBA87D1A2A3B3200344C17 /* CaffeineHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */; };
+		A6F328F01A57577A001D36EC /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328EF1A57577A001D36EC /* HistoryCell.m */; };
+		A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328F21A575799001D36EC /* HistoryCellViewModel.m */; };
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		AD607CCBEC7B40A32C314204 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F974D2DCCF44722399492BB7 /* libPods.a */; };
@@ -128,6 +130,10 @@
 		A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkCellViewModel.m; sourceTree = "<group>"; };
 		A6EBA87B1A2A3B3200344C17 /* CaffeineHistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaffeineHistoryManager.h; sourceTree = "<group>"; };
 		A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaffeineHistoryManager.m; sourceTree = "<group>"; };
+		A6F328EE1A57577A001D36EC /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		A6F328EF1A57577A001D36EC /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
+		A6F328F11A575799001D36EC /* HistoryCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCellViewModel.h; sourceTree = "<group>"; };
+		A6F328F21A575799001D36EC /* HistoryCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCellViewModel.m; sourceTree = "<group>"; };
 		A6F3D69F1A4B98E200BA15A9 /* AddConsumptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddConsumptionViewController.h; sourceTree = "<group>"; };
 		A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddConsumptionViewController.m; sourceTree = "<group>"; };
 		A6F3D6A21A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ReactiveCocoa.h"; sourceTree = "<group>"; };
@@ -176,6 +182,8 @@
 				A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */,
 				A6EBA44F1A53662E00363546 /* DrinkCellViewModel.h */,
 				A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */,
+				A6F328F11A575799001D36EC /* HistoryCellViewModel.h */,
+				A6F328F21A575799001D36EC /* HistoryCellViewModel.m */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -307,6 +315,8 @@
 			children = (
 				A6EBA44C1A53655400363546 /* DrinkCell.h */,
 				A6EBA44D1A53655400363546 /* DrinkCell.m */,
+				A6F328EE1A57577A001D36EC /* HistoryCell.h */,
+				A6F328EF1A57577A001D36EC /* HistoryCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -460,6 +470,8 @@
 				A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */,
 				A66A3A231A3B907900849705 /* DrinkType.m in Sources */,
 				A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */,
+				A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */,
+				A6F328F01A57577A001D36EC /* HistoryCell.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
