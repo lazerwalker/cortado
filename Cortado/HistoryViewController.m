@@ -51,9 +51,27 @@ static NSString * const CellIdentifier = @"Cell";
     AddConsumptionViewModel *addVM = [self.viewModel editViewModelAtIndexPath:indexPath];
     AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
     [self.navigationController pushViewController:addVC animated:YES];
+
+    @weakify(self)
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *drink) {
-        [self.viewModel editDrinkAtIndexPath:indexPath to:drink];
+        [[self.viewModel editDrinkAtIndexPath:indexPath to:drink]
+            subscribeError:^(NSError *error) {
+                NSString *message = @"This entry wasn't created by Cortado. You can only edit it from within Apple's Health app.";
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
+                                                                message:message
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [alert show];
+                });
+
+            } completed:^{
+                @strongify(self)
+                [self.viewModel refetchHistory];
+            }];
     } completed:^{
+        @strongify(self)
         [self.navigationController popToViewController:self animated:YES];
     }];
 }
@@ -68,7 +86,22 @@ static NSString * const CellIdentifier = @"Cell";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.viewModel deleteAtIndexPath:indexPath];
+        @weakify(self)
+        [[self.viewModel deleteAtIndexPath:indexPath]
+            subscribeError:^(NSError *error) {
+                NSString *message = @"This entry wasn't created by Cortado. You can only delete it from within Apple's Health app.";
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
+                                                                message:message
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [alert show];
+                });
+            } completed:^{
+                @strongify(self)
+                [self.viewModel refetchHistory];
+            }];
         [self.tableView setEditing:NO];
     }
 }

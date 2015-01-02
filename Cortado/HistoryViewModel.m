@@ -122,46 +122,14 @@ static NSString * const HistoryKey = @"History";
 }
 
 #pragma mark - Actions
-- (void)deleteAtIndexPath:(NSIndexPath *)indexPath {
+- (RACSignal *)deleteAtIndexPath:(NSIndexPath *)indexPath {
     DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
-
-    @weakify(self)
-    [[self.manager deleteDrink:drink]
-     subscribeError:^(NSError *error) {
-        NSString *message = @"This entry wasn't created by Cortado. You can only delete it from within Apple's Health app.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-         dispatch_async(dispatch_get_main_queue(), ^{
-             [alert show];
-         });
-     } completed:^{
-        @strongify(self)
-        self.drinks = ASTWithout(self.drinks, drink);
-    }];
+    return [self.manager deleteDrink:drink];
 }
 
-- (void)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to {
-    @weakify(self)
+- (RACSignal *)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to {
     DrinkConsumption *from = [self drinkAtIndexPath:indexPath];
-
-    [[self.manager editDrink:from toDrink:to] subscribeError:^(NSError *error) {
-        NSString *message = @"This entry wasn't created by Cortado. You can only edit it from within Apple's Health app.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [alert show];
-        });
-
-    } completed:^{
-        @strongify(self)
-        [self refetchHistory];
-    }];
+    return [self.manager editDrink:from toDrink:to];
 }
 
 #pragma mark - Noop

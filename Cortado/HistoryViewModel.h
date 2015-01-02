@@ -24,7 +24,7 @@
 - (NSString *)dateStringForSection:(NSInteger)section;
 
 #pragma mark - Actions
-- (void)deleteAtIndexPath:(NSIndexPath *)indexPath;
-- (void)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to;
+- (RACSignal *)deleteAtIndexPath:(NSIndexPath *)indexPath;
+- (RACSignal *)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to;
 
 @end
