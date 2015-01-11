@@ -15,10 +15,6 @@
 
 - (void)refetchHistory;
 
-// TODO: When history cells are a custom class, should just return a view model
-- (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
-- (NSString *)subtitleAtIndexPath:(NSIndexPath *)indexPath;
-
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath;
 - (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
