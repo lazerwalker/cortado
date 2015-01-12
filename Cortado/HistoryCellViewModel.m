@@ -52,7 +52,11 @@
 }
 
 - (NSString *)size {
-    return self.consumption.subtype;
+    if (self.consumption.subtype) {
+        return [NSString stringWithFormat:@"%@ · %@", self.caffeine, self.consumption.subtype];
+    } else {
+        return self.caffeine;
+    }
 }
 
 - (BOOL)showSize {

@@ -24,11 +24,10 @@
 - (void)setViewModel:(HistoryCellViewModel *)viewModel {
     _viewModel = viewModel;
     self.drinkLabel.attributedText = viewModel.title;
-    self.caffeineLabel.text = viewModel.caffeine;
     self.timeLabel.text = viewModel.timestamp;
     self.sizeLabel.text = viewModel.size;
 
-    self.sizeLabel.hidden = !viewModel.showSize;
+    self.caffeineLabel.hidden = YES;
 }
 
 

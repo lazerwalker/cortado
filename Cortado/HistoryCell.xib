@@ -14,24 +14,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daC-99-t97">
-                        <rect key="frame" x="8" y="14" width="34" height="16"/>
+                        <rect key="frame" x="8" y="19" width="34" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150mg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2j-AM-ERJ">
-                        <rect key="frame" x="8" y="32" width="33" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cortado at La Colombe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifP-Co-ei2">
-                        <rect key="frame" x="48" y="12" width="176" height="20"/>
+                        <rect key="frame" x="52" y="12" width="176" height="20"/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double Shot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weg-jL-cAa">
-                        <rect key="frame" x="48" y="32" width="58" height="12"/>
+                        <rect key="frame" x="52" y="32" width="58" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -39,30 +33,28 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="daC-99-t97" firstAttribute="top" secondItem="c6e-FL-vuW" secondAttribute="topMargin" constant="6" id="0CS-7E-WFw"/>
+                    <constraint firstAttribute="centerY" secondItem="daC-99-t97" secondAttribute="centerY" id="97W-Do-dGC"/>
                     <constraint firstItem="daC-99-t97" firstAttribute="bottom" secondItem="ifP-Co-ei2" secondAttribute="bottom" id="MWT-BN-8Dj"/>
-                    <constraint firstItem="ifP-Co-ei2" firstAttribute="leading" secondItem="daC-99-t97" secondAttribute="trailing" constant="6" id="U78-xa-kP7"/>
-                    <constraint firstItem="c2j-AM-ERJ" firstAttribute="bottom" secondItem="weg-jL-cAa" secondAttribute="bottom" id="WZ8-7d-7By"/>
+                    <constraint firstItem="ifP-Co-ei2" firstAttribute="top" secondItem="c6e-FL-vuW" secondAttribute="top" constant="12" id="Pka-RB-koi"/>
+                    <constraint firstItem="ifP-Co-ei2" firstAttribute="leading" secondItem="daC-99-t97" secondAttribute="trailing" constant="10" id="U78-xa-kP7"/>
                     <constraint firstAttribute="centerY" secondItem="ifP-Co-ei2" secondAttribute="centerY" id="ZHw-Fk-9OU"/>
                     <constraint firstItem="daC-99-t97" firstAttribute="centerY" secondItem="ifP-Co-ei2" secondAttribute="centerY" id="a6y-sM-fEW"/>
-                    <constraint firstItem="c2j-AM-ERJ" firstAttribute="top" secondItem="daC-99-t97" secondAttribute="bottom" id="bJO-Dk-XnJ"/>
                     <constraint firstAttribute="centerY" secondItem="daC-99-t97" secondAttribute="centerY" id="cTd-0c-YPu"/>
                     <constraint firstItem="weg-jL-cAa" firstAttribute="leading" secondItem="ifP-Co-ei2" secondAttribute="leading" id="iLm-eS-H6w"/>
-                    <constraint firstItem="c2j-AM-ERJ" firstAttribute="top" secondItem="ifP-Co-ei2" secondAttribute="bottom" id="lEZ-ip-amT"/>
                     <constraint firstItem="weg-jL-cAa" firstAttribute="top" secondItem="ifP-Co-ei2" secondAttribute="bottom" id="qBf-d9-cTa"/>
                     <constraint firstItem="daC-99-t97" firstAttribute="leading" secondItem="c6e-FL-vuW" secondAttribute="leadingMargin" id="vuA-Xg-kuO"/>
-                    <constraint firstItem="c2j-AM-ERJ" firstAttribute="leading" secondItem="daC-99-t97" secondAttribute="leading" id="y7o-Cq-IfC"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="0CS-7E-WFw"/>
                         <exclude reference="MWT-BN-8Dj"/>
+                        <exclude reference="a6y-sM-fEW"/>
                         <exclude reference="cTd-0c-YPu"/>
-                        <exclude reference="bJO-Dk-XnJ"/>
                         <exclude reference="ZHw-Fk-9OU"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="caffeineLabel" destination="c2j-AM-ERJ" id="XIf-eR-6vl"/>
                 <outlet property="drinkLabel" destination="ifP-Co-ei2" id="8UA-en-49i"/>
                 <outlet property="sizeLabel" destination="weg-jL-cAa" id="sUx-bK-d6q"/>
                 <outlet property="timeLabel" destination="daC-99-t97" id="eoa-B7-sqr"/>
