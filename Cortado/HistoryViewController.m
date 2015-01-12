@@ -47,8 +47,9 @@ static NSString * const CellIdentifier = @"Cell";
 
     PreferredDrinksViewModel *pvm = [[PreferredDrinksViewModel alloc] init];
     PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:pvm];
-    pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 140);
+    pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 154);
     pvc.tableView.scrollEnabled = NO;
+
     self.tableView.tableHeaderView = pvc.view;
     self.tableView.tableHeaderView.clipsToBounds = YES;
     [self addChildViewController:pvc];

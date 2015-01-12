@@ -78,11 +78,15 @@ static NSString * const CellIdentifier = @"cell";
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"Preferred Drink"];
+    if (section == 0) {
+        return [NSString stringWithFormat:@"Preferred Drink"];
+    } else {
+        return @"History";
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.numberOfDrinks;
+    return self.viewModel.numberOfDrinks + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
