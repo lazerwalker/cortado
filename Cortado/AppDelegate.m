@@ -105,13 +105,7 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
-        [[self.processor processDrink:consumption] subscribeCompleted:^{
-            UILocalNotification *notif = [[UILocalNotification alloc] init];
-            notif.alertBody = [NSString stringWithFormat:@"Processed beverage %@ at %@?", consumption.name, consumption.timestamp];
-            [UIApplication.sharedApplication scheduleLocalNotification:notif];
-
-            completionHandler();
-        }];
+        completionHandler();
     } else {
         UINavigationController *nav = (UINavigationController *)self.tabBar.selectedViewController;
         if (nav.presentedViewController) {
