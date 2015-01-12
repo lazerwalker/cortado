@@ -1,8 +1,11 @@
+@import CoreLocation;
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
 #import "AddConsumptionViewModel.h"
 #import "AddConsumptionViewController.h"
+#import "AppDelegate.h"
 #import "FTUEViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
@@ -71,6 +74,27 @@ static NSString * const CellIdentifier = @"Cell";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:pvc action:@selector(didTapAddButton)];
+
+    // Permissions errors
+    if ([NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey]) {
+        if (!(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways)) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Location Services Disabled"
+                                                                           message:@"To get the most out of Cortado, it needs access to your location. Please open the app's location settings and grant it 'Always' permissions."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Open Settings"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                                                                 [UIApplication.sharedApplication openURL:url];
+                                                             }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No Thanks"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction *action) {}];
+            [alert addAction:okAction];
+            [alert addAction:cancelAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate
