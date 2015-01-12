@@ -93,7 +93,12 @@ static NSString * const HistoryKey = @"History";
 
 - (NSString *)dateStringForSection:(NSInteger)section {
     NSDate *date = self.sortedDateKeys[section];
-    return [self.headerDateFormatter stringFromDate:date];
+    NSString *dateString = [self.headerDateFormatter stringFromDate:date];
+
+    NSNumber *caffeine = ASTReduce([self drinksForDateAtIndex:section], @0, ^id(NSNumber *count, DrinkConsumption *drink) {
+        return @(count.integerValue + drink.caffeine.integerValue);
+    });
+    return [NSString stringWithFormat:@"%@ · %@ mg", dateString, caffeine];
 }
 
 - (DrinkConsumption *)drinkAtIndexPath:(NSIndexPath *)indexPath {
