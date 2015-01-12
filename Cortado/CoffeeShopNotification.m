@@ -83,6 +83,11 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 
     _notif.alertBody = [NSString stringWithFormat:@"It looks like you're at %@. Whatcha drinkin'?", name];
 
+    if ([name isEqualToString:@"no venue"]) {
+        _notif.alertBody = @"Whatcha drinkin'?";
+    }
+
+
     return self;
 }
 
