@@ -19,7 +19,7 @@
 #import "FTUEViewController.h"
 #import "HistoryViewController.h"
 #import "HistoryViewModel.h"
-#import "LocationDetector.h"
+#import "LocationFetcher.h"
 #import "PreferredDrinksViewController.h"
 #import "PreferredDrinksViewModel.h"
 
@@ -27,13 +27,11 @@
 
 
 
-@interface AppDelegate () <CLLocationManagerDelegate>
+@interface AppDelegate ()
 
 @property (nonatomic, strong) CaffeineHistoryManager *processor;
 
-@property (nonatomic, strong) FoursquareClient *foursquareClient;
-@property (nonatomic, strong) LocationDetector *detector;
-@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) LocationFetcher *fetcher;
 
 @property (nonatomic, strong) UITabBarController *tabBar;
 
@@ -46,16 +44,11 @@
 
     self.processor = [[CaffeineHistoryManager alloc] init];
 
-    // CLVisit
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    [self.locationManager requestAlwaysAuthorization];
-
     CortadoKeys *keys = [[CortadoKeys alloc] init];
 
-    self.foursquareClient = [[FoursquareClient alloc] initWithClientID:keys.foursquareClientID
-                                                             clientSecret:keys.foursquareClientSecret];
-    self.detector = [[LocationDetector alloc] initWithFoursquareClient:self.foursquareClient];
+    FoursquareClient *client = [[FoursquareClient alloc] initWithClientID:keys.foursquareClientID
+                                  clientSecret:keys.foursquareClientSecret];
+    self.fetcher = [[LocationFetcher alloc] initWithFoursquareClient:client];
 
     // Background fetch
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
@@ -133,25 +126,11 @@
     }
 }
 
-#pragma mark - CLLocationDelegate
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    if (status == kCLAuthorizationStatusAuthorizedAlways) {
-        [manager startMonitoringVisits];
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
-    BOOL isStart = [visit.departureDate isEqualToDate:NSDate.distantFuture];
-    if (!isStart) return;
-
-    [self.detector checkForCoordinate:visit.coordinate];
-}
-
 #pragma mark -
 // TODO: This shouldn't be the purview of the app delegate,
 // but this will make debugging easy for now.
 - (void)manuallyCheckCurrentLocation {
-    [self.detector manuallyCheckForCoordinate:self.locationManager.location.coordinate];
+    [self.fetcher manuallyCheckCurrentLocation];
 }
 
 @end

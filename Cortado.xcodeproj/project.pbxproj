@@ -20,6 +20,7 @@
 		A62D72331A254C6500846A33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62D72321A254C6500846A33 /* Images.xcassets */; };
 		A6397A401A641503009B2767 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6397A3F1A641503009B2767 /* HistoryCell.xib */; };
 		A6397A431A643806009B2767 /* FTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6397A421A643806009B2767 /* FTUEViewController.m */; };
+		A6397A461A645ABD009B2767 /* LocationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A6397A451A645ABD009B2767 /* LocationFetcher.m */; };
 		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
 		A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
@@ -97,6 +98,8 @@
 		A6397A3F1A641503009B2767 /* HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		A6397A411A643806009B2767 /* FTUEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUEViewController.h; sourceTree = "<group>"; };
 		A6397A421A643806009B2767 /* FTUEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTUEViewController.m; sourceTree = "<group>"; };
+		A6397A441A645ABD009B2767 /* LocationFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationFetcher.h; sourceTree = "<group>"; };
+		A6397A451A645ABD009B2767 /* LocationFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationFetcher.m; sourceTree = "<group>"; };
 		A643D5891A40A231006ACF0A /* PreferredDrinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferredDrinks.h; sourceTree = "<group>"; };
 		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
 		A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCustomDrinkViewController.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				A60585DB1A3E120500FF267F /* LocationDetector.m */,
 				A6C938881A485E1C00E96951 /* DrinkConsumptionSerializer.h */,
 				A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */,
+				A6397A441A645ABD009B2767 /* LocationFetcher.h */,
+				A6397A451A645ABD009B2767 /* LocationFetcher.m */,
 			);
 			name = Interfaces;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
 				A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */,
 				A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */,
+				A6397A461A645ABD009B2767 /* LocationFetcher.m in Sources */,
 				A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */,
 				A6397A431A643806009B2767 /* FTUEViewController.m in Sources */,
 				A60585E61A3E587B00FF267F /* PreferredDrinksViewModel.m in Sources */,
