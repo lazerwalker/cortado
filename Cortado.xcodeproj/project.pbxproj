@@ -18,6 +18,7 @@
 		A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722A1A254C6500846A33 /* AppDelegate.m */; };
 		A62D722E1A254C6500846A33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722D1A254C6500846A33 /* ViewController.m */; };
 		A62D72331A254C6500846A33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62D72321A254C6500846A33 /* Images.xcassets */; };
+		A6397A401A641503009B2767 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6397A3F1A641503009B2767 /* HistoryCell.xib */; };
 		A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
 		A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
@@ -92,6 +93,7 @@
 		A62D72321A254C6500846A33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A62D72351A254C6500846A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A62D72541A254D1A00846A33 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A6397A3F1A641503009B2767 /* HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		A643D5891A40A231006ACF0A /* PreferredDrinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferredDrinks.h; sourceTree = "<group>"; };
 		A643D58A1A40A231006ACF0A /* PreferredDrinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferredDrinks.m; sourceTree = "<group>"; };
 		A643D58C1A4220BE006ACF0A /* CreateCustomDrinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCustomDrinkViewController.h; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				A6EBA44D1A53655400363546 /* DrinkCell.m */,
 				A6F328EE1A57577A001D36EC /* HistoryCell.h */,
 				A6F328EF1A57577A001D36EC /* HistoryCell.m */,
+				A6397A3F1A641503009B2767 /* HistoryCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A62D72331A254C6500846A33 /* Images.xcassets in Resources */,
+				A6397A401A641503009B2767 /* HistoryCell.xib in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

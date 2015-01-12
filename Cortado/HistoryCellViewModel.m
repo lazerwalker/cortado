@@ -1,3 +1,5 @@
+@import UIKit;
+
 #import "DrinkConsumption.h"
 
 #import "HistoryCellViewModel.h"
@@ -26,17 +28,34 @@
 
 #pragma mark -
 
-- (NSString *)title {
-    NSString *title = [self.consumption.name stringByAppendingFormat:@" (%@ mg)", self.consumption.caffeine];
+- (NSAttributedString *)title {
+    NSString *title = self.consumption.name;
 
     if (self.consumption.venue) {
         title = [title stringByAppendingFormat:@" at %@", self.consumption.venue];
     }
-    
-    return title;
+
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:title attributes:@{
+        NSFontAttributeName: [UIFont systemFontOfSize:UIFont.labelFontSize]
+    }];
+    [attrString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:UIFont.labelFontSize] range:[title rangeOfString:self.consumption.name]];
+
+    return attrString;
 }
 
-- (NSString *)subtitle {
+- (NSString *)timestamp {
     return [self.class.dateFormatter stringFromDate:self.consumption.timestamp];
+}
+
+- (NSString *)caffeine {
+    return [NSString stringWithFormat:@"%@ mg", self.consumption.caffeine];
+}
+
+- (NSString *)size {
+    return self.consumption.subtype;
+}
+
+- (BOOL)showSize {
+    return self.consumption != nil;
 }
 @end

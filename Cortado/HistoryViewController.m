@@ -39,7 +39,9 @@ static NSString * const CellIdentifier = @"Cell";
             [self.tableView reloadData];
         }];
 
-    [self.tableView registerClass:HistoryCell.class forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
+    self.tableView.rowHeight = 56.0;
 }
 
 #pragma mark - UITableViewDelegate

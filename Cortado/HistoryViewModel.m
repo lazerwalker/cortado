@@ -49,7 +49,7 @@ static NSString * const HistoryKey = @"History";
     }];
 
     _headerDateFormatter = [[NSDateFormatter alloc] init];
-    _headerDateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    _headerDateFormatter.dateFormat = @"EEEE, MMMM d";
 
     self.drinks = self.cachedDrinks;
 

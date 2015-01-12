@@ -4,23 +4,31 @@
 
 #import "HistoryCell.h"
 
+@interface HistoryCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *caffeineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *drinkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
+
+@end
+
 @implementation HistoryCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     self.detailTextLabel.textColor = [UIColor darkGrayColor];
     return self;
 }
 
-//- (void)awakeFromNib {
-//    RAC(self, textLabel.text) = RACObserve(self, viewModel.title);
-//    RAC(self, detailTextLabel.text) = RACObserve(self, viewModel.subtitle);
-//}
-
 - (void)setViewModel:(HistoryCellViewModel *)viewModel {
     _viewModel = viewModel;
-    self.textLabel.text = viewModel.title;
-    self.detailTextLabel.text = viewModel.subtitle;
+    self.drinkLabel.attributedText = viewModel.title;
+    self.caffeineLabel.text = viewModel.caffeine;
+    self.timeLabel.text = viewModel.timestamp;
+    self.sizeLabel.text = viewModel.size;
+
+    self.sizeLabel.hidden = !viewModel.showSize;
 }
 
 
