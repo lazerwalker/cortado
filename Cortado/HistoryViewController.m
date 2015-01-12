@@ -53,6 +53,10 @@ static NSString * const CellIdentifier = @"Cell";
     self.tableView.tableHeaderView = pvc.view;
     self.tableView.tableHeaderView.clipsToBounds = YES;
     [self addChildViewController:pvc];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:pvc action:@selector(didTapAddButton)];
 }
 
 #pragma mark - UITableViewDelegate
