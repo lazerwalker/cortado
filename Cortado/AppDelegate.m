@@ -65,24 +65,13 @@
 
     // TODO: Abstract this out somewhere else
 
-    // Preferred drinks
-    PreferredDrinksViewModel *preferredVM = [[PreferredDrinksViewModel alloc] init];
-    PreferredDrinksViewController *preferredVC = [[PreferredDrinksViewController alloc] initWithViewModel:preferredVM];
-    UINavigationController *preferredNav = [[UINavigationController alloc] initWithRootViewController:preferredVC];
-
     // History
     HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithCaffeineHistoryManager:self.processor];
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
-    self.tabBar = [[UITabBarController alloc] init];
-    self.tabBar.viewControllers = @[preferredNav, historyNav];
-
-    [RACObserve(self.tabBar, selectedViewController) subscribeNext:^(UINavigationController *navController) {
-        [navController popToRootViewControllerAnimated:NO];
-    }];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.tabBar;
+    self.window.rootViewController = historyNav;
     [self.window makeKeyAndVisible];
 
     return YES;

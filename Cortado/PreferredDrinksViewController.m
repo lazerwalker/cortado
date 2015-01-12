@@ -64,10 +64,12 @@ static NSString * const CellIdentifier = @"cell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] initWithNoBeverageEnabled:YES];
+
+    UIViewController *currentVC = self.navigationController.visibleViewController;
     [[[[[self.navigationController rac_pushViewController:drinkVC animated:YES]
         concat:drinkVC.selectedDrinkSignal]
         take:1]
-        concat:[self.navigationController rac_popToViewController:self animated:YES]]
+        concat:[self.navigationController rac_popToViewController:currentVC animated:YES]]
         subscribeNext:^(Drink *drink) {
             [self.viewModel setDrink:drink.copy];
         }];

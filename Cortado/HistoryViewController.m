@@ -5,6 +5,8 @@
 #import "AddConsumptionViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
+#import "PreferredDrinksViewController.h"
+#import "PreferredDrinksViewModel.h"
 
 #import "HistoryViewController.h"
 
@@ -18,7 +20,7 @@ static NSString * const CellIdentifier = @"Cell";
 
     _viewModel = viewModel;
 
-    self.title = @"History";
+    self.title = @"Cortado";
 
     return self;
 }
@@ -42,6 +44,13 @@ static NSString * const CellIdentifier = @"Cell";
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
     self.tableView.rowHeight = 56.0;
+
+    PreferredDrinksViewModel *pvm = [[PreferredDrinksViewModel alloc] init];
+    PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:pvm];
+    pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 140);
+    self.tableView.tableHeaderView = pvc.view;
+    self.tableView.tableHeaderView.clipsToBounds = YES;
+    [self addChildViewController:pvc];
 }
 
 #pragma mark - UITableViewDelegate
