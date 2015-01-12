@@ -1,5 +1,3 @@
-@import CoreLocation;
-
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
@@ -14,7 +12,6 @@
 
 #import "HistoryViewController.h"
 
-static NSString * const FTUECompletedKey = @"completedFTUE";
 static NSString * const CellIdentifier = @"Cell";
 
 @implementation HistoryViewController
@@ -35,12 +32,10 @@ static NSString * const CellIdentifier = @"Cell";
 
     [self.viewModel refetchHistory];
 
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    if (![defaults boolForKey:FTUECompletedKey]) {
+    if (self.viewModel.shouldShowFTUE) {
         FTUEViewController *ftue = [[FTUEViewController alloc] init];
         [ftue.completedSignal subscribeCompleted:^{
-            [defaults setBool:YES forKey:FTUECompletedKey];
-            [defaults synchronize];
+            [self.viewModel sawFTUE];
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [self presentViewController:ftue animated:NO completion:nil];
@@ -76,25 +71,40 @@ static NSString * const CellIdentifier = @"Cell";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:pvc action:@selector(didTapAddButton)];
 
     // Permissions errors
-    if ([NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey]) {
-        if (!(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways)) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Location Services Disabled"
-                                                                           message:@"To get the most out of Cortado, it needs access to your location. Please open the app's location settings and grant it 'Always' permissions."
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Open Settings"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction *action) {
-                                                                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                                                                 [UIApplication.sharedApplication openURL:url];
-                                                             }];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No Thanks"
-                                                                   style:UIAlertActionStyleCancel
-                                                                 handler:^(UIAlertAction *action) {}];
-            [alert addAction:okAction];
-            [alert addAction:cancelAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
+    if (self.viewModel.shouldPromptForHealthKit) {
+        [self promptForHealthKit];
+    } else if (self.viewModel.shouldPromptForLocation) {
+        [self promptForLocation];
     }
+}
+
+- (void)promptForHealthKit {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"HealthKit Not Authorized"
+                                                                   message:@"To save your data, Cortado needs access to HealthKit.\n\nPlease open the Health app, navigate to the 'Sources' tab, and grant Cortado access to write caffeine data."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
+                                                         if (self.viewModel.shouldPromptForLocation) {
+                                                             [self promptForLocation];
+                                                         }}];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)promptForLocation {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Location Services Disabled"
+                                                                   message:@"To get the most out of Cortado, it needs access to your location. Please open the app's location settings and grant it 'Always' permissions."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Open Settings"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) { [self.viewModel authorizeLocation]; }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No Thanks"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {}];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDelegate

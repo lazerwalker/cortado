@@ -13,6 +13,13 @@
 @property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
 
+- (BOOL)shouldShowFTUE;
+- (void)sawFTUE;
+
+- (BOOL)shouldPromptForLocation;
+- (BOOL)shouldPromptForHealthKit;
+- (void)authorizeLocation;
+
 - (void)refetchHistory;
 
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath;

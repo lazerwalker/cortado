@@ -1,3 +1,5 @@
+@import CoreLocation;
+
 #import <Asterism/Asterism.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
@@ -10,6 +12,7 @@
 #import "HistoryViewModel.h"
 
 static NSString * const HistoryKey = @"History";
+static NSString * const FTUECompletedKey = @"completedFTUE";
 
 @interface HistoryViewModel ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
@@ -128,6 +131,33 @@ static NSString * const HistoryKey = @"History";
 - (RACSignal *)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to {
     DrinkConsumption *from = [self drinkAtIndexPath:indexPath];
     return [self.manager editDrink:from toDrink:to];
+}
+
+#pragma mark - FTUE
+- (BOOL)shouldShowFTUE {
+    return ![NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey];
+}
+
+- (void)sawFTUE {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setBool:YES forKey:FTUECompletedKey];
+    [defaults synchronize];
+}
+
+- (BOOL)shouldPromptForLocation {
+    // TODO: Abstract CLLocationManager away in LocationFetcher
+    return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey] &&
+        CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorizedAlways;
+}
+
+- (void)authorizeLocation {
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [UIApplication.sharedApplication openURL:url];
+}
+
+- (BOOL)shouldPromptForHealthKit {
+    return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey] &&
+        !self.manager.isAuthorized;
 }
 
 #pragma mark - Noop
