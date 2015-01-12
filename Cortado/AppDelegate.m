@@ -5,6 +5,8 @@
 #import <Parse/Parse.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "UIViewController+ReactiveCocoa.h"
+
 #import "AddConsumptionViewModel.h"
 #import "AddConsumptionViewController.h"
 #import "Drink.h"
@@ -14,6 +16,7 @@
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
+#import "FTUEViewController.h"
 #import "HistoryViewController.h"
 #import "HistoryViewModel.h"
 #import "LocationDetector.h"

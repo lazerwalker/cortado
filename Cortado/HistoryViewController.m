@@ -3,6 +3,7 @@
 
 #import "AddConsumptionViewModel.h"
 #import "AddConsumptionViewController.h"
+#import "FTUEViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
 #import "PreferredDrinksViewController.h"
@@ -10,6 +11,7 @@
 
 #import "HistoryViewController.h"
 
+static NSString * const FTUECompletedKey = @"completedFTUE";
 static NSString * const CellIdentifier = @"Cell";
 
 @implementation HistoryViewController
@@ -27,7 +29,19 @@ static NSString * const CellIdentifier = @"Cell";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     [self.viewModel refetchHistory];
+
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if (![defaults boolForKey:FTUECompletedKey]) {
+        FTUEViewController *ftue = [[FTUEViewController alloc] init];
+        [ftue.completedSignal subscribeCompleted:^{
+            [defaults setBool:YES forKey:FTUECompletedKey];
+            [defaults synchronize];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [self presentViewController:ftue animated:NO completion:nil];
+    }
 }
 
 - (void)viewDidLoad {
