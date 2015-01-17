@@ -55,11 +55,12 @@ static NSString * const CellIdentifier = @"Cell";
     [self addChildViewController:pvc];
 
     @weakify(self)
-    [[RACObserve(self.viewModel, drinks)
-        deliverOn:RACScheduler.mainThreadScheduler]
+    [RACObserve(self.viewModel, drinks)
         subscribeNext:^(id obj) {
             @strongify(self)
-            [self.tableView reloadData];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
         }];
 
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
