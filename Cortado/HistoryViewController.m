@@ -58,9 +58,7 @@ static NSString * const CellIdentifier = @"Cell";
     [RACObserve(self.viewModel, drinks)
         subscribeNext:^(id obj) {
             @strongify(self)
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
+            [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0];
         }];
 
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
