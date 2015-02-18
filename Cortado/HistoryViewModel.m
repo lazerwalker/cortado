@@ -40,8 +40,7 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
         map:^id(NSArray *drinks) {
             NSCalendar *calendar = [NSCalendar currentCalendar];
             return ASTGroupBy(drinks, ^id<NSCopying>(DrinkConsumption *drink) {
-                NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:drink.timestamp];
-                return [calendar dateFromComponents:components];
+                return [calendar startOfDayForDate:drink.timestamp];
             });
         }];
 
