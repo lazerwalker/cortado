@@ -82,6 +82,8 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 
 #pragma mark -
 - (NSArray *)drinksForDateAtIndex:(NSInteger)index {
+    if (index >= self.sortedDateKeys.count) return nil;
+    
     id key = self.sortedDateKeys[index];
     return self.clusteredDrinks[key];
 }

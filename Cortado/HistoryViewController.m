@@ -54,16 +54,19 @@ static NSString * const CellIdentifier = @"Cell";
     self.tableView.tableHeaderView.clipsToBounds = YES;
     [self addChildViewController:pvc];
 
-    @weakify(self)
-    [RACObserve(self.viewModel, drinks)
-        subscribeNext:^(id obj) {
-            @strongify(self)
-            [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0];
-        }];
-
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
     self.tableView.rowHeight = 56.0;
+
+    @weakify(self)
+    [[RACObserve(self.viewModel, drinks) distinctUntilChanged]
+        subscribeNext:^(id obj) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self)
+                [self.tableView reloadData];
+            });
+        }];
+
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
 
