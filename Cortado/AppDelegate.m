@@ -33,8 +33,6 @@
 
 @property (nonatomic, strong) LocationFetcher *fetcher;
 
-@property (nonatomic, strong) UITabBarController *tabBar;
-
 @end
 
 @implementation AppDelegate
@@ -103,7 +101,7 @@
     if (consumption.isValid) {
         completionHandler();
     } else {
-        UINavigationController *nav = (UINavigationController *)self.tabBar.selectedViewController;
+        UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
         if (nav.presentedViewController) {
             [nav dismissViewControllerAnimated:NO completion:nil];
         }
