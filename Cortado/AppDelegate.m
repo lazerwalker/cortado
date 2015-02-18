@@ -30,7 +30,6 @@
 @interface AppDelegate ()
 
 @property (nonatomic, strong) CaffeineHistoryManager *processor;
-
 @property (nonatomic, strong) LocationFetcher *fetcher;
 
 @end
@@ -56,8 +55,6 @@
 
 
     [UIApplication.sharedApplication registerForRemoteNotifications];
-
-    // TODO: Abstract this out somewhere else
 
     // History
     HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithCaffeineHistoryManager:self.processor];
