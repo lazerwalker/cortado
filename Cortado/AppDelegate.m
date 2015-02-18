@@ -99,7 +99,8 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
-        completionHandler();
+        [[self.processor processDrink:consumption]
+            subscribeCompleted:completionHandler];
     } else {
         UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
         if (nav.presentedViewController) {
