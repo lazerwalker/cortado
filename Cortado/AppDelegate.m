@@ -29,7 +29,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) HealthKitManager *processor;
+@property (nonatomic, strong) HealthKitManager *healthKitManager;
 @property (nonatomic, strong) LocationFetcher *fetcher;
 
 @end
@@ -39,7 +39,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.processor = [[HealthKitManager alloc] init];
+    self.healthKitManager = [[HealthKitManager alloc] init];
 
     CortadoKeys *keys = [[CortadoKeys alloc] init];
 
@@ -57,7 +57,7 @@
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     // History
-    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithHealthKitManager:self.processor];
+    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithHealthKitManager:self.healthKitManager];
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
 
@@ -96,7 +96,7 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
-        [[self.processor processDrink:consumption]
+        [[self.healthKitManager processDrink:consumption]
             subscribeCompleted:completionHandler];
     } else {
         UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
