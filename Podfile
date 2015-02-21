@@ -10,8 +10,8 @@ pod 'ReactiveViewModel', '~> 0.2'
 plugin 'cocoapods-keys', {
     :project => "Cortado",
     :keys => [
-        "FoursquareClientID",
-        "FoursquareClientSecret"
+        "foursquareClientID",
+        "foursquareClientSecret"
     ]
 }
 
