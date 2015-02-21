@@ -8,6 +8,7 @@
 
 #import "AddConsumptionViewModel.h"
 #import "AddConsumptionViewController.h"
+#import "DataStore.h"
 #import "Drink.h"
 #import "DrinkConsumption.h"
 #import "DrinkConsumptionSerializer.h"
@@ -28,7 +29,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) HealthKitManager *healthKitManager;
+@property (nonatomic, strong) DataStore *dataStore;
 @property (nonatomic, strong) LocationFetcher *fetcher;
 
 @end
@@ -38,7 +39,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.healthKitManager = [[HealthKitManager alloc] init];
+    HealthKitManager *healthKitManager = [[HealthKitManager alloc] init];
+    self.dataStore = [[DataStore alloc] initWithHealthKitManager:healthKitManager];
 
     CortadoKeys *keys = [[CortadoKeys alloc] init];
 
@@ -52,7 +54,7 @@
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     // History
-    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithHealthKitManager:self.healthKitManager];
+    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithDataStore:self.dataStore];
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
 
@@ -70,7 +72,7 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
-        [[self.healthKitManager addDrink:consumption]
+        [[self.dataStore addDrink:consumption]
             subscribeCompleted:completionHandler];
     } else {
         UINavigationController *nav = (UINavigationController *)self.window.rootViewController;

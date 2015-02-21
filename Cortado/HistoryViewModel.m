@@ -5,8 +5,9 @@
 #import <ReactiveCocoa/RACEXTScope.h>
 
 #import "AddConsumptionViewModel.h"
-#import "HealthKitManager.h"
+#import "DataStore.h"
 #import "DrinkConsumption.h"
+#import "HealthKitManager.h"
 #import "HistoryCellViewModel.h"
 
 #import "HistoryViewModel.h"
@@ -23,15 +24,15 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 
 @implementation HistoryViewModel
 
-- (id)initWithHealthKitManager:(HealthKitManager *)manager {
+- (id)initWithDataStore:(DataStore *)dataStore {
     self = [super init];
     if (!self) return nil;
 
-    _manager = manager;
+    _dataStore = dataStore;
 
     RAC(self, drinks) = [[[self rac_signalForSelector:@selector(refetchHistory)]
         flattenMap:^RACStream *(id value) {
-            return [[manager fetchHistory] collect];
+            return [[dataStore fetchHistory] collect];
         }] doNext:^(NSArray *drinks) {
             [self persistDrinks:drinks];
         }];
@@ -126,12 +127,12 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 #pragma mark - Actions
 - (RACSignal *)deleteAtIndexPath:(NSIndexPath *)indexPath {
     DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
-    return [self.manager deleteDrink:drink];
+    return [self.dataStore deleteDrink:drink];
 }
 
 - (RACSignal *)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to {
     DrinkConsumption *from = [self drinkAtIndexPath:indexPath];
-    return [self.manager editDrink:from toDrink:to];
+    return [self.dataStore editDrink:from toDrink:to];
 }
 
 #pragma mark - FTUE
@@ -157,8 +158,9 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 }
 
 - (BOOL)shouldPromptForHealthKit {
+    // TODO: Law of Demeter!
     return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey] &&
-        !self.manager.isAuthorized;
+        !self.dataStore.healthKitManager.isAuthorized;
 }
 
 #pragma mark - Noop
