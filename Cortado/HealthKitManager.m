@@ -10,9 +10,9 @@
 #import "DrinkConsumption.h"
 #import "DrinkConsumptionSerializer.h"
 
-#import "CaffeineHistoryManager.h"
+#import "HealthKitManager.h"
 
-@interface CaffeineHistoryManager ()
+@interface HealthKitManager ()
 
 @property (nonatomic, strong) HKHealthStore *healthStore;
 @property (nonatomic, strong) HKQuantityType *caffeineType;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation CaffeineHistoryManager
+@implementation HealthKitManager
 
 - (id)init {
     self = [super init];

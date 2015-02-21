@@ -12,7 +12,7 @@
 #import "Drink.h"
 #import "DrinkConsumption.h"
 #import "DrinkConsumptionSerializer.h"
-#import "CaffeineHistoryManager.h"
+#import "HealthKitManager.h"
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
@@ -29,7 +29,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) CaffeineHistoryManager *processor;
+@property (nonatomic, strong) HealthKitManager *processor;
 @property (nonatomic, strong) LocationFetcher *fetcher;
 
 @end
@@ -39,7 +39,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.processor = [[CaffeineHistoryManager alloc] init];
+    self.processor = [[HealthKitManager alloc] init];
 
     CortadoKeys *keys = [[CortadoKeys alloc] init];
 
@@ -57,7 +57,7 @@
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     // History
-    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithCaffeineHistoryManager:self.processor];
+    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithHealthKitManager:self.processor];
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
 
@@ -112,7 +112,7 @@
         [nav presentViewController:addNav animated:NO completion:nil];
         [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
             // TODO: This belongs elsewhere.
-            CaffeineHistoryManager *manager = [[CaffeineHistoryManager alloc] init];
+            HealthKitManager *manager = [[HealthKitManager alloc] init];
             [manager processDrinkImmediately:c];
         } completed:^{
             [nav dismissViewControllerAnimated:YES completion:nil];

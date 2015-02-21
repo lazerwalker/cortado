@@ -7,7 +7,7 @@
 
 #import "AddConsumptionViewController.h"
 #import "AddConsumptionViewModel.h"
-#import "CaffeineHistoryManager.h"
+#import "HealthKitManager.h"
 #import "Drink.h"
 #import "DrinkCell.h"
 #import "DrinkCellViewModel.h"
@@ -109,7 +109,7 @@ static NSString * const CellIdentifier = @"cell";
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
         // TODO: This belongs elsewhere.
-        CaffeineHistoryManager *manager = [[CaffeineHistoryManager alloc] init];
+        HealthKitManager *manager = [[HealthKitManager alloc] init];
         [manager processDrinkImmediately:c];
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];

@@ -39,7 +39,7 @@
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
 		A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA44D1A53655400363546 /* DrinkCell.m */; };
 		A6EBA4511A53662E00363546 /* DrinkCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */; };
-		A6EBA87D1A2A3B3200344C17 /* CaffeineHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */; };
+		A6EBA87D1A2A3B3200344C17 /* HealthKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */; };
 		A6F328F01A57577A001D36EC /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328EF1A57577A001D36EC /* HistoryCell.m */; };
 		A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328F21A575799001D36EC /* HistoryCellViewModel.m */; };
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
@@ -136,8 +136,8 @@
 		A6EBA44D1A53655400363546 /* DrinkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkCell.m; sourceTree = "<group>"; };
 		A6EBA44F1A53662E00363546 /* DrinkCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkCellViewModel.h; sourceTree = "<group>"; };
 		A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkCellViewModel.m; sourceTree = "<group>"; };
-		A6EBA87B1A2A3B3200344C17 /* CaffeineHistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaffeineHistoryManager.h; sourceTree = "<group>"; };
-		A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaffeineHistoryManager.m; sourceTree = "<group>"; };
+		A6EBA87B1A2A3B3200344C17 /* HealthKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitManager.h; sourceTree = "<group>"; };
+		A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitManager.m; sourceTree = "<group>"; };
 		A6F328EE1A57577A001D36EC /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		A6F328EF1A57577A001D36EC /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		A6F328F11A575799001D36EC /* HistoryCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCellViewModel.h; sourceTree = "<group>"; };
@@ -169,8 +169,8 @@
 		A60585D91A3E11C800FF267F /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				A6EBA87B1A2A3B3200344C17 /* CaffeineHistoryManager.h */,
-				A6EBA87C1A2A3B3200344C17 /* CaffeineHistoryManager.m */,
+				A6EBA87B1A2A3B3200344C17 /* HealthKitManager.h */,
+				A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */,
 				A60585DA1A3E120500FF267F /* LocationDetector.h */,
 				A60585DB1A3E120500FF267F /* LocationDetector.m */,
 				A6C938881A485E1C00E96951 /* DrinkConsumptionSerializer.h */,
@@ -476,7 +476,7 @@
 				A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */,
 				A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */,
 				A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */,
-				A6EBA87D1A2A3B3200344C17 /* CaffeineHistoryManager.m in Sources */,
+				A6EBA87D1A2A3B3200344C17 /* HealthKitManager.m in Sources */,
 				A6BD5A111A532BF9001B5FD0 /* AddConsumptionViewModel.m in Sources */,
 				A623765B1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m in Sources */,
 				A6C9388A1A485E1C00E96951 /* DrinkConsumptionSerializer.m in Sources */,

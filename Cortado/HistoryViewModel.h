@@ -2,14 +2,14 @@
 
 @class AddConsumptionViewModel;
 @class DrinkConsumption;
-@class CaffeineHistoryManager;
+@class HealthKitManager;
 @class HistoryCellViewModel;
 
 @interface HistoryViewModel : RVMViewModel
 
-- (id)initWithCaffeineHistoryManager:(CaffeineHistoryManager *)manager;
+- (id)initWithHealthKitManager:(HealthKitManager *)manager;
 
-@property (readonly, nonatomic, strong) CaffeineHistoryManager *manager;
+@property (readonly, nonatomic, strong) HealthKitManager *manager;
 @property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
 

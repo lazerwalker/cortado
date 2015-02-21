@@ -5,7 +5,7 @@
 #import <ReactiveCocoa/RACEXTScope.h>
 
 #import "AddConsumptionViewModel.h"
-#import "CaffeineHistoryManager.h"
+#import "HealthKitManager.h"
 #import "DrinkConsumption.h"
 #import "HistoryCellViewModel.h"
 
@@ -23,7 +23,7 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 
 @implementation HistoryViewModel
 
-- (id)initWithCaffeineHistoryManager:(CaffeineHistoryManager *)manager {
+- (id)initWithHealthKitManager:(HealthKitManager *)manager {
     self = [super init];
     if (!self) return nil;
 

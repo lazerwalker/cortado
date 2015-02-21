@@ -3,7 +3,7 @@
 @class DrinkConsumption;
 @class RACSignal;
 
-@interface CaffeineHistoryManager : NSObject
+@interface HealthKitManager : NSObject
 
 @property (readonly) BOOL isAuthorized;
 
