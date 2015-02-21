@@ -1,0 +1,1 @@
+PODS_KEYS_OTHER_LDFLAGS = -framework "Foundation"

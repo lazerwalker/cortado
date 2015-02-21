@@ -8,3 +8,13 @@ pod "Parse", "~> 1.5.0"
 pod 'ReactiveCocoa', '~> 2.3'
 pod 'ReactiveViewModel', '~> 0.2'
 
+plugin 'cocoapods-keys', {
+    :project => "Cortado",
+    :keys => [
+        "ParseAppID",
+        "ParseClientKey",
+        "FoursquareClientID",
+        "FoursquareClientSecret"
+    ]
+}
+

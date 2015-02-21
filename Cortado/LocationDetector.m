@@ -1,4 +1,4 @@
-#import <CocoaPods-Keys/CortadoKeys.h>
+#import <Keys/CortadoKeys.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CoffeeShopNotification.h"

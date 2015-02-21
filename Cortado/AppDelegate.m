@@ -1,7 +1,7 @@
 @import CoreLocation;
 @import HealthKit;
 
-#import <CocoaPods-Keys/CortadoKeys.h>
+#import <Keys/CortadoKeys.h>
 #import <Parse/Parse.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 

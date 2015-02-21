@@ -3,6 +3,7 @@ PODS:
   - Bolts (1.1.3)
   - FLKAutoLayout (0.2.1)
   - FXForms (1.2.10)
+  - Keys (1.0.1)
   - Mantle (1.5.1):
     - Mantle/extobjc (= 1.5.1)
   - Mantle/extobjc (1.5.1)
@@ -22,19 +23,30 @@ DEPENDENCIES:
   - Asterism (~> 1.0.0)
   - FLKAutoLayout (~> 0.2)
   - FXForms (~> 1.2)
+  - Keys (from `https://github.com/ashfurrow/empty-podspec.git`)
   - Mantle (~> 1.5)
   - Parse (~> 1.5.0)
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
+
+EXTERNAL SOURCES:
+  Keys:
+    :git: https://github.com/ashfurrow/empty-podspec.git
+
+CHECKOUT OPTIONS:
+  Keys:
+    :commit: 31e65aac9132fc0e0080ee436b3415c51fb88a52
+    :git: https://github.com/ashfurrow/empty-podspec.git
 
 SPEC CHECKSUMS:
   Asterism: 26783427dc5b3ff144cbabb87485456458797350
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   FLKAutoLayout: 8a973ab83832a8527626127193643f3c8ea157d5
   FXForms: 758fe50c354f10e707cd1a47e5c4ac9198404427
+  Keys: 0a6f1bd71fe4e8bbfc32c93e7d6b086a383a520a
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   Parse: 7de25b6f70f0b233e5d25835f62eabfa91e4f9d7
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.2
