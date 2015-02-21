@@ -110,7 +110,7 @@ static NSString * const CellIdentifier = @"cell";
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
         // TODO: This belongs elsewhere.
         HealthKitManager *manager = [[HealthKitManager alloc] init];
-        [manager processDrinkImmediately:c];
+        [manager addDrinkImmediately:c];
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];

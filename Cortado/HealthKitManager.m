@@ -49,11 +49,11 @@
     return self;
 }
 
-- (void)processDrinkImmediately:(DrinkConsumption *)drink {
-    [[self processDrink:drink] subscribeCompleted:^{}];
+- (void)addDrinkImmediately:(DrinkConsumption *)drink {
+    [[self addDrink:drink] subscribeCompleted:^{}];
 }
 
-- (RACSignal *)processDrink:(DrinkConsumption *)drink {
+- (RACSignal *)addDrink:(DrinkConsumption *)drink {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         HKQuantitySample *sample = [self createSampleFromDrink:drink];
         [self.healthStore saveObject:sample withCompletion:^(BOOL success, NSError *error) {
@@ -77,7 +77,7 @@
 - (RACSignal *)editDrink:(DrinkConsumption *)from
                  toDrink:(DrinkConsumption *)to {
     return [[self deleteDrink:from] then:^{
-        return [self processDrink:to];
+        return [self addDrink:to];
     }];
 }
 

@@ -70,7 +70,7 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
-        [[self.healthKitManager processDrink:consumption]
+        [[self.healthKitManager addDrink:consumption]
             subscribeCompleted:completionHandler];
     } else {
         UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
@@ -87,7 +87,7 @@
         [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
             // TODO: This belongs elsewhere.
             HealthKitManager *manager = [[HealthKitManager alloc] init];
-            [manager processDrinkImmediately:c];
+            [manager addDrinkImmediately:c];
         } completed:^{
             [nav dismissViewControllerAnimated:YES completion:nil];
             completionHandler();
