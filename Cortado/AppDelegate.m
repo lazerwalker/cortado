@@ -2,7 +2,6 @@
 @import HealthKit;
 
 #import <Keys/CortadoKeys.h>
-#import <Parse/Parse.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "UIViewController+ReactiveCocoa.h"
@@ -50,10 +49,6 @@
     // Background fetch
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
 
-    [Parse setApplicationId:keys.parseAppID
-                  clientKey:keys.parseClientKey];
-
-
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     // History
@@ -66,27 +61,6 @@
     [self.window makeKeyAndVisible];
 
     return YES;
-}
-
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-}
-
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-
-    NSString *tokenString = [[[[NSString stringWithFormat:@"ID%@",deviceToken]
-        stringByReplacingOccurrencesOfString:@"<" withString:@""]
-        stringByReplacingOccurrencesOfString:@">" withString:@""]
-        stringByReplacingOccurrencesOfString:@" " withString:@""];
-
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cortado"];
-    [defaults setObject:tokenString forKey:@"channel"];
-    [defaults synchronize];
-
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation addUniqueObject:tokenString forKey:@"channels"];
-    [currentInstallation saveInBackground];
 }
 
 #pragma mark - Processing

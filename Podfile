@@ -11,8 +11,6 @@ pod 'ReactiveViewModel', '~> 0.2'
 plugin 'cocoapods-keys', {
     :project => "Cortado",
     :keys => [
-        "ParseAppID",
-        "ParseClientKey",
         "FoursquareClientID",
         "FoursquareClientSecret"
     ]
