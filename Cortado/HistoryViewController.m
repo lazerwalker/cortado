@@ -14,6 +14,10 @@
 
 static NSString * const CellIdentifier = @"Cell";
 
+@interface HistoryViewController ()
+@property (readonly, nonatomic, strong) PreferredDrinksViewModel *preferredDrinksViewModel;
+@end
+
 @implementation HistoryViewController
 
 - (id)initWithViewModel:(HistoryViewModel *)viewModel {
@@ -30,8 +34,6 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    [self.viewModel refetchHistory];
-
     if (self.viewModel.shouldShowFTUE) {
         FTUEViewController *ftue = [[FTUEViewController alloc] init];
         [ftue.completedSignal subscribeCompleted:^{
@@ -45,8 +47,8 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    PreferredDrinksViewModel *pvm = [[PreferredDrinksViewModel alloc] init];
-    PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:pvm];
+    _preferredDrinksViewModel = [[PreferredDrinksViewModel alloc] init];
+    PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:self.preferredDrinksViewModel];
     pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 156);
     pvc.tableView.scrollEnabled = NO;
 
@@ -59,7 +61,7 @@ static NSString * const CellIdentifier = @"Cell";
     self.tableView.rowHeight = 56.0;
 
     @weakify(self)
-    [[RACObserve(self.viewModel, drinks) distinctUntilChanged]
+    [RACObserve(self.viewModel, drinks)
         subscribeNext:^(id obj) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 @strongify(self)
@@ -70,7 +72,7 @@ static NSString * const CellIdentifier = @"Cell";
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Check" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:pvc action:@selector(didTapAddButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didTapAddButton)];
 
     // Permissions errors
     if (self.viewModel.shouldPromptForHealthKit) {
@@ -109,6 +111,22 @@ static NSString * const CellIdentifier = @"Cell";
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark -
+
+- (void)didTapAddButton {
+    AddConsumptionViewModel *addVM = [[AddConsumptionViewModel alloc] init];
+    addVM.drink = [self.preferredDrinksViewModel drinkAtIndex:0];
+    AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addVC];
+
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
+        [[self.viewModel addDrink:c] subscribeNext:^(id x) {}];
+    } completed:^{
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(HistoryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.viewModel = [self.viewModel cellViewModelAtIndexPath:indexPath];
@@ -135,9 +153,6 @@ static NSString * const CellIdentifier = @"Cell";
                     [alert show];
                 });
 
-            } completed:^{
-                @strongify(self)
-                [self.viewModel refetchHistory];
             }];
     } completed:^{
         @strongify(self)
@@ -155,7 +170,6 @@ static NSString * const CellIdentifier = @"Cell";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        @weakify(self)
         [[self.viewModel deleteAtIndexPath:indexPath]
             subscribeError:^(NSError *error) {
                 NSString *message = @"This entry wasn't created by Cortado. You can only delete it from within Apple's Health app.";
@@ -167,9 +181,6 @@ static NSString * const CellIdentifier = @"Cell";
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [alert show];
                 });
-            } completed:^{
-                @strongify(self)
-                [self.viewModel refetchHistory];
             }];
         [self.tableView setEditing:NO];
     }

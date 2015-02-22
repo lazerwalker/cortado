@@ -98,23 +98,6 @@ static NSString * const CellIdentifier = @"cell";
     return cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(DrinkCell.class) forIndexPath:indexPath];
 }
 
-#pragma mark -
-
-- (void)didTapAddButton {
-    AddConsumptionViewModel *addVM = [[AddConsumptionViewModel alloc] init];
-    addVM.drink = [self.viewModel drinkAtIndex:0];
-    AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addVC];
-
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
-    [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
-        // TODO: This belongs elsewhere.
-        HealthKitManager *manager = [[HealthKitManager alloc] init];
-        [manager addDrinkImmediately:c];
-    } completed:^{
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    }];
-}
 
 
 @end

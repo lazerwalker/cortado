@@ -12,7 +12,6 @@
 
 #import "HistoryViewModel.h"
 
-static NSString * const HistoryKey = @"History";
 static NSString * const FTUECompletedKey = @"completedFTUE";
 
 @interface HistoryViewModel ()
@@ -30,12 +29,10 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 
     _dataStore = dataStore;
 
-    RAC(self, drinks) = [[[self rac_signalForSelector:@selector(refetchHistory)]
-        flattenMap:^RACStream *(id value) {
-            return [[dataStore fetchHistory] collect];
-        }] doNext:^(NSArray *drinks) {
-            [self persistDrinks:drinks];
-        }];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+    RAC(self, drinks) = [RACObserve(self, dataStore.drinks) map:^id(NSArray *drinks) {
+        return [drinks sortedArrayUsingDescriptors:@[sortDescriptor]];
+    }];
 
     RAC(self, clusteredDrinks) = [RACObserve(self, drinks)
         map:^id(NSArray *drinks) {
@@ -54,8 +51,6 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     _headerDateFormatter = [[NSDateFormatter alloc] init];
     _headerDateFormatter.dateFormat = @"EEEE, MMMM d";
 
-    self.drinks = self.cachedDrinks;
-
     return self;
 }
 
@@ -64,21 +59,6 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinks)];
 }
 
-#pragma mark - Persistence
-- (void)persistDrinks:(NSArray *)drinks {
-    if (!self.drinks) { return; }
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    [defaults setObject:data forKey:HistoryKey];
-    [defaults synchronize];
-}
-
-- (NSArray *)cachedDrinks {
-    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:HistoryKey];
-    if (!data) return nil;
-
-    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
-}
 
 #pragma mark -
 - (NSArray *)drinksForDateAtIndex:(NSInteger)index {
@@ -135,6 +115,10 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     return [self.dataStore editDrink:from toDrink:to];
 }
 
+- (RACSignal *)addDrink:(DrinkConsumption *)drink {
+    return [self.dataStore addDrink:drink];
+}
+
 #pragma mark - FTUE
 - (BOOL)shouldShowFTUE {
     return ![NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey];
@@ -162,8 +146,5 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey] &&
         !self.dataStore.healthKitManager.isAuthorized;
 }
-
-#pragma mark - Noop
-- (void)refetchHistory {}
 
 @end

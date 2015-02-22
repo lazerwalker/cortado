@@ -20,8 +20,6 @@
 - (BOOL)shouldPromptForHealthKit;
 - (void)authorizeLocation;
 
-- (void)refetchHistory;
-
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath;
 - (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -30,6 +28,7 @@
 
 #pragma mark - Actions
 - (RACSignal *)deleteAtIndexPath:(NSIndexPath *)indexPath;
+- (RACSignal *)addDrink:(DrinkConsumption *)drink;
 - (RACSignal *)editDrinkAtIndexPath:(NSIndexPath *)indexPath to:(DrinkConsumption *)to;
 
 @end
