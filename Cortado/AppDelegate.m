@@ -85,6 +85,8 @@
         AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
         UINavigationController *addNav = [[UINavigationController alloc] initWithRootViewController:addVC];
 
+        [addVC showDrinkPicker];
+
         [nav presentViewController:addNav animated:NO completion:nil];
         [[addVM.completedSignal
             flattenMap:^RACStream *(DrinkConsumption *c) {

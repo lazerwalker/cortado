@@ -10,4 +10,6 @@
 
 - (id)initWithViewModel:(AddConsumptionViewModel *)viewModel;
 
+- (void)showDrinkPicker;
+
 @end
