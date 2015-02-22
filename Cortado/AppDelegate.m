@@ -86,15 +86,13 @@
         UINavigationController *addNav = [[UINavigationController alloc] initWithRootViewController:addVC];
 
         [nav presentViewController:addNav animated:NO completion:nil];
-        [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
-            // TODO: This belongs elsewhere.
-            HealthKitManager *manager = [[HealthKitManager alloc] init];
-            [manager addDrinkImmediately:c];
-        } completed:^{
-            [nav dismissViewControllerAnimated:YES completion:nil];
-            completionHandler();
-        }];
-
+        [[addVM.completedSignal
+            flattenMap:^RACStream *(DrinkConsumption *c) {
+                return [self.dataStore addDrink:c];
+            }] subscribeCompleted:^{
+                [nav dismissViewControllerAnimated:YES completion:nil];
+                completionHandler();
+            }];
     }
 }
 
