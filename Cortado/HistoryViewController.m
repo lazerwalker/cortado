@@ -1,3 +1,5 @@
+@import UIKit; // ARAnalytics
+#import <ARAnalytics/ARAnalytics.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
@@ -120,6 +122,7 @@ static NSString * const CellIdentifier = @"Cell";
 
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
+        [ARAnalytics event:@"Add via add button"];
         [[self.viewModel addDrink:c] subscribeNext:^(id x) {}];
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
@@ -134,6 +137,8 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    [ARAnalytics event:@"Deleted drink"];
+
     AddConsumptionViewModel *addVM = [self.viewModel editViewModelAtIndexPath:indexPath];
     AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
     [self.navigationController pushViewController:addVC animated:YES];
@@ -142,6 +147,8 @@ static NSString * const CellIdentifier = @"Cell";
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *drink) {
         [[self.viewModel editDrinkAtIndexPath:indexPath to:drink]
             subscribeError:^(NSError *error) {
+                [ARAnalytics event:@"Tried to delete HealthKit"];
+
                 NSString *message = @"This entry wasn't created by Cortado. You can only edit it from within Apple's Health app.";
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
                                                                 message:message
@@ -168,9 +175,13 @@ static NSString * const CellIdentifier = @"Cell";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [ARAnalytics event:@"Edited a drink"];
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [[self.viewModel deleteAtIndexPath:indexPath]
             subscribeError:^(NSError *error) {
+                [ARAnalytics event:@"Tried to edit HealthKit"];
+
                 NSString *message = @"This entry wasn't created by Cortado. You can only delete it from within Apple's Health app.";
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
                                                                 message:message

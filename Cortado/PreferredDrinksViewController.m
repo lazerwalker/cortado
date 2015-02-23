@@ -1,3 +1,6 @@
+@import UIKit;
+#import <ARAnalytics/ARAnalytics.h>
+
 #import <Mantle/Mantle.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -71,6 +74,7 @@ static NSString * const CellIdentifier = @"cell";
         take:1]
         concat:[self.navigationController rac_popToViewController:currentVC animated:YES]]
         subscribeNext:^(Drink *drink) {
+            [ARAnalytics event:@"Set favorite drink"];
             [self.viewModel setDrink:drink.copy];
         }];
 }

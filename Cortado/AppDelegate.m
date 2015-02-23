@@ -1,6 +1,8 @@
 @import CoreLocation;
 @import HealthKit;
+@import UIKit; // Needed to stop ARAnalytics from failing to build?!
 
+#import <ARAnalytics/ARAnalytics.h>
 #import <Keys/CortadoKeys.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -48,6 +50,8 @@
                                   clientSecret:keys.foursquareClientSecret];
     self.fetcher = [[LocationFetcher alloc] initWithFoursquareClient:client];
 
+    [ARAnalytics setupMixpanelWithToken:keys.mixpanelToken];
+
     // Background fetch
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
 
@@ -72,9 +76,11 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
+        [ARAnalytics event:@"Add favorite"];
         [[self.dataStore addDrink:consumption]
             subscribeCompleted:completionHandler];
     } else {
+        [ARAnalytics event:@"Tap 'other'"];
         UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
         if (nav.presentedViewController) {
             [nav dismissViewControllerAnimated:NO completion:nil];
@@ -92,6 +98,7 @@
             flattenMap:^RACStream *(DrinkConsumption *c) {
                 return [self.dataStore addDrink:c];
             }] subscribeCompleted:^{
+                [ARAnalytics event:@"Add other"];
                 [nav dismissViewControllerAnimated:YES completion:nil];
                 completionHandler();
             }];

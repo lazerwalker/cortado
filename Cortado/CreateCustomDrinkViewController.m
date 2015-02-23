@@ -1,3 +1,6 @@
+@import UIKit;
+#import <ARAnalytics/ARAnalytics.h>
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "Drink.h"
@@ -40,6 +43,8 @@
 
     Drink *drink = [[Drink alloc] initWithName:form.name
                                                caffeine:form.caffeine];
+
+    [ARAnalytics event:@"Created custom drink"];
     [self.drinkCreatedSignal sendNext:drink];
     [self.drinkCreatedSignal sendCompleted];
 }
