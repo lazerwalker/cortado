@@ -15,7 +15,7 @@
 static NSString * const FTUECompletedKey = @"completedFTUE";
 
 @interface HistoryViewModel ()
-@property (readwrite, nonatomic, strong) NSArray *drinks;
+@property (readwrite, nonatomic, strong) NSArray *drinksArray;
 @property (readwrite, nonatomic, strong) NSDictionary *clusteredDrinks;
 @property (readwrite, nonatomic, strong) NSArray *sortedDateKeys;
 @property (readonly, nonatomic, strong) NSDateFormatter *headerDateFormatter;
@@ -30,11 +30,11 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     _dataStore = dataStore;
 
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
-    RAC(self, drinks) = [RACObserve(self, dataStore.drinks) map:^id(NSArray *drinks) {
+    RAC(self, drinksArray) = [RACObserve(self, dataStore.drinks) map:^id(NSArray *drinks) {
         return [drinks sortedArrayUsingDescriptors:@[sortDescriptor]];
     }];
 
-    RAC(self, clusteredDrinks) = [RACObserve(self, drinks)
+    RAC(self, clusteredDrinks) = [RACObserve(self, drinksArray)
         map:^id(NSArray *drinks) {
             NSCalendar *calendar = [NSCalendar currentCalendar];
             return ASTGroupBy(drinks, ^id<NSCopying>(DrinkConsumption *drink) {
@@ -47,6 +47,12 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
             return [date1 compare:date2];
         }].reverseObjectEnumerator.allObjects;
     }];
+
+    // This is pretty terrible.
+    // Since the data source relies on `sortedDateKeys` being set, we don't want
+    // consumers to fire until sortedDateKeys is set, but we don't want them
+    // observing sortedDateKeys. This... sort of fixes that?
+    RAC(self, drinks) = [RACObserve(self, sortedDateKeys) mapReplace:self.drinksArray];
 
     _headerDateFormatter = [[NSDateFormatter alloc] init];
     _headerDateFormatter.dateFormat = @"EEEE, MMMM d";
