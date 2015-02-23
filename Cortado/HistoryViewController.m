@@ -28,6 +28,8 @@ static NSString * const CellIdentifier = @"Cell";
 
     self.title = @"Cortado";
 
+    [[UILabel appearanceWhenContainedIn:UITableViewHeaderFooterView.class, nil] setFont:[UIFont boldSystemFontOfSize:14.0]];
+
     return self;
 }
 
