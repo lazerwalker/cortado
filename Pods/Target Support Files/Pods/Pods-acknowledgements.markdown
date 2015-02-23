@@ -62,7 +62,7 @@ THE SOFTWARE.
 
 FXForms
 
-version 1.2.10, November 18th, 2014
+version 1.2.12, January 26th, 2015
 
 Copyright (C) 2014 Charcoal Design
 
@@ -89,7 +89,7 @@ and not *any* other files.
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Ash Furrow
+Copyright (c) 2015 Artsy, Ash Furrow
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -420,7 +420,7 @@ any state or federal court in the State of California.
 
 ## ReactiveCocoa
 
-**Copyright (c) 2012 - 2014, GitHub, Inc.**
+**Copyright (c) 2012 - 2015, GitHub, Inc.**
 **All rights reserved.**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of

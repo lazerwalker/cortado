@@ -1,11 +1,3 @@
-//
-//  ARAnalytics.m
-//  Art.sy
-//
-//  Created by orta therox on 18/12/2012.
-//  Copyright (c) 2012 Art.sy. All rights reserved.
-//
-
 #import "ARAnalytics.h"
 #import "ARAnalyticalProvider.h"
 #import "ARAnalyticsProviders.h"
@@ -14,8 +6,9 @@ static ARAnalytics *_sharedAnalytics;
 static BOOL _ARLogShouldPrintStdout = YES;
 
 @interface ARAnalytics ()
-@property (strong) NSMutableDictionary *eventsDictionary;
-@property (strong) NSSet *providers;
+@property (readwrite, nonatomic, strong) NSMutableDictionary *superProperties;
+@property (readwrite, nonatomic, strong) NSMutableDictionary *eventsDictionary;
+@property (readwrite, nonatomic, copy) NSSet *providers;
 @end
 
 #if TARGET_OS_IPHONE
@@ -35,15 +28,18 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
 @implementation ARAnalytics
 
-+ (void) initialize {
++ (void)initialize
+{
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{
         _sharedAnalytics = [[ARAnalytics alloc] init];
         _sharedAnalytics.providers = [NSSet set];
+        _sharedAnalytics.superProperties = [NSMutableDictionary dictionary];
     });
 }
 
-+ (void)logShouldPrintStdout:(BOOL)shouldPrint {
++ (void)logShouldPrintStdout:(BOOL)shouldPrint
+{
     _ARLogShouldPrintStdout = shouldPrint;
 }
 
@@ -52,7 +48,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
 // By using the constants at the bottom you can 
 
-+ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
++ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary
+{
     if (analyticsDictionary[ARTestFlightAppToken]) {
         [self setupTestFlightWithAppToken:analyticsDictionary[ARTestFlightAppToken]];
     }
@@ -131,6 +128,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupSegmentioWithWriteKey:analyticsDictionary[ARSegmentioWriteKey]];
     }
 
+    if (analyticsDictionary[ARSwrveAppID] && analyticsDictionary[ARSwrveAPIKey]) {
+        [self setupSwrveWithAppID:analyticsDictionary[ARSwrveAppID] apiKey:analyticsDictionary[ARSwrveAPIKey]];
+    }
+
+    if (analyticsDictionary[ARAppsFlyerAppID] && analyticsDictionary[ARAppsFlyerDevKey]) {
+        [self setupAppsFlyerWithAppID:analyticsDictionary[ARAppsFlyerAppID] devKey:analyticsDictionary[ARAppsFlyerDevKey]];
+    }
+
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
@@ -151,25 +156,30 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }
 }
 
-+ (void)setupProvider:(ARAnalyticalProvider*)provider {
++ (void)setupProvider:(ARAnalyticalProvider*)provider
+{
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
 
-+ (void)removeProvider:(ARAnalyticalProvider *)provider {
++ (void)removeProvider:(ARAnalyticalProvider *)provider
+{
     NSMutableSet *mutableSet = [NSMutableSet setWithSet:_sharedAnalytics.providers];
     [mutableSet removeObject:provider];
-    _sharedAnalytics.providers = mutableSet.copy;
+    _sharedAnalytics.providers = mutableSet;
 }
 
-+ (NSSet *)currentProviders {
++ (NSSet *)currentProviders
+{
     return _sharedAnalytics.providers;
 }
 
-+ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass {
++ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass
+{
     // Check whether the ProviderClass is subclass of ARAnalyticalProvider or not
-    if (![ProviderClass isSubclassOfClass:[ARAnalyticalProvider class]]) {
+    if (![ProviderClass isSubclassOfClass:ARAnalyticalProvider.class]) {
         return nil;
     }
+
     // Find the instance by enumerating the providers set
     ARAnalyticalProvider *__block providerInstance = nil;
     [_sharedAnalytics.providers enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
@@ -181,182 +191,231 @@ static BOOL _ARLogShouldPrintStdout = YES;
     return providerInstance;
 }
 
-+ (void)setupTestFlightWithAppToken:(NSString *)token {
++ (void)setupTestFlightWithAppToken:(NSString *)token
+{
 #ifdef AR_TESTFLIGHT_EXISTS
     TestFlightProvider *provider = [[TestFlightProvider alloc] initWithIdentifier:token];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupCrashlyticsWithAPIKey:(NSString *)key {
++ (void)setupCrashlyticsWithAPIKey:(NSString *)key
+{
 #ifdef AR_CRASHLYTICS_EXISTS
     CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupMixpanelWithToken:(NSString *)token {
++ (void)setupMixpanelWithToken:(NSString *)token
+{
 #ifdef AR_MIXPANEL_EXISTS
     [self setupMixpanelWithToken:token andHost:nil];
 #endif
 }
 
-+ (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host {
++ (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host
+{
 #ifdef AR_MIXPANEL_EXISTS
     MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token andHost:host];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupFlurryWithAPIKey:(NSString *)key {
++ (void)setupFlurryWithAPIKey:(NSString *)key
+{
 #ifdef AR_FLURRY_EXISTS
     FlurryProvider *provider = [[FlurryProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupGoogleAnalyticsWithID:(NSString *)identifier {
++ (void)setupGoogleAnalyticsWithID:(NSString *)identifier
+{
 #ifdef AR_GOOGLEANALYTICS_EXISTS
     GoogleAnalyticsProvider *provider = [[GoogleAnalyticsProvider alloc] initWithIdentifier:identifier];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupLocalyticsWithAppKey:(NSString *)key {
++ (void)setupLocalyticsWithAppKey:(NSString *)key
+{
 #ifdef AR_LOCALYTICS_EXISTS
     LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupKISSMetricsWithAPIKey:(NSString *)key {
++ (void)setupKISSMetricsWithAPIKey:(NSString *)key
+{
 #ifdef AR_KISSMETRICS_EXISTS
     KISSMetricsProvider *provider = [[KISSMetricsProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupCrittercismWithAppID:(NSString *)appID {
++ (void)setupCrittercismWithAppID:(NSString *)appID
+{
 #ifdef AR_CRITTERCISM_EXISTS
     CrittercismProvider *provider = [[CrittercismProvider alloc] initWithIdentifier:appID];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host {
++ (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host
+{
 #ifdef AR_COUNTLY_EXISTS
     CountlyProvider *provider = [[CountlyProvider alloc] initWithAppKey:key andHost:host];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupBugsnagWithAPIKey:(NSString *)key {
++ (void)setupBugsnagWithAPIKey:(NSString *)key
+{
 #ifdef AR_BUGSNAG_EXISTS
     BugsnagProvider *provider = [[BugsnagProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey {
++ (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey
+{
 #ifdef AR_HELPSHIFT_EXISTS
     HelpshiftProvider *provider = [[HelpshiftProvider alloc] initWithAppID:appID domainName:domainName apiKey:apiKey];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret
+{
 #ifdef AR_TAPSTREAM_EXISTS
     TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config
+{
 #ifdef AR_TAPSTREAM_EXISTS
     TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret config:config];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupNewRelicWithAppToken:(NSString *)token {
++ (void)setupNewRelicWithAppToken:(NSString *)token
+{
 #ifdef AR_NEWRELIC_EXISTS
     NewRelicProvider *provider = [[NewRelicProvider alloc] initWithIdentifier:token];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupAmplitudeWithAPIKey:(NSString *)key {
++ (void)setupAmplitudeWithAPIKey:(NSString *)key
+{
 #ifdef AR_AMPLITUDE_EXISTS
      AmplitudeProvider *provider = [[AmplitudeProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupHockeyAppWithBetaID:(NSString *)betaID {
++ (void)setupHockeyAppWithBetaID:(NSString *)betaID
+{
 #ifdef AR_HOCKEYAPP_EXISTS
     [self setupHockeyAppWithBetaID:betaID liveID:nil];
 #endif
 }
 
-+ (void)setupHockeyAppWithBetaID:(NSString *)betaID liveID:(NSString *)liveID {
++ (void)setupHockeyAppWithBetaID:(NSString *)betaID liveID:(NSString *)liveID
+{
 #ifdef AR_HOCKEYAPP_EXISTS
     HockeyAppProvider *provider = [[HockeyAppProvider alloc] initWithBetaIdentifier:betaID liveIdentifier:liveID];
     [self setupProvider:provider];
 #endif
 }
 
-+(void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey {
++ (void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey
+{
 #ifdef AR_PARSEANALYTICS_EXISTS
     ParseAnalyticsProvider *provider = [[ParseAnalyticsProvider alloc] initWithApplicationID:appID clientKey:clientKey];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID {
++ (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID
+{
 #ifdef AR_HEAPANALYTICS_EXISTS
     HeapAnalyticsProvider *provider = [[HeapAnalyticsProvider alloc] initWithIdentifier:appID];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupChartbeatWithApplicationID:(NSString *)appID {
++ (void)setupChartbeatWithApplicationID:(NSString *)appID
+{
 #ifdef AR_CHARTBEAT_EXISTS
     ChartbeatProvider *provider = [[ChartbeatProvider alloc] initWithIdentifier:appID];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupUMengAnalyticsIDWithAppkey:(NSString *)appID {
++ (void)setupUMengAnalyticsIDWithAppkey:(NSString *)appID
+{
 #ifdef AR_UMENGANALYTICS_EXISTS
     UMengAnalyticsProvider *provider = [[UMengAnalyticsProvider alloc] initWithIdentifier:appID];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix {
++ (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix
+{
 #ifdef AR_LIBRATO_EXISTS
     LibratoProvider *provider = [[LibratoProvider alloc] initWithEmail:email token:token prefix:prefix];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupSegmentioWithWriteKey:(NSString*)key {
++ (void)setupSegmentioWithWriteKey:(NSString *)key
+{
 #ifdef AR_SEGMENTIO_EXISTS
     SegmentioProvider *provider = [[SegmentioProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key {
++ (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey
+{
+#ifdef AR_SWRVE_EXISTS
+    SwrveProvider *provider = [[SwrveProvider alloc] initWithAppID:appID apiKey:apiKey];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupYandexMobileMetricaWithAPIKey:(NSString *)key
+{
 #ifdef AR_YANDEXMOBILEMETRICA_EXISTS
     YandexMobileMetricaProvider *provider = [[YandexMobileMetricaProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
 
-+ (void)setupAdjustWithAppToken:(NSString *)token {
++ (void)setupAdjustWithAppToken:(NSString *)token
+{
 #ifdef AR_ADJUST_EXISTS
     AdjustProvider *provider = [[AdjustProvider alloc] initWithIdentifier:token];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupAppsFlyerWithAppID:(NSString *)appID devKey:(NSString *)devKey 
+{
+#ifdef AR_APPSFLYER_EXISTS
+    AppsFlyerProvider *provider = [[AppsFlyerProvider alloc] initWithAppID:appID devKey:devKey];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupBranchWithAPIKey:(NSString *)key {
+#ifdef AR_BRANCH_EXISTS
+    BranchProvider *provider = [[BranchProvider alloc] initWithAPIKey:key];
     [self setupProvider:provider];
 #endif
 }
@@ -364,19 +423,15 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #pragma mark -
 #pragma mark User Setup
 
-// deprecated; use the one without the typo
-+ (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email {
-    [self identifyUserWithID:userID andEmailAddress:email];
-}
-
-
-+ (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
++ (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email
+{
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider identifyUserWithID:userID andEmailAddress:email];
     }];
 }
 
-+ (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
++ (void)setUserProperty:(NSString *)property toValue:(NSString *)value 
+{
     if (value == nil) {
         NSLog(@"ARAnalytics: Value cannot be nil ( %@ ) ", property);
         return;
@@ -387,7 +442,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }];
 }
 
-+ (void)incrementUserProperty:(NSString *)counterName byInt:(NSInteger)amount {
++ (void)incrementUserProperty:(NSString *)counterName byInt:(NSInteger)amount
+{
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider incrementUserProperty:counterName byInt:@(amount)];
     }];
@@ -397,24 +453,36 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #pragma mark Events
 
 
-+ (void)event:(NSString *)event {
++ (void)event:(NSString *)event
+{
     [self event:event withProperties:nil];
 }
 
-+ (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
++ (void)event:(NSString *)event withProperties:(NSDictionary *)properties
+{
+    NSMutableDictionary *fullProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
+    [fullProperties addEntriesFromDictionary:_sharedAnalytics.superProperties];
+
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider event:event withProperties:properties];
+        [provider event:event withProperties:fullProperties];
     }];
+}
+
++ (void)addEventSuperProperties:(NSDictionary *)superProperties
+{
+    [_sharedAnalytics.superProperties addEntriesFromDictionary:superProperties];
 }
 
 #pragma mark -
 #pragma mark Errors
 
-+ (void)error:(NSError *)error {
++ (void)error:(NSError *)error
+{
 	[self error:error withMessage:nil];
 }
 
-+ (void)error:(NSError *)error withMessage:(NSString *)message {
++ (void)error:(NSError *)error withMessage:(NSString *)message
+{
 	[_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
 		[provider error:error withMessage:message];
 	}];
@@ -423,7 +491,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #pragma mark -
 #pragma mark Monitor Navigation Controller
 
-+ (void)pageView:(NSString *)pageTitle {
++ (void)pageView:(NSString *)pageTitle
+{
     if (!pageTitle) return;
     
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
@@ -431,12 +500,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }];
 }
 
-+ (void)monitorNavigationViewController:(UINavigationController *)controller {
++ (void)monitorNavigationViewController:(UINavigationController *)controller
+{
     [self monitorNavigationController:controller];
 }
 
-+ (void)monitorNavigationController:(UINavigationController *)controller {
-
++ (void)monitorNavigationController:(UINavigationController *)controller
+{
 #if TARGET_OS_IPHONE
     // Set a new original delegate on the proxy
     _sharedAnalytics.proxyDelegate.originalDelegate = controller.delegate;
@@ -445,7 +515,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
 #if TARGET_OS_IPHONE
     [self.class pageView:viewController.title];
 #endif
@@ -465,19 +536,21 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #pragma mark -
 #pragma mark Timing Events
 
-+ (void)startTimingEvent:(NSString *)event {
++ (void)startTimingEvent:(NSString *)event
+{
     if (!_sharedAnalytics.eventsDictionary) {
         _sharedAnalytics.eventsDictionary = [NSMutableDictionary dictionary];
     }
     _sharedAnalytics.eventsDictionary[event] = [NSDate date];
 }
 
-+ (void)finishTimingEvent:(NSString *)event {
++ (void)finishTimingEvent:(NSString *)event
+{
     [self finishTimingEvent:event withProperties:nil];
 }
 
-+(void)finishTimingEvent:(NSString *)event withProperties:(NSDictionary *)properties {
-
++ (void)finishTimingEvent:(NSString *)event withProperties:(NSDictionary *)properties
+{
     NSDate *startDate = _sharedAnalytics.eventsDictionary[event];
     if (!startDate) {
         NSLog(@"ARAnalytics: finish timing event called without a corrosponding start timing event");
@@ -492,12 +565,12 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }];
 }
 
-
 #pragma mark -
 #pragma mark Util
 
-- (void)iterateThroughProviders:(void(^)(ARAnalyticalProvider *provider))providerBlock {
-    for (ARAnalyticalProvider *provider in _providers) {
+- (void)iterateThroughProviders:(void(^)(ARAnalyticalProvider *provider))providerBlock
+{
+    for (ARAnalyticalProvider *provider in self.providers) {
         providerBlock(provider);
     }
 }
@@ -514,6 +587,7 @@ void ARLog (NSString *format, ...) {
     // Get a reference to the arguments that follow the format parameter
     va_list argList;
     va_start(argList, format);
+
     // Perform format string argument substitution, reinstate %% escapes, then print
 
     @autoreleasepool {
@@ -572,6 +646,11 @@ const NSString *ARLibratoEmail = @"ARLibratoEmail";
 const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
+const NSString *ARSwrveAppID = @"ARSwrveAppID";
+const NSString *ARSwrveAPIKey = @"ARSwrveAPIKey";
 const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
 const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
-
+const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";
+const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
+const NSString *ARBranchAPIKey = @"ARBranchAPIKey";
+                                      

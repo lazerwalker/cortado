@@ -1,31 +1,3 @@
-//
-//  ARAnalytics.h
-//  Art.sy
-//
-//  Created by Orta Therox on 18/12/2012.
-//  Copyright (c) 2012 - Present Orta Therox & Art.sy. All rights reserved.
-//
-//  Permission is hereby granted, free of charge, to any person
-//  obtaining a copy of this software and associated documentation
-//  files (the "Software"), to deal in the Software without
-//  restriction, including without limitation the rights to use,
-//  copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the
-//  Software is furnished to do so, subject to the following
-//  conditions:
-//
-//  The above copyright notice and this permission notice shall be
-//  included in all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-//  OTHER DEALINGS IN THE SOFTWARE.
-
 // For OS X support we need to mock up UIVIewController/UINavigationViewController
 
 #if !TARGET_OS_IPHONE
@@ -100,8 +72,10 @@
 + (void)setupChartbeatWithApplicationID:(NSString *)appID;
 + (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix;
 + (void)setupSegmentioWithWriteKey:(NSString*)key;
++ (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
 + (void)setupAdjustWithAppToken:(NSString *)token;
++ (void)setupBranchWithAPIKey:(NSString *)key;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -117,10 +91,6 @@
 /// ARAnalyticalProvider or this methid returns nil.
 + (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass;
 
-/// Set a per user property
-/// @warning Deprecated, will be removed in next major release
-+ (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
-
 /// Register a user and an associated email address, it is fine to send nils for either.
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 
@@ -135,6 +105,10 @@
 
 /// Submit user events to providers with additional properties
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
+
+/// Adds super properties, these are properties that are sent along with
+/// in addition to the event properties.
++ (void)addEventSuperProperties:(NSDictionary *)superProperties;
 
 /// Submit errors to providers
 + (void)error:(NSError *)error;
@@ -203,6 +177,11 @@ extern const NSString *ARLibratoEmail;
 extern const NSString *ARLibratoToken;
 extern const NSString *ARLibratoPrefix;
 extern const NSString *ARSegmentioWriteKey;
+extern const NSString *ARSwrveAppID;
+extern const NSString *ARSwrveAPIKey;
 extern const NSString *ARYandexMobileMetricaAPIKey;
 extern const NSString *ARAdjustAppTokenKey;
+extern const NSString *ARAppsFlyerAppID;
+extern const NSString *ARAppsFlyerDevKey;
+extern const NSString *ARBranchAPIKey;
 

@@ -1,11 +1,3 @@
-//
-//  ARAnalyticsProviders.h
-//  ARAnalyticsTests
-//
-//  Created by orta therox on 05/01/2013.
-//  Copyright (c) 2013 Orta Therox. All rights reserved.
-//
-
 #ifdef AR_TESTFLIGHT_EXISTS
 #import "TestFlightProvider.h"
 #endif
@@ -91,10 +83,22 @@
 #import "SegmentioProvider.h"
 #endif
 
+#ifdef AR_SWRVE_EXISTS
+#import "SwrveProvider.h"
+#endif
+
 #ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 #import "YandexMobileMetricaProvider.h"
 #endif
 
 #ifdef AR_ADJUST_EXISTS
 #import "AdjustProvider.h"
+#endif
+
+#ifdef AR_APPSFLYER_EXISTS
+#import "AppsFlyerProvider.h"
+#endif
+
+#ifdef AR_BRANCH_EXISTS
+#import "BranchProvider.h"
 #endif

@@ -1,30 +1,30 @@
 PODS:
-  - ARAnalytics/CoreIOS (2.9.1)
-  - ARAnalytics/Mixpanel (2.9.1):
+  - ARAnalytics/CoreIOS (2.9.2)
+  - ARAnalytics/Mixpanel (2.9.2):
     - ARAnalytics/CoreIOS
     - Mixpanel
   - Asterism (1.0.0)
   - FLKAutoLayout (0.2.1)
-  - FXForms (1.2.10)
+  - FXForms (1.2.12)
   - Keys (1.0.1)
-  - Mantle (1.5.1):
-    - Mantle/extobjc (= 1.5.1)
-  - Mantle/extobjc (1.5.1)
+  - Mantle (1.5.4):
+    - Mantle/extobjc (= 1.5.4)
+  - Mantle/extobjc (1.5.4)
   - Mixpanel (2.7.2):
     - Mixpanel/MPCategoryHelpers (= 2.7.2)
   - Mixpanel/MPCategoryHelpers (2.7.2)
-  - ReactiveCocoa (2.3.1):
-    - ReactiveCocoa/UI (= 2.3.1)
-  - ReactiveCocoa/Core (2.3.1):
+  - ReactiveCocoa (2.4.7):
+    - ReactiveCocoa/UI (= 2.4.7)
+  - ReactiveCocoa/Core (2.4.7):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3.1)
-  - ReactiveCocoa/UI (2.3.1):
+  - ReactiveCocoa/no-arc (2.4.7)
+  - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
-  - ReactiveViewModel (0.2):
-    - ReactiveCocoa (~> 2.1)
+  - ReactiveViewModel (0.3):
+    - ReactiveCocoa (~> 2.4)
 
 DEPENDENCIES:
-  - ARAnalytics/Mixpanel (~> 2.9)
+  - ARAnalytics/Mixpanel (from `https://github.com/orta/ARAnalytics.git`)
   - Asterism (~> 1.0.0)
   - FLKAutoLayout (~> 0.2)
   - FXForms (~> 1.2)
@@ -34,23 +34,28 @@ DEPENDENCIES:
   - ReactiveViewModel (~> 0.2)
 
 EXTERNAL SOURCES:
+  ARAnalytics:
+    :git: https://github.com/orta/ARAnalytics.git
   Keys:
     :git: https://github.com/ashfurrow/empty-podspec.git
 
 CHECKOUT OPTIONS:
+  ARAnalytics:
+    :commit: d33814db64b21aca85de1a02360848f414499a58
+    :git: https://github.com/orta/ARAnalytics.git
   Keys:
-    :commit: 31e65aac9132fc0e0080ee436b3415c51fb88a52
+    :commit: c4fa903a28fcbc1f1b8380d39b6adf1418663ccc
     :git: https://github.com/ashfurrow/empty-podspec.git
 
 SPEC CHECKSUMS:
-  ARAnalytics: a06e6d012b5999d8598ec9bacec45c8a8099f668
+  ARAnalytics: 863673c981102cb83aa04a1037f72a49f71dc166
   Asterism: 26783427dc5b3ff144cbabb87485456458797350
   FLKAutoLayout: 8a973ab83832a8527626127193643f3c8ea157d5
-  FXForms: 758fe50c354f10e707cd1a47e5c4ac9198404427
+  FXForms: ae90610432a0a9cbb71e0180f202d0fff375881f
   Keys: 0a6f1bd71fe4e8bbfc32c93e7d6b086a383a520a
-  Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
+  Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   Mixpanel: def38b9e600f101686b8d647e05660a72c089c65
-  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
-  ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
+  ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
+  ReactiveViewModel: 512224f801ea0a603fd394eed0f38bc662b64b9a
 
 COCOAPODS: 0.36.0.beta.2

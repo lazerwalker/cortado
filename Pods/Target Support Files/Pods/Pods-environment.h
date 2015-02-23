@@ -10,13 +10,13 @@
 #define COCOAPODS_POD_AVAILABLE_ARAnalytics_CoreIOS
 #define COCOAPODS_VERSION_MAJOR_ARAnalytics_CoreIOS 2
 #define COCOAPODS_VERSION_MINOR_ARAnalytics_CoreIOS 9
-#define COCOAPODS_VERSION_PATCH_ARAnalytics_CoreIOS 1
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_CoreIOS 2
 
 // ARAnalytics/Mixpanel
 #define COCOAPODS_POD_AVAILABLE_ARAnalytics_Mixpanel
 #define COCOAPODS_VERSION_MAJOR_ARAnalytics_Mixpanel 2
 #define COCOAPODS_VERSION_MINOR_ARAnalytics_Mixpanel 9
-#define COCOAPODS_VERSION_PATCH_ARAnalytics_Mixpanel 1
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_Mixpanel 2
 
 // Asterism
 #define COCOAPODS_POD_AVAILABLE_Asterism
@@ -34,7 +34,7 @@
 #define COCOAPODS_POD_AVAILABLE_FXForms
 #define COCOAPODS_VERSION_MAJOR_FXForms 1
 #define COCOAPODS_VERSION_MINOR_FXForms 2
-#define COCOAPODS_VERSION_PATCH_FXForms 10
+#define COCOAPODS_VERSION_PATCH_FXForms 12
 
 // Keys
 #define COCOAPODS_POD_AVAILABLE_Keys
@@ -46,13 +46,13 @@
 #define COCOAPODS_POD_AVAILABLE_Mantle
 #define COCOAPODS_VERSION_MAJOR_Mantle 1
 #define COCOAPODS_VERSION_MINOR_Mantle 5
-#define COCOAPODS_VERSION_PATCH_Mantle 1
+#define COCOAPODS_VERSION_PATCH_Mantle 4
 
 // Mantle/extobjc
 #define COCOAPODS_POD_AVAILABLE_Mantle_extobjc
 #define COCOAPODS_VERSION_MAJOR_Mantle_extobjc 1
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 5
-#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 1
+#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 4
 
 // Mixpanel
 #define COCOAPODS_POD_AVAILABLE_Mixpanel
@@ -69,30 +69,30 @@
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2
-#define COCOAPODS_VERSION_MINOR_ReactiveCocoa 3
-#define COCOAPODS_VERSION_PATCH_ReactiveCocoa 1
+#define COCOAPODS_VERSION_MINOR_ReactiveCocoa 4
+#define COCOAPODS_VERSION_PATCH_ReactiveCocoa 7
 
 // ReactiveCocoa/Core
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa_Core
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa_Core 2
-#define COCOAPODS_VERSION_MINOR_ReactiveCocoa_Core 3
-#define COCOAPODS_VERSION_PATCH_ReactiveCocoa_Core 1
+#define COCOAPODS_VERSION_MINOR_ReactiveCocoa_Core 4
+#define COCOAPODS_VERSION_PATCH_ReactiveCocoa_Core 7
 
 // ReactiveCocoa/UI
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa_UI
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa_UI 2
-#define COCOAPODS_VERSION_MINOR_ReactiveCocoa_UI 3
-#define COCOAPODS_VERSION_PATCH_ReactiveCocoa_UI 1
+#define COCOAPODS_VERSION_MINOR_ReactiveCocoa_UI 4
+#define COCOAPODS_VERSION_PATCH_ReactiveCocoa_UI 7
 
 // ReactiveCocoa/no-arc
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa_no_arc
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa_no_arc 2
-#define COCOAPODS_VERSION_MINOR_ReactiveCocoa_no_arc 3
-#define COCOAPODS_VERSION_PATCH_ReactiveCocoa_no_arc 1
+#define COCOAPODS_VERSION_MINOR_ReactiveCocoa_no_arc 4
+#define COCOAPODS_VERSION_PATCH_ReactiveCocoa_no_arc 7
 
 // ReactiveViewModel
 #define COCOAPODS_POD_AVAILABLE_ReactiveViewModel
 #define COCOAPODS_VERSION_MAJOR_ReactiveViewModel 0
-#define COCOAPODS_VERSION_MINOR_ReactiveViewModel 2
+#define COCOAPODS_VERSION_MINOR_ReactiveViewModel 3
 #define COCOAPODS_VERSION_PATCH_ReactiveViewModel 0
 

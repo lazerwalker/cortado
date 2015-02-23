@@ -1,9 +1,9 @@
-ARAnalytics v2.9.0 [![Build Status](https://travis-ci.org/orta/ARAnalytics.svg?branch=master)](https://travis-ci.org/orta/ARAnalytics)
+ARAnalytics v3.0.0 [![Build Status](https://travis-ci.org/orta/ARAnalytics.svg?branch=master)](https://travis-ci.org/orta/ARAnalytics)
 ================
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
 
-ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: TestFlight, Mixpanel, Localytics, Flurry, GoogleAnalytics, KISSmetrics, Crittercism, Crashlytics, Bugsnag, Countly, Helpshift, Tapstream, NewRelic, Amplitude, HockeyApp, ParseAnalytics, HeapAnalytics, Chartbeat and Yandex Mobile Metrica. And for OS X: KISSmetrics and Mixpanel. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing [DSL](#dsl) to clear up your methods.
+ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: TestFlight, Mixpanel, Localytics, Flurry, GoogleAnalytics, KISSmetrics, Crittercism, Crashlytics, Bugsnag, Countly, Helpshift, Tapstream, NewRelic, Amplitude, HockeyApp, ParseAnalytics, HeapAnalytics, Chartbeat, Yandex Mobile Metrica, and Branch. And for OS X: KISSmetrics and Mixpanel. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing [DSL](#dsl) to clear up your methods.
 
 [Changelog](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md)
 
@@ -48,6 +48,10 @@ Event Tracking
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
+
+// Add extra properties to get sent along with every event
++ (void)addEventSuperProperties:(NSDictionary *)superProperties;
+
 
 /// Let ARAnalytics deal with the timing of an event
 + (void)startTimingEvent:(NSString *)event;

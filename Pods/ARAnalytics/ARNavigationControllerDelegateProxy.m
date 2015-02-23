@@ -1,11 +1,4 @@
-//
-//  ARNavigationControllerDelegateProxy.m
-//  ARAnalytics
-//
-//  Created by Richard Hodgkins on 22/03/2014.
-//
-//
-
+#import <UIKit/UIKit.h>
 #import "ARNavigationControllerDelegateProxy.h"
 
 @interface ARNavigationControllerDelegateProxy ()
@@ -16,7 +9,7 @@
 
 @implementation ARNavigationControllerDelegateProxy
 
-- (instancetype)initWithAnalyticsDelegate:(id<UINavigationControllerDelegate>)analyticsDelegate {
+- (instancetype)initWithAnalyticsDelegate:(NSObject<UINavigationControllerDelegate> *)analyticsDelegate {
     // No need for [super init], it does not exist
     _analyticsDelegate = analyticsDelegate;
     return self;
