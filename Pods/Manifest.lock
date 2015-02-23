@@ -1,4 +1,8 @@
 PODS:
+  - ARAnalytics/CoreIOS (2.9.1)
+  - ARAnalytics/Mixpanel (2.9.1):
+    - ARAnalytics/CoreIOS
+    - Mixpanel
   - Asterism (1.0.0)
   - FLKAutoLayout (0.2.1)
   - FXForms (1.2.10)
@@ -6,6 +10,9 @@ PODS:
   - Mantle (1.5.1):
     - Mantle/extobjc (= 1.5.1)
   - Mantle/extobjc (1.5.1)
+  - Mixpanel (2.7.2):
+    - Mixpanel/MPCategoryHelpers (= 2.7.2)
+  - Mixpanel/MPCategoryHelpers (2.7.2)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI (= 2.3.1)
   - ReactiveCocoa/Core (2.3.1):
@@ -17,6 +24,7 @@ PODS:
     - ReactiveCocoa (~> 2.1)
 
 DEPENDENCIES:
+  - ARAnalytics/Mixpanel (~> 2.9)
   - Asterism (~> 1.0.0)
   - FLKAutoLayout (~> 0.2)
   - FXForms (~> 1.2)
@@ -35,11 +43,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ashfurrow/empty-podspec.git
 
 SPEC CHECKSUMS:
+  ARAnalytics: a06e6d012b5999d8598ec9bacec45c8a8099f668
   Asterism: 26783427dc5b3ff144cbabb87485456458797350
   FLKAutoLayout: 8a973ab83832a8527626127193643f3c8ea157d5
   FXForms: 758fe50c354f10e707cd1a47e5c4ac9198404427
   Keys: 0a6f1bd71fe4e8bbfc32c93e7d6b086a383a520a
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
+  Mixpanel: def38b9e600f101686b8d647e05660a72c089c65
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
 

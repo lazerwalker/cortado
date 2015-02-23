@@ -1,5 +1,6 @@
 platform :ios, '8.0'
 
+pod 'ARAnalytics/Mixpanel', '~> 2.9'
 pod "Asterism", "~> 1.0.0"
 pod 'FLKAutoLayout', '~> 0.2'
 pod 'FXForms', '~> 1.2'

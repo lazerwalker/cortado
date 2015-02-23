@@ -6,6 +6,18 @@
 // project.
 
 
+// ARAnalytics/CoreIOS
+#define COCOAPODS_POD_AVAILABLE_ARAnalytics_CoreIOS
+#define COCOAPODS_VERSION_MAJOR_ARAnalytics_CoreIOS 2
+#define COCOAPODS_VERSION_MINOR_ARAnalytics_CoreIOS 9
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_CoreIOS 1
+
+// ARAnalytics/Mixpanel
+#define COCOAPODS_POD_AVAILABLE_ARAnalytics_Mixpanel
+#define COCOAPODS_VERSION_MAJOR_ARAnalytics_Mixpanel 2
+#define COCOAPODS_VERSION_MINOR_ARAnalytics_Mixpanel 9
+#define COCOAPODS_VERSION_PATCH_ARAnalytics_Mixpanel 1
+
 // Asterism
 #define COCOAPODS_POD_AVAILABLE_Asterism
 #define COCOAPODS_VERSION_MAJOR_Asterism 1
@@ -41,6 +53,18 @@
 #define COCOAPODS_VERSION_MAJOR_Mantle_extobjc 1
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 5
 #define COCOAPODS_VERSION_PATCH_Mantle_extobjc 1
+
+// Mixpanel
+#define COCOAPODS_POD_AVAILABLE_Mixpanel
+#define COCOAPODS_VERSION_MAJOR_Mixpanel 2
+#define COCOAPODS_VERSION_MINOR_Mixpanel 7
+#define COCOAPODS_VERSION_PATCH_Mixpanel 2
+
+// Mixpanel/MPCategoryHelpers
+#define COCOAPODS_POD_AVAILABLE_Mixpanel_MPCategoryHelpers
+#define COCOAPODS_VERSION_MAJOR_Mixpanel_MPCategoryHelpers 2
+#define COCOAPODS_VERSION_MINOR_Mixpanel_MPCategoryHelpers 7
+#define COCOAPODS_VERSION_PATCH_Mixpanel_MPCategoryHelpers 2
 
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
