@@ -36,6 +36,8 @@
 		A6BD5A111A532BF9001B5FD0 /* AddConsumptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */; };
 		A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */; };
 		A6C9388A1A485E1C00E96951 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
+		A6CCD1D81A9AE9B200302A39 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CCD1D71A9AE9B100302A39 /* libPods.a */; };
+		A6CCD1DD1A9AEACF00302A39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62D72341A254C6500846A33 /* LaunchScreen.xib */; };
 		A6E234681A320FFB00B57E16 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
 		A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
 		A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA44D1A53655400363546 /* DrinkCell.m */; };
@@ -45,7 +47,6 @@
 		A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328F21A575799001D36EC /* HistoryCellViewModel.m */; };
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
-		AD607CCBEC7B40A32C314204 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F974D2DCCF44722399492BB7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -131,6 +132,8 @@
 		A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+ReactiveCocoa.m"; sourceTree = "<group>"; };
 		A6C938881A485E1C00E96951 /* DrinkConsumptionSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkConsumptionSerializer.h; sourceTree = "<group>"; };
 		A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionSerializer.m; sourceTree = "<group>"; };
+		A6CCD1D71A9AE9B100302A39 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		A6CCD1DC1A9AEABC00302A39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A6E234661A320FFB00B57E16 /* FoursquareClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareClient.h; sourceTree = "<group>"; };
 		A6E234671A320FFB00B57E16 /* FoursquareClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareClient.m; sourceTree = "<group>"; };
 		A6E234691A32100700B57E16 /* FoursquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenue.h; sourceTree = "<group>"; };
@@ -162,7 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD607CCBEC7B40A32C314204 /* libPods.a in Frameworks */,
+				A6CCD1D81A9AE9B200302A39 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +273,7 @@
 		A62D72531A254D1A00846A33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6CCD1D71A9AE9B100302A39 /* libPods.a */,
 				A6BA44B81A2A5B6D006B89E3 /* libPods.a */,
 				A62D72541A254D1A00846A33 /* NotificationCenter.framework */,
 				2A91AEC6A7F618585139F8C7 /* libPods-Cuppa.a */,
@@ -428,6 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6CCD1DD1A9AEACF00302A39 /* LaunchScreen.xib in Resources */,
 				A62D72331A254C6500846A33 /* Images.xcassets in Resources */,
 				A6397A401A641503009B2767 /* HistoryCell.xib in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
@@ -519,6 +524,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A62D72351A254C6500846A33 /* Base */,
+				A6CCD1DC1A9AEABC00302A39 /* en */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -572,6 +578,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Release-iphoneos",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -626,7 +636,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Release-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
