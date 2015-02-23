@@ -60,13 +60,10 @@ static NSString * const CellIdentifier = @"Cell";
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
     self.tableView.rowHeight = 56.0;
 
-    @weakify(self)
-    [RACObserve(self.viewModel, drinks)
+    [[RACObserve(self.viewModel, drinks)
+        subscribeOn:RACScheduler.mainThreadScheduler]
         subscribeNext:^(id obj) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                @strongify(self)
-                [self.tableView reloadData];
-            });
+            [self.tableView reloadData];
         }];
 
 
