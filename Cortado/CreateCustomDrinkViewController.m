@@ -44,7 +44,7 @@
     Drink *drink = [[Drink alloc] initWithName:form.name
                                                caffeine:form.caffeine];
 
-    [ARAnalytics event:@"Created custom drink"];
+    [ARAnalytics event:@"Created custom drink" withProperties:@{@"name":drink.name, @"caffeine":drink.caffeine}];
     [self.drinkCreatedSignal sendNext:drink];
     [self.drinkCreatedSignal sendCompleted];
 }

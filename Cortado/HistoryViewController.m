@@ -6,6 +6,7 @@
 #import "AddConsumptionViewModel.h"
 #import "AddConsumptionViewController.h"
 #import "AppDelegate.h"
+#import "DrinkConsumption.h"
 #import "FTUEViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
@@ -122,7 +123,10 @@ static NSString * const CellIdentifier = @"Cell";
 
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
-        [ARAnalytics event:@"Add via add button"];
+        BOOL isRecent = ABS([c.timestamp timeIntervalSinceNow]) < (60 * 60);
+        [ARAnalytics event:@"Add via add button" withProperties:@{@"timestamp":c.timestamp,
+                                                                  @"drink":c.name,
+                                                                  @"isRecent":@(isRecent)}];
         [[self.viewModel addDrink:c] subscribeNext:^(id x) {}];
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
@@ -137,7 +141,7 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    [ARAnalytics event:@"Deleted drink"];
+    [ARAnalytics event:@"Edited drink"];
 
     AddConsumptionViewModel *addVM = [self.viewModel editViewModelAtIndexPath:indexPath];
     AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
@@ -147,7 +151,7 @@ static NSString * const CellIdentifier = @"Cell";
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *drink) {
         [[self.viewModel editDrinkAtIndexPath:indexPath to:drink]
             subscribeError:^(NSError *error) {
-                [ARAnalytics event:@"Tried to delete HealthKit"];
+                [ARAnalytics event:@"Tried to edit HealthKit"];
 
                 NSString *message = @"This entry wasn't created by Cortado. You can only edit it from within Apple's Health app.";
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"
@@ -175,12 +179,12 @@ static NSString * const CellIdentifier = @"Cell";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [ARAnalytics event:@"Edited a drink"];
+    [ARAnalytics event:@"Deleted a drink"];
 
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [[self.viewModel deleteAtIndexPath:indexPath]
             subscribeError:^(NSError *error) {
-                [ARAnalytics event:@"Tried to edit HealthKit"];
+                [ARAnalytics event:@"Tried to delete HealthKit"];
 
                 NSString *message = @"This entry wasn't created by Cortado. You can only delete it from within Apple's Health app.";
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Delete"

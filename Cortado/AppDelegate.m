@@ -51,6 +51,8 @@
     self.fetcher = [[LocationFetcher alloc] initWithFoursquareClient:client];
 
     [ARAnalytics setupMixpanelWithToken:keys.mixpanelToken];
+    NSString *userId = [[UIDevice.currentDevice identifierForVendor] UUIDString];
+    [ARAnalytics identifyUserWithID:userId andEmailAddress:userId];
 
     // Background fetch
     [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
@@ -76,11 +78,11 @@
     DrinkConsumption *consumption = [DrinkConsumptionSerializer consumptionFromUserInfo:notification.userInfo identifier:identifier];
 
     if (consumption.isValid) {
-        [ARAnalytics event:@"Add favorite"];
+        [ARAnalytics event:@"Added favorite drink from notif"];
         [[self.dataStore addDrink:consumption]
             subscribeCompleted:completionHandler];
     } else {
-        [ARAnalytics event:@"Tap 'other'"];
+        [ARAnalytics event:@"Tapped 'other' on notif"];
         UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
         if (nav.presentedViewController) {
             [nav dismissViewControllerAnimated:NO completion:nil];
@@ -96,9 +98,13 @@
         [nav presentViewController:addNav animated:NO completion:nil];
         [[addVM.completedSignal
             flattenMap:^RACStream *(DrinkConsumption *c) {
+                BOOL changedTime = ![c.timestamp isEqualToDate:consumption.timestamp];
+                [ARAnalytics event:@"Add other" withProperties:@{@"changedTime":@(changedTime),
+                                                                 @"name":c.name,
+                                                                 @"timestamp":c.timestamp}];
+
                 return [self.dataStore addDrink:c];
             }] subscribeCompleted:^{
-                [ARAnalytics event:@"Add other"];
                 [nav dismissViewControllerAnimated:YES completion:nil];
                 completionHandler();
             }];
