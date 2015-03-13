@@ -72,14 +72,6 @@
       ]
     },
     {
-      "name": "Iced Coffee",
-      "subtypes": [
-        {"name": "8 fl oz", "caffeine": 95.0},
-        {"name": "12 fl oz", "caffeine": 150.0},
-        {"name": "16 fl oz", "caffeine": 190.0}
-      ]
-    },
-    {
       "name": "Black Tea",
       "subtypes": [
         {"name": "8 fl oz", "caffeine": 50.0},
@@ -117,6 +109,101 @@
         {"name": "8 fl oz", "caffeine": 85.0},
         {"name": "12 fl oz", "caffeine": 130.0},
         {"name": "16 fl oz", "caffeine": 170.0}
+      ]
+    }
+  ]
+},
+{
+  "name": "Iced Coffee and Tea",
+  "drinkTypes": [
+    {
+      "name": "Iced Americano",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Iced Black Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 50.0},
+        {"name": "12 fl oz", "caffeine": 70.0},
+        {"name": "16 fl oz", "caffeine": 90.0}
+      ]
+    },
+    {
+      "name": "Iced Coffee",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 95.0},
+        {"name": "12 fl oz", "caffeine": 150.0},
+        {"name": "16 fl oz", "caffeine": 190.0}
+      ]
+    },
+    {
+      "name": "Iced Green Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 30.0},
+        {"name": "12 fl oz", "caffeine": 45.0},
+        {"name": "16 fl oz", "caffeine": 60.0}
+      ]
+    },
+    {
+      "name": "Iced Latte",
+      "subtypes": [
+        {"name": "Single Shot", "caffeine": 75.0},
+        {"name": "Double Shot", "caffeine": 150.0}
+      ]
+    },
+    {
+      "name": "Iced White Tea",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 10.0},
+        {"name": "12 fl oz", "caffeine": 15.0},
+        {"name": "16 fl oz", "caffeine": 20.0}
+      ]
+    },
+  ]
+},
+{
+  "name": "Soda and Soft Drinks",
+  "drinkTypes": [
+    {
+      "name": "Coca-Cola",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 22.0},
+        {"name": "12 fl oz", "caffeine": 34.0},
+        {"name": "16 fl oz", "caffeine": 45.0}
+      ]
+    },
+    {
+      "name": "Club Mate",
+      "subtypes": [
+        {"name": "330 ml", "caffeine": 65.0},
+        {"name": "500 ml", "caffeine": 100.0}
+      ]
+    },
+    {
+      "name": "Dr. Pepper",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 27.0},
+        {"name": "12 fl oz", "caffeine": 41.0},
+        {"name": "16 fl oz", "caffeine": 54.0}
+      ]
+    },
+    {
+      "name": "Mountain Dew",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 36.0},
+        {"name": "12 fl oz", "caffeine": 54.0},
+        {"name": "16 fl oz", "caffeine": 72.0}
+      ]
+    },
+    {
+      "name": "Pepsi",
+      "subtypes": [
+        {"name": "8 fl oz", "caffeine": 25.0},
+        {"name": "12 fl oz", "caffeine": 38.0},
+        {"name": "16 fl oz", "caffeine": 50.0}
       ]
     }
   ]
