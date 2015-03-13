@@ -57,13 +57,15 @@ static NSString * const CellIdentifier = @"Cell";
     pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 156);
     pvc.tableView.scrollEnabled = NO;
 
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 56.0;
+
     self.tableView.tableHeaderView = pvc.view;
     self.tableView.tableHeaderView.clipsToBounds = YES;
     [self addChildViewController:pvc];
 
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
-    self.tableView.rowHeight = 56.0;
 
     [[RACObserve(self.viewModel, drinks)
         subscribeOn:RACScheduler.mainThreadScheduler]
