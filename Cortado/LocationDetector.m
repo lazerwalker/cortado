@@ -1,3 +1,6 @@
+@import UIKit;
+
+#import <ARAnalytics/ARAnalytics.h>
 #import <Keys/CortadoKeys.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -53,6 +56,10 @@
     [[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
         take:1]
         subscribeNext:^(FoursquareVenue *result) {
+            [ARAnalytics event:@"at coffee shop" withProperties:@{
+                @"coords":[NSString stringWithFormat:@"%@,%@",@(coordinate.latitude), @(coordinate.longitude)],
+                @"venue":result.name}];
+
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
                                                                           coordinate:coordinate];
             [UIApplication.sharedApplication scheduleLocalNotification:notif.notif];

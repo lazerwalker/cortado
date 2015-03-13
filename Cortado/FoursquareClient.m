@@ -1,3 +1,5 @@
+@import UIKit;
+#import <ARAnalytics/ARAnalytics.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "FoursquareClient.h"
@@ -28,12 +30,12 @@ static NSString * const APIDate = @"20141205";
 
 - (RACSignal *)fetchVenuesNearCoordinate:(CLLocationCoordinate2D)coordinate {
 //                       completion:(void(^)(NSArray *results, NSError *error))completion {
-    return [self makeRequest:[self searchURLForCoordinate:coordinate]];
+    return [self makeRequest:[self searchURLForCoordinate:coordinate] coordinate:coordinate];
 }
 
 - (RACSignal *)fetchVenuesOfCategory:(NSString *)categoryId
                       nearCoordinate:(CLLocationCoordinate2D)coordinate {
-    return [self makeRequest:[self searchURLForCoordinate:coordinate categoryId:categoryId]];
+    return [self makeRequest:[self searchURLForCoordinate:coordinate categoryId:categoryId] coordinate:coordinate];
 }
 
 #pragma mark - Private
@@ -58,7 +60,7 @@ static NSString * const APIDate = @"20141205";
     return [NSURL URLWithString:urlString];
 }
 
-- (RACSignal *)makeRequest:(NSURL *)url {
+- (RACSignal *)makeRequest:(NSURL *)url coordinate:(CLLocationCoordinate2D)coordinate {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -86,6 +88,12 @@ static NSString * const APIDate = @"20141205";
                     }
                 }
                 [subscriber sendCompleted];
+
+                if (venueJSON.count == 0) {
+                    [ARAnalytics event:@"no coffee shop found" withProperties:@{
+                                                                            @"coords":[NSString stringWithFormat:@"%@,%@",@(coordinate.latitude), @(coordinate.longitude)]}];
+
+                }
             }
         }];
 
