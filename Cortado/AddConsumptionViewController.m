@@ -11,6 +11,7 @@ static NSString * const CellIdentifier = @"cell";
 typedef NS_ENUM(NSInteger, AddConsumptionItem) {
     AddConsumptionItemDrink = 0,
     AddConsumptionItemDate,
+    AddConsumptionItemVenue,
     AddConsumptionItemCount
 };
 
@@ -101,6 +102,11 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    if (section == AddConsumptionItemVenue && !self.viewModel.venue) {
+        return 0;
+    }
+
     return 1;
 }
 
@@ -114,6 +120,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
         case AddConsumptionItemDrink:
             return [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(DrinkCell.class) forIndexPath:indexPath];
         case AddConsumptionItemDate:
+        case AddConsumptionItemVenue:
             return [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
         default:
             return nil;
@@ -126,6 +133,8 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             return self.viewModel.drinkTitle;
         case AddConsumptionItemDate:
             return self.viewModel.timestampTitle;
+        case AddConsumptionItemVenue:
+            return self.viewModel.venueTitle;
     }
     return nil;
 }
@@ -138,7 +147,11 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             break;
         case AddConsumptionItemDate:
             cell.textLabel.text = self.viewModel.timeString;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
+        case AddConsumptionItemVenue:
+            cell.textLabel.text = self.viewModel.venue;
+            cell.accessoryType = UITableViewCellAccessoryNone;
     }
 
 }

@@ -29,5 +29,6 @@
 
 - (NSString *)drinkTitle;
 - (NSString *)timestampTitle;
+- (NSString *)venueTitle;
 
 @end

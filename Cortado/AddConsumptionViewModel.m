@@ -74,6 +74,10 @@
     return @"Time";
 }
 
+- (NSString *)venueTitle {
+    return (self.venue ? @"Coffee Shop" : nil);
+}
+
 - (BOOL)inputValid {
     return self.drink != nil;
 }
