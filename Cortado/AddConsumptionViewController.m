@@ -1,8 +1,10 @@
+@import MapKit;
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "AddConsumptionViewModel.h"
 #import "DrinkSelectionViewController.h"
 #import "DrinkCell.h"
+#import "MapAnnotation.h"
 
 #import "AddConsumptionViewController.h"
 
@@ -47,6 +49,22 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
     }
 
     RAC(self, navigationItem.rightBarButtonItem.enabled) = RACObserve(self, viewModel.inputValid);
+
+    RAC(self, tableView.tableFooterView) = [[RACObserve(self, viewModel.mapAnnotation)
+        ignore:nil]
+        map:^id(MapAnnotation* annotation) {
+            // TODO: Autolayout instead of frame
+            MKMapView *map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 160)];
+            MKCoordinateRegion region = MKCoordinateRegionMake(annotation.coordinate, MKCoordinateSpanMake(0.005, 0.005));
+            map.region = region;
+            map.zoomEnabled = NO;
+            map.scrollEnabled = NO;
+
+            [map addAnnotation:annotation];
+            [map selectAnnotation:annotation animated:YES];
+
+            return map;
+        }];
 
     [self.tableView registerClass:DrinkCell.class forCellReuseIdentifier:NSStringFromClass(DrinkCell.class)];
 
@@ -103,6 +121,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
+    // TODO: Belongs in ViewModel
     if (section == AddConsumptionItemVenue && !self.viewModel.venue) {
         return 0;
     }
@@ -153,7 +172,6 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
             cell.textLabel.text = self.viewModel.venue;
             cell.accessoryType = UITableViewCellAccessoryNone;
     }
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

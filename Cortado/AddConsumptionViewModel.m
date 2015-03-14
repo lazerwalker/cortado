@@ -1,6 +1,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
+#import "MapAnnotation.h"
 #import "Drink.h"
 #import "DrinkConsumption.h"
 #import "DrinkCellViewModel.h"
@@ -61,6 +62,10 @@
     return [NSSet setWithObject:@keypath(AddConsumptionViewModel.new, drink)];
 }
 
++ (NSSet *)keyPathsForValuesAffectingMapAnnotation {
+    return [NSSet setWithObject:@keypath(AddConsumptionViewModel.new, coordinateString)];
+}
+
 #pragma mark - Data accessors
 - (NSString *)timeString {
     return [self.dateFormatter stringFromDate:self.timestamp];
@@ -77,6 +82,20 @@
 - (NSString *)venueTitle {
     return (self.venue ? @"Coffee Shop" : nil);
 }
+
+- (MapAnnotation *)mapAnnotation {
+    if (!(self.venue && self.coordinateString)) return nil;
+
+    NSArray *values = [self.coordinateString componentsSeparatedByString:@","];
+    if (values.count != 2) return nil;
+
+    CLLocationDegrees lat = [values.firstObject doubleValue];
+    CLLocationDegrees lng = [values.lastObject doubleValue];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+
+    return [[MapAnnotation alloc] initWithCoordinate:coordinate title:self.venue];
+}
+
 
 - (BOOL)inputValid {
     return self.drink != nil;

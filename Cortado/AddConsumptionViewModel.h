@@ -1,5 +1,7 @@
+@import CoreLocation;
 #import <ReactiveViewModel/RVMViewModel.h>
 
+@class MapAnnotation;
 @class Drink;
 @class DrinkConsumption;
 @class DrinkCellViewModel;
@@ -16,6 +18,7 @@
 
 @property (readonly) NSString *timeString;
 @property (readonly) BOOL inputValid;
+@property (readonly) MapAnnotation *mapAnnotation;
 @property (readonly) DrinkCellViewModel *drinkCellViewModel;
 
 @property (readonly) RACSubject *completedSignal;

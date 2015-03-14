@@ -33,6 +33,7 @@
 		A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A251A3B918200849705 /* DrinkSubtype.m */; };
 		A66A3A271A3B925B00849705 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		A66A3A2A1A3B929A00849705 /* DrinkCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A291A3B929A00849705 /* DrinkCategoryList.m */; };
+		A6BABD1B1AB3BAB10052D259 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
 		A6BD5A111A532BF9001B5FD0 /* AddConsumptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */; };
 		A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */; };
 		A6C9388A1A485E1C00E96951 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
@@ -126,6 +127,8 @@
 		A66A3A281A3B929A00849705 /* DrinkCategoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrinkCategoryList.h; sourceTree = "<group>"; };
 		A66A3A291A3B929A00849705 /* DrinkCategoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkCategoryList.m; sourceTree = "<group>"; };
 		A6BA44B81A2A5B6D006B89E3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		A6BABD191AB3BAB10052D259 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 		A6BD5A0F1A532BF9001B5FD0 /* AddConsumptionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddConsumptionViewModel.h; sourceTree = "<group>"; };
 		A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddConsumptionViewModel.m; sourceTree = "<group>"; };
 		A6C938851A47C03700E96951 /* HKHealthStore+ReactiveCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+ReactiveCocoa.h"; sourceTree = "<group>"; };
@@ -306,6 +309,8 @@
 				A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */,
 				A643D5891A40A231006ACF0A /* PreferredDrinks.h */,
 				A643D58A1A40A231006ACF0A /* PreferredDrinks.m */,
+				A6BABD191AB3BAB10052D259 /* MapAnnotation.h */,
+				A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				A6E2346B1A32100700B57E16 /* FoursquareVenue.m in Sources */,
 				A62D72281A254C6500846A33 /* main.m in Sources */,
 				A6231E621A424389004B8797 /* HistoryViewModel.m in Sources */,
+				A6BABD1B1AB3BAB10052D259 /* MapAnnotation.m in Sources */,
 				A60585DF1A3E131900FF267F /* CoffeeShopNotification.m in Sources */,
 				A66A3A201A3B903C00849705 /* DrinkCategory.m in Sources */,
 				A6EBA4511A53662E00363546 /* DrinkCellViewModel.m in Sources */,
