@@ -10,6 +10,7 @@ PODS:
     - MWLayoutHelpers
   - IntentKit/Mail (0.7.1):
     - IntentKit/Core
+  - iRate (1.11.3)
   - Keys (1.0.1)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - FLKAutoLayout (~> 0.2)
   - FXForms (~> 1.2)
   - IntentKit/Mail
+  - iRate
   - Keys (from `https://github.com/ashfurrow/empty-podspec.git`)
   - Mantle (~> 1.5)
   - ReactiveCocoa (~> 2.3)
@@ -61,6 +63,7 @@ SPEC CHECKSUMS:
   FLKAutoLayout: 8a973ab83832a8527626127193643f3c8ea157d5
   FXForms: ae90610432a0a9cbb71e0180f202d0fff375881f
   IntentKit: 4c860e1a8806524cb54af67af60123b643006d94
+  iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
   Keys: 0a6f1bd71fe4e8bbfc32c93e7d6b086a383a520a
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   Mixpanel: def38b9e600f101686b8d647e05660a72c089c65

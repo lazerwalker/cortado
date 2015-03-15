@@ -120,3 +120,9 @@
 #define COCOAPODS_VERSION_MINOR_VTAcknowledgementsViewController 13
 #define COCOAPODS_VERSION_PATCH_VTAcknowledgementsViewController 0
 
+// iRate
+#define COCOAPODS_POD_AVAILABLE_iRate
+#define COCOAPODS_VERSION_MAJOR_iRate 1
+#define COCOAPODS_VERSION_MINOR_iRate 11
+#define COCOAPODS_VERSION_PATCH_iRate 3
+
