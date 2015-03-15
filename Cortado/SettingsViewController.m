@@ -13,6 +13,11 @@
     return [storyboard instantiateInitialViewController];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"Settings / About";
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
