@@ -1,3 +1,4 @@
+#import <IntentKit/INKMailHandler.h>
 #import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
 
 #import "SettingsViewController.h"
@@ -47,6 +48,8 @@
         [self showShareSheet];
     } else if ([cell.reuseIdentifier isEqualToString:@"acknowledgements"]) {
         [self showAcknowledgements];
+    } else if ([cell.reuseIdentifier isEqualToString:@"contact"]) {
+        [self showEmailSheet];
     }
 }
 
@@ -64,6 +67,12 @@
 - (void)showAcknowledgements {
     VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)showEmailSheet {
+    INKMailHandler *mailHandler = [[INKMailHandler alloc] init];
+    mailHandler.subject = @"Cortado Feedback";
+    [[mailHandler sendMailTo:@"cortado@lazerwalker.com"] presentModally];
 }
 
 @end
