@@ -1,5 +1,6 @@
 #import <IntentKit/INKBrowserHandler.h>
 #import <IntentKit/INKMailHandler.h>
+#import <iRate/iRate.h>
 #import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
 
 #import "SettingsViewController.h"
@@ -53,6 +54,8 @@
         [self showEmailSheet];
     } else if ([cell.reuseIdentifier isEqualToString:@"lazerwalker"]) {
         [self showWebSite];
+    } else if ([cell.reuseIdentifier isEqualToString:@"rate"]) {
+        [self rateInAppStore];
     }
 }
 
@@ -83,6 +86,10 @@
     INKBrowserHandler *browser = [[INKBrowserHandler alloc] init];
     browser.useSystemDefault = YES;
     [[browser openURL:url] presentModally];
+}
+
+- (void)rateInAppStore {
+    [[iRate sharedInstance] openRatingsPageInAppStore];
 }
 
 @end

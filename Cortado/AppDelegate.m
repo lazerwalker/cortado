@@ -3,6 +3,7 @@
 @import UIKit; // Needed to stop ARAnalytics from failing to build?!
 
 #import <ARAnalytics/ARAnalytics.h>
+#import <iRate/iRate.h>
 #import <Keys/CortadoKeys.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -38,6 +39,10 @@
 
 @implementation AppDelegate
 
+// Permanently disable iRate's auto-prompt
++ (void)initialize {
+    [[iRate sharedInstance] setEventsUntilPrompt:999];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
