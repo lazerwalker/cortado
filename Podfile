@@ -16,4 +16,3 @@ plugin 'cocoapods-keys', {
         "foursquareClientSecret"
     ]
 }
-

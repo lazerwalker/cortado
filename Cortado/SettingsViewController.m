@@ -1,3 +1,5 @@
+#import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
+
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()
@@ -11,7 +13,7 @@
     return [storyboard instantiateInitialViewController];
 }
 
-#pragma mark -
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -19,16 +21,25 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell.reuseIdentifier isEqualToString:@"share"]) {
         [self showShareSheet];
+    } else if ([cell.reuseIdentifier isEqualToString:@"acknowledgements"]) {
+        [self showAcknowledgements];
     }
 }
 
-#pragma mark -
+
+#pragma mark - Actions
+
 - (void)showShareSheet {
     UIActivityViewController *shareController = [[UIActivityViewController alloc] initWithActivityItems:@[@"I'm tracking my caffeine consumption using Cortado!", [NSURL URLWithString:@"http://lazerwalker.com"]] applicationActivities:nil];
 
     shareController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard, UIActivityTypeAddToReadingList];
 
     [self.navigationController presentViewController:shareController animated:YES completion:nil];
+}
+
+- (void)showAcknowledgements {
+    VTAcknowledgementsViewController *viewController = [VTAcknowledgementsViewController acknowledgementsViewController];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
