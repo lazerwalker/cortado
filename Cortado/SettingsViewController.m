@@ -16,6 +16,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Settings / About";
+
+    UILabel *footerView = [[UILabel alloc] init];
+    footerView.font = [UIFont systemFontOfSize:UIFont.smallSystemFontSize];
+
+    NSString *version = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    NSString *build = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+    if (![version isEqualToString:build]) {
+        version = [version stringByAppendingFormat:@" (%@)", build];
+    }
+
+    footerView.text = [NSString stringWithFormat:@"Version %@", version];
+    [footerView sizeToFit];
+    footerView.frame = ({
+        CGRect frame = footerView.frame;
+        frame.origin.x = 15;
+        frame;
+    });
+    self.tableView.tableFooterView = footerView;
+
 }
 
 #pragma mark - UITableViewDelegate
