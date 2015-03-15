@@ -7,6 +7,7 @@ pod 'FXForms', '~> 1.2'
 pod "Mantle", "~> 1.5"
 pod 'ReactiveCocoa', '~> 2.3'
 pod 'ReactiveViewModel', '~> 0.2'
+pod 'VTAcknowledgementsViewController'
 
 plugin 'cocoapods-keys', {
     :project => "Cortado",
