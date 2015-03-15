@@ -12,6 +12,7 @@
 #import "HistoryViewModel.h"
 #import "PreferredDrinksViewController.h"
 #import "PreferredDrinksViewModel.h"
+#import "SettingsViewController.h"
 
 #import "HistoryViewController.h"
 
@@ -29,8 +30,6 @@ static NSString * const CellIdentifier = @"Cell";
 
     _viewModel = viewModel;
 
-    self.title = @"Cortado";
-
     [[UILabel appearanceWhenContainedIn:UITableViewHeaderFooterView.class, nil] setFont:[UIFont boldSystemFontOfSize:14.0]];
 
     return self;
@@ -47,6 +46,16 @@ static NSString * const CellIdentifier = @"Cell";
         }];
         [self presentViewController:ftue animated:NO completion:nil];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.title = @"Cortado";
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.title = @"History";
 }
 
 - (void)viewDidLoad {
@@ -74,7 +83,7 @@ static NSString * const CellIdentifier = @"Cell";
         }];
 
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Trigger Notification" style:UIBarButtonItemStylePlain target:UIApplication.sharedApplication.delegate action:@selector(manuallyCheckCurrentLocation)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(didTapSettingsButton)];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didTapAddButton)];
 
@@ -133,6 +142,11 @@ static NSString * const CellIdentifier = @"Cell";
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (void)didTapSettingsButton {
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    [self.navigationController pushViewController:settingsVC animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
