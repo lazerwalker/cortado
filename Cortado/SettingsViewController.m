@@ -1,3 +1,4 @@
+#import <IntentKit/INKBrowserHandler.h>
 #import <IntentKit/INKMailHandler.h>
 #import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
 
@@ -50,6 +51,8 @@
         [self showAcknowledgements];
     } else if ([cell.reuseIdentifier isEqualToString:@"contact"]) {
         [self showEmailSheet];
+    } else if ([cell.reuseIdentifier isEqualToString:@"lazerwalker"]) {
+        [self showWebSite];
     }
 }
 
@@ -73,6 +76,13 @@
     INKMailHandler *mailHandler = [[INKMailHandler alloc] init];
     mailHandler.subject = @"Cortado Feedback";
     [[mailHandler sendMailTo:@"cortado@lazerwalker.com"] presentModally];
+}
+
+- (void)showWebSite {
+    NSURL *url = [NSURL URLWithString:@"http://lazerwalker.com"];
+    INKBrowserHandler *browser = [[INKBrowserHandler alloc] init];
+    browser.useSystemDefault = YES;
+    [[browser openURL:url] presentModally];
 }
 
 @end
