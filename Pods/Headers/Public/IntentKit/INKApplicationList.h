@@ -1,0 +1,1 @@
+../../../IntentKit/IntentKit/Core/INKApplicationList.h

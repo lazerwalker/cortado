@@ -36,11 +36,29 @@
 #define COCOAPODS_VERSION_MINOR_FXForms 2
 #define COCOAPODS_VERSION_PATCH_FXForms 12
 
+// IntentKit/Core
+#define COCOAPODS_POD_AVAILABLE_IntentKit_Core
+#define COCOAPODS_VERSION_MAJOR_IntentKit_Core 0
+#define COCOAPODS_VERSION_MINOR_IntentKit_Core 7
+#define COCOAPODS_VERSION_PATCH_IntentKit_Core 1
+
+// IntentKit/Mail
+#define COCOAPODS_POD_AVAILABLE_IntentKit_Mail
+#define COCOAPODS_VERSION_MAJOR_IntentKit_Mail 0
+#define COCOAPODS_VERSION_MINOR_IntentKit_Mail 7
+#define COCOAPODS_VERSION_PATCH_IntentKit_Mail 1
+
 // Keys
 #define COCOAPODS_POD_AVAILABLE_Keys
 #define COCOAPODS_VERSION_MAJOR_Keys 1
 #define COCOAPODS_VERSION_MINOR_Keys 0
 #define COCOAPODS_VERSION_PATCH_Keys 1
+
+// MWLayoutHelpers
+#define COCOAPODS_POD_AVAILABLE_MWLayoutHelpers
+#define COCOAPODS_VERSION_MAJOR_MWLayoutHelpers 1
+#define COCOAPODS_VERSION_MINOR_MWLayoutHelpers 1
+#define COCOAPODS_VERSION_PATCH_MWLayoutHelpers 0
 
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle
