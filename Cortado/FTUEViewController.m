@@ -1,6 +1,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "FTUEViewController1.h"
+#import "IntroFTUEViewController.h"
+#import "LocationFTUEViewController.h"
 
 #import "FTUEViewController.h"
 
@@ -22,13 +23,14 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     [defaults synchronize];
 }
 
-- (id)init {
+- (id)initWithLocationBlock:(FTUEAuthorizationBlock)locationBlock {
+
     self = [super init];
     if (!self) return nil;
 
     _screens = @[
-        [[FTUEViewController1 alloc] init],
-        [[FTUEViewController1 alloc] init]
+        [[IntroFTUEViewController alloc] init],
+        [[LocationFTUEViewController alloc] initWithAuthorizationBlock:locationBlock]
     ];
 
     [self pushViewController:self.screens.firstObject animated:NO];

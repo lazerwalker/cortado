@@ -36,8 +36,10 @@
 		A68205041AB6059F007923D8 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68205031AB6059F007923D8 /* SettingsViewController.storyboard */; };
 		A68205071AB6084B007923D8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205061AB6084B007923D8 /* SettingsViewController.m */; };
 		A68205091AB6108C007923D8 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68205081AB6108C007923D8 /* Pods-acknowledgements.plist */; };
-		A682050E1AB6565B007923D8 /* FTUEViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = A682050C1AB6565B007923D8 /* FTUEViewController1.m */; };
-		A682050F1AB6565B007923D8 /* FTUEViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682050D1AB6565B007923D8 /* FTUEViewController1.xib */; };
+		A682050E1AB6565B007923D8 /* IntroFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A682050C1AB6565B007923D8 /* IntroFTUEViewController.m */; };
+		A682050F1AB6565B007923D8 /* IntroFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */; };
+		A68205141AB73A22007923D8 /* LocationFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205121AB73A22007923D8 /* LocationFTUEViewController.m */; };
+		A68205151AB73A22007923D8 /* LocationFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68205131AB73A22007923D8 /* LocationFTUEViewController.xib */; };
 		A6BABD1B1AB3BAB10052D259 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
 		A6BD5A111A532BF9001B5FD0 /* AddConsumptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */; };
 		A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */; };
@@ -135,10 +137,13 @@
 		A68205051AB6084B007923D8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		A68205061AB6084B007923D8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		A68205081AB6108C007923D8 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
-		A682050B1AB6565B007923D8 /* FTUEViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUEViewController1.h; sourceTree = "<group>"; };
-		A682050C1AB6565B007923D8 /* FTUEViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTUEViewController1.m; sourceTree = "<group>"; };
-		A682050D1AB6565B007923D8 /* FTUEViewController1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FTUEViewController1.xib; sourceTree = "<group>"; };
+		A682050B1AB6565B007923D8 /* IntroFTUEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroFTUEViewController.h; sourceTree = "<group>"; };
+		A682050C1AB6565B007923D8 /* IntroFTUEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroFTUEViewController.m; sourceTree = "<group>"; };
+		A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroFTUEViewController.xib; sourceTree = "<group>"; };
 		A68205101AB6598C007923D8 /* FTUEScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUEScreen.h; sourceTree = "<group>"; };
+		A68205111AB73A22007923D8 /* LocationFTUEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationFTUEViewController.h; sourceTree = "<group>"; };
+		A68205121AB73A22007923D8 /* LocationFTUEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationFTUEViewController.m; sourceTree = "<group>"; };
+		A68205131AB73A22007923D8 /* LocationFTUEViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationFTUEViewController.xib; sourceTree = "<group>"; };
 		A6BA44B81A2A5B6D006B89E3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		A6BABD191AB3BAB10052D259 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
 		A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
@@ -357,10 +362,13 @@
 			children = (
 				A6397A411A643806009B2767 /* FTUEViewController.h */,
 				A6397A421A643806009B2767 /* FTUEViewController.m */,
-				A682050B1AB6565B007923D8 /* FTUEViewController1.h */,
-				A682050C1AB6565B007923D8 /* FTUEViewController1.m */,
-				A682050D1AB6565B007923D8 /* FTUEViewController1.xib */,
+				A682050B1AB6565B007923D8 /* IntroFTUEViewController.h */,
+				A682050C1AB6565B007923D8 /* IntroFTUEViewController.m */,
+				A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */,
 				A68205101AB6598C007923D8 /* FTUEScreen.h */,
+				A68205111AB73A22007923D8 /* LocationFTUEViewController.h */,
+				A68205121AB73A22007923D8 /* LocationFTUEViewController.m */,
+				A68205131AB73A22007923D8 /* LocationFTUEViewController.xib */,
 			);
 			name = FTUE;
 			sourceTree = "<group>";
@@ -471,8 +479,9 @@
 				A68205041AB6059F007923D8 /* SettingsViewController.storyboard in Resources */,
 				A68205091AB6108C007923D8 /* Pods-acknowledgements.plist in Resources */,
 				A6397A401A641503009B2767 /* HistoryCell.xib in Resources */,
+				A68205151AB73A22007923D8 /* LocationFTUEViewController.xib in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
-				A682050F1AB6565B007923D8 /* FTUEViewController1.xib in Resources */,
+				A682050F1AB6565B007923D8 /* IntroFTUEViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +528,7 @@
 				A6687FCC1A99496600F781F0 /* DataStore.m in Sources */,
 				A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */,
 				A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */,
+				A68205141AB73A22007923D8 /* LocationFTUEViewController.m in Sources */,
 				A68205071AB6084B007923D8 /* SettingsViewController.m in Sources */,
 				A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */,
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
@@ -538,7 +548,7 @@
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
-				A682050E1AB6565B007923D8 /* FTUEViewController1.m in Sources */,
+				A682050E1AB6565B007923D8 /* IntroFTUEViewController.m in Sources */,
 				A643D58B1A40A231006ACF0A /* PreferredDrinks.m in Sources */,
 				A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */,
 				A6397A461A645ABD009B2767 /* LocationFetcher.m in Sources */,

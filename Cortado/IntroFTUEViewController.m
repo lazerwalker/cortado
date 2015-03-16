@@ -1,12 +1,12 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "FTUEViewController1.h"
+#import "IntroFTUEViewController.h"
 
-@interface FTUEViewController1 ()
+@interface IntroFTUEViewController ()
 @property (readonly) RACSubject *completed;
 @end
 
-@implementation FTUEViewController1
+@implementation IntroFTUEViewController
 
 - (id)init {
     self = [super init];

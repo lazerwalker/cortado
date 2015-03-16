@@ -24,10 +24,14 @@
 
     _locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    [self.locationManager requestAlwaysAuthorization];
 
     return self;
 }
+
+- (void)promptForPermissions {
+    [self.locationManager requestAlwaysAuthorization];
+}
+
 #pragma mark - CLLocationDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {

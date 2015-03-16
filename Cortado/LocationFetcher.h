@@ -4,8 +4,7 @@
 
 @interface LocationFetcher : NSObject
 
-+ (BOOL)shouldPromptUserForPermissions;
-+ (void)doNotPromptForPermissions;
+- (void)promptForPermissions;
 
 - (void)manuallyCheckCurrentLocation;
 
