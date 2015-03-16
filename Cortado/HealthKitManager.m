@@ -38,16 +38,26 @@
         HKAuthorizationStatus status = [self.healthStore authorizationStatusForType:self.caffeineType];
         if (status == HKAuthorizationStatusSharingAuthorized) {
             self.isAuthorized = YES;
-        } else if (status == HKAuthorizationStatusNotDetermined) {
-            NSSet *set = [NSSet setWithObject:self.caffeineType];
-            [self.healthStore requestAuthorizationToShareTypes:set readTypes:set completion:^(BOOL success, NSError *error) {
-                self.isAuthorized = success;
-            }];
         }
     }
 
     return self;
 }
+
+- (void)promptForPermissions {
+    if (![HKHealthStore isHealthDataAvailable]) return;
+    if (self.isAuthorized) return;
+
+    HKAuthorizationStatus status = [self.healthStore authorizationStatusForType:self.caffeineType];
+    if (status == HKAuthorizationStatusNotDetermined) {
+        NSSet *set = [NSSet setWithObject:self.caffeineType];
+        [self.healthStore requestAuthorizationToShareTypes:set readTypes:set completion:^(BOOL success, NSError *error) {
+            self.isAuthorized = success;
+        }];
+    }
+}
+
+#pragma mark -
 
 - (void)addDrinkImmediately:(DrinkConsumption *)drink {
     [[self addDrink:drink] subscribeCompleted:^{}];

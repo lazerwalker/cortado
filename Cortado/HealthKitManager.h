@@ -7,6 +7,8 @@
 
 @property (readonly) BOOL isAuthorized;
 
+- (void)promptForPermissions;
+
 - (RACSignal *)addDrink:(DrinkConsumption *)drink;
 - (RACSignal *)deleteDrink:(DrinkConsumption *)drink;
 
