@@ -74,13 +74,27 @@
             [self.fetcher promptForPermissions];
         };
 
-        FTUEViewController *ftue = [[FTUEViewController alloc] initWithLocationBlock:locationBlock];
+        void (^notificationsBlock)() = ^{
+            [UIApplication.sharedApplication registerForRemoteNotifications];
+            preferredDrinksVM.shouldRegisterNotificationTypeAutomatically = YES;
+        };
+
+        void (^healthKitBlock)() = ^{
+            [healthKitManager promptForPermissions];
+        };
+
+        FTUEViewController *ftue = [[FTUEViewController alloc] initWithLocationBlock:locationBlock
+                                                                  notificationsBlock:notificationsBlock
+                                                                      healthKitBlock:healthKitBlock];
         [[ftue.completedSignal logAll] subscribeNext: ^(id _){
             [FTUEViewController setAsSeen];
             [historyNav dismissViewControllerAnimated:YES completion:nil];
         }];
 
         [historyNav presentViewController:ftue animated:NO completion:nil];
+    } else {
+        // FIXME
+        preferredDrinksVM.shouldRegisterNotificationTypeAutomatically = YES;
     }
 
     return YES;

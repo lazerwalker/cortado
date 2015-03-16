@@ -2,7 +2,7 @@
 
 #import "FTUEScreen.h"
 
-@interface LocationFTUEViewController : UIViewController <FTUEScreen>
+@interface NotificationsFTUEViewController : UIViewController<FTUEScreen>
 
 - (id)initWithAuthorizationBlock:(FTUEAuthorizationBlock)authorizationBlock;
 

@@ -9,6 +9,8 @@
 @property (readonly, nonatomic, strong) PreferredDrinks *drinks;
 @property (readonly) NSUInteger numberOfDrinks;
 
+@property (readwrite, nonatomic, assign) BOOL shouldRegisterNotificationTypeAutomatically;
+
 - (void)registerNotificationType;
 
 - (Drink *)drinkAtIndex:(NSUInteger)index;

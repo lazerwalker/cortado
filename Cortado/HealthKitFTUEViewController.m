@@ -1,13 +1,13 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "LocationFTUEViewController.h"
+#import "HealthKitFTUEViewController.h"
 
-@interface LocationFTUEViewController ()
+@interface HealthKitFTUEViewController ()
 @property (readonly) RACSubject *completed;
 @property (copy, readonly) FTUEAuthorizationBlock authorizationBlock;
 @end
 
-@implementation LocationFTUEViewController
+@implementation HealthKitFTUEViewController
 
 - (id)initWithAuthorizationBlock:(FTUEAuthorizationBlock)authorizationBlock {
     self = [super init];
@@ -23,7 +23,7 @@
     if (self.authorizationBlock) {
         self.authorizationBlock();
     }
-    
+
     [_completed sendNext:self];
     [_completed sendCompleted];
 }
