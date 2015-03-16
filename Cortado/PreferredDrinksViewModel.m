@@ -23,14 +23,18 @@ static NSString * const PreferencesKey = @"preferredDrinks";
     self.drinks = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
     [[PreferredDrinks alloc] initWithDrink:nil];
 
-    [RACObserve(self, drinks) subscribeNext:^(id x) {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.drinks];
+    [RACObserve(self, drinks) subscribeNext:^(PreferredDrinks *drinks) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
         [NSUserDefaults.standardUserDefaults setObject:data forKey:PreferencesKey];
 
-        [CoffeeShopNotification registerNotificationTypeWithPreferences:self.drinks];
+        [self registerNotificationType];
     }];
 
     return self;
+}
+
+- (void)registerNotificationType {
+    [CoffeeShopNotification registerNotificationTypeWithPreferences:self.drinks];
 }
 
 - (NSUInteger)numberOfDrinks {

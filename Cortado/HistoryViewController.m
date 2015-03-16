@@ -19,16 +19,17 @@
 static NSString * const CellIdentifier = @"Cell";
 
 @interface HistoryViewController ()
-@property (readonly, nonatomic, strong) PreferredDrinksViewModel *preferredDrinksViewModel;
 @end
 
 @implementation HistoryViewController
 
-- (id)initWithViewModel:(HistoryViewModel *)viewModel {
+- (id)initWithHistoryViewModel:(HistoryViewModel *)viewModel preferredDrinksViewModel:(PreferredDrinksViewModel *)preferredDrinksViewModel {
+
     self = [super initWithStyle:UITableViewStylePlain];
     if (!self) return nil;
 
     _viewModel = viewModel;
+    _preferredDrinksViewModel = preferredDrinksViewModel;
 
     [[UILabel appearanceWhenContainedIn:UITableViewHeaderFooterView.class, nil] setFont:[UIFont boldSystemFontOfSize:14.0]];
 
@@ -48,7 +49,6 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _preferredDrinksViewModel = [[PreferredDrinksViewModel alloc] init];
     PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:self.preferredDrinksViewModel];
     pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 156);
     pvc.tableView.scrollEnabled = NO;

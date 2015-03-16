@@ -63,7 +63,8 @@
 
     // History
     HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithDataStore:self.dataStore];
-    HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
+    PreferredDrinksViewModel *preferredDrinksVM = [[PreferredDrinksViewModel alloc] init];
+    HistoryViewController *historyVC = [[HistoryViewController alloc] initWithHistoryViewModel:historyVM preferredDrinksViewModel:preferredDrinksVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
