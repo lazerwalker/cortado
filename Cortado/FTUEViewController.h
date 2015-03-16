@@ -1,9 +1,9 @@
 @import UIKit;
 
-@class RACSubject;
+@class RACSignal;
 
-@interface FTUEViewController : UIPageViewController
+@interface FTUEViewController : UINavigationController
 
-@property (readonly, nonatomic, strong) RACSubject *completedSignal;
+@property (readonly, nonatomic, strong) RACSignal *completedSignal;
 
 @end

@@ -1,8 +1,11 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "FTUEViewController1.h"
+
 #import "FTUEViewController.h"
 
 @interface FTUEViewController ()
+@property (readonly) NSArray *screens;
 @end
 
 @implementation FTUEViewController
@@ -11,20 +14,33 @@
     self = [super init];
     if (!self) return nil;
 
-    _completedSignal = [RACSubject subject];
+    _screens = @[
+        [[FTUEViewController1 alloc] init],
+        [[FTUEViewController1 alloc] init]
+    ];
+
+    [self pushViewController:self.screens.firstObject animated:NO];
+
+    self.navigationBarHidden = YES;
+
+    _completedSignal = [[RACSignal concat:[_screens.rac_sequence map:^id(UIViewController<FTUEScreen>* vc) {
+        return vc.completed;
+    }]] flattenMap:^RACStream *(UIViewController *last) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            NSUInteger nextIndex = [_screens indexOfObject:last] + 1;
+            if (nextIndex == _screens.count) {
+                // TODO: Sending completed should be sufficient, but
+                // subscribeCompleted wasn't picking the completed signal up for some reason
+                [subscriber sendNext:@YES];
+                [subscriber sendCompleted];
+            } else {
+                [self pushViewController:_screens[nextIndex] animated:YES];
+            }
+            return (RACDisposable *)nil;
+        }];
+    }];
 
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = UIColor.blueColor;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.completedSignal sendCompleted];
-    });
-}
 @end

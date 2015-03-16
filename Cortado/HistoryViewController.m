@@ -40,10 +40,11 @@ static NSString * const CellIdentifier = @"Cell";
 
     if (self.viewModel.shouldShowFTUE) {
         FTUEViewController *ftue = [[FTUEViewController alloc] init];
-        [ftue.completedSignal subscribeCompleted:^{
+        [[ftue.completedSignal logAll] subscribeNext: ^(id _){
             [self.viewModel sawFTUE];
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
+
         [self presentViewController:ftue animated:NO completion:nil];
     }
 }
