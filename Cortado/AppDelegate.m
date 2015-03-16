@@ -41,7 +41,7 @@
 
 // Permanently disable iRate's auto-prompt
 + (void)initialize {
-    [[iRate sharedInstance] setEventsUntilPrompt:999];
+    [[iRate sharedInstance] setPromptAtLaunch:NO];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
