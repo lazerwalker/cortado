@@ -3,7 +3,7 @@
 #import "FTUEViewController1.h"
 
 @interface FTUEViewController1 ()
-
+@property (readonly) RACSubject *completed;
 @end
 
 @implementation FTUEViewController1
