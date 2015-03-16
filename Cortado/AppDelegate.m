@@ -59,8 +59,6 @@
     NSString *userId = [[UIDevice.currentDevice identifierForVendor] UUIDString];
     [ARAnalytics identifyUserWithID:userId andEmailAddress:userId];
 
-    [UIApplication.sharedApplication registerForRemoteNotifications];
-
     // History
     HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithDataStore:self.dataStore];
     PreferredDrinksViewModel *preferredDrinksVM = [[PreferredDrinksViewModel alloc] init];

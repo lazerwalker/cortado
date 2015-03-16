@@ -27,10 +27,19 @@ static NSString * const PreferencesKey = @"preferredDrinks";
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
         [NSUserDefaults.standardUserDefaults setObject:data forKey:PreferencesKey];
 
-        [self registerNotificationType];
+        if (self.shouldRegisterNotificationTypeAutomatically) {
+            [self registerNotificationType];
+        }
     }];
 
     return self;
+}
+
+- (void)setShouldRegisterNotificationTypeAutomatically:(BOOL)shouldRegisterNotificationTypeAutomatically {
+    _shouldRegisterNotificationTypeAutomatically = shouldRegisterNotificationTypeAutomatically;
+    if (shouldRegisterNotificationTypeAutomatically) {
+        [self registerNotificationType];
+    }
 }
 
 - (void)registerNotificationType {
