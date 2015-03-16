@@ -86,7 +86,7 @@
         FTUEViewController *ftue = [[FTUEViewController alloc] initWithLocationBlock:locationBlock
                                                                   notificationsBlock:notificationsBlock
                                                                       healthKitBlock:healthKitBlock];
-        [[ftue.completedSignal logAll] subscribeNext: ^(id _){
+        [ftue.completedSignal subscribeNext: ^(id _){
             [FTUEViewController setAsSeen];
             [historyNav dismissViewControllerAnimated:YES completion:nil];
         }];
