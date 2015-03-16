@@ -4,11 +4,23 @@
 
 #import "FTUEViewController.h"
 
+static NSString * const FTUECompletedKey = @"completedFTUE";
+
 @interface FTUEViewController ()
 @property (readonly) NSArray *screens;
 @end
 
 @implementation FTUEViewController
+
++ (BOOL)hasBeenSeen {
+    return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey];
+}
+
++ (void)setAsSeen {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setBool:YES forKey:FTUECompletedKey];
+    [defaults synchronize];
+}
 
 - (id)init {
     self = [super init];

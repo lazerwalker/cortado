@@ -66,6 +66,17 @@
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithViewModel:historyVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
 
+    if (![FTUEViewController hasBeenSeen]) {
+        FTUEViewController *ftue = [[FTUEViewController alloc] init];
+        [[ftue.completedSignal logAll] subscribeNext: ^(id _){
+            [FTUEViewController setAsSeen];
+            [historyNav dismissViewControllerAnimated:YES completion:nil];
+        }];
+
+        [historyNav presentViewController:ftue animated:NO completion:nil];
+    }
+
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = historyNav;
     [self.window makeKeyAndVisible];

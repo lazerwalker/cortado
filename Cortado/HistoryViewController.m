@@ -35,20 +35,6 @@ static NSString * const CellIdentifier = @"Cell";
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-    if (self.viewModel.shouldShowFTUE) {
-        FTUEViewController *ftue = [[FTUEViewController alloc] init];
-        [[ftue.completedSignal logAll] subscribeNext: ^(id _){
-            [self.viewModel sawFTUE];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-
-        [self presentViewController:ftue animated:NO completion:nil];
-    }
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.title = @"Cortado";

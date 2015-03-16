@@ -7,12 +7,11 @@
 #import "AddConsumptionViewModel.h"
 #import "DataStore.h"
 #import "DrinkConsumption.h"
+#import "FTUEViewController.h"
 #import "HealthKitManager.h"
 #import "HistoryCellViewModel.h"
 
 #import "HistoryViewModel.h"
-
-static NSString * const FTUECompletedKey = @"completedFTUE";
 
 @interface HistoryViewModel ()
 @property (readwrite, nonatomic, strong) NSArray *drinksArray;
@@ -126,19 +125,9 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 }
 
 #pragma mark - FTUE
-- (BOOL)shouldShowFTUE {
-    return ![NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey];
-}
-
-- (void)sawFTUE {
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    [defaults setBool:YES forKey:FTUECompletedKey];
-    [defaults synchronize];
-}
-
 - (BOOL)shouldPromptForLocation {
     // TODO: Abstract CLLocationManager away in LocationFetcher
-    return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey] &&
+    return [FTUEViewController hasBeenSeen] &&
         CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorizedAlways;
 }
 
@@ -149,7 +138,7 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
 
 - (BOOL)shouldPromptForHealthKit {
     // TODO: Law of Demeter!
-    return [NSUserDefaults.standardUserDefaults boolForKey:FTUECompletedKey] &&
+    return [FTUEViewController hasBeenSeen] &&
         !self.dataStore.healthKitManager.isAuthorized;
 }
 
