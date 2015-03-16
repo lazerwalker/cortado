@@ -59,9 +59,6 @@
     NSString *userId = [[UIDevice.currentDevice identifierForVendor] UUIDString];
     [ARAnalytics identifyUserWithID:userId andEmailAddress:userId];
 
-    // Background fetch
-    [application setMinimumBackgroundFetchInterval: UIApplicationBackgroundFetchIntervalMinimum];
-
     [UIApplication.sharedApplication registerForRemoteNotifications];
 
     // History
