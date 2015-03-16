@@ -28,6 +28,16 @@ static NSString * const HistoryKey = @"History";
     return self;
 }
 
+- (void)importFromHealthKit {
+    [[[self.healthKitManager fetchHistory]
+        collect]
+        subscribeNext:^(id drinks) {
+            self.drinks = drinks;
+        }];
+}
+
+#pragma mark -
+
 - (RACSignal *)addDrink:(DrinkConsumption *)drink {
     self.drinks = [self.drinks arrayByAddingObject:drink];
     return [self.healthKitManager addDrink:drink];

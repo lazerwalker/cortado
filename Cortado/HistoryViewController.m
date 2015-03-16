@@ -132,7 +132,7 @@ static NSString * const CellIdentifier = @"Cell";
 }
 
 - (void)didTapSettingsButton {
-    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] initWithDataStore:self.viewModel.dataStore];
     [self.navigationController pushViewController:settingsVC animated:YES];
 }
 

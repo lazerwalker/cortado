@@ -12,6 +12,8 @@
 
 @property (readonly, nonatomic, strong) HealthKitManager *healthKitManager;
 
+- (void)importFromHealthKit;
+
 - (RACSignal *)addDrink:(DrinkConsumption *)drink;
 - (RACSignal *)deleteDrink:(DrinkConsumption *)drink;
 

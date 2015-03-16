@@ -3,6 +3,8 @@
 #import <iRate/iRate.h>
 #import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
 
+#import "DataStore.h"
+
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()
@@ -11,9 +13,12 @@
 
 @implementation SettingsViewController
 
-- (id)init {
+- (id)initWithDataStore:(DataStore *)dataStore {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:NSStringFromClass(self.class) bundle:NSBundle.mainBundle];
-    return [storyboard instantiateInitialViewController];
+    SettingsViewController *vc = [storyboard instantiateInitialViewController];
+    vc.dataStore = dataStore;
+
+    return vc;
 }
 
 - (void)viewDidLoad {
@@ -56,6 +61,8 @@
         [self showWebSite];
     } else if ([cell.reuseIdentifier isEqualToString:@"rate"]) {
         [self rateInAppStore];
+    } else if ([cell.reuseIdentifier isEqualToString:@"reimport"]) {
+        [self reimportFromHealthKit];
     }
 }
 
@@ -90,6 +97,10 @@
 
 - (void)rateInAppStore {
     [[iRate sharedInstance] openRatingsPageInAppStore];
+}
+
+- (void)reimportFromHealthKit {
+    [self.dataStore importFromHealthKit];
 }
 
 @end
