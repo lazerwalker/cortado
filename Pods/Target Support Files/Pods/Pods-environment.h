@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_Keys 0
 #define COCOAPODS_VERSION_PATCH_Keys 1
 
+// MBProgressHud
+#define COCOAPODS_POD_AVAILABLE_MBProgressHud
+#define COCOAPODS_VERSION_MAJOR_MBProgressHud 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHud 9
+#define COCOAPODS_VERSION_PATCH_MBProgressHud 1
+
 // MWLayoutHelpers
 #define COCOAPODS_POD_AVAILABLE_MWLayoutHelpers
 #define COCOAPODS_VERSION_MAJOR_MWLayoutHelpers 1

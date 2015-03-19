@@ -15,6 +15,7 @@ PODS:
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
+  - MBProgressHUD (0.9.1)
   - Mixpanel (2.7.2):
     - Mixpanel/MPCategoryHelpers (= 2.7.2)
   - Mixpanel/MPCategoryHelpers (2.7.2)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - iRate
   - Keys (from `https://github.com/ashfurrow/empty-podspec.git`)
   - Mantle (~> 1.5)
+  - MBProgressHud (~> 0.9)
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
   - VTAcknowledgementsViewController
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
   Keys: 0a6f1bd71fe4e8bbfc32c93e7d6b086a383a520a
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
+  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
   Mixpanel: def38b9e600f101686b8d647e05660a72c089c65
   MWLayoutHelpers: c0bbad88eeee573406fac39eab829c5259dd2d1a
   ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
