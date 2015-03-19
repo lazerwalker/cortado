@@ -28,10 +28,10 @@ static NSString * const HistoryKey = @"History";
     return self;
 }
 
-- (void)importFromHealthKit {
-    [[[self.healthKitManager fetchHistory]
+- (RACSignal *)importFromHealthKit {
+    return [[[self.healthKitManager fetchHistory]
         collect]
-        subscribeNext:^(id drinks) {
+        doNext:^(id drinks) {
             self.drinks = drinks;
         }];
 }
