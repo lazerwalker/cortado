@@ -15,7 +15,8 @@
 @implementation CustomDrinkForm
 - (NSDictionary *)caffeineField {
     return @{FXFormFieldTitle: @"Caffeine Content (mg)",
-             FXFormFieldDefaultValue: @150};
+             FXFormFieldDefaultValue: @150,
+             FXFormFieldType: FXFormFieldTypeUnsigned};
 }
 @end
 
