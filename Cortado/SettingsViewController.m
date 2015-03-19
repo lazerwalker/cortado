@@ -1,6 +1,7 @@
 #import <IntentKit/INKBrowserHandler.h>
 #import <IntentKit/INKMailHandler.h>
 #import <iRate/iRate.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
 
@@ -101,8 +102,11 @@
 }
 
 - (void)reimportFromHealthKit {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[[self.dataStore importFromHealthKit] deliverOnMainThread]
         subscribeError:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [[[UIAlertView alloc] initWithTitle:@"Uh Oh!"
                 message:@"There was an error importing your previous caffeine history from HealthKit Double-check that you have granted Cortado read access to caffeine history in Health.app."
                 delegate:nil
@@ -110,6 +114,7 @@
                 otherButtonTitles:nil]
             show];
         } completed:^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [[[UIAlertView alloc] initWithTitle:@"Data Imported!"
                 message:@"Your previous caffeine history has been successfully imported from HealthKit."
                 delegate:nil
