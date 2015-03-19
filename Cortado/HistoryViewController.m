@@ -7,6 +7,7 @@
 #import "AddConsumptionViewController.h"
 #import "AppDelegate.h"
 #import "DrinkConsumption.h"
+#import "EmptyStateCell.h"
 #import "FTUEViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
@@ -63,6 +64,10 @@ static NSString * const CellIdentifier = @"Cell";
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
 
+    nib = [UINib nibWithNibName:NSStringFromClass(EmptyStateCell.class) bundle:NSBundle.mainBundle];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(EmptyStateCell.class)];
+
+    RAC(self, tableView.scrollEnabled) = [RACObserve(self, viewModel.isEmptyState) not];
     [[RACObserve(self.viewModel, drinks)
         subscribeOn:RACScheduler.mainThreadScheduler]
         subscribeNext:^(id obj) {
@@ -138,11 +143,15 @@ static NSString * const CellIdentifier = @"Cell";
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(HistoryCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.viewModel = [self.viewModel cellViewModelAtIndexPath:indexPath];
+    if (!self.viewModel.isEmptyState) {
+        cell.viewModel = [self.viewModel cellViewModelAtIndexPath:indexPath];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    if (self.viewModel.isEmptyState) return;
 
     [ARAnalytics event:@"Edited drink"];
 
@@ -214,7 +223,10 @@ static NSString * const CellIdentifier = @"Cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(HistoryCell.class) forIndexPath:indexPath];
+    NSString *cellClass = NSStringFromClass(HistoryCell.class);
+    if (self.viewModel.isEmptyState) cellClass = NSStringFromClass(EmptyStateCell.class);
+    
+    return [tableView dequeueReusableCellWithIdentifier:cellClass forIndexPath:indexPath];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

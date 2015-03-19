@@ -53,6 +53,10 @@
     // observing sortedDateKeys. This... sort of fixes that?
     RAC(self, drinks) = [RACObserve(self, sortedDateKeys) mapReplace:self.drinksArray];
 
+    RAC(self, isEmptyState) = [RACObserve(self, drinksArray) map:^id(NSArray *drinks) {
+        return @(drinks.count == 0);
+    }];
+
     _headerDateFormatter = [[NSDateFormatter alloc] init];
     _headerDateFormatter.dateFormat = @"EEEE, MMMM d";
 
@@ -62,6 +66,10 @@
 #pragma mark - KVO
 + (NSSet *)keyPathsForValuesAffectingNumberOfSections {
     return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinks)];
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsEmptyState {
+    return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinksArray)];
 }
 
 
@@ -74,14 +82,19 @@
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
+    if (self.isEmptyState) return 1;
     return [[self drinksForDateAtIndex:section] count];
 }
 
 - (NSInteger)numberOfSections {
+    if (self.isEmptyState) return 1;
+
     return self.sortedDateKeys.count;
 }
 
 - (NSString *)dateStringForSection:(NSInteger)section {
+    if (self.isEmptyState) return nil;
+
     NSDate *date = self.sortedDateKeys[section];
     NSString *dateString = [self.headerDateFormatter stringFromDate:date];
 
@@ -105,6 +118,10 @@
 }
 
 - (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.isEmptyState) {
+        
+    }
+
     DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
     return [[HistoryCellViewModel alloc] initWithConsumption:drink];
 }

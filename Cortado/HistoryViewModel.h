@@ -12,6 +12,7 @@
 @property (readonly, nonatomic, strong) DataStore *dataStore;
 @property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
+@property (readonly) BOOL isEmptyState;
 
 - (BOOL)shouldPromptForLocation;
 - (BOOL)shouldPromptForHealthKit;

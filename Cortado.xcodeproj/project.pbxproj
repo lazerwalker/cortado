@@ -44,6 +44,8 @@
 		A682051A1AB740B0007923D8 /* NotificationsFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68205181AB740B0007923D8 /* NotificationsFTUEViewController.xib */; };
 		A682051E1AB741C9007923D8 /* HealthKitFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A682051C1AB741C9007923D8 /* HealthKitFTUEViewController.m */; };
 		A682051F1AB741C9007923D8 /* HealthKitFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682051D1AB741C9007923D8 /* HealthKitFTUEViewController.xib */; };
+		A682052B1AB763EE007923D8 /* EmptyStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205291AB763EE007923D8 /* EmptyStateCell.m */; };
+		A682052C1AB763EE007923D8 /* EmptyStateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682052A1AB763EE007923D8 /* EmptyStateCell.xib */; };
 		A6BABD1B1AB3BAB10052D259 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
 		A6BD5A111A532BF9001B5FD0 /* AddConsumptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */; };
 		A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */; };
@@ -154,6 +156,9 @@
 		A682051B1AB741C9007923D8 /* HealthKitFTUEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitFTUEViewController.h; sourceTree = "<group>"; };
 		A682051C1AB741C9007923D8 /* HealthKitFTUEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitFTUEViewController.m; sourceTree = "<group>"; };
 		A682051D1AB741C9007923D8 /* HealthKitFTUEViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthKitFTUEViewController.xib; sourceTree = "<group>"; };
+		A68205281AB763EE007923D8 /* EmptyStateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyStateCell.h; sourceTree = "<group>"; };
+		A68205291AB763EE007923D8 /* EmptyStateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyStateCell.m; sourceTree = "<group>"; };
+		A682052A1AB763EE007923D8 /* EmptyStateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateCell.xib; sourceTree = "<group>"; };
 		A6BA44B81A2A5B6D006B89E3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		A6BABD191AB3BAB10052D259 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
 		A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
@@ -397,6 +402,9 @@
 				A6F328EE1A57577A001D36EC /* HistoryCell.h */,
 				A6F328EF1A57577A001D36EC /* HistoryCell.m */,
 				A6397A3F1A641503009B2767 /* HistoryCell.xib */,
+				A68205281AB763EE007923D8 /* EmptyStateCell.h */,
+				A68205291AB763EE007923D8 /* EmptyStateCell.m */,
+				A682052A1AB763EE007923D8 /* EmptyStateCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -494,6 +502,7 @@
 				A62D72331A254C6500846A33 /* Images.xcassets in Resources */,
 				A68205041AB6059F007923D8 /* SettingsViewController.storyboard in Resources */,
 				A68205091AB6108C007923D8 /* Pods-acknowledgements.plist in Resources */,
+				A682052C1AB763EE007923D8 /* EmptyStateCell.xib in Resources */,
 				A6397A401A641503009B2767 /* HistoryCell.xib in Resources */,
 				A682051F1AB741C9007923D8 /* HealthKitFTUEViewController.xib in Resources */,
 				A682051A1AB740B0007923D8 /* NotificationsFTUEViewController.xib in Resources */,
@@ -564,6 +573,7 @@
 				A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */,
 				A68205191AB740B0007923D8 /* NotificationsFTUEViewController.m in Sources */,
 				A6F328F01A57577A001D36EC /* HistoryCell.m in Sources */,
+				A682052B1AB763EE007923D8 /* EmptyStateCell.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
 				A6EBA44E1A53655400363546 /* DrinkCell.m in Sources */,
 				A60585E21A3E1BB700FF267F /* PreferredDrinksViewController.m in Sources */,
