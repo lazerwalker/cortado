@@ -89,7 +89,7 @@
                             </tableViewSection>
                             <tableViewSection id="jNu-Ce-PPE">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reimport" textLabel="RBe-kh-T0Q" detailTextLabel="z06-VR-st7" style="IBUITableViewCellStyleSubtitle" id="nkO-s7-EF9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reimport" textLabel="RBe-kh-T0Q" detailTextLabel="z06-VR-st7" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="nkO-s7-EF9">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nkO-s7-EF9" id="ar3-tG-l2z">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -100,7 +100,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="If you have uninstalled and reinstalled Cortado, this will restore previous data stored in HealthKit into the app." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z06-VR-st7">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Restore previous data if you've uninstalled and reinstalled the app." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z06-VR-st7">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
