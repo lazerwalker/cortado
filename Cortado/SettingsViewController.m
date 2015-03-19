@@ -5,6 +5,9 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
 
+// TODO: Remove before shipping
+#import "AppDelegate.h"
+
 #import "DataStore.h"
 
 #import "SettingsViewController.h"
@@ -65,9 +68,10 @@
         [self rateInAppStore];
     } else if ([cell.reuseIdentifier isEqualToString:@"reimport"]) {
         [self reimportFromHealthKit];
+    } else if ([cell.reuseIdentifier isEqualToString:@"manualcheck"]) {
+        [self manuallyCheckLocation];
     }
 }
-
 
 #pragma mark - Actions
 
@@ -124,4 +128,8 @@
         }];
 }
 
+// TODO: Remove before shipping
+- (void)manuallyCheckLocation {
+    [(AppDelegate *)UIApplication.sharedApplication.delegate manuallyCheckCurrentLocation];
+}
 @end
