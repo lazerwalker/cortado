@@ -38,6 +38,15 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    // TODO: Is there a better way to do this purely using FXForms?
+    NSIndexPath *namePath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *nameCell = [self.tableView cellForRowAtIndexPath:namePath];
+    [nameCell becomeFirstResponder];
+}
+
 #pragma mark -
 - (void)didTapDoneButton {
     CustomDrinkForm *form = (CustomDrinkForm *)self.formController.form;
