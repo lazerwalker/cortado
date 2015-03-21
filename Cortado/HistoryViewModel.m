@@ -14,10 +14,11 @@
 #import "HistoryViewModel.h"
 
 @interface HistoryViewModel ()
-@property (readwrite, nonatomic, strong) NSArray *drinksArray;
+@property (readwrite, nonatomic, strong) NSArray *drinks;
 @property (readwrite, nonatomic, strong) NSDictionary *clusteredDrinks;
 @property (readwrite, nonatomic, strong) NSArray *sortedDateKeys;
 @property (readonly, nonatomic, strong) NSDateFormatter *headerDateFormatter;
+
 @end
 
 @implementation HistoryViewModel
@@ -29,11 +30,11 @@
     _dataStore = dataStore;
 
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
-    RAC(self, drinksArray) = [RACObserve(self, dataStore.drinks) map:^id(NSArray *drinks) {
+    RAC(self, drinks) = [RACObserve(self, dataStore.drinks) map:^id(NSArray *drinks) {
         return [drinks sortedArrayUsingDescriptors:@[sortDescriptor]];
     }];
 
-    RAC(self, clusteredDrinks) = [RACObserve(self, drinksArray)
+    RAC(self, clusteredDrinks) = [RACObserve(self, drinks)
         map:^id(NSArray *drinks) {
             NSCalendar *calendar = [NSCalendar currentCalendar];
             return ASTGroupBy(drinks, ^id<NSCopying>(DrinkConsumption *drink) {
@@ -47,15 +48,12 @@
         }].reverseObjectEnumerator.allObjects;
     }];
 
-    // This is pretty terrible.
-    // Since the data source relies on `sortedDateKeys` being set, we don't want
-    // consumers to fire until sortedDateKeys is set, but we don't want them
-    // observing sortedDateKeys. This... sort of fixes that?
-    RAC(self, drinks) = [RACObserve(self, sortedDateKeys) mapReplace:self.drinksArray];
-
-    RAC(self, isEmptyState) = [RACObserve(self, drinksArray) map:^id(NSArray *drinks) {
-        return @(drinks.count == 0);
-    }];
+    // TODO: When `drinks` has changed, the rest of the state hasn't sorted itself out yet.
+    // This terrible hack lets us wait until all state has bubbled up
+    RAC(self, isEmptyState) = [[RACObserve(self, sortedDateKeys) mapReplace:self.drinks]
+        map:^id(NSArray *drinks) {
+            return @(drinks.count == 0);
+        }];
 
     _headerDateFormatter = [[NSDateFormatter alloc] init];
     _headerDateFormatter.dateFormat = @"EEEE, MMMM d";
@@ -69,7 +67,7 @@
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsEmptyState {
-    return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinksArray)];
+    return [NSSet setWithObject:@keypath(HistoryViewModel.new, sortedDateKeys)];
 }
 
 
@@ -118,10 +116,6 @@
 }
 
 - (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.isEmptyState) {
-        
-    }
-
     DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
     return [[HistoryCellViewModel alloc] initWithConsumption:drink];
 }
@@ -157,6 +151,80 @@
     // TODO: Law of Demeter!
     return [FTUEViewController hasBeenSeen] &&
         !self.dataStore.healthKitManager.isAuthorized;
+}
+
+#pragma mark -
+- (RACSignal *)dataChanged {
+    RACSignal *sectionChanges = [[[RACObserve(self, sortedDateKeys)
+        combinePreviousWithStart:nil reduce:^id(NSArray *previous, NSArray *current) {
+            if (previous == nil
+                || previous.count == current.count
+                || previous.count == 0
+                || current.count == 0) {
+                    return nil;
+            }
+
+            TableViewChange change;
+            NSInteger index;
+
+            if (previous.count > current.count) {
+                change = TableViewChangeSectionDeletion;
+                NSString *key = [ASTDifference(previous, current) firstObject];
+                index = [previous indexOfObject:key];
+            } else if (previous.count < current.count) {
+                change = TableViewChangeSectionInsertion;
+                NSString *key = [ASTDifference(current, previous) firstObject];
+                index = [current indexOfObject:key];
+            }
+
+            return [RACTuple tupleWithObjects:@(change), @(index), nil];
+        }]
+        ignore: nil]
+        map:^id(RACTuple *tuple) {
+            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:[tuple.second integerValue]];
+            return [RACTuple tupleWithObjects:tuple.first, indexSet, nil];
+        }];
+
+    RACSignal *rowChanges = [[RACObserve(self, clusteredDrinks)
+        combinePreviousWithStart:nil reduce:^id(NSDictionary *previous, NSDictionary *current) {
+            if (previous == nil) return nil;
+
+            NSArray *keys = ASTIntersection(previous.allKeys, current.allKeys);
+            id changedKey = ASTFind(keys, ^BOOL(id key) {
+                return ![previous[key] isEqualToArray:current[key]];
+            });
+            if (changedKey == nil) return nil;
+
+            NSArray *previousArray = previous[changedKey];
+            NSArray *currentArray = current[changedKey];
+
+            TableViewChange change;
+            NSIndexPath *indexPath;
+
+            if (previousArray.count > currentArray.count) {
+                Drink *drink = [ASTDifference(previousArray, currentArray) firstObject];
+                NSInteger index = [previousArray indexOfObject:drink];
+                NSInteger section = [previous.allKeys indexOfObject:changedKey];
+
+                indexPath = [NSIndexPath indexPathForItem:index inSection:section];
+                change = TableViewChangeRowDeletion;
+            } else if (previousArray.count < currentArray.count) {
+                Drink *drink = [ASTDifference(currentArray, previousArray) firstObject];
+                NSInteger index = [currentArray indexOfObject:drink];
+                NSInteger section = [current.allKeys indexOfObject:changedKey];
+
+                indexPath = [NSIndexPath indexPathForItem:index inSection:section];
+                change = TableViewChangeRowInsertion;
+            } else {
+                indexPath = nil;
+                change = TableViewChangeNone;
+            }
+            
+            return [RACTuple tupleWithObjects:@(change), indexPath, nil];
+        }]
+        ignore:nil];
+
+    return [RACSignal merge:@[sectionChanges, rowChanges]];
 }
 
 @end

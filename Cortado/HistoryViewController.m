@@ -68,10 +68,46 @@ static NSString * const CellIdentifier = @"Cell";
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(EmptyStateCell.class)];
 
     RAC(self, tableView.scrollEnabled) = [RACObserve(self, viewModel.isEmptyState) not];
-    [[RACObserve(self.viewModel, drinks)
-        subscribeOn:RACScheduler.mainThreadScheduler]
-        subscribeNext:^(id obj) {
+    [[RACObserve(self, viewModel.isEmptyState)
+        distinctUntilChanged]
+        subscribeNext:^(id x) {
             [self.tableView reloadData];
+        }];
+    
+    [[self.viewModel.dataChanged deliverOnMainThread]
+        subscribeNext:^(RACTuple *update) {
+            TableViewChange change = [update.first integerValue];
+
+            if (change == TableViewChangeNone) {
+                [self.tableView reloadData];
+                return;
+            }
+
+            [self.tableView beginUpdates];
+            switch (change) {
+                case TableViewChangeSectionDeletion: {
+                    NSIndexSet *indexSet = update.second;
+                    [self.tableView deleteSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+                    break;
+                }
+                case TableViewChangeSectionInsertion: {
+                    NSIndexSet *indexSet = update.second;
+                    [self.tableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+                    break;
+                }
+                case TableViewChangeRowDeletion: {
+                    NSArray *indexPaths = @[update.second];
+                    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                    break;
+                }
+                case TableViewChangeRowInsertion: {
+                    NSArray *indexPaths = @[update.second];
+                    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                    break;
+                }
+                default: { break; }
+            }
+            [self.tableView endUpdates];
         }];
 
 

@@ -1,5 +1,13 @@
 #import "RVMViewModel.h"
 
+typedef NS_ENUM(NSInteger, TableViewChange) {
+    TableViewChangeNone = -1,
+    TableViewChangeSectionInsertion,
+    TableViewChangeSectionDeletion,
+    TableViewChangeRowInsertion,
+    TableViewChangeRowDeletion
+};
+
 @class AddConsumptionViewModel;
 @class DrinkConsumption;
 @class DataStore;
@@ -13,6 +21,9 @@
 @property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
 @property (readonly) BOOL isEmptyState;
+
+@property (readonly) RACSignal *dataChanged;
+
 
 - (BOOL)shouldPromptForLocation;
 - (BOOL)shouldPromptForHealthKit;
