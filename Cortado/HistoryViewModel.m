@@ -48,9 +48,7 @@
         }].reverseObjectEnumerator.allObjects;
     }];
 
-    // TODO: When `drinks` has changed, the rest of the state hasn't sorted itself out yet.
-    // This terrible hack lets us wait until all state has bubbled up
-    RAC(self, isEmptyState) = [[RACObserve(self, sortedDateKeys) mapReplace:self.drinks]
+    RAC(self, isEmptyState) = [RACObserve(self, drinks)
         map:^id(NSArray *drinks) {
             return @(drinks.count == 0);
         }];
@@ -67,7 +65,7 @@
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsEmptyState {
-    return [NSSet setWithObject:@keypath(HistoryViewModel.new, sortedDateKeys)];
+    return [NSSet setWithObject:@keypath(HistoryViewModel.new, drinks)];
 }
 
 
