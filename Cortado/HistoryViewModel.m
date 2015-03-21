@@ -183,7 +183,14 @@
             return [RACTuple tupleWithObjects:tuple.first, indexSet, nil];
         }];
 
-    RACSignal *rowChanges = [[RACObserve(self, clusteredDrinks)
+    NSArray *(^sortedKeys)(NSArray *) = ^NSArray *(NSArray *keys) {
+        return [keys sortedArrayUsingComparator:^NSComparisonResult(NSDate *date1, NSDate *date2) {
+            return [date1 compare:date2];
+        }].reverseObjectEnumerator.allObjects;
+    };
+
+    RACSignal *rowChanges = [[[RACObserve(self, clusteredDrinks)
+        sample:RACObserve(self, sortedDateKeys)]
         combinePreviousWithStart:nil reduce:^id(NSDictionary *previous, NSDictionary *current) {
             if (previous == nil) return nil;
 
@@ -202,16 +209,16 @@
             if (previousArray.count > currentArray.count) {
                 Drink *drink = [ASTDifference(previousArray, currentArray) firstObject];
                 NSInteger index = [previousArray indexOfObject:drink];
-                NSInteger section = [previous.allKeys indexOfObject:changedKey];
+                NSInteger section = [sortedKeys(previous.allKeys) indexOfObject:changedKey];
 
-                indexPath = [NSIndexPath indexPathForItem:index inSection:section];
+                indexPath = [NSIndexPath indexPathForRow:index inSection:section];
                 change = TableViewChangeRowDeletion;
             } else if (previousArray.count < currentArray.count) {
                 Drink *drink = [ASTDifference(currentArray, previousArray) firstObject];
                 NSInteger index = [currentArray indexOfObject:drink];
-                NSInteger section = [current.allKeys indexOfObject:changedKey];
+                NSInteger section = [sortedKeys(current.allKeys) indexOfObject:changedKey];
 
-                indexPath = [NSIndexPath indexPathForItem:index inSection:section];
+                indexPath = [NSIndexPath indexPathForRow:index inSection:section];
                 change = TableViewChangeRowInsertion;
             } else {
                 indexPath = nil;
