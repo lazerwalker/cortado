@@ -13,7 +13,7 @@
     NSNumber *caffeine = @([sample.quantity doubleValueForUnit:mg]);
 
     NSString *venue = sample.metadata[@"Venue"];
-    NSString *coordinate = sample.metadata[@"Coordinate"];
+    NSString *coordinate = sample.metadata[@"Coordinates"];
 
     Drink *drink = [[Drink alloc] initWithName:name subtype:subtype caffeine:caffeine];
     return [[DrinkConsumption alloc] initWithDrink:drink
