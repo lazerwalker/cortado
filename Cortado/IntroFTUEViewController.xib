@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntroFTUEViewController">
@@ -14,16 +15,58 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1F-ku-mRC">
-                    <rect key="frame" x="22" y="302" width="345" height="62"/>
-                    <string key="text">Welcome to Cortado! Cortado makes it easy to track your caffeine consumption so you can see what effect it has on your health and well-being.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ker-99-sCa">
-                    <rect key="frame" x="175" y="462" width="39" height="30"/>
-                    <state key="normal" title="Got It">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-sP-CW4">
+                    <rect key="frame" x="-75" y="-16" width="525" height="700"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="700" id="asi-tW-FDO"/>
+                        <constraint firstAttribute="width" constant="525" id="xGj-UJ-R27"/>
+                    </constraints>
+                </imageView>
+                <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-0L-UfQ">
+                    <rect key="frame" x="0.0" y="173" width="375" height="167"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1F-ku-mRC">
+                            <rect key="frame" x="19" y="22" width="337" height="123"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Welcome to Cortado!">
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="  Cortado makes it easy to track your caffeine intake so you can see what effect it has on your health and well-being.">
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="18" name="AvenirNext-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="d1F-ku-mRC" secondAttribute="trailing" constant="19" id="1nL-XZ-yWg"/>
+                        <constraint firstItem="d1F-ku-mRC" firstAttribute="leading" secondItem="3ij-0L-UfQ" secondAttribute="leading" constant="19" id="bpX-I8-p8B"/>
+                        <constraint firstAttribute="bottom" secondItem="d1F-ku-mRC" secondAttribute="bottom" constant="22" id="e7Y-Fc-EV8"/>
+                        <constraint firstItem="d1F-ku-mRC" firstAttribute="top" secondItem="3ij-0L-UfQ" secondAttribute="top" constant="22" id="eGT-PC-v4b"/>
+                    </constraints>
+                </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="mWW-vC-LdV">
+                    <rect key="frame" x="160" y="630" width="55" height="37"/>
+                </pageControl>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ker-99-sCa">
+                    <rect key="frame" x="37" y="510" width="300" height="60"/>
+                    <color key="backgroundColor" red="0.024176706839999999" green="0.66666666669999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="6lp-nq-pLp"/>
+                        <constraint firstAttribute="width" constant="300" id="HLD-Lu-xNm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <state key="normal" title="Next">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -33,12 +76,34 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="d1F-ku-mRC" secondAttribute="centerY" id="MJv-JG-h3q"/>
-                <constraint firstAttribute="centerX" secondItem="d1F-ku-mRC" secondAttribute="centerX" id="Nyc-A5-jAR"/>
-                <constraint firstItem="d1F-ku-mRC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="TAl-A3-KD9"/>
-                <constraint firstAttribute="trailing" secondItem="d1F-ku-mRC" secondAttribute="trailing" constant="15" id="bcM-kY-JrC"/>
+                <constraint firstItem="WX2-sP-CW4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-75" id="3bo-de-SCy"/>
+                <constraint firstItem="mWW-vC-LdV" firstAttribute="top" secondItem="Ker-99-sCa" secondAttribute="bottom" constant="60" id="5ag-8N-8In"/>
+                <constraint firstAttribute="centerX" secondItem="mWW-vC-LdV" secondAttribute="centerX" id="CPl-Vw-PfM"/>
+                <constraint firstAttribute="trailing" secondItem="3ij-0L-UfQ" secondAttribute="trailing" id="EXS-uw-Vbq"/>
+                <constraint firstItem="Ker-99-sCa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="GEA-TX-odI"/>
+                <constraint firstItem="WX2-sP-CW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-16" id="RcK-AA-zA4"/>
+                <constraint firstAttribute="centerY" secondItem="3ij-0L-UfQ" secondAttribute="centerY" multiplier="1.3" id="Wf0-yD-Pvb"/>
+                <constraint firstAttribute="bottom" secondItem="Ker-99-sCa" secondAttribute="bottom" constant="66" id="bRq-iH-nRA"/>
+                <constraint firstAttribute="centerX" secondItem="Ker-99-sCa" secondAttribute="centerX" id="cEc-fj-bXI"/>
+                <constraint firstAttribute="bottom" secondItem="mWW-vC-LdV" secondAttribute="bottom" id="d0x-hx-6gB"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ker-99-sCa" secondAttribute="trailing" constant="15" id="eN3-48-PSy"/>
+                <constraint firstAttribute="trailing" secondItem="WX2-sP-CW4" secondAttribute="trailing" constant="-75" id="ewp-Gg-9WK"/>
+                <constraint firstAttribute="centerY" secondItem="Ker-99-sCa" secondAttribute="centerY" multiplier="0.6" id="iP9-4L-d8Y"/>
+                <constraint firstAttribute="bottom" secondItem="WX2-sP-CW4" secondAttribute="bottom" constant="-17" id="vdW-d8-IzL"/>
+                <constraint firstItem="3ij-0L-UfQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wNr-ec-VnT"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GEA-TX-odI"/>
+                    <exclude reference="bRq-iH-nRA"/>
+                    <exclude reference="eN3-48-PSy"/>
+                    <exclude reference="5ag-8N-8In"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="coffee" width="4272" height="2840"/>
+    </resources>
 </document>
