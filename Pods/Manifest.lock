@@ -30,6 +30,7 @@ PODS:
   - ReactiveViewModel (0.3):
     - ReactiveCocoa (~> 2.4)
   - VTAcknowledgementsViewController (0.13)
+  - YLGIFImage (0.11)
 
 DEPENDENCIES:
   - ARAnalytics/Mixpanel (from `https://github.com/orta/ARAnalytics.git`)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
   - VTAcknowledgementsViewController
+  - YLGIFImage
 
 EXTERNAL SOURCES:
   ARAnalytics:
@@ -74,5 +76,6 @@ SPEC CHECKSUMS:
   ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
   ReactiveViewModel: 512224f801ea0a603fd394eed0f38bc662b64b9a
   VTAcknowledgementsViewController: 62e43d3dcd54b13ee7e7da60ba96345d1f7c788f
+  YLGIFImage: ffdc4cb9faf077217aacb1cdfe69689afe403f21
 
 COCOAPODS: 0.36.0

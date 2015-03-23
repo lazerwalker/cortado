@@ -11,6 +11,7 @@ pod 'MBProgressHud', '~> 0.9'
 pod 'ReactiveCocoa', '~> 2.3'
 pod 'ReactiveViewModel', '~> 0.2'
 pod 'VTAcknowledgementsViewController'
+pod 'YLGIFImage'
 
 plugin 'cocoapods-keys', {
     :project => "Cortado",
