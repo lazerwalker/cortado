@@ -1,10 +1,13 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <YLGIFImage/YLGIFImage.h>
+#import <YLGIFImage/YLImageView.h>
 
 #import "NotificationsFTUEViewController.h"
 
 @interface NotificationsFTUEViewController ()
 @property (readonly) RACSubject *completed;
 @property (copy, readonly) FTUEAuthorizationBlock authorizationBlock;
+@property (weak, nonatomic) IBOutlet YLImageView *gifView;
 @end
 
 @implementation NotificationsFTUEViewController
@@ -17,6 +20,12 @@
     _authorizationBlock = authorizationBlock;
 
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.gifView.image = [YLGIFImage imageNamed:@"swipe.gif"];
 }
 
 - (IBAction)didTapButton:(id)sender {
