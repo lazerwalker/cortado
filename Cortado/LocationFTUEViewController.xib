@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationFTUEViewController">
@@ -14,32 +15,85 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cortado uses your location to automatically detect when you go to a coffee shop. Don't worry, it won't eat up your battery." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ9-yy-Qnd">
-                    <rect key="frame" x="15" y="209" width="345" height="146"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOu-vN-VnL">
-                    <rect key="frame" x="123" y="455" width="129" height="30"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee2" translatesAutoresizingMaskIntoConstraints="NO" id="75h-i9-OFJ">
+                    <rect key="frame" x="-227" y="0.0" width="654" height="667"/>
+                </imageView>
+                <view alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KlT-Xf-ibR">
+                    <rect key="frame" x="0.0" y="131" width="375" height="294"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whenever you're at a coffee shop, Cortado will ask you to log your caffeine." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-PU-b0j">
+                            <rect key="frame" x="19" y="22" width="336" height="50"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="To do that, we need your location. Don't worry, we won't drain your battery." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ9-yy-Qnd">
+                            <rect key="frame" x="19" y="222" width="336" height="50"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notif" translatesAutoresizingMaskIntoConstraints="NO" id="dm6-4w-CT7">
+                            <rect key="frame" x="27" y="92" width="320" height="110"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="odN-XR-cMX"/>
+                                <constraint firstAttribute="height" constant="110" id="wOR-a7-cOj"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="dm6-4w-CT7" secondAttribute="centerX" id="ATG-T5-xcX"/>
+                        <constraint firstItem="dm6-4w-CT7" firstAttribute="top" secondItem="iRE-PU-b0j" secondAttribute="bottom" constant="20" id="B9I-fn-k6H"/>
+                        <constraint firstItem="BJ9-yy-Qnd" firstAttribute="leading" secondItem="iRE-PU-b0j" secondAttribute="leading" id="N1U-5w-O73"/>
+                        <constraint firstItem="BJ9-yy-Qnd" firstAttribute="top" secondItem="dm6-4w-CT7" secondAttribute="bottom" constant="20" id="XJ0-IV-CxH"/>
+                        <constraint firstAttribute="trailing" secondItem="iRE-PU-b0j" secondAttribute="trailing" constant="20" id="XTK-cR-ubh"/>
+                        <constraint firstAttribute="bottom" secondItem="BJ9-yy-Qnd" secondAttribute="bottom" constant="22" id="bRS-tV-ubg"/>
+                        <constraint firstItem="BJ9-yy-Qnd" firstAttribute="trailing" secondItem="iRE-PU-b0j" secondAttribute="trailing" id="eIm-fx-Tl6"/>
+                        <constraint firstItem="iRE-PU-b0j" firstAttribute="leading" secondItem="KlT-Xf-ibR" secondAttribute="leading" constant="19" id="iht-yD-oNQ"/>
+                        <constraint firstItem="iRE-PU-b0j" firstAttribute="top" secondItem="KlT-Xf-ibR" secondAttribute="top" constant="22" id="qZh-2f-ZpY"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWS-Kl-XQS">
+                    <rect key="frame" x="38" y="527" width="300" height="60"/>
+                    <color key="backgroundColor" red="0.024176706839999999" green="0.66666666669999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="iZ0-W2-R0s"/>
+                        <constraint firstAttribute="height" constant="60" id="mx3-vl-wOY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <state key="normal" title="Authorize Location">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="didTapButton:" destination="-1" eventType="touchUpInside" id="il1-Gp-RX3"/>
+                        <action selector="didTapButton:" destination="-1" eventType="touchUpInside" id="en5-Gv-vAc"/>
                     </connections>
                 </button>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="PkH-l9-Ju8">
+                    <rect key="frame" x="160" y="630" width="55" height="37"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="BOu-vN-VnL" secondAttribute="centerX" id="EMo-fb-owz"/>
-                <constraint firstAttribute="centerY" secondItem="BJ9-yy-Qnd" secondAttribute="centerY" id="KZf-OM-375"/>
-                <constraint firstAttribute="centerX" secondItem="BJ9-yy-Qnd" secondAttribute="centerX" id="M5S-Z4-g6j"/>
-                <constraint firstItem="BJ9-yy-Qnd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XIN-9V-1Bd"/>
-                <constraint firstAttribute="trailing" secondItem="BJ9-yy-Qnd" secondAttribute="trailing" constant="15" id="avB-G2-43q"/>
+                <constraint firstAttribute="centerY" secondItem="qWS-Kl-XQS" secondAttribute="centerY" multiplier="0.6" id="C4P-Ua-uNa"/>
+                <constraint firstAttribute="centerY" secondItem="KlT-Xf-ibR" secondAttribute="centerY" multiplier="1.2" id="E0o-Zh-vch"/>
+                <constraint firstItem="75h-i9-OFJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fg1-mt-BwP"/>
+                <constraint firstAttribute="trailing" secondItem="KlT-Xf-ibR" secondAttribute="trailing" id="TDe-Hm-dkj"/>
+                <constraint firstAttribute="bottom" secondItem="PkH-l9-Ju8" secondAttribute="bottom" id="V5K-Fc-Glz"/>
+                <constraint firstItem="KlT-Xf-ibR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cMb-9k-84S"/>
+                <constraint firstAttribute="centerX" secondItem="PkH-l9-Ju8" secondAttribute="centerX" id="fsT-Wd-u8L"/>
+                <constraint firstItem="75h-i9-OFJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-227" id="lGp-s2-66o"/>
+                <constraint firstAttribute="bottom" secondItem="75h-i9-OFJ" secondAttribute="bottom" id="lJC-zg-nYD"/>
+                <constraint firstAttribute="centerX" secondItem="qWS-Kl-XQS" secondAttribute="centerX" id="obg-Fs-TVa"/>
+                <constraint firstAttribute="trailing" secondItem="75h-i9-OFJ" secondAttribute="trailing" constant="-52" id="ux1-fA-flJ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="223.5" y="328.5"/>
+            <point key="canvasLocation" x="225.5" y="362.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="coffee2" width="1600" height="1600"/>
+        <image name="notif" width="640" height="220"/>
+    </resources>
 </document>
