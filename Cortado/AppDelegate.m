@@ -33,7 +33,6 @@
 @interface AppDelegate ()
 
 @property (nonatomic, strong) DataStore *dataStore;
-@property (nonatomic, strong) LocationFetcher *fetcher;
 
 @end
 
@@ -60,7 +59,8 @@
     [ARAnalytics identifyUserWithID:userId andEmailAddress:userId];
 
     // History
-    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithDataStore:self.dataStore];
+    HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithDataStore:self.dataStore
+                                                              locationFetcher:self.fetcher];
     PreferredDrinksViewModel *preferredDrinksVM = [[PreferredDrinksViewModel alloc] init];
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithHistoryViewModel:historyVM preferredDrinksViewModel:preferredDrinksVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];

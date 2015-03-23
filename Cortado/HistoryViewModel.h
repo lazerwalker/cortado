@@ -12,12 +12,16 @@ typedef NS_ENUM(NSInteger, TableViewChange) {
 @class DrinkConsumption;
 @class DataStore;
 @class HistoryCellViewModel;
+@class LocationFetcher;
 
 @interface HistoryViewModel : RVMViewModel
 
-- (id)initWithDataStore:(DataStore *)dataStore;
+- (id)initWithDataStore:(DataStore *)dataStore
+        locationFetcher:(LocationFetcher *)locationFetcher;
 
 @property (readonly, nonatomic, strong) DataStore *dataStore;
+@property (readonly, nonatomic, strong) LocationFetcher *locationFetcher;
+
 @property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
 @property (readonly) BOOL isEmptyState;
@@ -30,6 +34,7 @@ typedef NS_ENUM(NSInteger, TableViewChange) {
 - (void)authorizeLocation;
 
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath;
+- (AddConsumptionViewModel *)addConsumptionViewModelWithPreferredDrink:(Drink *)drink;
 - (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;

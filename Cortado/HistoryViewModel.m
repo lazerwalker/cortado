@@ -10,6 +10,7 @@
 #import "FTUEViewController.h"
 #import "HealthKitManager.h"
 #import "HistoryCellViewModel.h"
+#import "LocationFetcher.h"
 
 #import "HistoryViewModel.h"
 
@@ -23,11 +24,13 @@
 
 @implementation HistoryViewModel
 
-- (id)initWithDataStore:(DataStore *)dataStore {
+- (id)initWithDataStore:(DataStore *)dataStore
+        locationFetcher:(LocationFetcher *)locationFetcher {
     self = [super init];
     if (!self) return nil;
 
     _dataStore = dataStore;
+    _locationFetcher = locationFetcher;
 
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
     RAC(self, drinks) = [RACObserve(self, dataStore.drinks) map:^id(NSArray *drinks) {
@@ -106,6 +109,14 @@
     if (indexPath.row >= drinks.count) return nil;
 
     return drinks[indexPath.row];
+}
+
+
+- (AddConsumptionViewModel *)addConsumptionViewModelWithPreferredDrink:(Drink *)drink {
+    CLLocation *location = self.locationFetcher.currentLocation;
+    AddConsumptionViewModel *vm = [[AddConsumptionViewModel alloc] initWithPreferredDrink:drink
+                                                                                 location:location];
+    return vm;
 }
 
 - (AddConsumptionViewModel *)editViewModelAtIndexPath:(NSIndexPath *)indexPath {

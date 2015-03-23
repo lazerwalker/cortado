@@ -155,8 +155,9 @@ static NSString * const CellIdentifier = @"Cell";
 #pragma mark -
 
 - (void)didTapAddButton {
-    AddConsumptionViewModel *addVM = [[AddConsumptionViewModel alloc] init];
-    addVM.drink = [self.preferredDrinksViewModel drinkAtIndex:0];
+    Drink *preferredDrink = [self.preferredDrinksViewModel drinkAtIndex:0];
+    AddConsumptionViewModel *addVM = [self.viewModel addConsumptionViewModelWithPreferredDrink:preferredDrink];
+
     AddConsumptionViewController *addVC = [[AddConsumptionViewController alloc] initWithViewModel:addVM];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addVC];
 

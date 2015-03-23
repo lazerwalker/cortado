@@ -23,6 +23,9 @@
 
 @property (readonly) RACSubject *completedSignal;
 
+- (id)initWithPreferredDrink:(Drink *)drink
+                    location:(CLLocation *)location;
+
 - (id)initWithConsumption:(DrinkConsumption *)consumption;
 - (id)initWithConsumption:(DrinkConsumption *)consumption
                   editing:(BOOL)editing;

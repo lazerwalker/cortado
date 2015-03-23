@@ -1,3 +1,5 @@
+@import CoreLocation;
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 
@@ -11,6 +13,9 @@
 @interface AddConsumptionViewModel ()
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (readwrite) DrinkCellViewModel *drinkCellViewModel;
+
+@property (readonly, nonatomic, strong) CLLocation *location;
+
 @end
 
 @implementation AddConsumptionViewModel
@@ -27,8 +32,25 @@
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 
+
     RAC(self, drinkCellViewModel) = [RACObserve(self, drink) map:^id(Drink *drink) {
         return [[DrinkCellViewModel alloc] initWithDrink:drink];
+    }];
+    
+    return self;
+}
+
+- (id)initWithPreferredDrink:(Drink *)drink
+                    location:(CLLocation *)location {
+
+    self = [self init];
+    if (!self) return nil;
+
+    self.drink = drink;
+    _location = location;
+
+    RAC(self, coordinateString) = [RACObserve(self, location) map:^id(CLLocation *location) {
+        return [NSString stringWithFormat:@"%@,%@", @(location.coordinate.latitude), @(location.coordinate.longitude)];
     }];
 
     return self;
@@ -84,14 +106,19 @@
 }
 
 - (MapAnnotation *)mapAnnotation {
-    if (!(self.venue && self.coordinateString)) return nil;
+    if (!self.coordinateString) return nil;
 
-    NSArray *values = [self.coordinateString componentsSeparatedByString:@","];
-    if (values.count != 2) return nil;
+    CLLocationCoordinate2D coordinate;
+    if (self.location) {
+        coordinate = self.location.coordinate;
+    } else {
+        NSArray *values = [self.coordinateString componentsSeparatedByString:@","];
+        if (values.count != 2) return nil;
 
-    CLLocationDegrees lat = [values.firstObject doubleValue];
-    CLLocationDegrees lng = [values.lastObject doubleValue];
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+        CLLocationDegrees lat = [values.firstObject doubleValue];
+        CLLocationDegrees lng = [values.lastObject doubleValue];
+        coordinate = CLLocationCoordinate2DMake(lat, lng);
+    }
 
     return [[MapAnnotation alloc] initWithCoordinate:coordinate title:self.venue];
 }

@@ -32,6 +32,10 @@
     [self.locationManager requestAlwaysAuthorization];
 }
 
+- (CLLocation *)currentLocation {
+    return self.locationManager.location;
+}
+
 #pragma mark - CLLocationDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {

@@ -4,6 +4,8 @@
 
 @interface LocationFetcher : NSObject
 
+@property (readonly) CLLocation *currentLocation;
+
 - (void)promptForPermissions;
 
 - (void)manuallyCheckCurrentLocation;
