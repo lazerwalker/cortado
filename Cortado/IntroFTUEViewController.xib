@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-sP-CW4">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee1" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-sP-CW4">
                     <rect key="frame" x="-75" y="-16" width="525" height="700"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="700" id="asi-tW-FDO"/>
@@ -30,14 +30,14 @@
                             <attributedString key="attributedText">
                                 <fragment content="Welcome to Cortado!">
                                     <attributes>
-                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="18" name="AvenirNext-DemiBold"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                     </attributes>
                                 </fragment>
                                 <fragment content="  Cortado makes it easy to track your caffeine intake so you can see what effect it has on your health and well-being.">
                                     <attributes>
-                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="18" name="AvenirNext-Regular"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                     </attributes>
@@ -104,6 +104,6 @@
         </view>
     </objects>
     <resources>
-        <image name="coffee" width="4272" height="2840"/>
+        <image name="coffee1" width="4272" height="2840"/>
     </resources>
 </document>
