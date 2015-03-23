@@ -43,10 +43,15 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.viewModel action:@selector(addDrink)];
 
-    // TODO: This is bad.
-    if (!self.viewModel.isEditing) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];
-    }
+    // TODO: This VC shouldn't have this sort of knowledge of how it's being presented
+    RAC(self, navigationItem.leftBarButtonItem) = [RACObserve(self, viewModel.isEditing)
+        map:^id(NSNumber *isEditing) {
+            if (isEditing.boolValue) {
+                return nil;
+            } else {
+                return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.viewModel action:@selector(cancel)];;
+            }
+        }];
 
     RAC(self, navigationItem.rightBarButtonItem.enabled) = RACObserve(self, viewModel.inputValid);
 
