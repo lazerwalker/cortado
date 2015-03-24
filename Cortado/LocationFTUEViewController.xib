@@ -18,7 +18,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee2" translatesAutoresizingMaskIntoConstraints="NO" id="75h-i9-OFJ">
                     <rect key="frame" x="-227" y="0.0" width="654" height="667"/>
                 </imageView>
-                <view alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KlT-Xf-ibR">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KlT-Xf-ibR">
                     <rect key="frame" x="0.0" y="131" width="375" height="294"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whenever you're at a coffee shop, Cortado will ask you to log your caffeine." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-PU-b0j">
@@ -41,7 +41,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="dm6-4w-CT7" secondAttribute="centerX" id="ATG-T5-xcX"/>
                         <constraint firstItem="dm6-4w-CT7" firstAttribute="top" secondItem="iRE-PU-b0j" secondAttribute="bottom" constant="20" id="B9I-fn-k6H"/>
