@@ -47,8 +47,7 @@
     BOOL isStart = [visit.departureDate isEqualToDate:NSDate.distantFuture];
     if (!isStart) return;
 
-    [ARAnalytics event:@"visited location" withProperties:@{
-                                                            @"coords":[NSString stringWithFormat:@"%@,%@",@(visit.coordinate.latitude), @(visit.coordinate.longitude)]}];
+    [ARAnalytics event:@"visited location"];
 
     [self.detector checkForCoordinate:visit.coordinate];
 }

@@ -90,8 +90,7 @@ static NSString * const APIDate = @"20141205";
                 [subscriber sendCompleted];
 
                 if (venueJSON.count == 0) {
-                    [ARAnalytics event:@"no coffee shop found" withProperties:@{
-                                                                            @"coords":[NSString stringWithFormat:@"%@,%@",@(coordinate.latitude), @(coordinate.longitude)]}];
+                    [ARAnalytics event:@"no coffee shop found"];
 
                 }
             }

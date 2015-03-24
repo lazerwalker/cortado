@@ -56,9 +56,7 @@
     [[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
         take:1]
         subscribeNext:^(FoursquareVenue *result) {
-            [ARAnalytics event:@"at coffee shop" withProperties:@{
-                @"coords":[NSString stringWithFormat:@"%@,%@",@(coordinate.latitude), @(coordinate.longitude)],
-                @"venue":result.name}];
+            [ARAnalytics event:@"At coffee shop"];
 
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
                                                                           coordinate:coordinate];
