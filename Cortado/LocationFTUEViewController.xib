@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee2" translatesAutoresizingMaskIntoConstraints="NO" id="75h-i9-OFJ">
-                    <rect key="frame" x="-227" y="0.0" width="654" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KlT-Xf-ibR">
                     <rect key="frame" x="0.0" y="131" width="375" height="294"/>
@@ -79,21 +79,31 @@
                 <constraint firstAttribute="centerY" secondItem="qWS-Kl-XQS" secondAttribute="centerY" multiplier="0.6" id="C4P-Ua-uNa"/>
                 <constraint firstAttribute="centerY" secondItem="KlT-Xf-ibR" secondAttribute="centerY" multiplier="1.2" id="E0o-Zh-vch"/>
                 <constraint firstItem="75h-i9-OFJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fg1-mt-BwP"/>
+                <constraint firstItem="75h-i9-OFJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QfU-rf-d4p"/>
                 <constraint firstAttribute="trailing" secondItem="KlT-Xf-ibR" secondAttribute="trailing" id="TDe-Hm-dkj"/>
                 <constraint firstAttribute="bottom" secondItem="PkH-l9-Ju8" secondAttribute="bottom" id="V5K-Fc-Glz"/>
                 <constraint firstItem="KlT-Xf-ibR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cMb-9k-84S"/>
                 <constraint firstAttribute="centerX" secondItem="PkH-l9-Ju8" secondAttribute="centerX" id="fsT-Wd-u8L"/>
                 <constraint firstItem="75h-i9-OFJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-227" id="lGp-s2-66o"/>
                 <constraint firstAttribute="bottom" secondItem="75h-i9-OFJ" secondAttribute="bottom" id="lJC-zg-nYD"/>
+                <constraint firstItem="75h-i9-OFJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lhI-O9-mvz"/>
+                <constraint firstAttribute="trailing" secondItem="75h-i9-OFJ" secondAttribute="trailing" id="oO6-Fn-aN3"/>
                 <constraint firstAttribute="centerX" secondItem="qWS-Kl-XQS" secondAttribute="centerX" id="obg-Fs-TVa"/>
+                <constraint firstAttribute="bottom" secondItem="75h-i9-OFJ" secondAttribute="bottom" id="tIw-dX-lzq"/>
                 <constraint firstAttribute="trailing" secondItem="75h-i9-OFJ" secondAttribute="trailing" constant="-52" id="ux1-fA-flJ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="lGp-s2-66o"/>
+                    <exclude reference="ux1-fA-flJ"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="225.5" y="362.5"/>
         </view>
     </objects>
     <resources>
-        <image name="coffee2" width="1600" height="1600"/>
+        <image name="coffee2" width="1026" height="1600"/>
         <image name="notif" width="640" height="220"/>
     </resources>
 </document>

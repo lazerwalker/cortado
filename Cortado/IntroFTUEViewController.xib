@@ -16,11 +16,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee1" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-sP-CW4">
-                    <rect key="frame" x="-75" y="-16" width="525" height="700"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="700" id="asi-tW-FDO"/>
                         <constraint firstAttribute="width" constant="525" id="xGj-UJ-R27"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="asi-tW-FDO"/>
+                            <exclude reference="xGj-UJ-R27"/>
+                        </mask>
+                    </variation>
                 </imageView>
                 <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ij-0L-UfQ">
                     <rect key="frame" x="0.0" y="173" width="375" height="167"/>
@@ -57,8 +63,8 @@
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="mWW-vC-LdV">
                     <rect key="frame" x="160" y="630" width="55" height="37"/>
                 </pageControl>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ker-99-sCa">
-                    <rect key="frame" x="37" y="510" width="300" height="60"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ker-99-sCa">
+                    <rect key="frame" x="37" y="526" width="300" height="60"/>
                     <color key="backgroundColor" red="0.024176706839999999" green="0.66666666669999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="6lp-nq-pLp"/>
@@ -81,6 +87,7 @@
                 <constraint firstAttribute="centerX" secondItem="mWW-vC-LdV" secondAttribute="centerX" id="CPl-Vw-PfM"/>
                 <constraint firstAttribute="trailing" secondItem="3ij-0L-UfQ" secondAttribute="trailing" id="EXS-uw-Vbq"/>
                 <constraint firstItem="Ker-99-sCa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="GEA-TX-odI"/>
+                <constraint firstItem="WX2-sP-CW4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MPt-bE-i7S"/>
                 <constraint firstItem="WX2-sP-CW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-16" id="RcK-AA-zA4"/>
                 <constraint firstAttribute="centerY" secondItem="3ij-0L-UfQ" secondAttribute="centerY" multiplier="1.3" id="Wf0-yD-Pvb"/>
                 <constraint firstAttribute="bottom" secondItem="Ker-99-sCa" secondAttribute="bottom" constant="66" id="bRq-iH-nRA"/>
@@ -88,13 +95,20 @@
                 <constraint firstAttribute="bottom" secondItem="mWW-vC-LdV" secondAttribute="bottom" id="d0x-hx-6gB"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ker-99-sCa" secondAttribute="trailing" constant="15" id="eN3-48-PSy"/>
                 <constraint firstAttribute="trailing" secondItem="WX2-sP-CW4" secondAttribute="trailing" constant="-75" id="ewp-Gg-9WK"/>
+                <constraint firstAttribute="bottom" secondItem="WX2-sP-CW4" secondAttribute="bottom" id="gKN-5b-UD8"/>
                 <constraint firstAttribute="centerY" secondItem="Ker-99-sCa" secondAttribute="centerY" multiplier="0.6" id="iP9-4L-d8Y"/>
+                <constraint firstAttribute="trailing" secondItem="WX2-sP-CW4" secondAttribute="trailing" id="v8m-Rh-8rf"/>
                 <constraint firstAttribute="bottom" secondItem="WX2-sP-CW4" secondAttribute="bottom" constant="-17" id="vdW-d8-IzL"/>
                 <constraint firstItem="3ij-0L-UfQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wNr-ec-VnT"/>
+                <constraint firstItem="WX2-sP-CW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wXR-Ts-h9N"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="3bo-de-SCy"/>
+                    <exclude reference="RcK-AA-zA4"/>
+                    <exclude reference="ewp-Gg-9WK"/>
+                    <exclude reference="vdW-d8-IzL"/>
                     <exclude reference="GEA-TX-odI"/>
                     <exclude reference="bRq-iH-nRA"/>
                     <exclude reference="eN3-48-PSy"/>
@@ -104,6 +118,6 @@
         </view>
     </objects>
     <resources>
-        <image name="coffee1" width="4272" height="2840"/>
+        <image name="coffee1" width="1295" height="2208"/>
     </resources>
 </document>

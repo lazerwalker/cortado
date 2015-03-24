@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee3" translatesAutoresizingMaskIntoConstraints="NO" id="q6P-d5-BbQ">
-                    <rect key="frame" x="-92" y="0.0" width="601" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqW-OF-T2x">
                     <rect key="frame" x="37" y="526" width="300" height="60"/>
@@ -93,10 +93,12 @@
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="Lpa-l0-35e" secondAttribute="centerX" id="2gM-Ea-VvU"/>
                 <constraint firstAttribute="trailing" secondItem="wL8-z6-Mvl" secondAttribute="trailing" id="5lO-D4-82z"/>
+                <constraint firstItem="q6P-d5-BbQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7ZW-56-8dd"/>
                 <constraint firstAttribute="centerX" secondItem="DqW-OF-T2x" secondAttribute="centerX" id="9uZ-bE-nUZ"/>
                 <constraint firstItem="wL8-z6-Mvl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cef-fX-2NJ"/>
                 <constraint firstAttribute="centerY" secondItem="DqW-OF-T2x" secondAttribute="centerY" multiplier="0.6" id="DRU-r8-C9Z"/>
                 <constraint firstItem="q6P-d5-BbQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-92" id="PaE-3m-siz"/>
+                <constraint firstAttribute="trailing" secondItem="q6P-d5-BbQ" secondAttribute="trailing" id="iyh-Qc-DRB"/>
                 <constraint firstAttribute="bottom" secondItem="q6P-d5-BbQ" secondAttribute="bottom" id="kwz-YF-1b3"/>
                 <constraint firstItem="q6P-d5-BbQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nFr-vJ-rXS"/>
                 <constraint firstAttribute="centerY" secondItem="wL8-z6-Mvl" secondAttribute="centerY" multiplier="1.2" id="nHE-1E-9RO"/>
@@ -104,10 +106,16 @@
                 <constraint firstAttribute="bottom" secondItem="Lpa-l0-35e" secondAttribute="bottom" id="yhz-ng-6oc"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="PaE-3m-siz"/>
+                    <exclude reference="xNd-8j-7Nf"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="381.5" y="510.5"/>
         </view>
     </objects>
     <resources>
-        <image name="coffee3" width="2560" height="1707"/>
+        <image name="coffee3" width="960" height="1707"/>
     </resources>
 </document>
