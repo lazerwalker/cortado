@@ -1,5 +1,5 @@
-#import <IntentKit/INKBrowserHandler.h>
 #import <IntentKit/INKMailHandler.h>
+#import <IntentKit/INKWebViewController.h>
 #import <iRate/iRate.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -96,9 +96,11 @@
 
 - (void)showWebSite {
     NSURL *url = [NSURL URLWithString:@"http://lazerwalker.com"];
-    INKBrowserHandler *browser = [[INKBrowserHandler alloc] init];
-    browser.useSystemDefault = YES;
-    [[browser openURL:url] presentModally];
+    INKWebViewController *vc = [[INKWebViewController alloc] init];
+    vc.navigationItem.rightBarButtonItem = nil;
+    [vc loadURL:url];
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)rateInAppStore {
