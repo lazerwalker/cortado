@@ -28,7 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Settings / About";
 
     UILabel *footerView = [[UILabel alloc] init];
     footerView.font = [UIFont systemFontOfSize:UIFont.smallSystemFontSize];
