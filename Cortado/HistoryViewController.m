@@ -51,7 +51,7 @@ static NSString * const CellIdentifier = @"Cell";
     [super viewDidLoad];
 
     PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:self.preferredDrinksViewModel];
-    pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 156);
+    pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 136);
     pvc.tableView.scrollEnabled = NO;
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
