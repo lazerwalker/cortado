@@ -64,12 +64,12 @@
         [self showEmailSheet];
     } else if ([cell.reuseIdentifier isEqualToString:@"lazerwalker"]) {
         [self showWebSite];
+    } else if ([cell.reuseIdentifier isEqualToString:@"manualcheck"]) {
+        [self manuallyCheckLocation];
     } else if ([cell.reuseIdentifier isEqualToString:@"rate"]) {
         [self rateInAppStore];
     } else if ([cell.reuseIdentifier isEqualToString:@"reimport"]) {
         [self reimportFromHealthKit];
-    } else if ([cell.reuseIdentifier isEqualToString:@"manualcheck"]) {
-        [self manuallyCheckLocation];
     }
 }
 
