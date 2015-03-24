@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HealthKitFTUEViewController">
@@ -14,33 +15,72 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-ZE-4AT">
-                    <rect key="frame" x="15" y="303" width="345" height="61"/>
-                    <string key="text">Cortado stores your data in HealthKit. It doesn't store your data anywhere else, and certainly doesn't send it over the Internet.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ0-sw-iZH">
-                    <rect key="frame" x="121" y="436" width="132" height="30"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee4" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-qT-j7J">
+                    <rect key="frame" x="-97" y="0.0" width="512" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6me-e4-JJH">
+                    <rect key="frame" x="37" y="526" width="300" height="60"/>
+                    <color key="backgroundColor" red="0.024176706839999999" green="0.66666666669999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="5Ys-72-CqR"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="BLj-b9-L3i"/>
+                        <constraint firstAttribute="height" constant="60" id="Cde-4N-Sff"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <state key="normal" title="Authorize HealthKit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="BLj-b9-L3i"/>
+                        </mask>
+                    </variation>
                     <connections>
-                        <action selector="didTapButton:" destination="-1" eventType="touchUpInside" id="NPh-oX-yWl"/>
+                        <action selector="didTapButton:" destination="-1" eventType="touchUpInside" id="PmZ-jU-vj1"/>
                     </connections>
                 </button>
+                <view alpha="0.89999999999999991" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-5I-n7j">
+                    <rect key="frame" x="0.0" y="176" width="375" height="94"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cortado uses Apple's Health app to store your data securely." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="js4-ZE-4AT">
+                            <rect key="frame" x="19" y="22" width="337" height="50"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="js4-ZE-4AT" firstAttribute="leading" secondItem="p4G-5I-n7j" secondAttribute="leading" constant="19" id="IZb-v8-6TE"/>
+                        <constraint firstItem="js4-ZE-4AT" firstAttribute="top" secondItem="p4G-5I-n7j" secondAttribute="top" constant="22" id="LdA-38-d9K"/>
+                        <constraint firstAttribute="bottom" secondItem="js4-ZE-4AT" secondAttribute="bottom" constant="22" id="WUY-3a-G6Y"/>
+                        <constraint firstAttribute="trailing" secondItem="js4-ZE-4AT" secondAttribute="trailing" constant="19" id="nuR-6A-5gN"/>
+                    </constraints>
+                </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" currentPage="3" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-Ax-dxt">
+                    <rect key="frame" x="160" y="630" width="55" height="37"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="js4-ZE-4AT" secondAttribute="centerX" id="1qz-GR-aYT"/>
-                <constraint firstAttribute="trailing" secondItem="js4-ZE-4AT" secondAttribute="trailing" constant="15" id="7t4-gW-8YV"/>
-                <constraint firstAttribute="centerY" secondItem="js4-ZE-4AT" secondAttribute="centerY" id="AI4-Yr-SRM"/>
-                <constraint firstAttribute="centerX" secondItem="dZ0-sw-iZH" secondAttribute="centerX" id="QBp-Pi-WSf"/>
-                <constraint firstItem="js4-ZE-4AT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="a6P-Wa-NJD"/>
+                <constraint firstAttribute="trailing" secondItem="2HU-qT-j7J" secondAttribute="trailing" constant="-40" id="1V3-nr-Sa9"/>
+                <constraint firstItem="p4G-5I-n7j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2DA-l2-Y6D"/>
+                <constraint firstAttribute="trailing" secondItem="p4G-5I-n7j" secondAttribute="trailing" id="4Zp-6V-PNf"/>
+                <constraint firstItem="2HU-qT-j7J" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-97" id="7CQ-Te-Pwq"/>
+                <constraint firstItem="2HU-qT-j7J" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LbO-ck-Ho6"/>
+                <constraint firstAttribute="bottom" secondItem="WMZ-Ax-dxt" secondAttribute="bottom" id="YfP-Yk-6VY"/>
+                <constraint firstAttribute="centerX" secondItem="6me-e4-JJH" secondAttribute="centerX" id="dzq-7Q-n2k"/>
+                <constraint firstAttribute="centerX" secondItem="WMZ-Ax-dxt" secondAttribute="centerX" id="kkK-Mr-Lsx"/>
+                <constraint firstAttribute="centerY" secondItem="6me-e4-JJH" secondAttribute="centerY" multiplier="0.6" id="x1z-D4-cnz"/>
+                <constraint firstAttribute="centerY" secondItem="p4G-5I-n7j" secondAttribute="centerY" multiplier="1.5" id="xw0-Mu-M3U"/>
+                <constraint firstAttribute="bottom" secondItem="2HU-qT-j7J" secondAttribute="bottom" id="yri-zP-o9h"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="272.5" y="181.5"/>
+            <point key="canvasLocation" x="272.5" y="143.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="coffee4" width="853" height="1280"/>
+    </resources>
 </document>
