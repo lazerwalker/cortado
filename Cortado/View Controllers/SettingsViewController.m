@@ -7,6 +7,7 @@
 
 // TODO: Remove before shipping
 #import "AppDelegate.h"
+#import "FTUEViewController.h"
 
 #import "DataStore.h"
 
@@ -69,6 +70,8 @@
         [self rateInAppStore];
     } else if ([cell.reuseIdentifier isEqualToString:@"reimport"]) {
         [self reimportFromHealthKit];
+    } else if ([cell.reuseIdentifier isEqualToString:@"ftue"]) {
+        [self showOnboarding];
     }
 }
 
@@ -132,5 +135,15 @@
 // TODO: Remove before shipping
 - (void)manuallyCheckLocation {
     [(AppDelegate *)UIApplication.sharedApplication.delegate manuallyCheckCurrentLocation];
+}
+
+- (void)showOnboarding {
+    FTUEViewController *ftue = [[FTUEViewController alloc] initWithLocationBlock:^{}
+                                                              notificationsBlock:^{}
+                                                                  healthKitBlock:^{}];
+    [ftue.completedSignal subscribeNext: ^(id _){
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [self.navigationController presentViewController:ftue animated:YES completion:nil];
 }
 @end
