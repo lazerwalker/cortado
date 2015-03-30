@@ -31,7 +31,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2014 Robert Böhnke – All Rights Reserved
+			<string>Copyright 2014 Robert B&#246;hnke &#8211; All Rights Reserved
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -502,7 +502,7 @@ create any derivative product from any of the foregoing, except with the prior
 written consent of Mixpanel.  Any dispute arising hereunder shall be submitted
 to confidential binding arbitration in the County and City of San Francisco,
 California for the maximum judgment enforceable, except that to the extent you
-have in any manner violated or threatened to violate Mixplanel’s intellectual
+have in any manner violated or threatened to violate Mixplanel&#8217;s intellectual
 property rights, Mixpanel may seek injunctive or other appropriate relief in
 any state or federal court in the State of California.
 </string>

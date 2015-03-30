@@ -63,19 +63,19 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ARAnalytics: 863673c981102cb83aa04a1037f72a49f71dc166
-  Asterism: 26783427dc5b3ff144cbabb87485456458797350
-  FLKAutoLayout: 8a973ab83832a8527626127193643f3c8ea157d5
-  FXForms: ae90610432a0a9cbb71e0180f202d0fff375881f
-  IntentKit: 4c860e1a8806524cb54af67af60123b643006d94
-  iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
+  Asterism: b2992aaf4ac2dbc66c3aea3a6412c67e3e689835
+  FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
+  FXForms: b6a78bac9f6b597ce704e34ac7c1ce9ff628b1d5
+  IntentKit: 2aa2bee06d354502a7faca7002b9453c926f52fa
+  iRate: 09ef501c74ade02013348bc33225ea48f7aa4e55
   Keys: 0a6f1bd71fe4e8bbfc32c93e7d6b086a383a520a
-  Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
-  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
-  Mixpanel: def38b9e600f101686b8d647e05660a72c089c65
-  MWLayoutHelpers: c0bbad88eeee573406fac39eab829c5259dd2d1a
-  ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
-  ReactiveViewModel: 512224f801ea0a603fd394eed0f38bc662b64b9a
-  VTAcknowledgementsViewController: 62e43d3dcd54b13ee7e7da60ba96345d1f7c788f
-  YLGIFImage: ffdc4cb9faf077217aacb1cdfe69689afe403f21
+  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Mixpanel: e9bcb16eb0e2a98fc330ceeb0d8b7f4aec4182ab
+  MWLayoutHelpers: 8af2eedae30fe06b75106b7be28b9fee1298512a
+  ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
+  ReactiveViewModel: 58918dcbcec2d3151195ab1ed9163c57a8163999
+  VTAcknowledgementsViewController: f2391b007c3abafd3b3afccda7d8914a59b44309
+  YLGIFImage: c0ae132fe80e5282b2762a97d14e23ba71a748ae
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.1
