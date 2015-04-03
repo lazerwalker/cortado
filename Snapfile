@@ -2,10 +2,7 @@
 
 # A list of devices you want to take the screenshots from
 devices([
-  "iPhone 6",
-  "iPhone 6 Plus",
-  "iPhone 5",
-  "iPhone 4s",
+  "iPhone 6 Plus"
 ])
 
 languages([
@@ -14,8 +11,6 @@ languages([
 
 # Where should the resulting screenshots be stored?
 screenshots_path "./screenshots"
-
-clear_previous_screenshots
 
 # JavaScript UIAutomation file
 # js_file './snapshot.js'

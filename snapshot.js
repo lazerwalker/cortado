@@ -13,7 +13,12 @@ target.frontMostApp().mainWindow().buttons()["Authorize HealthKit"].tap();
 
 captureLocalizedScreenshot('1-list')
 target.delay(1.0)
-target.frontMostApp().mainWindow().tableViews()[0].tapWithOptions({tapOffset:{x:0.5, y:0.5}});
+
+// Not-6 Plus
+//target.frontMostApp().mainWindow().tableViews()[0].tapWithOptions({tapOffset:{x:0.5, y:0.5}});
+
+// 6 Plus
+target.frontMostApp().mainWindow().tableViews()[0].tapWithOptions({tapOffset:{x:0.52, y:0.37}});
 
 target.delay(4.0)
 captureLocalizedScreenshot('2-edit')
