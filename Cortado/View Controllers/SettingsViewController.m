@@ -34,10 +34,11 @@
     footerView.font = [UIFont systemFontOfSize:UIFont.smallSystemFontSize];
 
     NSString *version = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+#ifdef DEBUG
     NSString *build = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-    if (![version isEqualToString:build]) {
-        version = [version stringByAppendingFormat:@" (%@)", build];
-    }
+
+    version = [version stringByAppendingFormat:@" (%@)", build];
+#endif
 
     footerView.text = [NSString stringWithFormat:@"Version %@", version];
     [footerView sizeToFit];
@@ -48,6 +49,16 @@
     });
     self.tableView.tableFooterView = footerView;
 
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#ifdef DEBUG
+    return 4;
+#else
+    return 3;
+#endif
 }
 
 #pragma mark - UITableViewDelegate
