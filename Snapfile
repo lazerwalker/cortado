@@ -15,13 +15,13 @@ languages([
 # Where should the resulting screenshots be stored?
 screenshots_path "./screenshots"
 
-# clear_previous_screenshots # remove the '#'' to clear all previously generated screenshots before creating new ones
+clear_previous_screenshots
 
 # JavaScript UIAutomation file
 # js_file './snapshot.js'
 
 # The name of the project's scheme
-# scheme 'SchemeName'
+scheme 'Cortado-Snapshot'
 
 # Where is your project (or workspace)? Provide the full path here
 # project_path './YourProject.xcworkspace'
