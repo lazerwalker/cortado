@@ -25,6 +25,7 @@
 		A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
 		A643D5911A422C77006ACF0A /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
 		A6483AE81AC1053800BE0436 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6483AE71AC1053800BE0436 /* Pods-acknowledgements.plist */; };
+		A65366E11ACF3109007AE2B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65366E01ACF3109007AE2B0 /* HealthKit.framework */; };
 		A6687FCC1A99496600F781F0 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		A66A3A111A3B7C0200849705 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
 		A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
@@ -192,6 +193,7 @@
 		A643D58F1A422C77006ACF0A /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		A643D5901A422C77006ACF0A /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		A6483AE71AC1053800BE0436 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Target Support Files/Pods/Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		A65366E01ACF3109007AE2B0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		A6687FCA1A99496600F781F0 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		A6687FCB1A99496600F781F0 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		A66A3A0F1A3B7C0200849705 /* Drink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drink.h; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6CCD1D81A9AE9B200302A39 /* libPods.a in Frameworks */,
+				A65366E11ACF3109007AE2B0 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +400,7 @@
 		A62D72531A254D1A00846A33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A65366E01ACF3109007AE2B0 /* HealthKit.framework */,
 				A6CCD1D71A9AE9B100302A39 /* libPods.a */,
 				A6BA44B81A2A5B6D006B89E3 /* libPods.a */,
 				A62D72541A254D1A00846A33 /* NotificationCenter.framework */,
