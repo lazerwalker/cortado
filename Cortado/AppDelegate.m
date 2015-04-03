@@ -45,6 +45,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+#ifdef SNAPSHOT
+    [self fakeData];
+#endif
+
     HealthKitManager *healthKitManager = [[HealthKitManager alloc] init];
     self.dataStore = [[DataStore alloc] initWithHealthKitManager:healthKitManager];
 
@@ -145,6 +149,17 @@
 // but this will make debugging easy for now.
 - (void)manuallyCheckCurrentLocation {
     [self.fetcher manuallyCheckCurrentLocation];
+}
+
+- (void)fakeData {
+    NSString *path = [NSBundle.mainBundle pathForResource:@"testData" ofType:@"plist"];
+    NSDictionary *testData = [NSDictionary dictionaryWithContentsOfFile:path];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    for (NSString *key in testData) {
+        [defaults setObject:testData[key] forKey:key];
+    }
+    [defaults synchronize];
 }
 
 @end
