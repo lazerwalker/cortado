@@ -66,6 +66,64 @@
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		AFD5D73281003BBE47827D9A /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
 		C6BED0671AE3036C0095B959 /* CortadoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BED0661AE3036C0095B959 /* CortadoTests.m */; };
+		C6BED1241AE30D050095B959 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
+		C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA37681AC0F9C000BDA55F /* ImageAttributionViewController.m */; };
+		C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
+		C6BED1271AE30D050095B959 /* CreateCustomDrinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58D1A4220BE006ACF0A /* CreateCustomDrinkViewController.m */; };
+		C6BED1281AE30D050095B959 /* LocationFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205121AB73A22007923D8 /* LocationFTUEViewController.m */; };
+		C6BED1291AE30D050095B959 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205061AB6084B007923D8 /* SettingsViewController.m */; };
+		C6BED12A1AE30D050095B959 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
+		C6BED12B1AE30D050095B959 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722D1A254C6500846A33 /* ViewController.m */; };
+		C6BED12C1AE30D050095B959 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
+		C6BED12D1AE30D050095B959 /* UINavigationController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A62376571A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m */; };
+		C6BED12E1AE30D050095B959 /* DrinkSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1B1A3B8F3700849705 /* DrinkSelectionViewController.m */; };
+		C6BED12F1AE30D050095B959 /* HealthKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */; };
+		C6BED1301AE30D050095B959 /* AddConsumptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BD5A101A532BF9001B5FD0 /* AddConsumptionViewModel.m */; };
+		C6BED1311AE30D050095B959 /* DrinkSubtypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A623765A1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m */; };
+		C6BED1321AE30D050095B959 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
+		C6BED1331AE30D050095B959 /* LocationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DB1A3E120500FF267F /* LocationDetector.m */; };
+		C6BED1341AE30D050095B959 /* HKHealthStore+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938861A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m */; };
+		C6BED1351AE30D050095B959 /* DrinkType.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A221A3B907900849705 /* DrinkType.m */; };
+		C6BED1361AE30D050095B959 /* DrinkSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A251A3B918200849705 /* DrinkSubtype.m */; };
+		C6BED1371AE30D050095B959 /* HistoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328F21A575799001D36EC /* HistoryCellViewModel.m */; };
+		C6BED1381AE30D050095B959 /* NotificationsFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205171AB740B0007923D8 /* NotificationsFTUEViewController.m */; };
+		C6BED1391AE30D050095B959 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328EF1A57577A001D36EC /* HistoryCell.m */; };
+		C6BED13A1AE30D050095B959 /* EmptyStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68205291AB763EE007923D8 /* EmptyStateCell.m */; };
+		C6BED13B1AE30D050095B959 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D722A1A254C6500846A33 /* AppDelegate.m */; };
+		C6BED13C1AE30D050095B959 /* DrinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA44D1A53655400363546 /* DrinkCell.m */; };
+		C6BED13D1AE30D050095B959 /* PreferredDrinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E11A3E1BB700FF267F /* PreferredDrinksViewController.m */; };
+		C6BED13E1AE30D050095B959 /* IntroFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A682050C1AB6565B007923D8 /* IntroFTUEViewController.m */; };
+		C6BED13F1AE30D050095B959 /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
+		C6BED1401AE30D050095B959 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
+		C6BED1411AE30D050095B959 /* LocationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A6397A451A645ABD009B2767 /* LocationFetcher.m */; };
+		C6BED1421AE30D050095B959 /* DrinkCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A291A3B929A00849705 /* DrinkCategoryList.m */; };
+		C6BED1431AE30D050095B959 /* FTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6397A421A643806009B2767 /* FTUEViewController.m */; };
+		C6BED1441AE30D050095B959 /* HealthKitFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A682051C1AB741C9007923D8 /* HealthKitFTUEViewController.m */; };
+		C6BED1451AE30D050095B959 /* PreferredDrinksViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585E51A3E587B00FF267F /* PreferredDrinksViewModel.m */; };
+		C6BED1461AE30D050095B959 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
+		C6BED1471AE30D050095B959 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62D72271A254C6500846A33 /* main.m */; };
+		C6BED1481AE30D050095B959 /* HistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6231E611A424389004B8797 /* HistoryViewModel.m */; };
+		C6BED1491AE30D050095B959 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
+		C6BED14A1AE30D050095B959 /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
+		C6BED14B1AE30D050095B959 /* DrinkCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1F1A3B903C00849705 /* DrinkCategory.m */; };
+		C6BED14C1AE30D050095B959 /* DrinkCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */; };
+		C6BED14D1AE30D050095B959 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
+		C6BED14E1AE30D050095B959 /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
+		C6BED1501AE30D050095B959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CCD1D71A9AE9B100302A39 /* libPods.a */; };
+		C6BED1511AE30D050095B959 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65366E01ACF3109007AE2B0 /* HealthKit.framework */; };
+		C6BED1531AE30D050095B959 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62D72341A254C6500846A33 /* LaunchScreen.xib */; };
+		C6BED1541AE30D050095B959 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6483AE71AC1053800BE0436 /* Pods-acknowledgements.plist */; };
+		C6BED1551AE30D050095B959 /* swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = A6AA37651AC0DC4600BDA55F /* swipe.gif */; };
+		C6BED1561AE30D050095B959 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A62D72321A254C6500846A33 /* Images.xcassets */; };
+		C6BED1571AE30D050095B959 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68205031AB6059F007923D8 /* SettingsViewController.storyboard */; };
+		C6BED1581AE30D050095B959 /* EmptyStateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682052A1AB763EE007923D8 /* EmptyStateCell.xib */; };
+		C6BED1591AE30D050095B959 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6397A3F1A641503009B2767 /* HistoryCell.xib */; };
+		C6BED15A1AE30D050095B959 /* HealthKitFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682051D1AB741C9007923D8 /* HealthKitFTUEViewController.xib */; };
+		C6BED15B1AE30D050095B959 /* NotificationsFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68205181AB740B0007923D8 /* NotificationsFTUEViewController.xib */; };
+		C6BED15C1AE30D050095B959 /* LocationFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68205131AB73A22007923D8 /* LocationFTUEViewController.xib */; };
+		C6BED15D1AE30D050095B959 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
+		C6BED15E1AE30D050095B959 /* IntroFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */; };
+		C6BED1661AE30DF50095B959 /* testData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BB53AA1ACF046900405B9E /* testData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +138,16 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A62D72641A254D1A00846A33 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6BED15F1AE30D050095B959 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -215,6 +283,8 @@
 		C6BED0621AE3036C0095B959 /* CortadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6BED0651AE3036C0095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6BED0661AE3036C0095B959 /* CortadoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CortadoTests.m; sourceTree = "<group>"; };
+		C6BED1641AE30D050095B959 /* Cortado copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6BED1651AE30D050095B959 /* Cortado Snapshot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cortado Snapshot-Info.plist"; path = "/Users/lazerwalker/Code/cortado/Cortado Snapshot-Info.plist"; sourceTree = "<absolute>"; };
 		D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		E18588A51B57E089245F51BB /* Pods-CortadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CortadoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CortadoTests/Pods-CortadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F06432B03F3973C8E27F2DD6 /* libPods-Cortado-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +307,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD5D73281003BBE47827D9A /* libPods-CortadoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6BED14F1AE30D050095B959 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6BED1501AE30D050095B959 /* libPods.a in Frameworks */,
+				C6BED1511AE30D050095B959 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,12 +372,12 @@
 		A62D72191A254C6500846A33 = {
 			isa = PBXGroup;
 			children = (
-				C6BED05D1AE302710095B959 /* CortadoTests */,
 				A62D72241A254C6500846A33 /* Cortado */,
 				C6BED0631AE3036C0095B959 /* CortadoTests */,
 				A62D72531A254D1A00846A33 /* Frameworks */,
 				A62D72231A254C6500846A33 /* Products */,
 				B1306759647D75FFCB56B59F /* Pods */,
+				C6BED1651AE30D050095B959 /* Cortado Snapshot-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -307,6 +386,7 @@
 			children = (
 				A62D72221A254C6500846A33 /* Cortado.app */,
 				C6BED0621AE3036C0095B959 /* CortadoTests.xctest */,
+				C6BED1641AE30D050095B959 /* Cortado copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -472,13 +552,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C6BED05D1AE302710095B959 /* CortadoTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CortadoTests;
-			sourceTree = "<group>";
-		};
 		C6BED0631AE3036C0095B959 /* CortadoTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +612,26 @@
 			productReference = C6BED0621AE3036C0095B959 /* CortadoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C6BED1211AE30D050095B959 /* Cortado-Snapshot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6BED1611AE30D050095B959 /* Build configuration list for PBXNativeTarget "Cortado-Snapshot" */;
+			buildPhases = (
+				C6BED1221AE30D050095B959 /* Check Pods Manifest.lock */,
+				C6BED1231AE30D050095B959 /* Sources */,
+				C6BED14F1AE30D050095B959 /* Frameworks */,
+				C6BED1521AE30D050095B959 /* Resources */,
+				C6BED15F1AE30D050095B959 /* Embed App Extensions */,
+				C6BED1601AE30D050095B959 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cortado-Snapshot";
+			productName = Cuppa;
+			productReference = C6BED1641AE30D050095B959 /* Cortado copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -583,6 +676,7 @@
 			projectRoot = "";
 			targets = (
 				A62D72211A254C6500846A33 /* Cortado */,
+				C6BED1211AE30D050095B959 /* Cortado-Snapshot */,
 				C6BED0611AE3036C0095B959 /* CortadoTests */,
 			);
 		};
@@ -615,6 +709,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6BED1521AE30D050095B959 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6BED1531AE30D050095B959 /* LaunchScreen.xib in Resources */,
+				C6BED1541AE30D050095B959 /* Pods-acknowledgements.plist in Resources */,
+				C6BED1551AE30D050095B959 /* swipe.gif in Resources */,
+				C6BED1561AE30D050095B959 /* Images.xcassets in Resources */,
+				C6BED1571AE30D050095B959 /* SettingsViewController.storyboard in Resources */,
+				C6BED1581AE30D050095B959 /* EmptyStateCell.xib in Resources */,
+				C6BED1591AE30D050095B959 /* HistoryCell.xib in Resources */,
+				C6BED15A1AE30D050095B959 /* HealthKitFTUEViewController.xib in Resources */,
+				C6BED15B1AE30D050095B959 /* NotificationsFTUEViewController.xib in Resources */,
+				C6BED15C1AE30D050095B959 /* LocationFTUEViewController.xib in Resources */,
+				C6BED15D1AE30D050095B959 /* drinks.json in Resources */,
+				C6BED15E1AE30D050095B959 /* IntroFTUEViewController.xib in Resources */,
+				C6BED1661AE30DF50095B959 /* testData.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -631,6 +745,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CortadoTests/Pods-CortadoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6BED1221AE30D050095B959 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C6BED1601AE30D050095B959 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED947B8D93669D50B1B214C7 /* Check Pods Manifest.lock */ = {
@@ -736,6 +880,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6BED0671AE3036C0095B959 /* CortadoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6BED1231AE30D050095B959 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6BED1241AE30D050095B959 /* DataStore.m in Sources */,
+				C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */,
+				C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */,
+				C6BED1271AE30D050095B959 /* CreateCustomDrinkViewController.m in Sources */,
+				C6BED1281AE30D050095B959 /* LocationFTUEViewController.m in Sources */,
+				C6BED1291AE30D050095B959 /* SettingsViewController.m in Sources */,
+				C6BED12A1AE30D050095B959 /* UIViewController+ReactiveCocoa.m in Sources */,
+				C6BED12B1AE30D050095B959 /* ViewController.m in Sources */,
+				C6BED12C1AE30D050095B959 /* DrinkConsumption.m in Sources */,
+				C6BED12D1AE30D050095B959 /* UINavigationController+ReactiveCocoa.m in Sources */,
+				C6BED12E1AE30D050095B959 /* DrinkSelectionViewController.m in Sources */,
+				C6BED12F1AE30D050095B959 /* HealthKitManager.m in Sources */,
+				C6BED1301AE30D050095B959 /* AddConsumptionViewModel.m in Sources */,
+				C6BED1311AE30D050095B959 /* DrinkSubtypeSelectionViewController.m in Sources */,
+				C6BED1321AE30D050095B959 /* DrinkConsumptionSerializer.m in Sources */,
+				C6BED1331AE30D050095B959 /* LocationDetector.m in Sources */,
+				C6BED1341AE30D050095B959 /* HKHealthStore+ReactiveCocoa.m in Sources */,
+				C6BED1351AE30D050095B959 /* DrinkType.m in Sources */,
+				C6BED1361AE30D050095B959 /* DrinkSubtype.m in Sources */,
+				C6BED1371AE30D050095B959 /* HistoryCellViewModel.m in Sources */,
+				C6BED1381AE30D050095B959 /* NotificationsFTUEViewController.m in Sources */,
+				C6BED1391AE30D050095B959 /* HistoryCell.m in Sources */,
+				C6BED13A1AE30D050095B959 /* EmptyStateCell.m in Sources */,
+				C6BED13B1AE30D050095B959 /* AppDelegate.m in Sources */,
+				C6BED13C1AE30D050095B959 /* DrinkCell.m in Sources */,
+				C6BED13D1AE30D050095B959 /* PreferredDrinksViewController.m in Sources */,
+				C6BED13E1AE30D050095B959 /* IntroFTUEViewController.m in Sources */,
+				C6BED13F1AE30D050095B959 /* PreferredDrinks.m in Sources */,
+				C6BED1401AE30D050095B959 /* AddConsumptionViewController.m in Sources */,
+				C6BED1411AE30D050095B959 /* LocationFetcher.m in Sources */,
+				C6BED1421AE30D050095B959 /* DrinkCategoryList.m in Sources */,
+				C6BED1431AE30D050095B959 /* FTUEViewController.m in Sources */,
+				C6BED1441AE30D050095B959 /* HealthKitFTUEViewController.m in Sources */,
+				C6BED1451AE30D050095B959 /* PreferredDrinksViewModel.m in Sources */,
+				C6BED1461AE30D050095B959 /* FoursquareVenue.m in Sources */,
+				C6BED1471AE30D050095B959 /* main.m in Sources */,
+				C6BED1481AE30D050095B959 /* HistoryViewModel.m in Sources */,
+				C6BED1491AE30D050095B959 /* MapAnnotation.m in Sources */,
+				C6BED14A1AE30D050095B959 /* CoffeeShopNotification.m in Sources */,
+				C6BED14B1AE30D050095B959 /* DrinkCategory.m in Sources */,
+				C6BED14C1AE30D050095B959 /* DrinkCellViewModel.m in Sources */,
+				C6BED14D1AE30D050095B959 /* Drink.m in Sources */,
+				C6BED14E1AE30D050095B959 /* FoursquareClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,6 +1120,56 @@
 			};
 			name = Debug;
 		};
+		C6BED1621AE30D050095B959 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46FF4552A358097D7F8675E4 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SNAPSHOT=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Cortado Snapshot-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Release-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "Cortado copy";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C6BED1631AE30D050095B959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0337664A1406DC2AD11AF5A2 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SNAPSHOT=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Cortado Snapshot-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Release-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Cortado copy";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -952,6 +1196,15 @@
 			buildConfigurations = (
 				C6BED06B1AE3036D0095B959 /* Release */,
 				C6BED06C1AE3036D0095B959 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6BED1611AE30D050095B959 /* Build configuration list for PBXNativeTarget "Cortado-Snapshot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6BED1621AE30D050095B959 /* Release */,
+				C6BED1631AE30D050095B959 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
