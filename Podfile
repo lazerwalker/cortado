@@ -13,6 +13,13 @@ pod 'ReactiveViewModel', '~> 0.2'
 pod 'VTAcknowledgementsViewController'
 pod 'YLGIFImage'
 
+target 'CortadoTests' do
+    pod 'Expecta+Snapshots'
+    pod 'Specta'
+    pod 'Expecta'
+    pod 'OCMock'
+end
+
 plugin 'cocoapods-keys', {
     :project => "Cortado",
     :keys => [

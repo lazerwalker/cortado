@@ -4,6 +4,11 @@ PODS:
     - ARAnalytics/CoreIOS
     - Mixpanel
   - Asterism (1.0.0)
+  - Expecta (0.4.1)
+  - Expecta+Snapshots (1.3.2):
+    - Expecta (~> 0.3)
+    - FBSnapshotTestCase (= 1.6)
+  - FBSnapshotTestCase (1.6)
   - FLKAutoLayout (0.2.1)
   - FXForms (1.2.12)
   - IntentKit/Core (0.7.1):
@@ -20,6 +25,7 @@ PODS:
     - Mixpanel/MPCategoryHelpers (= 2.7.2)
   - Mixpanel/MPCategoryHelpers (2.7.2)
   - MWLayoutHelpers (1.1.0)
+  - OCMock (3.1.2)
   - ReactiveCocoa (2.4.7):
     - ReactiveCocoa/UI (= 2.4.7)
   - ReactiveCocoa/Core (2.4.7):
@@ -29,12 +35,15 @@ PODS:
     - ReactiveCocoa/Core
   - ReactiveViewModel (0.3):
     - ReactiveCocoa (~> 2.4)
+  - Specta (0.5.0)
   - VTAcknowledgementsViewController (0.13)
   - YLGIFImage (0.11)
 
 DEPENDENCIES:
   - ARAnalytics/Mixpanel (from `https://github.com/orta/ARAnalytics.git`)
   - Asterism (~> 1.0.0)
+  - Expecta
+  - Expecta+Snapshots
   - FLKAutoLayout (~> 0.2)
   - FXForms (~> 1.2)
   - IntentKit/Mail
@@ -42,8 +51,10 @@ DEPENDENCIES:
   - Keys (from `https://github.com/ashfurrow/empty-podspec.git`)
   - Mantle (~> 1.5)
   - MBProgressHud (~> 0.9)
+  - OCMock
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
+  - Specta
   - VTAcknowledgementsViewController
   - YLGIFImage
 
@@ -64,6 +75,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ARAnalytics: 863673c981102cb83aa04a1037f72a49f71dc166
   Asterism: b2992aaf4ac2dbc66c3aea3a6412c67e3e689835
+  Expecta: a2f175f4f5f99d062d480787945ea11d8884077e
+  Expecta+Snapshots: 40c5ec43b43da3bae957f14fed5dc9177d08ec8b
+  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   FXForms: b6a78bac9f6b597ce704e34ac7c1ce9ff628b1d5
   IntentKit: 2aa2bee06d354502a7faca7002b9453c926f52fa
@@ -73,9 +87,11 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Mixpanel: e9bcb16eb0e2a98fc330ceeb0d8b7f4aec4182ab
   MWLayoutHelpers: 8af2eedae30fe06b75106b7be28b9fee1298512a
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
   ReactiveViewModel: 58918dcbcec2d3151195ab1ed9163c57a8163999
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
   VTAcknowledgementsViewController: f2391b007c3abafd3b3afccda7d8914a59b44309
   YLGIFImage: c0ae132fe80e5282b2762a97d14e23ba71a748ae
 
-COCOAPODS: 0.36.1
+COCOAPODS: 0.36.4
