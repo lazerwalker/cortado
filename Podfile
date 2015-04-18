@@ -24,6 +24,7 @@ plugin 'cocoapods-keys', {
     :project => "Cortado",
     :keys => [
         "foursquareClientID",
-        "foursquareClientSecret"
+        "foursquareClientSecret",
+        "mixpanelToken"
     ]
 }
