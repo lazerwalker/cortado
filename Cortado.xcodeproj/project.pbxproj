@@ -123,7 +123,17 @@
 		C6BED15D1AE30D050095B959 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		C6BED15E1AE30D050095B959 /* IntroFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */; };
 		C6BED1661AE30DF50095B959 /* testData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BB53AA1ACF046900405B9E /* testData.plist */; };
-		C6BED1AB1AE3F5740095B959 /* CortadoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BED1AA1AE3F5740095B959 /* CortadoTests.m */; };
+		C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */; };
+		C6D046F31AE3FB070021BE20 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
+		C6D046F41AE3FB070021BE20 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
+		C6D046F51AE3FB070021BE20 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
+		C6D046F61AE3FB070021BE20 /* DrinkCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1F1A3B903C00849705 /* DrinkCategory.m */; };
+		C6D046F71AE3FB070021BE20 /* DrinkType.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A221A3B907900849705 /* DrinkType.m */; };
+		C6D046F81AE3FB070021BE20 /* DrinkSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A251A3B918200849705 /* DrinkSubtype.m */; };
+		C6D046F91AE3FB070021BE20 /* DrinkCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A291A3B929A00849705 /* DrinkCategoryList.m */; };
+		C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
+		C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
+		C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,12 +291,10 @@
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
 		C6BED0651AE3036C0095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6BED0661AE3036C0095B959 /* CortadoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CortadoTests.m; sourceTree = "<group>"; };
+		C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionTests.m; sourceTree = "<group>"; };
 		C6BED1641AE30D050095B959 /* Cortado copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6BED1651AE30D050095B959 /* Cortado Snapshot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cortado Snapshot-Info.plist"; path = "/Users/lazerwalker/Code/cortado/Cortado Snapshot-Info.plist"; sourceTree = "<absolute>"; };
 		C6BED1A61AE3F5740095B959 /* CortadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6BED1A91AE3F5740095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6BED1AA1AE3F5740095B959 /* CortadoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CortadoTests.m; sourceTree = "<group>"; };
 		D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		E18588A51B57E089245F51BB /* Pods-CortadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CortadoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CortadoTests/Pods-CortadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F06432B03F3973C8E27F2DD6 /* libPods-Cortado-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,7 +384,6 @@
 			children = (
 				A62D72241A254C6500846A33 /* Cortado */,
 				C6BED0631AE3036C0095B959 /* CortadoTests */,
-				C6BED1A71AE3F5740095B959 /* CortadoTests */,
 				A62D72531A254D1A00846A33 /* Frameworks */,
 				A62D72231A254C6500846A33 /* Products */,
 				B1306759647D75FFCB56B59F /* Pods */,
@@ -558,7 +565,7 @@
 		C6BED0631AE3036C0095B959 /* CortadoTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6BED0661AE3036C0095B959 /* CortadoTests.m */,
+				C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */,
 				C6BED0641AE3036C0095B959 /* Supporting Files */,
 			);
 			path = CortadoTests;
@@ -568,23 +575,6 @@
 			isa = PBXGroup;
 			children = (
 				C6BED0651AE3036C0095B959 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C6BED1A71AE3F5740095B959 /* CortadoTests */ = {
-			isa = PBXGroup;
-			children = (
-				C6BED1AA1AE3F5740095B959 /* CortadoTests.m */,
-				C6BED1A81AE3F5740095B959 /* Supporting Files */,
-			);
-			path = CortadoTests;
-			sourceTree = "<group>";
-		};
-		C6BED1A81AE3F5740095B959 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C6BED1A91AE3F5740095B959 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -949,7 +939,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6BED1AB1AE3F5740095B959 /* CortadoTests.m in Sources */,
+				C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */,
+				C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */,
+				C6D046F91AE3FB070021BE20 /* DrinkCategoryList.m in Sources */,
+				C6D046F51AE3FB070021BE20 /* DrinkConsumption.m in Sources */,
+				C6D046F41AE3FB070021BE20 /* Drink.m in Sources */,
+				C6D046F31AE3FB070021BE20 /* FoursquareVenue.m in Sources */,
+				C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */,
+				C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */,
+				C6D046F71AE3FB070021BE20 /* DrinkType.m in Sources */,
+				C6D046F61AE3FB070021BE20 /* DrinkCategory.m in Sources */,
+				C6D046F81AE3FB070021BE20 /* DrinkSubtype.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
