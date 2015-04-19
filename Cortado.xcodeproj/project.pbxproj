@@ -64,8 +64,7 @@
 		A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F328F21A575799001D36EC /* HistoryCellViewModel.m */; };
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
-		AFD5D73281003BBE47827D9A /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
-		C6BED0671AE3036C0095B959 /* CortadoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BED0661AE3036C0095B959 /* CortadoTests.m */; };
+		B32603984BB9F75CC6750FEE /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
 		C6BED1241AE30D050095B959 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA37681AC0F9C000BDA55F /* ImageAttributionViewController.m */; };
 		C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
@@ -124,10 +123,11 @@
 		C6BED15D1AE30D050095B959 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		C6BED15E1AE30D050095B959 /* IntroFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */; };
 		C6BED1661AE30DF50095B959 /* testData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BB53AA1ACF046900405B9E /* testData.plist */; };
+		C6BED1AB1AE3F5740095B959 /* CortadoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BED1AA1AE3F5740095B959 /* CortadoTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C6BED0681AE3036C0095B959 /* PBXContainerItemProxy */ = {
+		C6BED1AC1AE3F5740095B959 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
 			proxyType = 1;
@@ -280,11 +280,13 @@
 		A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ReactiveCocoa.m"; sourceTree = "<group>"; };
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
-		C6BED0621AE3036C0095B959 /* CortadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6BED0651AE3036C0095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6BED0661AE3036C0095B959 /* CortadoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CortadoTests.m; sourceTree = "<group>"; };
 		C6BED1641AE30D050095B959 /* Cortado copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6BED1651AE30D050095B959 /* Cortado Snapshot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cortado Snapshot-Info.plist"; path = "/Users/lazerwalker/Code/cortado/Cortado Snapshot-Info.plist"; sourceTree = "<absolute>"; };
+		C6BED1A61AE3F5740095B959 /* CortadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6BED1A91AE3F5740095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6BED1AA1AE3F5740095B959 /* CortadoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CortadoTests.m; sourceTree = "<group>"; };
 		D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		E18588A51B57E089245F51BB /* Pods-CortadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CortadoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CortadoTests/Pods-CortadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F06432B03F3973C8E27F2DD6 /* libPods-Cortado-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,20 +304,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6BED05F1AE3036C0095B959 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AFD5D73281003BBE47827D9A /* libPods-CortadoTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C6BED14F1AE30D050095B959 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C6BED1501AE30D050095B959 /* libPods.a in Frameworks */,
 				C6BED1511AE30D050095B959 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6BED1A31AE3F5740095B959 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B32603984BB9F75CC6750FEE /* libPods-CortadoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +376,7 @@
 			children = (
 				A62D72241A254C6500846A33 /* Cortado */,
 				C6BED0631AE3036C0095B959 /* CortadoTests */,
+				C6BED1A71AE3F5740095B959 /* CortadoTests */,
 				A62D72531A254D1A00846A33 /* Frameworks */,
 				A62D72231A254C6500846A33 /* Products */,
 				B1306759647D75FFCB56B59F /* Pods */,
@@ -385,8 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				A62D72221A254C6500846A33 /* Cortado.app */,
-				C6BED0621AE3036C0095B959 /* CortadoTests.xctest */,
 				C6BED1641AE30D050095B959 /* Cortado copy.app */,
+				C6BED1A61AE3F5740095B959 /* CortadoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -569,6 +572,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C6BED1A71AE3F5740095B959 /* CortadoTests */ = {
+			isa = PBXGroup;
+			children = (
+				C6BED1AA1AE3F5740095B959 /* CortadoTests.m */,
+				C6BED1A81AE3F5740095B959 /* Supporting Files */,
+			);
+			path = CortadoTests;
+			sourceTree = "<group>";
+		};
+		C6BED1A81AE3F5740095B959 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C6BED1A91AE3F5740095B959 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -592,26 +612,6 @@
 			productReference = A62D72221A254C6500846A33 /* Cortado.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C6BED0611AE3036C0095B959 /* CortadoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C6BED06A1AE3036D0095B959 /* Build configuration list for PBXNativeTarget "CortadoTests" */;
-			buildPhases = (
-				ED947B8D93669D50B1B214C7 /* Check Pods Manifest.lock */,
-				C6BED05E1AE3036C0095B959 /* Sources */,
-				C6BED05F1AE3036C0095B959 /* Frameworks */,
-				C6BED0601AE3036C0095B959 /* Resources */,
-				2DD7AC8D038F572B96B65FB1 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C6BED0691AE3036C0095B959 /* PBXTargetDependency */,
-			);
-			name = CortadoTests;
-			productName = CortadoTests;
-			productReference = C6BED0621AE3036C0095B959 /* CortadoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		C6BED1211AE30D050095B959 /* Cortado-Snapshot */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6BED1611AE30D050095B959 /* Build configuration list for PBXNativeTarget "Cortado-Snapshot" */;
@@ -631,6 +631,26 @@
 			productName = Cuppa;
 			productReference = C6BED1641AE30D050095B959 /* Cortado copy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C6BED1A51AE3F5740095B959 /* CortadoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6BED1AE1AE3F5740095B959 /* Build configuration list for PBXNativeTarget "CortadoTests" */;
+			buildPhases = (
+				0AA8CCA6E862D66682B81781 /* Check Pods Manifest.lock */,
+				C6BED1A21AE3F5740095B959 /* Sources */,
+				C6BED1A31AE3F5740095B959 /* Frameworks */,
+				C6BED1A41AE3F5740095B959 /* Resources */,
+				0CF52EF7D22FBB9546117280 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6BED1AD1AE3F5740095B959 /* PBXTargetDependency */,
+			);
+			name = CortadoTests;
+			productName = CortadoTests;
+			productReference = C6BED1A61AE3F5740095B959 /* CortadoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -656,7 +676,7 @@
 							};
 						};
 					};
-					C6BED0611AE3036C0095B959 = {
+					C6BED1A51AE3F5740095B959 = {
 						CreatedOnToolsVersion = 6.3;
 						TestTargetID = A62D72211A254C6500846A33;
 					};
@@ -677,7 +697,7 @@
 			targets = (
 				A62D72211A254C6500846A33 /* Cortado */,
 				C6BED1211AE30D050095B959 /* Cortado-Snapshot */,
-				C6BED0611AE3036C0095B959 /* CortadoTests */,
+				C6BED1A51AE3F5740095B959 /* CortadoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -702,13 +722,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6BED0601AE3036C0095B959 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C6BED1521AE30D050095B959 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,10 +742,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6BED1A41AE3F5740095B959 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DD7AC8D038F572B96B65FB1 /* Copy Pods Resources */ = {
+		0AA8CCA6E862D66682B81781 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0CF52EF7D22FBB9546117280 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -775,21 +810,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ED947B8D93669D50B1B214C7 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FCBB8F4CC425EBB40DA18E2E /* Check Pods Manifest.lock */ = {
@@ -875,14 +895,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6BED05E1AE3036C0095B959 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6BED0671AE3036C0095B959 /* CortadoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C6BED1231AE30D050095B959 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -933,13 +945,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6BED1A21AE3F5740095B959 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6BED1AB1AE3F5740095B959 /* CortadoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C6BED0691AE3036C0095B959 /* PBXTargetDependency */ = {
+		C6BED1AD1AE3F5740095B959 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A62D72211A254C6500846A33 /* Cortado */;
-			targetProxy = C6BED0681AE3036C0095B959 /* PBXContainerItemProxy */;
+			targetProxy = C6BED1AC1AE3F5740095B959 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1072,54 +1092,6 @@
 			};
 			name = Debug;
 		};
-		C6BED06B1AE3036D0095B959 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E18588A51B57E089245F51BB /* Pods-CortadoTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = CortadoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cortado.app/Cortado";
-			};
-			name = Release;
-		};
-		C6BED06C1AE3036D0095B959 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0277A5649084BBACDA4DA989 /* Pods-CortadoTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INFOPLIST_FILE = CortadoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cortado.app/Cortado";
-			};
-			name = Debug;
-		};
 		C6BED1621AE30D050095B959 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46FF4552A358097D7F8675E4 /* Pods.release.xcconfig */;
@@ -1170,6 +1142,54 @@
 			};
 			name = Debug;
 		};
+		C6BED1AF1AE3F5740095B959 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E18588A51B57E089245F51BB /* Pods-CortadoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = CortadoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cortado.app/Cortado";
+			};
+			name = Release;
+		};
+		C6BED1B01AE3F5740095B959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0277A5649084BBACDA4DA989 /* Pods-CortadoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = CortadoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cortado.app/Cortado";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1191,20 +1211,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6BED06A1AE3036D0095B959 /* Build configuration list for PBXNativeTarget "CortadoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C6BED06B1AE3036D0095B959 /* Release */,
-				C6BED06C1AE3036D0095B959 /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C6BED1611AE30D050095B959 /* Build configuration list for PBXNativeTarget "Cortado-Snapshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6BED1621AE30D050095B959 /* Release */,
 				C6BED1631AE30D050095B959 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6BED1AE1AE3F5740095B959 /* Build configuration list for PBXNativeTarget "CortadoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6BED1AF1AE3F5740095B959 /* Release */,
+				C6BED1B01AE3F5740095B959 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

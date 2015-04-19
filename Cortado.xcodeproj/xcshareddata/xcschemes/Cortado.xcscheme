@@ -34,20 +34,6 @@
                ReferencedContainer = "container:Cortado.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6BED16A1AE310DE0095B959"
-               BuildableName = "Blah.xctest"
-               BlueprintName = "Blah"
-               ReferencedContainer = "container:Cortado.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

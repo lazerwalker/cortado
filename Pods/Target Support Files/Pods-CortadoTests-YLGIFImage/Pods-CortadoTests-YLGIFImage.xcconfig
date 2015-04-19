@@ -1,1 +1,0 @@
-PODS_CORTADOTESTS_YLGIFIMAGE_OTHER_LDFLAGS = -framework "CoreGraphics" -framework "Foundation" -framework "ImageIO" -framework "MobileCoreServices" -framework "UIKit"

@@ -13,7 +13,7 @@ pod 'ReactiveViewModel', '~> 0.2'
 pod 'VTAcknowledgementsViewController'
 pod 'YLGIFImage'
 
-target 'CortadoTests' do
+target 'CortadoTests', exclusive: true do
     pod 'Expecta+Snapshots'
     pod 'Specta'
     pod 'Expecta'
