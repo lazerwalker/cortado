@@ -78,6 +78,11 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 
     if (drink) {
         NSDictionary *drinkDict = [MTLJSONAdapter JSONDictionaryFromModel:drink];
+        if (drinkDict[@"subtype"] == [NSNull null]) {
+            NSMutableDictionary *mutable = drinkDict.mutableCopy;
+            [mutable removeObjectForKey:@"subtype"];
+            drinkDict = mutable.copy;
+        }
         _notif.userInfo = ASTExtend(_notif.userInfo, @{NotificationActionDrink:drinkDict});
     }
 

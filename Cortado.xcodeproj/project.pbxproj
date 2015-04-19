@@ -134,6 +134,7 @@
 		C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
 		C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
 		C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
+		C6D046FE1AE404B90021BE20 /* CoffeeShopNotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D046FD1AE404B90021BE20 /* CoffeeShopNotificationTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +296,7 @@
 		C6BED1641AE30D050095B959 /* Cortado copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6BED1651AE30D050095B959 /* Cortado Snapshot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cortado Snapshot-Info.plist"; path = "/Users/lazerwalker/Code/cortado/Cortado Snapshot-Info.plist"; sourceTree = "<absolute>"; };
 		C6BED1A61AE3F5740095B959 /* CortadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D046FD1AE404B90021BE20 /* CoffeeShopNotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeShopNotificationTests.m; sourceTree = "<group>"; };
 		D129293BC94E897DD5573E69 /* Pods-Cortado-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado-Today/Pods-Cortado-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		E18588A51B57E089245F51BB /* Pods-CortadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CortadoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CortadoTests/Pods-CortadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F06432B03F3973C8E27F2DD6 /* libPods-Cortado-Today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado-Today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -565,6 +567,7 @@
 		C6BED0631AE3036C0095B959 /* CortadoTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6D046FD1AE404B90021BE20 /* CoffeeShopNotificationTests.m */,
 				C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */,
 				C6BED0641AE3036C0095B959 /* Supporting Files */,
 			);
@@ -939,6 +942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D046FE1AE404B90021BE20 /* CoffeeShopNotificationTests.m in Sources */,
 				C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */,
 				C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */,
 				C6D046F91AE3FB070021BE20 /* DrinkCategoryList.m in Sources */,

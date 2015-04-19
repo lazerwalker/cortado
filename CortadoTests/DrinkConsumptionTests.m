@@ -1,11 +1,3 @@
-//
-//  CortadoTests.m
-//  CortadoTests
-//
-//  Created by Mike Lazer-Walker on 4/18/15.
-//  Copyright (c) 2015 Lazerwalker. All rights reserved.
-//
-
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
 #import <FBSnapshotTestCase/FBSnapshotTestCase.h>

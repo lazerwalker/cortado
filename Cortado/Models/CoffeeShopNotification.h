@@ -3,6 +3,7 @@
 
 extern NSString * const NotificationActionCustom;
 extern NSString * const NotificationActionDrink;
+extern NSString * const NotificationCategoryBeverage;
 
 @class DrinkConsumption;
 @class PreferredDrinks;
