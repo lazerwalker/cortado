@@ -29,7 +29,6 @@ static NSString * const APIDate = @"20141205";
 }
 
 - (RACSignal *)fetchVenuesNearCoordinate:(CLLocationCoordinate2D)coordinate {
-//                       completion:(void(^)(NSArray *results, NSError *error))completion {
     return [self makeRequest:[self searchURLForCoordinate:coordinate] coordinate:coordinate];
 }
 
