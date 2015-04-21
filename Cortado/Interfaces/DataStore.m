@@ -14,12 +14,20 @@ static NSString * const HistoryKey = @"History";
 
 @implementation DataStore
 
++ (void)eraseStoredData {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setObject:nil forKey:HistoryKey];
+    [defaults synchronize];
+}
+
+#pragma mark -
+
 - (id)initWithHealthKitManager:(HealthKitManager *)healthKitManager {
     self = [super init];
     if (!self) return nil;
 
     _healthKitManager = healthKitManager;
-    self.drinks = self.cachedDrinks ?: [[NSArray alloc] init];
+    self.drinks = self.cachedDrinks ?: @[];
 
     [RACObserve(self, drinks) subscribeNext:^(NSArray *drinks) {
         [self persistDrinks:drinks];

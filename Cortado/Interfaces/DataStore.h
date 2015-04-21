@@ -6,6 +6,8 @@
 
 @interface DataStore : NSObject
 
++ (void)eraseStoredData;
+
 - (id)initWithHealthKitManager:(HealthKitManager *)healthKitManager NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, nonatomic, strong) NSArray *drinks;
