@@ -1,1 +1,0 @@
-../../../Asterism/Asterism/ASTIndexOf.h
