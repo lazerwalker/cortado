@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6BED0611AE3036C0095B959"
+               BlueprintIdentifier = "C6BED1A51AE3F5740095B959"
                BuildableName = "CortadoTests.xctest"
                BlueprintName = "CortadoTests"
                ReferencedContainer = "container:Cortado.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6BED0611AE3036C0095B959"
+               BlueprintIdentifier = "C6BED1A51AE3F5740095B959"
                BuildableName = "CortadoTests.xctest"
                BlueprintName = "CortadoTests"
                ReferencedContainer = "container:Cortado.xcodeproj">
@@ -89,7 +89,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
