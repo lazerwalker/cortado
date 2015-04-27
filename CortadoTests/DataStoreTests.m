@@ -138,32 +138,125 @@ describe(@"adding a new drink", ^{
                     done();
                 }];
             });
-
         });
     });
 });
 
 describe(@"removing a drink", ^{
-    it(@"should add to the current store", ^{
+    it(@"should remove from the current store", ^{
+        waitUntil(^(DoneCallback done) {
+            DrinkConsumption *drink = [[DrinkConsumption alloc] initWithDrink:
+                                       [[Drink alloc] initWithName:@"Foo" caffeine:@10]];
+            DrinkConsumption *drink2 = [[DrinkConsumption alloc] initWithDrink:
+                                       [[Drink alloc] initWithName:@"Bar" caffeine:@20]];
 
+            [subject addDrinkImmediately:drink];
+            [subject addDrinkImmediately:drink2];
+            expect(subject.drinks).to.haveACountOf(2);
+
+            OCMStub([subject.healthKitManager deleteDrink:[OCMArg any]]).andReturn([RACSignal empty]);
+
+            [[subject deleteDrink:drink] subscribeCompleted:^{
+                expect(subject.drinks).to.haveACountOf(1);
+                expect(subject.drinks.firstObject).to.equal(drink2);
+                done();
+            }];
+        });
     });
 
     it(@"should persist for new stores", ^{
+        waitUntil(^(DoneCallback done) {
+            DrinkConsumption *drink = [[DrinkConsumption alloc] initWithDrink:
+                                       [[Drink alloc] initWithName:@"Foo" caffeine:@10]];
+            DrinkConsumption *drink2 = [[DrinkConsumption alloc] initWithDrink:
+                                        [[Drink alloc] initWithName:@"Bar" caffeine:@20]];
+
+            [subject addDrinkImmediately:drink];
+            [subject addDrinkImmediately:drink2];
+            expect(subject.drinks).to.haveACountOf(2);
+
+            OCMStub([subject.healthKitManager deleteDrink:[OCMArg any]]).andReturn([RACSignal empty]);
+
+            [[subject deleteDrink:drink] subscribeCompleted:^{
+                DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
+
+                expect(newStore.drinks).to.haveACountOf(1);
+                expect([newStore.drinks.firstObject name]).to.equal(@"Bar");
+                done();
+            }];
+        });
+    });
+
+    it(@"should remove from HealthKit", ^{
+        OCMStub([subject.healthKitManager deleteDrink:[OCMArg any]]).andReturn([RACSignal empty]);
+
+        waitUntil(^(DoneCallback done) {
+            DrinkConsumption *drink = [DrinkConsumption new];
+            [[subject deleteDrink:drink] subscribeCompleted:^{
+                OCMVerify([subject.healthKitManager deleteDrink:drink]);
+                done();
+            }];
+        });
+    });
+
+    it(@"should pass through an error", ^{
+        NSError *error = [NSError new];
+
+        waitUntil(^(DoneCallback done) {
+            OCMStub([subject.healthKitManager deleteDrink:[OCMArg any]]).andReturn([RACSignal error:error]);
+
+            DrinkConsumption *drink = [DrinkConsumption new];
+            [[subject deleteDrink:drink] subscribeError:^(NSError *e) {
+                expect(e).to.equal(error);
+                done();
+            } completed:^{
+                failure(@"Did not send error signal");
+                done();
+            }];
+        });
 
     });
+
 });
 
 describe(@"editing a drink", ^{
-    it(@"should add to the current store", ^{
+    it(@"should edit in the current store", ^{
+        waitUntil(^(DoneCallback done) {
+            DrinkConsumption *drink = [[DrinkConsumption alloc] initWithDrink:
+                                       [[Drink alloc] initWithName:@"Single-Shot Espresso" caffeine:@75]];
+            [subject addDrinkImmediately:drink];
 
+            DrinkConsumption *newDrink = [[DrinkConsumption alloc] initWithDrink:
+                                          [[Drink alloc] initWithName:@"Double-Shot Espresso" caffeine:@150]];
+
+            OCMStub([subject.healthKitManager editDrink:[OCMArg any] toDrink:[OCMArg any]]).andReturn([RACSignal empty]);
+
+            [[subject editDrink:drink toDrink:newDrink] subscribeCompleted:^{
+                DrinkConsumption *d = subject.drinks.firstObject;
+                expect(d.name).to.equal(@"Double-Shot Espresso");
+                done();
+            }];
+        });
     });
 
     it(@"should persist for new stores", ^{
-        
-    });
+        waitUntil(^(DoneCallback done) {
+            DrinkConsumption *drink = [[DrinkConsumption alloc] initWithDrink:
+                                       [[Drink alloc] initWithName:@"Single-Shot Espresso" caffeine:@75]];
+            [subject addDrinkImmediately:drink];
 
-    it(@"should save to HealthKit", ^{
+            DrinkConsumption *newDrink = [[DrinkConsumption alloc] initWithDrink:
+                                          [[Drink alloc] initWithName:@"Double-Shot Espresso" caffeine:@150]];
 
+            OCMStub([subject.healthKitManager editDrink:[OCMArg any] toDrink:[OCMArg any]]).andReturn([RACSignal empty]);
+
+            [[subject editDrink:drink toDrink:newDrink] subscribeCompleted:^{
+                DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
+                DrinkConsumption *d = newStore.drinks.firstObject;
+                expect(d.name).to.equal(@"Double-Shot Espresso");
+                done();
+            }];
+        });
     });
 });
 
