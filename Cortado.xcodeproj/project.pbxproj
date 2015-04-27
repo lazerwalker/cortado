@@ -65,8 +65,9 @@
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		B32603984BB9F75CC6750FEE /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
+		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
+		C6A0B6031AEDE8590079BECD /* HealthKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
-		C6A6A6341AE5F27F002D2753 /* HealthKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */; };
 		C6AC73B91AE5EF160075C0A5 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
 		C6B7A5B51AE4C1F30083E273 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
@@ -296,6 +297,8 @@
 		A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ReactiveCocoa.m"; sourceTree = "<group>"; };
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
+		C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
+		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
 		C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreTests.m; sourceTree = "<group>"; };
 		C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionSerializerTests.m; sourceTree = "<group>"; };
 		C6BED0651AE3036C0095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -587,6 +590,8 @@
 			isa = PBXGroup;
 			children = (
 				C6BED0651AE3036C0095B959 /* Info.plist */,
+				C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */,
+				C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -872,6 +877,7 @@
 				A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */,
 				A6F328F31A575799001D36EC /* HistoryCellViewModel.m in Sources */,
 				A68205191AB740B0007923D8 /* NotificationsFTUEViewController.m in Sources */,
+				C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */,
 				A6F328F01A57577A001D36EC /* HistoryCell.m in Sources */,
 				A682052B1AB763EE007923D8 /* EmptyStateCell.m in Sources */,
 				A62D722B1A254C6500846A33 /* AppDelegate.m in Sources */,
@@ -963,7 +969,7 @@
 				C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */,
 				C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */,
 				C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */,
-				C6A6A6341AE5F27F002D2753 /* HealthKitManager.m in Sources */,
+				C6A0B6031AEDE8590079BECD /* HealthKitManager.m in Sources */,
 				C6D046F71AE3FB070021BE20 /* DrinkType.m in Sources */,
 				C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */,
 				C6D046F61AE3FB070021BE20 /* DrinkCategory.m in Sources */,
