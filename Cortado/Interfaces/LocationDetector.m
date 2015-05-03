@@ -5,6 +5,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CoffeeShopNotification.h"
+#import "DataStore.h"
 #import "FoursquareClient.h"
 #import "FoursquareVenue.h"
 
@@ -29,6 +30,8 @@
         take:1]
         subscribeNext:^(FoursquareVenue *result) {
             [ARAnalytics event:@"At coffee shop"];
+
+            [self.dataStore addVenue:result];
 
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
                                                                           coordinate:coordinate];
