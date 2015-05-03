@@ -66,14 +66,13 @@
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		B32603984BB9F75CC6750FEE /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
-		C6A0B6031AEDE8590079BECD /* HealthKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EBA87C1A2A3B3200344C17 /* HealthKitManager.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
-		C6AC73B91AE5EF160075C0A5 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
-		C6B7A5B51AE4C1F30083E273 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
 		C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */; };
-		C6BBB3861AF5A88C002EAE0F /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
-		C6BBB3871AF5A8F0002EAE0F /* LocationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DB1A3E120500FF267F /* LocationDetector.m */; };
+		C6BBB3891AF5E321002EAE0F /* SettingsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB3881AF5E321002EAE0F /* SettingsViewControllerTests.m */; };
+		C6BBB38C1AF5E4E4002EAE0F /* VenueBlacklistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB38B1AF5E4E4002EAE0F /* VenueBlacklistViewController.m */; };
+		C6BBB38E1AF5E4EC002EAE0F /* VenueBlacklistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB38B1AF5E4E4002EAE0F /* VenueBlacklistViewController.m */; };
+		C6BBB3901AF5E51F002EAE0F /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68205031AB6059F007923D8 /* SettingsViewController.storyboard */; };
 		C6BED1241AE30D050095B959 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA37681AC0F9C000BDA55F /* ImageAttributionViewController.m */; };
 		C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
@@ -133,16 +132,6 @@
 		C6BED15E1AE30D050095B959 /* IntroFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A682050D1AB6565B007923D8 /* IntroFTUEViewController.xib */; };
 		C6BED1661AE30DF50095B959 /* testData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BB53AA1ACF046900405B9E /* testData.plist */; };
 		C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */; };
-		C6D046F31AE3FB070021BE20 /* FoursquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E2346A1A32100700B57E16 /* FoursquareVenue.m */; };
-		C6D046F41AE3FB070021BE20 /* Drink.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A101A3B7C0200849705 /* Drink.m */; };
-		C6D046F51AE3FB070021BE20 /* DrinkConsumption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A131A3B7D5C00849705 /* DrinkConsumption.m */; };
-		C6D046F61AE3FB070021BE20 /* DrinkCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A1F1A3B903C00849705 /* DrinkCategory.m */; };
-		C6D046F71AE3FB070021BE20 /* DrinkType.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A221A3B907900849705 /* DrinkType.m */; };
-		C6D046F81AE3FB070021BE20 /* DrinkSubtype.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A251A3B918200849705 /* DrinkSubtype.m */; };
-		C6D046F91AE3FB070021BE20 /* DrinkCategoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = A66A3A291A3B929A00849705 /* DrinkCategoryList.m */; };
-		C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DE1A3E131900FF267F /* CoffeeShopNotification.m */; };
-		C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D58A1A40A231006ACF0A /* PreferredDrinks.m */; };
-		C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BABD1A1AB3BAB10052D259 /* MapAnnotation.m */; };
 		C6D046FE1AE404B90021BE20 /* CoffeeShopNotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D046FD1AE404B90021BE20 /* CoffeeShopNotificationTests.m */; };
 /* End PBXBuildFile section */
 
@@ -305,6 +294,9 @@
 		C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreTests.m; sourceTree = "<group>"; };
 		C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionSerializerTests.m; sourceTree = "<group>"; };
 		C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetectorTests.m; sourceTree = "<group>"; };
+		C6BBB3881AF5E321002EAE0F /* SettingsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewControllerTests.m; sourceTree = "<group>"; };
+		C6BBB38A1AF5E4E4002EAE0F /* VenueBlacklistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueBlacklistViewController.h; sourceTree = "<group>"; };
+		C6BBB38B1AF5E4E4002EAE0F /* VenueBlacklistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueBlacklistViewController.m; sourceTree = "<group>"; };
 		C6BED0651AE3036C0095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionTests.m; sourceTree = "<group>"; };
 		C6BED1641AE30D050095B959 /* Cortado copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -518,6 +510,8 @@
 				A68205061AB6084B007923D8 /* SettingsViewController.m */,
 				A6AA37671AC0F9C000BDA55F /* ImageAttributionViewController.h */,
 				A6AA37681AC0F9C000BDA55F /* ImageAttributionViewController.m */,
+				C6BBB38A1AF5E4E4002EAE0F /* VenueBlacklistViewController.h */,
+				C6BBB38B1AF5E4E4002EAE0F /* VenueBlacklistViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -587,6 +581,7 @@
 				C6BED0641AE3036C0095B959 /* Supporting Files */,
 				C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */,
 				C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */,
+				C6BBB3881AF5E321002EAE0F /* SettingsViewControllerTests.m */,
 			);
 			path = CortadoTests;
 			sourceTree = "<group>";
@@ -758,6 +753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6BBB3901AF5E51F002EAE0F /* SettingsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,6 +863,7 @@
 				A643D58E1A4220BE006ACF0A /* CreateCustomDrinkViewController.m in Sources */,
 				A68205141AB73A22007923D8 /* LocationFTUEViewController.m in Sources */,
 				A68205071AB6084B007923D8 /* SettingsViewController.m in Sources */,
+				C6BBB38C1AF5E4E4002EAE0F /* VenueBlacklistViewController.m in Sources */,
 				A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */,
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
 				A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */,
@@ -912,6 +909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6BBB38E1AF5E4EC002EAE0F /* VenueBlacklistViewController.m in Sources */,
 				C6BED1241AE30D050095B959 /* DataStore.m in Sources */,
 				C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */,
 				C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */,
@@ -963,25 +961,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6D046FE1AE404B90021BE20 /* CoffeeShopNotificationTests.m in Sources */,
-				C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */,
-				C6B7A5B51AE4C1F30083E273 /* DrinkConsumptionSerializer.m in Sources */,
-				C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */,
-				C6BBB3871AF5A8F0002EAE0F /* LocationDetector.m in Sources */,
-				C6D046F91AE3FB070021BE20 /* DrinkCategoryList.m in Sources */,
-				C6BBB3861AF5A88C002EAE0F /* FoursquareClient.m in Sources */,
-				C6AC73B91AE5EF160075C0A5 /* DataStore.m in Sources */,
-				C6D046F51AE3FB070021BE20 /* DrinkConsumption.m in Sources */,
-				C6D046F41AE3FB070021BE20 /* Drink.m in Sources */,
-				C6D046F31AE3FB070021BE20 /* FoursquareVenue.m in Sources */,
+				C6BBB3891AF5E321002EAE0F /* SettingsViewControllerTests.m in Sources */,
 				C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */,
 				C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */,
-				C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */,
 				C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */,
-				C6A0B6031AEDE8590079BECD /* HealthKitManager.m in Sources */,
-				C6D046F71AE3FB070021BE20 /* DrinkType.m in Sources */,
 				C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */,
-				C6D046F61AE3FB070021BE20 /* DrinkCategory.m in Sources */,
-				C6D046F81AE3FB070021BE20 /* DrinkSubtype.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1039,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1120,6 +1105,7 @@
 					"COCOAPODS=1",
 					"DEBUG=1",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Cortado/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
