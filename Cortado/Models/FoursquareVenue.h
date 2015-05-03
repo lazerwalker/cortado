@@ -13,4 +13,7 @@
 @property (nonatomic, strong) NSArray *iconPrefix;
 @property (nonatomic, strong) NSArray *iconSuffix;
 
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *crossStreet;
+
 @end

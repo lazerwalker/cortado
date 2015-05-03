@@ -8,7 +8,9 @@
              @"iconSuffix": @"categories.icon.suffix",
              @"categoryId": @"categories.id",
              @"latitude": @"location.lat",
-             @"longitude": @"location.lng"};
+             @"longitude": @"location.lng",
+             @"address": @"location.address",
+             @"crossStreet": @"location.crossStreet"};
 }
 
 - (NSURL *)iconURL {
