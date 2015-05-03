@@ -25,6 +25,10 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
 
 #pragma mark -
 
+- (id)init {
+    return [self initWithHealthKitManager:nil];
+}
+
 - (id)initWithHealthKitManager:(HealthKitManager *)healthKitManager {
     self = [super init];
     if (!self) return nil;

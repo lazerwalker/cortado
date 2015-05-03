@@ -65,6 +65,7 @@
 		A6F3D6A11A4B98E200BA15A9 /* AddConsumptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A01A4B98E200BA15A9 /* AddConsumptionViewController.m */; };
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		B32603984BB9F75CC6750FEE /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
+		C61D9B6F1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C61D9B6E1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
@@ -289,6 +290,7 @@
 		A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ReactiveCocoa.m"; sourceTree = "<group>"; };
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
+		C61D9B6E1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueBlacklistViewControllerTests.m; sourceTree = "<group>"; };
 		C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
 		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
 		C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreTests.m; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */,
 				C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */,
 				C6BBB3881AF5E321002EAE0F /* SettingsViewControllerTests.m */,
+				C61D9B6E1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m */,
 			);
 			path = CortadoTests;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */,
 				C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */,
 				C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */,
+				C61D9B6F1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

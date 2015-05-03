@@ -1,13 +1,15 @@
-//
-//  VenueBlacklistViewController.h
-//  Cortado
-//
-//  Created by Mike Lazer-Walker on 5/3/15.
-//  Copyright (c) 2015 Lazerwalker. All rights reserved.
-//
+@import UIKit;
 
-#import <UIKit/UIKit.h>
+@class DataStore;
+
+typedef NS_ENUM(NSInteger, VenueBlacklistSection) {
+    VenueBlacklistSectionBlacklisted,
+    VenueBlacklistSectionHistory,
+    VenueBlacklistSectionCount
+};
 
 @interface VenueBlacklistViewController : UITableViewController
+
+- (id)initWithDataStore:(DataStore *)dataStore;
 
 @end
