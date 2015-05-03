@@ -40,6 +40,36 @@ after(^{
     [DataStore eraseStoredData];
 });
 
+describe(@"listing blacklisted venues", ^{
+    context(@"when nothing has been blacklisted", ^{
+        it(@"should not show the section", ^{
+            expect([subject numberOfSectionsInTableView:subject.tableView]).to.equal(1);
+        });
+    });
+
+    context(@"when a venue has been blacklisted", ^{
+        it(@"should show the blacklisted section", ^{
+            [dataStore blacklistVenue:venue1];
+            expect([subject numberOfSectionsInTableView:subject.tableView]).to.equal(2);
+        });
+
+        it(@"should show the correct blacklisted items", ^{
+            [dataStore blacklistVenue:venue2];
+
+            expect([subject tableView:subject.tableView numberOfRowsInSection:VenueBlacklistSectionBlacklisted]).to.equal(1);
+
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:VenueBlacklistSectionBlacklisted];
+            UITableViewCell *cell = [subject tableView:subject.tableView cellForRowAtIndexPath:indexPath];
+            [subject tableView:subject.tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
+
+            expect(cell.textLabel.text).to.equal(@"Domofuku Silk Bar");
+            expect(cell.detailTextLabel.text).to.equal(@"208 E 13th St (at 3rd Ave)");
+
+
+        });
+    });
+});
+
 describe(@"listing all venues", ^{
     context(@"when there are no venues", ^{
         it(@"should show an empty state", ^{

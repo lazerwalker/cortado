@@ -13,7 +13,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
 @interface DataStore ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
 @property (readwrite, nonatomic, strong) NSOrderedSet *venueHistory;
-@property (readwrite, nonatomic, strong) NSSet *blacklistedVenues;
+@property (readwrite, nonatomic, strong) NSOrderedSet *blacklistedVenues;
 @end
 
 @implementation DataStore
@@ -39,7 +39,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
     _healthKitManager = healthKitManager;
     self.drinks = self.cachedDrinks ?: @[];
     self.venueHistory = self.cachedVenueHistory ?: [[NSOrderedSet alloc] init];
-    self.blacklistedVenues = self.cachedBlacklistedVenues ?: [[NSSet alloc] init];
+    self.blacklistedVenues = self.cachedBlacklistedVenues ?: [[NSOrderedSet alloc] init];
 
     [RACObserve(self, drinks) subscribeNext:^(NSArray *drinks) {
         [self persistDrinks:drinks];
@@ -49,7 +49,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
         [self persistVenueHistory:venues];
     }];
 
-    [RACObserve(self, blacklistedVenues) subscribeNext:^(NSSet *blacklist) {
+    [RACObserve(self, blacklistedVenues) subscribeNext:^(NSOrderedSet *blacklist) {
         [self persistBlacklistedVenues:blacklist];
     }];
 
@@ -134,7 +134,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
     [defaults synchronize];
 }
 
-- (void)persistBlacklistedVenues:(NSSet *)blacklistedVenues {
+- (void)persistBlacklistedVenues:(NSOrderedSet *)blacklistedVenues {
     if (!blacklistedVenues) { return; }
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:blacklistedVenues];
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
@@ -156,7 +156,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
-- (NSSet *)cachedBlacklistedVenues {
+- (NSOrderedSet *)cachedBlacklistedVenues {
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:BlacklistedVenuesKey];
     if (!data) return nil;
 

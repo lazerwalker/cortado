@@ -14,7 +14,7 @@
 @property (readonly, nonatomic, strong) NSArray *drinks;
 
 @property (readonly, nonatomic, strong) NSOrderedSet *venueHistory;
-@property (readonly, nonatomic, strong) NSSet *blacklistedVenues;
+@property (readonly, nonatomic, strong) NSOrderedSet *blacklistedVenues;
 
 @property (readonly, nonatomic, strong) HealthKitManager *healthKitManager;
 

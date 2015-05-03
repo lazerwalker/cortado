@@ -40,20 +40,34 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
             cell.textLabel.text = venue.name;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
         }
+    } else if (indexPath.section == VenueBlacklistSectionBlacklisted) {
+        FoursquareVenue *venue = self.dataStore.blacklistedVenues[indexPath.row];
+        cell.textLabel.text = venue.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
     }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if (self.dataStore.blacklistedVenues.count == 0) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.dataStore.venueHistory.count == 0) {
-        return 1;
+    if (section == VenueBlacklistSectionBlacklisted) {
+        return self.dataStore.blacklistedVenues.count;
+    } else if (section == VenueBlacklistSectionHistory) {
+        if (self.dataStore.venueHistory.count == 0) {
+            return 1;
+        }
+        return self.dataStore.venueHistory.count;
     }
-    return self.dataStore.venueHistory.count;
+
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
