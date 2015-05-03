@@ -28,6 +28,7 @@
 
 - (void)addVenue:(FoursquareVenue *)venue;
 - (void)blacklistVenue:(FoursquareVenue *)venue;
+- (void)unblacklistVenue:(FoursquareVenue *)venue;
 
 // This calls `addDrink:` and subscribes to the signal.
 // TODO: There has to be a better naming convention for this.

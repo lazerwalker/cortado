@@ -49,6 +49,28 @@ describe(@"blacklisting a venue", ^{
         DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
         expect(newStore.blacklistedVenues).to.haveACountOf(2);
     });
+
+    context(@"unblacklisting a venue", ^{
+        it(@"should remove from the list", ^{
+            [subject blacklistVenue:venue1];
+            [subject blacklistVenue:venue2];
+
+            expect(subject.blacklistedVenues).to.haveACountOf(2);
+
+            [subject unblacklistVenue:venue1];
+            expect(subject.blacklistedVenues).to.haveACountOf(1);
+            expect(subject.blacklistedVenues).notTo.contain(venue1);
+        });
+
+        it(@"should persist to disk", ^{
+            [subject blacklistVenue:venue1];
+            [subject blacklistVenue:venue2];
+            [subject unblacklistVenue:venue1];
+
+            DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
+            expect(newStore.blacklistedVenues).to.haveACountOf(1);
+        });
+    });
 });
 
 describe(@"adding a location", ^{

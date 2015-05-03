@@ -86,6 +86,12 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
     self.blacklistedVenues = set;
 }
 
+- (void)unblacklistVenue:(FoursquareVenue *)venue {
+    NSMutableSet *set = [self.blacklistedVenues mutableCopy];
+    [set removeObject:venue];
+    self.blacklistedVenues = set;
+}
+
 #pragma mark -
 
 - (RACSignal *)addDrink:(DrinkConsumption *)drink {
