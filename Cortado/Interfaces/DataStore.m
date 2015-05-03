@@ -8,10 +8,12 @@
 
 static NSString * const HistoryKey = @"History";
 static NSString * const VenueHistoryKey = @"VenueHistory";
+static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
 
 @interface DataStore ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
 @property (readwrite, nonatomic, strong) NSOrderedSet *venueHistory;
+@property (readwrite, nonatomic, strong) NSSet *blacklistedVenues;
 @end
 
 @implementation DataStore
@@ -20,6 +22,7 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     [defaults setObject:nil forKey:HistoryKey];
     [defaults setObject:nil forKey:VenueHistoryKey];
+    [defaults setObject:nil forKey:BlacklistedVenuesKey];
     [defaults synchronize];
 }
 
@@ -36,6 +39,7 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
     _healthKitManager = healthKitManager;
     self.drinks = self.cachedDrinks ?: @[];
     self.venueHistory = self.cachedVenueHistory ?: [[NSOrderedSet alloc] init];
+    self.blacklistedVenues = self.cachedBlacklistedVenues ?: [[NSSet alloc] init];
 
     [RACObserve(self, drinks) subscribeNext:^(NSArray *drinks) {
         [self persistDrinks:drinks];
@@ -43,6 +47,10 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
 
     [RACObserve(self, venueHistory) subscribeNext:^(NSOrderedSet *venues) {
         [self persistVenueHistory:venues];
+    }];
+
+    [RACObserve(self, blacklistedVenues) subscribeNext:^(NSSet *blacklist) {
+        [self persistBlacklistedVenues:blacklist];
     }];
 
     return self;
@@ -70,6 +78,12 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
     }
 
     self.venueHistory = set;
+}
+
+- (void)blacklistVenue:(FoursquareVenue *)venue {
+    NSMutableSet *set = [self.blacklistedVenues mutableCopy];
+    [set addObject:venue];
+    self.blacklistedVenues = set;
 }
 
 #pragma mark -
@@ -114,6 +128,14 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
     [defaults synchronize];
 }
 
+- (void)persistBlacklistedVenues:(NSSet *)blacklistedVenues {
+    if (!blacklistedVenues) { return; }
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:blacklistedVenues];
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setObject:data forKey:BlacklistedVenuesKey];
+    [defaults synchronize];
+}
+
 - (NSArray *)cachedDrinks {
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:HistoryKey];
     if (!data) return nil;
@@ -128,4 +150,10 @@ static NSString * const VenueHistoryKey = @"VenueHistory";
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
+- (NSSet *)cachedBlacklistedVenues {
+    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:BlacklistedVenuesKey];
+    if (!data) return nil;
+
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
 @end

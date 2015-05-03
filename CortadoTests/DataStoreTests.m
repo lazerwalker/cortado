@@ -24,6 +24,33 @@ before(^{
     subject = [[DataStore alloc] initWithHealthKitManager:manager];
 });
 
+describe(@"blacklisting a venue", ^{
+    __block FoursquareVenue *venue1 = [[FoursquareVenue alloc] init];
+    __block FoursquareVenue *venue2 = [[FoursquareVenue alloc] init];
+
+    before(^{
+        venue1.name = @"Venue 1";
+        venue2.name = @"Venue 2";
+    });
+
+    it(@"should add to the list", ^{
+        [subject blacklistVenue:venue1];
+        [subject blacklistVenue:venue2];
+
+        expect(subject.blacklistedVenues).to.haveACountOf(2);
+        expect(subject.blacklistedVenues).to.contain(venue1);
+        expect(subject.blacklistedVenues).to.contain(venue2);
+    });
+
+    it(@"should persist to disk", ^{
+        [subject blacklistVenue:venue1];
+        [subject blacklistVenue:venue2];
+
+        DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
+        expect(newStore.blacklistedVenues).to.haveACountOf(2);
+    });
+});
+
 describe(@"adding a location", ^{
     __block FoursquareVenue *venue1 = [[FoursquareVenue alloc] init];
     __block FoursquareVenue *venue2 = [[FoursquareVenue alloc] init];
