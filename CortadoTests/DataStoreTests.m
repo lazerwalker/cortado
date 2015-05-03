@@ -8,6 +8,7 @@
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
+#import "FoursquareVenue.h"
 #import "HealthKitManager.h"
 
 #import "DataStore.h"
@@ -21,6 +22,39 @@ before(^{
 
     id manager = OCMClassMock(HealthKitManager.class);
     subject = [[DataStore alloc] initWithHealthKitManager:manager];
+});
+
+describe(@"adding a location", ^{
+    __block FoursquareVenue *venue1 = [[FoursquareVenue alloc] init];
+    __block FoursquareVenue *venue2 = [[FoursquareVenue alloc] init];
+
+    before(^{
+        venue1.name = @"Venue 1";
+        venue2.name = @"Venue 2";
+
+        [subject addVenue:venue1];
+        [subject addVenue:venue2];
+    });
+
+    it(@"should add to the front of list", ^{
+        expect(subject.venueHistory).to.haveACountOf(2);
+        expect([subject.venueHistory.firstObject name]).to.equal(@"Venue 2");
+    });
+
+    it(@"should move existing entries to the front", ^{
+        expect([subject.venueHistory.firstObject name]).to.equal(@"Venue 2");
+
+        [subject addVenue:venue1];
+
+        expect(subject.venueHistory).to.haveACountOf(2);
+        expect([subject.venueHistory.firstObject name]).to.equal(@"Venue 1");
+    });
+
+    it(@"should persist to disk", ^{
+        DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
+        expect(newStore.venueHistory).to.haveACountOf(2);
+        expect([newStore.venueHistory.firstObject name]).to.equal(@"Venue 2");
+    });
 });
 
 describe(@"importing from HealthKit", ^{

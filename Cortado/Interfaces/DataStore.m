@@ -7,9 +7,11 @@
 #import "DataStore.h"
 
 static NSString * const HistoryKey = @"History";
+static NSString * const VenueHistoryKey = @"VenueHistory";
 
 @interface DataStore ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
+@property (readwrite, nonatomic, strong) NSOrderedSet *venueHistory;
 @end
 
 @implementation DataStore
@@ -17,6 +19,7 @@ static NSString * const HistoryKey = @"History";
 + (void)eraseStoredData {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     [defaults setObject:nil forKey:HistoryKey];
+    [defaults setObject:nil forKey:VenueHistoryKey];
     [defaults synchronize];
 }
 
@@ -28,9 +31,14 @@ static NSString * const HistoryKey = @"History";
 
     _healthKitManager = healthKitManager;
     self.drinks = self.cachedDrinks ?: @[];
+    self.venueHistory = self.cachedVenueHistory ?: [[NSOrderedSet alloc] init];
 
     [RACObserve(self, drinks) subscribeNext:^(NSArray *drinks) {
         [self persistDrinks:drinks];
+    }];
+
+    [RACObserve(self, venueHistory) subscribeNext:^(NSOrderedSet *venues) {
+        [self persistVenueHistory:venues];
     }];
 
     return self;
@@ -42,6 +50,22 @@ static NSString * const HistoryKey = @"History";
         doNext:^(id drinks) {
             self.drinks = drinks;
         }];
+}
+
+#pragma mark -
+
+- (void)addVenue:(FoursquareVenue *)venue {
+    NSMutableOrderedSet *set = [self.venueHistory mutableCopy];
+
+    NSInteger idx = [set indexOfObject:venue];
+    if (idx == NSNotFound) {
+        [set insertObject:venue atIndex:0];
+    } else {
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:idx];
+        [set moveObjectsAtIndexes:indexSet toIndex:0];
+    }
+
+    self.venueHistory = set;
 }
 
 #pragma mark -
@@ -78,8 +102,23 @@ static NSString * const HistoryKey = @"History";
     [defaults synchronize];
 }
 
+- (void)persistVenueHistory:(NSOrderedSet *)venues {
+    if (!self.venueHistory) { return; }
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:venues];
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setObject:data forKey:VenueHistoryKey];
+    [defaults synchronize];
+}
+
 - (NSArray *)cachedDrinks {
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:HistoryKey];
+    if (!data) return nil;
+
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+- (NSOrderedSet *)cachedVenueHistory {
+    NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:VenueHistoryKey];
     if (!data) return nil;
 
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
