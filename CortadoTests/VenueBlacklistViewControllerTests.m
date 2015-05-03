@@ -36,9 +36,14 @@ before(^{
     venue2.crossStreet = @"at 3rd Ave";
 });
 
+after(^{
+    [DataStore eraseStoredData];
+});
+
 describe(@"listing all venues", ^{
-    xcontext(@"when there are no venues", ^{
+    context(@"when there are no venues", ^{
         it(@"should show an empty state", ^{
+            expect([subject tableView:subject.tableView numberOfRowsInSection:VenueBlacklistSectionHistory]).to.equal(1);
         });
     });
 
@@ -49,7 +54,7 @@ describe(@"listing all venues", ^{
         });
 
         it(@"should show a list of all venues", ^{
-            expect([subject tableView:subject.tableView numberOfRowsInSection:1]).to.equal(2);
+            expect([subject tableView:subject.tableView numberOfRowsInSection:VenueBlacklistSectionHistory]).to.equal(2);
         });
 
         it(@"should sort the venues", ^{

@@ -30,9 +30,13 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == VenueBlacklistSectionHistory) {
-        FoursquareVenue *venue = self.dataStore.venueHistory[indexPath.row];
-        cell.textLabel.text = venue.name;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
+        if (self.dataStore.venueHistory.count == 0) {
+            cell.textLabel.text = @"You haven't been to any coffee shops yet.";
+        } else {
+            FoursquareVenue *venue = self.dataStore.venueHistory[indexPath.row];
+            cell.textLabel.text = venue.name;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
+        }
     }
 }
 
@@ -43,6 +47,9 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.dataStore.venueHistory.count == 0) {
+        return 1;
+    }
     return self.dataStore.venueHistory.count;
 }
 
