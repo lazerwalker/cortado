@@ -10,6 +10,7 @@
 
 - (void)manuallyCheckCurrentLocation;
 
-- (id)initWithFoursquareClient:(FoursquareClient *)client NS_DESIGNATED_INITIALIZER;
+- (id)initWithFoursquareClient:(FoursquareClient *)client
+                     dataStore:(DataStore *)dataStore NS_DESIGNATED_INITIALIZER;
 
 @end

@@ -71,6 +71,9 @@
 		C6AC73B91AE5EF160075C0A5 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
 		C6B7A5B51AE4C1F30083E273 /* DrinkConsumptionSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C938891A485E1C00E96951 /* DrinkConsumptionSerializer.m */; };
+		C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */; };
+		C6BBB3861AF5A88C002EAE0F /* FoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E234671A320FFB00B57E16 /* FoursquareClient.m */; };
+		C6BBB3871AF5A8F0002EAE0F /* LocationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = A60585DB1A3E120500FF267F /* LocationDetector.m */; };
 		C6BED1241AE30D050095B959 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A6687FCB1A99496600F781F0 /* DataStore.m */; };
 		C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA37681AC0F9C000BDA55F /* ImageAttributionViewController.m */; };
 		C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A643D5901A422C77006ACF0A /* HistoryViewController.m */; };
@@ -301,6 +304,7 @@
 		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
 		C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreTests.m; sourceTree = "<group>"; };
 		C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionSerializerTests.m; sourceTree = "<group>"; };
+		C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetectorTests.m; sourceTree = "<group>"; };
 		C6BED0651AE3036C0095B959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6BED0661AE3036C0095B959 /* DrinkConsumptionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionTests.m; sourceTree = "<group>"; };
 		C6BED1641AE30D050095B959 /* Cortado copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -582,6 +586,7 @@
 				C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */,
 				C6BED0641AE3036C0095B959 /* Supporting Files */,
 				C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */,
+				C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */,
 			);
 			path = CortadoTests;
 			sourceTree = "<group>";
@@ -961,7 +966,9 @@
 				C6D046FB1AE3FB070021BE20 /* PreferredDrinks.m in Sources */,
 				C6B7A5B51AE4C1F30083E273 /* DrinkConsumptionSerializer.m in Sources */,
 				C6D046FA1AE3FB070021BE20 /* CoffeeShopNotification.m in Sources */,
+				C6BBB3871AF5A8F0002EAE0F /* LocationDetector.m in Sources */,
 				C6D046F91AE3FB070021BE20 /* DrinkCategoryList.m in Sources */,
+				C6BBB3861AF5A88C002EAE0F /* FoursquareClient.m in Sources */,
 				C6AC73B91AE5EF160075C0A5 /* DataStore.m in Sources */,
 				C6D046F51AE3FB070021BE20 /* DrinkConsumption.m in Sources */,
 				C6D046F41AE3FB070021BE20 /* Drink.m in Sources */,
@@ -969,6 +976,7 @@
 				C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */,
 				C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */,
 				C6D046FC1AE3FB070021BE20 /* MapAnnotation.m in Sources */,
+				C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */,
 				C6A0B6031AEDE8590079BECD /* HealthKitManager.m in Sources */,
 				C6D046F71AE3FB070021BE20 /* DrinkType.m in Sources */,
 				C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */,

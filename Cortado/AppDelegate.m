@@ -56,7 +56,7 @@
 
     FoursquareClient *client = [[FoursquareClient alloc] initWithClientID:keys.foursquareClientID
                                   clientSecret:keys.foursquareClientSecret];
-    self.fetcher = [[LocationFetcher alloc] initWithFoursquareClient:client];
+    self.fetcher = [[LocationFetcher alloc] initWithFoursquareClient:client dataStore:self.dataStore];
 
     [ARAnalytics setupMixpanelWithToken:keys.mixpanelToken];
     NSString *userId = [[UIDevice.currentDevice identifierForVendor] UUIDString];
