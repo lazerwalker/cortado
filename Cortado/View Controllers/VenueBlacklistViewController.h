@@ -10,6 +10,8 @@ typedef NS_ENUM(NSInteger, VenueBlacklistSection) {
 
 @interface VenueBlacklistViewController : UITableViewController
 
+@property (readonly, nonatomic, strong) DataStore *dataStore;
+
 - (id)initWithDataStore:(DataStore *)dataStore;
 
 @end

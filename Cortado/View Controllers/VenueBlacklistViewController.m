@@ -7,10 +7,6 @@
 
 static NSString * const HistoryIdentifier = @"HistoryCell";
 
-@interface VenueBlacklistViewController ()
-@property (readwrite, nonatomic, strong) DataStore *dataStore;
-@end
-
 @implementation VenueBlacklistViewController
 
 - (id)initWithDataStore:(DataStore *)dataStore {

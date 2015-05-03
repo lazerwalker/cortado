@@ -36,7 +36,7 @@ before(^{
     venue2.crossStreet = @"at 3rd Ave";
 });
 
-fdescribe(@"listing all venues", ^{
+describe(@"listing all venues", ^{
     xcontext(@"when there are no venues", ^{
         it(@"should show an empty state", ^{
         });

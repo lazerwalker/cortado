@@ -148,7 +148,7 @@
 }
 
 - (void)showBlacklist {
-    VenueBlacklistViewController *blacklistVC = [[VenueBlacklistViewController alloc] init];
+    VenueBlacklistViewController *blacklistVC = [[VenueBlacklistViewController alloc] initWithDataStore:self.dataStore];
     [self.navigationController pushViewController:blacklistVC animated:YES];
 }
 

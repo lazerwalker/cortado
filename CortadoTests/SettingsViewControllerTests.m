@@ -6,6 +6,7 @@
 #import <FBSnapshotTestCase/FBSnapshotTestCase.h>
 #import <Expecta+Snapshots/EXPMatchers+FBSnapshotTest.h>
 
+#import "DataStore.h"
 #import "VenueBlacklistViewController.h"
 
 #import "SettingsViewController.h"
@@ -16,7 +17,7 @@ __block SettingsViewController *subject;
 __block UINavigationController *navController;
 
 before(^{
-    subject = [[SettingsViewController alloc] initWithDataStore:nil];
+    subject = [[SettingsViewController alloc] initWithDataStore:[[DataStore alloc] init]];
     navController = [[UINavigationController alloc] initWithRootViewController:subject];
 
     [subject viewDidLoad];
@@ -28,6 +29,10 @@ describe(@"tapping on cells", ^{
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
             [subject tableView:subject.tableView didSelectRowAtIndexPath:indexPath];
             expect(navController.topViewController).will.beInstanceOf(VenueBlacklistViewController.class);
+
+            DataStore *dataStore = [(VenueBlacklistViewController *)navController.topViewController dataStore];
+            expect(dataStore).notTo.beNil();
+            expect(dataStore).to.equal(subject.dataStore);
         });
     });
 });
