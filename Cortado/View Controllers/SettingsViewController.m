@@ -10,6 +10,7 @@
 #import "FTUEViewController.h"
 
 #import "DataStore.h"
+#import "VenueBlacklistViewController.h"
 
 #import "SettingsViewController.h"
 
@@ -83,6 +84,9 @@
         [self reimportFromHealthKit];
     } else if ([cell.reuseIdentifier isEqualToString:@"ftue"]) {
         [self showOnboarding];
+    } else if ([cell.reuseIdentifier isEqualToString:@"blacklist"]) {
+        [self showBlacklist];
+
     }
 }
 
@@ -141,6 +145,11 @@
                 otherButtonTitles:nil]
              show];
         }];
+}
+
+- (void)showBlacklist {
+    VenueBlacklistViewController *blacklistVC = [[VenueBlacklistViewController alloc] init];
+    [self.navigationController pushViewController:blacklistVC animated:YES];
 }
 
 // TODO: Remove before shipping
