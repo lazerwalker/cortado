@@ -21,6 +21,9 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.tableView.estimatedRowHeight = 44.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
     [RACObserve(self, dataStore.venueHistory) subscribeNext:^(id _) {
         [self.tableView reloadData];
     }];
@@ -57,6 +60,7 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:HistoryIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:HistoryIdentifier];
+        cell.textLabel.numberOfLines = 0;
     }
 
     return cell;
