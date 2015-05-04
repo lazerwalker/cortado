@@ -15,6 +15,8 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
 
     _dataStore = dataStore;
 
+    self.title = @"Ignored Coffee Shops";
+
     return self;
 }
 
