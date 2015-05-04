@@ -66,6 +66,14 @@
 		A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F3D6A31A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m */; };
 		B32603984BB9F75CC6750FEE /* libPods-CortadoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCCCC30750184F0CADABFDB /* libPods-CortadoTests.a */; };
 		C61D9B6F1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C61D9B6E1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m */; };
+		C62593F81AF7FAB300ABC3F1 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C62593F71AF7FAB300ABC3F1 /* InterfaceController.m */; };
+		C62593FA1AF7FAB300ABC3F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62593F91AF7FAB300ABC3F1 /* Images.xcassets */; };
+		C62593FE1AF7FAB300ABC3F1 /* Cortado WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C62593FD1AF7FAB300ABC3F1 /* Cortado WatchKit App.app */; };
+		C62594061AF7FAB300ABC3F1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62594041AF7FAB300ABC3F1 /* Interface.storyboard */; };
+		C62594081AF7FAB300ABC3F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62594071AF7FAB300ABC3F1 /* Images.xcassets */; };
+		C625940B1AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C62593F21AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C62594131AF7FC3500ABC3F1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65366E01ACF3109007AE2B0 /* HealthKit.framework */; };
+		C62594141AF7FCB100ABC3F1 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
@@ -137,6 +145,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C62593FF1AF7FAB300ABC3F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C62593FC1AF7FAB300ABC3F1;
+			remoteInfo = "Cortado WatchKit App";
+		};
+		C62594091AF7FAB300ABC3F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C62593F11AF7FAB300ABC3F1;
+			remoteInfo = "Cortado WatchKit Extension";
+		};
 		C6BED1AC1AE3F5740095B959 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
@@ -153,6 +175,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C625940B1AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +314,16 @@
 		ACEFD6E6369FD4C5CA32C5E3 /* libPods-Cortado.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cortado.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A52B1D99027DA6387EB530 /* Pods-Cortado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cortado.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cortado/Pods-Cortado.release.xcconfig"; sourceTree = "<group>"; };
 		C61D9B6E1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueBlacklistViewControllerTests.m; sourceTree = "<group>"; };
+		C62593F21AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cortado WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C62593F51AF7FAB300ABC3F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C62593F61AF7FAB300ABC3F1 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		C62593F71AF7FAB300ABC3F1 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		C62593F91AF7FAB300ABC3F1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C62593FD1AF7FAB300ABC3F1 /* Cortado WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cortado WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C62594031AF7FAB300ABC3F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C62594051AF7FAB300ABC3F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		C62594071AF7FAB300ABC3F1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C62594121AF7FC3200ABC3F1 /* Cortado WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cortado WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
 		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
 		C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreTests.m; sourceTree = "<group>"; };
@@ -319,6 +352,14 @@
 			files = (
 				A6CCD1D81A9AE9B200302A39 /* libPods.a in Frameworks */,
 				A65366E11ACF3109007AE2B0 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C62593EF1AF7FAB300ABC3F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C62594131AF7FC3500ABC3F1 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +435,8 @@
 			children = (
 				A62D72241A254C6500846A33 /* Cortado */,
 				C6BED0631AE3036C0095B959 /* CortadoTests */,
+				C62593F31AF7FAB300ABC3F1 /* Cortado WatchKit Extension */,
+				C62594011AF7FAB300ABC3F1 /* Cortado WatchKit App */,
 				A62D72531A254D1A00846A33 /* Frameworks */,
 				A62D72231A254C6500846A33 /* Products */,
 				B1306759647D75FFCB56B59F /* Pods */,
@@ -407,6 +450,8 @@
 				A62D72221A254C6500846A33 /* Cortado.app */,
 				C6BED1641AE30D050095B959 /* Cortado copy.app */,
 				C6BED1A61AE3F5740095B959 /* CortadoTests.xctest */,
+				C62593F21AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex */,
+				C62593FD1AF7FAB300ABC3F1 /* Cortado WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -574,6 +619,44 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C62593F31AF7FAB300ABC3F1 /* Cortado WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C62594121AF7FC3200ABC3F1 /* Cortado WatchKit Extension.entitlements */,
+				C62593F61AF7FAB300ABC3F1 /* InterfaceController.h */,
+				C62593F71AF7FAB300ABC3F1 /* InterfaceController.m */,
+				C62593F91AF7FAB300ABC3F1 /* Images.xcassets */,
+				C62593F41AF7FAB300ABC3F1 /* Supporting Files */,
+			);
+			path = "Cortado WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		C62593F41AF7FAB300ABC3F1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C62593F51AF7FAB300ABC3F1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C62594011AF7FAB300ABC3F1 /* Cortado WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				C62594041AF7FAB300ABC3F1 /* Interface.storyboard */,
+				C62594071AF7FAB300ABC3F1 /* Images.xcassets */,
+				C62594021AF7FAB300ABC3F1 /* Supporting Files */,
+			);
+			path = "Cortado WatchKit App";
+			sourceTree = "<group>";
+		};
+		C62594021AF7FAB300ABC3F1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C62594031AF7FAB300ABC3F1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C6BED0631AE3036C0095B959 /* CortadoTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,11 +699,45 @@
 			buildRules = (
 			);
 			dependencies = (
+				C625940A1AF7FAB300ABC3F1 /* PBXTargetDependency */,
 			);
 			name = Cortado;
 			productName = Cuppa;
 			productReference = A62D72221A254C6500846A33 /* Cortado.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C62593F11AF7FAB300ABC3F1 /* Cortado WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C62594111AF7FAB300ABC3F1 /* Build configuration list for PBXNativeTarget "Cortado WatchKit Extension" */;
+			buildPhases = (
+				C62593EE1AF7FAB300ABC3F1 /* Sources */,
+				C62593EF1AF7FAB300ABC3F1 /* Frameworks */,
+				C62593F01AF7FAB300ABC3F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C62594001AF7FAB300ABC3F1 /* PBXTargetDependency */,
+			);
+			name = "Cortado WatchKit Extension";
+			productName = "Cortado WatchKit Extension";
+			productReference = C62593F21AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		C62593FC1AF7FAB300ABC3F1 /* Cortado WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C62594101AF7FAB300ABC3F1 /* Build configuration list for PBXNativeTarget "Cortado WatchKit App" */;
+			buildPhases = (
+				C62593FB1AF7FAB300ABC3F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cortado WatchKit App";
+			productName = "Cortado WatchKit App";
+			productReference = C62593FD1AF7FAB300ABC3F1 /* Cortado WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
 		};
 		C6BED1211AE30D050095B959 /* Cortado-Snapshot */ = {
 			isa = PBXNativeTarget;
@@ -686,6 +803,22 @@
 							};
 						};
 					};
+					C62593F11AF7FAB300ABC3F1 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 48WB56AE4K;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					C62593FC1AF7FAB300ABC3F1 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 48WB56AE4K;
+					};
 					C6BED1A51AE3F5740095B959 = {
 						CreatedOnToolsVersion = 6.3;
 						TestTargetID = A62D72211A254C6500846A33;
@@ -708,6 +841,8 @@
 				A62D72211A254C6500846A33 /* Cortado */,
 				C6BED1211AE30D050095B959 /* Cortado-Snapshot */,
 				C6BED1A51AE3F5740095B959 /* CortadoTests */,
+				C62593F11AF7FAB300ABC3F1 /* Cortado WatchKit Extension */,
+				C62593FC1AF7FAB300ABC3F1 /* Cortado WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -729,6 +864,25 @@
 				A68205151AB73A22007923D8 /* LocationFTUEViewController.xib in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
 				A682050F1AB6565B007923D8 /* IntroFTUEViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C62593F01AF7FAB300ABC3F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C62593FA1AF7FAB300ABC3F1 /* Images.xcassets in Resources */,
+				C62593FE1AF7FAB300ABC3F1 /* Cortado WatchKit App.app in Resources */,
+				C62594141AF7FCB100ABC3F1 /* drinks.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C62593FB1AF7FAB300ABC3F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C62594061AF7FAB300ABC3F1 /* Interface.storyboard in Resources */,
+				C62594081AF7FAB300ABC3F1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,6 +1062,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C62593EE1AF7FAB300ABC3F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C62593F81AF7FAB300ABC3F1 /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6BED1231AE30D050095B959 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -976,6 +1138,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C62594001AF7FAB300ABC3F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C62593FC1AF7FAB300ABC3F1 /* Cortado WatchKit App */;
+			targetProxy = C62593FF1AF7FAB300ABC3F1 /* PBXContainerItemProxy */;
+		};
+		C625940A1AF7FAB300ABC3F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C62593F11AF7FAB300ABC3F1 /* Cortado WatchKit Extension */;
+			targetProxy = C62594091AF7FAB300ABC3F1 /* PBXContainerItemProxy */;
+		};
 		C6BED1AD1AE3F5740095B959 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A62D72211A254C6500846A33 /* Cortado */;
@@ -992,6 +1164,14 @@
 			);
 			name = LaunchScreen.xib;
 			path = .;
+			sourceTree = "<group>";
+		};
+		C62594041AF7FAB300ABC3F1 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C62594051AF7FAB300ABC3F1 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1125,6 +1305,94 @@
 			};
 			name = Debug;
 		};
+		C625940C1AF7FAB300ABC3F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Cortado WatchKit Extension/Cortado WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Cortado WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C625940D1AF7FAB300ABC3F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Cortado WatchKit Extension/Cortado WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Cortado WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C625940E1AF7FAB300ABC3F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = Cortado_WatchKit_Extension;
+				INFOPLIST_FILE = "Cortado WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		C625940F1AF7FAB300ABC3F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				IBSC_MODULE = Cortado_WatchKit_Extension;
+				INFOPLIST_FILE = "Cortado WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
 		C6BED1621AE30D050095B959 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46FF4552A358097D7F8675E4 /* Pods.release.xcconfig */;
@@ -1243,6 +1511,24 @@
 			buildConfigurations = (
 				A62D72471A254C6500846A33 /* Release */,
 				A6886C611A2A4EF300BE09DC /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C62594101AF7FAB300ABC3F1 /* Build configuration list for PBXNativeTarget "Cortado WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C625940E1AF7FAB300ABC3F1 /* Release */,
+				C625940F1AF7FAB300ABC3F1 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C62594111AF7FAB300ABC3F1 /* Build configuration list for PBXNativeTarget "Cortado WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C625940C1AF7FAB300ABC3F1 /* Release */,
+				C625940D1AF7FAB300ABC3F1 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

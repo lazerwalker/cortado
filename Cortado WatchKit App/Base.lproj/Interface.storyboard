@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Cortado-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller title="Cortado" id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <label width="128" alignment="left" text="Whatcha Drinkin'?" textAlignment="left" numberOfLines="0" id="xar-ks-zmL">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <table alignment="left" id="6dm-Nf-P8Y">
+                            <items>
+                                <tableRow id="CjO-FW-3Os">
+                                    <group key="rootItem" width="1" alignment="left" id="FEJ-PK-cSp"/>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <separator alignment="left" id="BIP-fU-QCM"/>
+                        <table alignment="left" id="jgA-Fq-aaE">
+                            <items>
+                                <tableRow id="d9a-Uv-6qh">
+                                    <group key="rootItem" width="1" alignment="left" id="i4h-9V-UvO"/>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="218" y="367"/>
+        </scene>
+    </scenes>
+</document>
