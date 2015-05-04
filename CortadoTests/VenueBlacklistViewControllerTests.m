@@ -101,6 +101,16 @@ describe(@"listing all venues", ^{
 
 });
 
+xdescribe(@"tapping a venue to blacklist", ^{
+    it(@"should show a confirmation", ^{
+        [dataStore addVenue:venue1];
+
+        NSIndexPath *firstVenue = [NSIndexPath indexPathForRow:0 inSection:VenueBlacklistSectionHistory];
+        [subject tableView:subject.tableView didSelectRowAtIndexPath:firstVenue];
+
+        expect(subject.presentedViewController).will.beInstanceOf(UIAlertController.class);
+    });
+});
 
 
 SpecEnd

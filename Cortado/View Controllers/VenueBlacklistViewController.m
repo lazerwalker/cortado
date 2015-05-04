@@ -24,9 +24,10 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
-    [RACObserve(self, dataStore.venueHistory) subscribeNext:^(id _) {
-        [self.tableView reloadData];
-    }];
+    [[RACSignal merge:@[RACObserve(self, dataStore.venueHistory), RACObserve(self, dataStore.blacklistedVenues)]]
+        subscribeNext:^(id _) {
+            [self.tableView reloadData];
+        }];
 }
 
 #pragma mark - UITableViewDelegate
@@ -47,6 +48,49 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
         FoursquareVenue *venue = self.dataStore.blacklistedVenues[indexPath.row];
         cell.textLabel.text = venue.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    if (indexPath.section == VenueBlacklistSectionHistory) {
+        if (self.dataStore.venueHistory.count == 0) return;
+
+        FoursquareVenue *venue = self.dataStore.venueHistory[indexPath.row];
+        NSString *message = [NSString stringWithFormat:@"By ignoring %@, it won't send you push notifications when you are near there.", venue.name];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ignore Venue?"
+                                                                       message:message
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+
+        [alert addAction:[UIAlertAction actionWithTitle:@"No Thanks"
+                                                  style:UIAlertActionStyleCancel
+                                                handler:^(UIAlertAction *action) {}]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Ignore"
+                   style:UIAlertActionStyleDestructive
+                 handler:^(UIAlertAction *action) {
+                     [self.dataStore blacklistVenue:venue];
+                 }]];
+
+        [self presentViewController:alert animated:YES completion:nil];
+    } else if (indexPath.section == VenueBlacklistSectionBlacklisted) {
+        FoursquareVenue *venue = self.dataStore.blacklistedVenues[indexPath.row];
+        NSString *message = [NSString stringWithFormat:@"If you are near %@, you will receive push notifications again.", venue.name];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Restore Venue?"
+                                                                       message:message
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+
+        [alert addAction:[UIAlertAction actionWithTitle:@"No Thanks"
+                                                  style:UIAlertActionStyleCancel
+                                                handler:^(UIAlertAction *action) {}]];
+
+        [alert addAction:[UIAlertAction actionWithTitle:@"Restore"
+                                                  style:UIAlertActionStyleDestructive
+                                                handler:^(UIAlertAction *action) {
+                                                    [self.dataStore unblacklistVenue:venue];
+                                                }]];
+
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
