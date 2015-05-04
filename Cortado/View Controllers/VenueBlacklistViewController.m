@@ -32,9 +32,12 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+
     if (indexPath.section == VenueBlacklistSectionHistory) {
         if (self.dataStore.venueHistory.count == 0) {
             cell.textLabel.text = @"You haven't been to any coffee shops yet.";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else {
             FoursquareVenue *venue = self.dataStore.venueHistory[indexPath.row];
             cell.textLabel.text = venue.name;
@@ -74,6 +77,17 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
     }
 
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == VenueBlacklistSectionHistory) {
+        return @"Tap to ignore. Ignored coffee shops won't trigger push notifications.";
+    } else if (section == VenueBlacklistSectionBlacklisted) {
+        if ([self tableView:self.tableView numberOfRowsInSection:VenueBlacklistSectionBlacklisted] > 0) {
+            return @"Ignored coffee shops";
+        }
+    }
+    return nil;
 }
 
 @end
