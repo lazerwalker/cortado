@@ -43,16 +43,11 @@ after(^{
 describe(@"listing blacklisted venues", ^{
     context(@"when nothing has been blacklisted", ^{
         it(@"should not show the section", ^{
-            expect([subject numberOfSectionsInTableView:subject.tableView]).to.equal(1);
+            expect([subject tableView:subject.tableView numberOfRowsInSection:VenueBlacklistSectionBlacklisted]).to.equal(0);
         });
     });
 
     context(@"when a venue has been blacklisted", ^{
-        it(@"should show the blacklisted section", ^{
-            [dataStore blacklistVenue:venue1];
-            expect([subject numberOfSectionsInTableView:subject.tableView]).to.equal(2);
-        });
-
         it(@"should show the correct blacklisted items", ^{
             [dataStore blacklistVenue:venue2];
 

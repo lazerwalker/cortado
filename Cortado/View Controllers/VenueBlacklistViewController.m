@@ -50,11 +50,7 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.dataStore.blacklistedVenues.count == 0) {
-        return 1;
-    } else {
-        return 2;
-    }
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
