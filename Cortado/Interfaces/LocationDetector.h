@@ -18,4 +18,7 @@ NS_DESIGNATED_INITIALIZER;
 @property (readonly) FoursquareClient *client;
 @property (readonly) DataStore *dataStore;
 
+// Exposed for tests
+@property (readwrite, nonatomic, weak) UIApplication *application;
+
 @end

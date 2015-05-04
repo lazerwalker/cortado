@@ -15,12 +15,15 @@
 SpecBegin(LocationDetector)
 
 __block LocationDetector *subject;
+__block id application;
 
 before(^{
     id client = OCMClassMock(FoursquareClient.class);
-    id dataStore = OCMClassMock(DataStore.class);
+    DataStore *dataStore = OCMPartialMock([[DataStore alloc] init]);
     subject = [[LocationDetector alloc] initWithFoursquareClient:client
                                                        dataStore:dataStore];
+    application = OCMClassMock(UIApplication.class);
+    subject.application = application;
 });
 
 describe(@"adding a location", ^{
@@ -37,6 +40,46 @@ describe(@"adding a location", ^{
             OCMVerify([subject.dataStore addVenue:venue]);
         });
     });
+});
+
+describe(@"venue blacklisting", ^{
+    before(^{
+        [DataStore eraseStoredData];
+    });
+
+    after(^{
+        [DataStore eraseStoredData];
+    });
+
+    context(@"when a venue is blacklisted", ^{
+        it(@"should not trigger a push notification", ^{
+            FoursquareVenue *venue = [[FoursquareVenue alloc] init];
+            venue.name = @"Dunkin Donuts";
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(10.0, 10.0);
+
+            [subject.dataStore blacklistVenue:venue];
+
+            OCMStub([subject.client fetchVenuesOfCategory:[OCMArg any] nearCoordinate:coordinate]).andReturn([RACSignal return:venue]);
+
+            [[application reject] scheduleLocalNotification:[OCMArg any]];
+            [subject checkForCoordinate:coordinate];
+            OCMVerifyAll(application);
+        });
+    });
+
+    context(@"when a venue is not blacklisted", ^{
+        it(@"should trigger a push notification", ^{
+            FoursquareVenue *venue = [[FoursquareVenue alloc] init];
+            venue.name = @"Dunkin Donuts";
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(10.0, 10.0);
+
+            OCMStub([subject.client fetchVenuesOfCategory:[OCMArg any] nearCoordinate:coordinate]).andReturn([RACSignal return:venue]);
+
+            [subject checkForCoordinate:coordinate];
+            OCMVerify([application scheduleLocalNotification:[OCMArg any]]);
+        });
+    });
+
 });
 
 

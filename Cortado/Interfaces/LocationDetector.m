@@ -20,14 +20,19 @@
 
     _client = client;
     _dataStore = dataStore;
+
+    self.application = UIApplication.sharedApplication;
     
     return self;
 }
 
 - (void)checkForCoordinate:(CLLocationCoordinate2D)coordinate {
     NSString *coffeeShops = @"4bf58dd8d48988d1e0931735";
-    [[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
+    [[[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
         take:1]
+        filter:^BOOL(FoursquareVenue *venue) {
+            return ![self.dataStore.blacklistedVenues containsObject:venue];
+        }]
         subscribeNext:^(FoursquareVenue *result) {
             [ARAnalytics event:@"At coffee shop"];
 
@@ -35,7 +40,7 @@
 
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name
                                                                           coordinate:coordinate];
-            [UIApplication.sharedApplication scheduleLocalNotification:notif.notif];
+            [self.application scheduleLocalNotification:notif.notif];
         }];
 }
 
