@@ -50,16 +50,8 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    PreferencesViewController *pvc = [[PreferencesViewController alloc] initWithViewModel:self.preferredDrinksViewModel];
-    pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 136);
-    pvc.tableView.scrollEnabled = NO;
-
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 56.0;
-
-    self.tableView.tableHeaderView = pvc.view;
-    self.tableView.tableHeaderView.clipsToBounds = YES;
-    [self addChildViewController:pvc];
 
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
