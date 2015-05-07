@@ -4,7 +4,7 @@
 
 #import "Drink.h"
 #import "DrinkConsumption.h"
-#import "PreferredDrinks.h"
+#import "Preferences.h"
 
 #import "CoffeeShopNotification.h"
 
@@ -19,7 +19,7 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 @implementation CoffeeShopNotification
 
 #pragma mark -
-+ (void)registerNotificationTypeWithPreferences:(PreferredDrinks *)preferences {
++ (void)registerNotificationTypeWithPreferences:(Preferences *)preferences {
     NSMutableArray *actions = [[NSMutableArray alloc] init];
 
     if (preferences.drink) {
@@ -67,7 +67,7 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
     NSString *coordinateString = [NSString stringWithFormat:@"%@,%@", @(coordinate.latitude), @(coordinate.longitude)];
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
-    PreferredDrinks *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    Preferences *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     Drink *drink = preferences.drink;
 
     _notif = [[UILocalNotification alloc] init];

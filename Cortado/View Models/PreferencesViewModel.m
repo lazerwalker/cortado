@@ -3,17 +3,17 @@
 #import "Drink.h"
 #import "DrinkCellViewModel.h"
 #import "CoffeeShopNotification.h"
-#import "PreferredDrinks.h"
+#import "Preferences.h"
 
-#import "PreferredDrinksViewModel.h"
+#import "PreferencesViewModel.h"
 
 static NSString * const PreferencesKey = @"preferredDrinks";
 
-@interface PreferredDrinksViewModel ()
-@property (readwrite, nonatomic, strong) PreferredDrinks *drinks;
+@interface PreferencesViewModel ()
+@property (readwrite, nonatomic, strong) Preferences *drinks;
 @end
 
-@implementation PreferredDrinksViewModel
+@implementation PreferencesViewModel
 
 - (id)init {
     self = [super init];
@@ -21,9 +21,9 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:PreferencesKey];
     self.drinks = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
-    [[PreferredDrinks alloc] initWithDrink:nil];
+    [[Preferences alloc] initWithDrink:nil];
 
-    [RACObserve(self, drinks) subscribeNext:^(PreferredDrinks *drinks) {
+    [RACObserve(self, drinks) subscribeNext:^(Preferences *drinks) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
         [NSUserDefaults.standardUserDefaults setObject:data forKey:PreferencesKey];
 
@@ -61,7 +61,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 
 #pragma mark -
 - (void)setDrink:(Drink *)drink {
-    self.drinks = [[PreferredDrinks alloc] initWithDrink:drink];
+    self.drinks = [[Preferences alloc] initWithDrink:drink];
 }
 
 @end

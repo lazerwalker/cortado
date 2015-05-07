@@ -1,6 +1,6 @@
-#import "PreferredDrinks.h"
+#import "Preferences.h"
 
-@implementation PreferredDrinks
+@implementation Preferences
 
 - (id)initWithDrink:(Drink *)drink {
     self = [super init];

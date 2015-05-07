@@ -2,11 +2,11 @@
 
 @class Drink;
 @class DrinkCellViewModel;
-@class PreferredDrinks;
+@class Preferences;
 
-@interface PreferredDrinksViewModel : RVMViewModel
+@interface PreferencesViewModel : RVMViewModel
 
-@property (readonly, nonatomic, strong) PreferredDrinks *drinks;
+@property (readonly, nonatomic, strong) Preferences *drinks;
 @property (readonly) NSUInteger numberOfDrinks;
 
 @property (readwrite, nonatomic, assign) BOOL shouldRegisterNotificationTypeAutomatically;

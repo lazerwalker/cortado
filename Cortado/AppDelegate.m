@@ -23,8 +23,8 @@
 #import "HistoryViewController.h"
 #import "HistoryViewModel.h"
 #import "LocationFetcher.h"
-#import "PreferredDrinksViewController.h"
-#import "PreferredDrinksViewModel.h"
+#import "PreferencesViewController.h"
+#import "PreferencesViewModel.h"
 
 #import "AppDelegate.h"
 
@@ -65,7 +65,7 @@
     // History
     HistoryViewModel *historyVM = [[HistoryViewModel alloc] initWithDataStore:self.dataStore
                                                               locationFetcher:self.fetcher];
-    PreferredDrinksViewModel *preferredDrinksVM = [[PreferredDrinksViewModel alloc] init];
+    PreferencesViewModel *preferredDrinksVM = [[PreferencesViewModel alloc] init];
     HistoryViewController *historyVC = [[HistoryViewController alloc] initWithHistoryViewModel:historyVM preferredDrinksViewModel:preferredDrinksVM];
     UINavigationController *historyNav = [[UINavigationController alloc] initWithRootViewController:historyVC];
 

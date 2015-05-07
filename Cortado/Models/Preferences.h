@@ -2,7 +2,7 @@
 
 @class Drink;
 
-@interface PreferredDrinks : MTLModel
+@interface Preferences : MTLModel
 
 @property (readonly, nonatomic, strong) Drink *drink;
 

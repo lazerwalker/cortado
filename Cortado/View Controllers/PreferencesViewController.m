@@ -16,19 +16,19 @@
 #import "DrinkCellViewModel.h"
 #import "DrinkConsumption.h"
 #import "DrinkSelectionViewController.h"
-#import "PreferredDrinksViewModel.h"
+#import "PreferencesViewModel.h"
 
-#import "PreferredDrinksViewController.h"
+#import "PreferencesViewController.h"
 
 static NSString * const CellIdentifier = @"cell";
 
-@interface PreferredDrinksViewController ()
+@interface PreferencesViewController ()
 
 @end
 
-@implementation PreferredDrinksViewController
+@implementation PreferencesViewController
 
-- (id)initWithViewModel:(PreferredDrinksViewModel *)viewModel {
+- (id)initWithViewModel:(PreferencesViewModel *)viewModel {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 

@@ -11,8 +11,8 @@
 #import "FTUEViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
-#import "PreferredDrinksViewController.h"
-#import "PreferredDrinksViewModel.h"
+#import "PreferencesViewController.h"
+#import "PreferencesViewModel.h"
 #import "SettingsViewController.h"
 
 #import "HistoryViewController.h"
@@ -24,7 +24,7 @@ static NSString * const CellIdentifier = @"Cell";
 
 @implementation HistoryViewController
 
-- (id)initWithHistoryViewModel:(HistoryViewModel *)viewModel preferredDrinksViewModel:(PreferredDrinksViewModel *)preferredDrinksViewModel {
+- (id)initWithHistoryViewModel:(HistoryViewModel *)viewModel preferredDrinksViewModel:(PreferencesViewModel *)preferredDrinksViewModel {
 
     self = [super initWithStyle:UITableViewStylePlain];
     if (!self) return nil;
@@ -50,7 +50,7 @@ static NSString * const CellIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    PreferredDrinksViewController *pvc = [[PreferredDrinksViewController alloc] initWithViewModel:self.preferredDrinksViewModel];
+    PreferencesViewController *pvc = [[PreferencesViewController alloc] initWithViewModel:self.preferredDrinksViewModel];
     pvc.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 136);
     pvc.tableView.scrollEnabled = NO;
 

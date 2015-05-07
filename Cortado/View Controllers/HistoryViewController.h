@@ -1,14 +1,14 @@
 @import UIKit;
 
 @class HistoryViewModel;
-@class PreferredDrinksViewModel;
+@class PreferencesViewModel;
 
 @interface HistoryViewController : UITableViewController
 
 @property (readonly, nonatomic, strong) HistoryViewModel *viewModel;
-@property (readonly, nonatomic, strong) PreferredDrinksViewModel *preferredDrinksViewModel;
+@property (readonly, nonatomic, strong) PreferencesViewModel *preferredDrinksViewModel;
 
 - (id)initWithHistoryViewModel:(HistoryViewModel *)viewModel
-      preferredDrinksViewModel:(PreferredDrinksViewModel *)preferredDrinksViewModel;
+      preferredDrinksViewModel:(PreferencesViewModel *)preferredDrinksViewModel;
 
 @end
