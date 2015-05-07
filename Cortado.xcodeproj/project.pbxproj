@@ -75,6 +75,7 @@
 		C62594131AF7FC3500ABC3F1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65366E01ACF3109007AE2B0 /* HealthKit.framework */; };
 		C62594141AF7FCB100ABC3F1 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
+		C66257011AFBE7C700EAFC15 /* PreferencesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C66257001AFBE7C700EAFC15 /* PreferencesTests.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
 		C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */; };
@@ -326,6 +327,7 @@
 		C62594121AF7FC3200ABC3F1 /* Cortado WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cortado WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
 		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
+		C66257001AFBE7C700EAFC15 /* PreferencesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTests.m; sourceTree = "<group>"; };
 		C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStoreTests.m; sourceTree = "<group>"; };
 		C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrinkConsumptionSerializerTests.m; sourceTree = "<group>"; };
 		C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetectorTests.m; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */,
 				C6BBB3881AF5E321002EAE0F /* SettingsViewControllerTests.m */,
 				C61D9B6E1AF69B490033CC2F /* VenueBlacklistViewControllerTests.m */,
+				C66257001AFBE7C700EAFC15 /* PreferencesTests.m */,
 			);
 			path = CortadoTests;
 			sourceTree = "<group>";
@@ -1127,6 +1130,7 @@
 			files = (
 				C6D046FE1AE404B90021BE20 /* CoffeeShopNotificationTests.m in Sources */,
 				C6BBB3891AF5E321002EAE0F /* SettingsViewControllerTests.m in Sources */,
+				C66257011AFBE7C700EAFC15 /* PreferencesTests.m in Sources */,
 				C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */,
 				C6BED1B11AE3FA5A0095B959 /* DrinkConsumptionTests.m in Sources */,
 				C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */,

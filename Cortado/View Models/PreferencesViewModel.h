@@ -17,5 +17,8 @@
 - (DrinkCellViewModel *)drinkViewModelAtIndex:(NSUInteger)index;
 
 - (void)addDrink:(Drink *)drink;
+- (void)removeDrink:(Drink *)drink;
+- (void)moveDrink:(Drink *)drink toIndex:(NSUInteger)index;
+- (void)editDrinkAtIndex:(NSUInteger)index toDrink:(Drink *)drink;
 
 @end
