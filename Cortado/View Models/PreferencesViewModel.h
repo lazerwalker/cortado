@@ -18,7 +18,7 @@
 
 - (void)addDrink:(Drink *)drink;
 - (void)removeDrink:(Drink *)drink;
-- (void)moveDrink:(Drink *)drink toIndex:(NSUInteger)index;
-- (void)editDrinkAtIndex:(NSUInteger)index toDrink:(Drink *)drink;
+- (void)moveDrinkAtIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2;
+- (void)replaceDrinkAtIndex:(NSUInteger)index withDrink:(Drink *)drink;
 
 @end

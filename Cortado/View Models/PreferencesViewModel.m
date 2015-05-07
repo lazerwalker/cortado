@@ -64,8 +64,20 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 #pragma mark -
-- (void)setDrink:(Drink *)drink {
-    self.preferences = [[Preferences alloc] initWithDrinks:@[drink]];
+- (void)addDrink:(Drink *)drink {
+    self.preferences = [self.preferences preferencesByAddingDrink:drink];
+}
+
+- (void)removeDrinkAtIndex:(NSUInteger)index {
+    self.preferences = [self.preferences preferencesByRemovingDrinkAtIndex:index];
+}
+
+- (void)moveDrinkAtIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2 {
+    self.preferences = [self.preferences preferencesByMovingDrinkAtIndex:index1 toIndex:index2];
+}
+
+- (void)replaceDrinkAtIndex:(NSUInteger)index withDrink:(Drink *)drink {
+    self.preferences = [self.preferences preferencesByReplacingDrinkAtIndex:index withDrink:drink];
 }
 
 @end
