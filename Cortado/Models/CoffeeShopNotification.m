@@ -22,10 +22,10 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 + (void)registerNotificationTypeWithPreferences:(Preferences *)preferences {
     NSMutableArray *actions = [[NSMutableArray alloc] init];
 
-    if (preferences.drink) {
+    if (preferences.drinks) {
         UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
         action.identifier = NotificationActionDrink;
-        action.title = preferences.drink.name;
+        action.title = [preferences.drinks.firstObject name];
         action.activationMode = UIUserNotificationActivationModeBackground;
         action.destructive = NO;
         action.authenticationRequired = NO;
@@ -68,7 +68,7 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
     Preferences *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    Drink *drink = preferences.drink;
+    Drink *drink = preferences.drinks.firstObject;
 
     _notif = [[UILocalNotification alloc] init];
     _notif.category = NotificationCategoryBeverage;

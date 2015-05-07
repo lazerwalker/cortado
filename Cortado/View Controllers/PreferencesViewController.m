@@ -75,7 +75,7 @@ static NSString * const CellIdentifier = @"cell";
         concat:[self.navigationController rac_popToViewController:currentVC animated:YES]]
         subscribeNext:^(Drink *drink) {
             [ARAnalytics event:@"Set favorite drink" withProperties:@{@"name":drink.name ?: @"No Drink"}];
-            [self.viewModel setDrink:drink.copy];
+            [self.viewModel addDrink:drink.copy];
         }];
 }
 

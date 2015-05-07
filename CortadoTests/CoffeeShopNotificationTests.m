@@ -20,7 +20,7 @@ describe(@"creating an Apple notification", ^{
     context(@"when there is a preferred drink set", ^{
         before(^{
             drink = [[Drink alloc] initWithName:@"Club Mate" subtype:@"330ml" caffeine:@150];
-            Preferences *preferences = [[Preferences alloc] initWithDrink:drink];
+            Preferences *preferences = [[Preferences alloc] initWithDrinks:@[drink]];
             [CoffeeShopNotification registerNotificationTypeWithPreferences:preferences];
 
             subject = [[CoffeeShopNotification alloc] initWithName:@"Sightglass Coffee" coordinate:CLLocationCoordinate2DMake(37.77, -122.4)];
@@ -50,7 +50,7 @@ describe(@"creating an Apple notification", ^{
 
         it(@"allows drinks with no subtype", ^{
             drink = [[Drink alloc] initWithName:@"Gibraltar" caffeine:@150];
-            Preferences *preferences = [[Preferences alloc] initWithDrink:drink];
+            Preferences *preferences = [[Preferences alloc] initWithDrinks:@[drink]];
             [CoffeeShopNotification registerNotificationTypeWithPreferences:preferences];
 
             subject = [[CoffeeShopNotification alloc] initWithName:@"Sightglass Coffee" coordinate:CLLocationCoordinate2DMake(37.77699197247508, -122.40852980833175)];
@@ -105,7 +105,7 @@ describe(@"notification drink preferences", ^{
     context(@"when there is a preferred drink", ^{
         before(^{
             Drink *drink = [[Drink alloc] initWithName:@"Gibraltar" caffeine:@150];
-            Preferences *preferences = [[Preferences alloc] initWithDrink:drink];
+            Preferences *preferences = [[Preferences alloc] initWithDrinks:@[drink]];
             [CoffeeShopNotification registerNotificationTypeWithPreferences:preferences];
 
             UIUserNotificationSettings *settings = UIApplication.sharedApplication.currentUserNotificationSettings;
@@ -137,7 +137,7 @@ describe(@"notification drink preferences", ^{
 
         it(@"setting a new drink should override it", ^{
             Drink *drink = [[Drink alloc] initWithName:@"Espresso" caffeine:@150];
-            Preferences *preferences = [[Preferences alloc] initWithDrink:drink];
+            Preferences *preferences = [[Preferences alloc] initWithDrinks:@[drink]];
             [CoffeeShopNotification registerNotificationTypeWithPreferences:preferences];
 
             UIUserNotificationSettings *settings = UIApplication.sharedApplication.currentUserNotificationSettings;

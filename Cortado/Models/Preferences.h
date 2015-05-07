@@ -4,8 +4,9 @@
 
 @interface Preferences : MTLModel
 
-@property (readonly, nonatomic, strong) Drink *drink;
+@property (readonly, nonatomic, strong) NSArray *drinks;
 
-- (id)initWithDrink:(Drink *)drink;
+- (id)initWithDrinks:(NSArray *)drinks;
+
 
 @end

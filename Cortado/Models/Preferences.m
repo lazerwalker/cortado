@@ -2,11 +2,11 @@
 
 @implementation Preferences
 
-- (id)initWithDrink:(Drink *)drink {
+- (id)initWithDrinks:(NSArray *)drinks {
     self = [super init];
     if (!self) return nil;
 
-    _drink = drink;
+    _drinks = drinks;
 
     return self;
 }
