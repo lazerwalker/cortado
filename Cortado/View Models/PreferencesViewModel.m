@@ -10,7 +10,7 @@
 static NSString * const PreferencesKey = @"preferredDrinks";
 
 @interface PreferencesViewModel ()
-@property (readwrite, nonatomic, strong) Preferences *drinks;
+@property (readwrite, nonatomic, strong) Preferences *preferences;
 @end
 
 @implementation PreferencesViewModel
@@ -20,10 +20,10 @@ static NSString * const PreferencesKey = @"preferredDrinks";
     if (!self) return nil;
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:PreferencesKey];
-    self.drinks = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
+    self.preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
     [[Preferences alloc] init];
 
-    [RACObserve(self, drinks) subscribeNext:^(Preferences *drinks) {
+    [RACObserve(self, preferences) subscribeNext:^(Preferences *drinks) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
         [NSUserDefaults.standardUserDefaults setObject:data forKey:PreferencesKey];
 
@@ -43,15 +43,15 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 - (void)registerNotificationType {
-    [CoffeeShopNotification registerNotificationTypeWithPreferences:self.drinks];
+    [CoffeeShopNotification registerNotificationTypeWithPreferences:self.preferences];
 }
 
 - (NSUInteger)numberOfDrinks {
-    return self.drinks.drinks.count;
+    return self.preferences.drinks.count;
 }
 
 - (Drink *)drinkAtIndex:(NSUInteger)index {
-    return self.drinks.drinks[index];
+    return self.preferences.drinks[index];
 }
 
 - (DrinkCellViewModel *)drinkViewModelAtIndex:(NSUInteger)index {
@@ -61,7 +61,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 
 #pragma mark -
 - (void)setDrink:(Drink *)drink {
-    self.drinks = [[Preferences alloc] initWithDrinks:@[drink]];
+    self.preferences = [[Preferences alloc] initWithDrinks:@[drink]];
 }
 
 @end

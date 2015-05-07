@@ -6,7 +6,7 @@
 
 @interface PreferencesViewModel : RVMViewModel
 
-@property (readonly, nonatomic, strong) Preferences *drinks;
+@property (readonly, nonatomic, strong) Preferences *preferences;
 @property (readonly) NSUInteger numberOfDrinks;
 
 @property (readwrite, nonatomic, assign) BOOL shouldRegisterNotificationTypeAutomatically;

@@ -43,7 +43,7 @@ static NSString * const CellIdentifier = @"cell";
     self.title = @"My Drinks";
 
     @weakify(self)
-    [RACObserve(self, viewModel.drinks) subscribeNext:^(id x) {
+    [RACObserve(self, viewModel.preferences) subscribeNext:^(id x) {
         @strongify(self)
         [self.tableView reloadData];
     }];
