@@ -17,7 +17,8 @@ __block SettingsViewController *subject;
 __block UINavigationController *navController;
 
 before(^{
-    subject = [[SettingsViewController alloc] initWithDataStore:[[DataStore alloc] init]];
+    subject = [[SettingsViewController alloc] initWithDataStore:[[DataStore alloc] init]
+               preferencesViewModel:nil];
     navController = [[UINavigationController alloc] initWithRootViewController:subject];
 
     [subject viewDidLoad];

@@ -10,6 +10,7 @@
 #import "FTUEViewController.h"
 
 #import "DataStore.h"
+#import "PreferencesViewController.h"
 #import "VenueBlacklistViewController.h"
 
 #import "SettingsViewController.h"
@@ -20,10 +21,12 @@
 
 @implementation SettingsViewController
 
-- (id)initWithDataStore:(DataStore *)dataStore {
+- (id)initWithDataStore:(DataStore *)dataStore
+   preferencesViewModel:(PreferencesViewModel *)preferencesViewModel {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:NSStringFromClass(self.class) bundle:NSBundle.mainBundle];
     SettingsViewController *vc = [storyboard instantiateInitialViewController];
     vc.dataStore = dataStore;
+    vc.preferencesViewModel = preferencesViewModel;
 
     return vc;
 }
@@ -86,7 +89,8 @@
         [self showOnboarding];
     } else if ([cell.reuseIdentifier isEqualToString:@"blacklist"]) {
         [self showBlacklist];
-
+    } else if ([cell.reuseIdentifier isEqualToString:@"preferences"]) {
+        [self showPreferences];
     }
 }
 
@@ -150,6 +154,11 @@
 - (void)showBlacklist {
     VenueBlacklistViewController *blacklistVC = [[VenueBlacklistViewController alloc] initWithDataStore:self.dataStore];
     [self.navigationController pushViewController:blacklistVC animated:YES];
+}
+
+- (void)showPreferences {
+    PreferencesViewController *preferencesVC = [[PreferencesViewController alloc] initWithViewModel:self.preferencesViewModel];
+    [self.navigationController pushViewController:preferencesVC animated:YES];
 }
 
 // TODO: Remove before shipping
