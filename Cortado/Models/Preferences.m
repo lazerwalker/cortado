@@ -18,9 +18,10 @@
     return [[self.class alloc] initWithDrinks:newDrinks];
 }
 
-- (instancetype)preferencesByRemovingDrink:(Drink *)drink {
-    NSArray *newDrinks = ASTWithout(self.drinks, drink);
-    return [[self.class alloc] initWithDrinks:newDrinks];
+- (instancetype)preferencesByRemovingDrinkAtIndex:(NSUInteger)index {
+    NSMutableArray *newDrinks = self.drinks.mutableCopy;
+    [newDrinks removeObjectAtIndex:index];
+    return [[self.class alloc] initWithDrinks:newDrinks.copy];
 }
 
 - (instancetype)preferencesByMovingDrinkAtIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2 {

@@ -34,7 +34,7 @@ it(@"should allow adding a drink", ^{
 });
 
 it(@"should allow removing a drink", ^{
-    Preferences *newPreferences = [subject preferencesByRemovingDrink:drink1];
+    Preferences *newPreferences = [subject preferencesByRemovingDrinkAtIndex:0];
     expect(newPreferences.drinks).to.equal(@[drink2]);
 });
 

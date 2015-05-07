@@ -9,7 +9,7 @@
 - (id)initWithDrinks:(NSArray *)drinks;
 
 - (instancetype)preferencesByAddingDrink:(Drink *)drink;
-- (instancetype)preferencesByRemovingDrink:(Drink *)drink;
+- (instancetype)preferencesByRemovingDrinkAtIndex:(NSUInteger)index;
 - (instancetype)preferencesByMovingDrinkAtIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2;
 - (instancetype)preferencesByReplacingDrinkAtIndex:(NSUInteger)index withDrink:(Drink *)drink;
 
