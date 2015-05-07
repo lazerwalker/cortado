@@ -35,6 +35,10 @@ static NSString * const PreferencesKey = @"preferredDrinks";
     return self;
 }
 
++ (NSSet *)keyPathsForValuesAffectingNumberOfDrinks {
+    return [NSSet setWithObject:@keypath(PreferencesViewModel.new, preferences.drinks)];
+}
+
 - (void)setShouldRegisterNotificationTypeAutomatically:(BOOL)shouldRegisterNotificationTypeAutomatically {
     _shouldRegisterNotificationTypeAutomatically = shouldRegisterNotificationTypeAutomatically;
     if (shouldRegisterNotificationTypeAutomatically) {
