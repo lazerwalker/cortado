@@ -9,20 +9,21 @@
     if (!self) return nil;
 
     _drink = drink;
+    _isPlaceholder = (drink == nil);
 
     return self;
 }
 
 - (NSString *)title {
-    if (self.drink == nil) {
-        return @"No drink selected";
+    if (self.isPlaceholder) {
+        return @"Tap the '+' button to add a preference.";
     }
 
     return self.drink.name;
 }
 
 - (NSString *)subtitle {
-    if (self.drink == nil) {
+    if (self.isPlaceholder) {
         return nil;
     }
 

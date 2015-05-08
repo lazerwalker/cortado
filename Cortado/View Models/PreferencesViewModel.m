@@ -20,8 +20,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
     if (!self) return nil;
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:PreferencesKey];
-    self.preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?:
-    [[Preferences alloc] init];
+    self.preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?: [[Preferences alloc] init];
 
     [RACObserve(self, preferences) subscribeNext:^(Preferences *drinks) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drinks];
@@ -55,6 +54,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 }
 
 - (Drink *)drinkAtIndex:(NSUInteger)index {
+    if (index >= self.preferences.drinks.count) return nil;
     return self.preferences.drinks[index];
 }
 

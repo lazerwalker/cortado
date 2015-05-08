@@ -22,6 +22,8 @@
 
 static NSString * const CellIdentifier = @"cell";
 
+typedef void (^PreferencesChangeCompletionBlock)(Drink *);
+
 @interface PreferencesViewController ()
 
 @end
@@ -42,9 +44,7 @@ static NSString * const CellIdentifier = @"cell";
 
     self.title = @"My Drinks";
 
-    @weakify(self)
-    [RACObserve(self, viewModel.preferences) subscribeNext:^(id x) {
-        @strongify(self)
+    [RACObserve(self, viewModel.preferences) subscribeNext:^(id _) {
         [self.tableView reloadData];
     }];
 
@@ -53,46 +53,66 @@ static NSString * const CellIdentifier = @"cell";
     self.tableView.delegate = nil;
     self.tableView.delegate = self;
 
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 56.0;
+
     [self.tableView registerClass:DrinkCell.class forCellReuseIdentifier:NSStringFromClass(DrinkCell.class)];
+}
+
+#pragma mark -
+- (void)didTapAddButton {
+    [self showDrinkSelectionWithCompletion:^(Drink * drink) {
+        [ARAnalytics event:@"Added favorite drink" withProperties:@{@"name":drink.name}];
+        [self.viewModel addDrink:drink.copy];
+    }];
+
+}
+
+- (void)showDrinkSelectionWithCompletion:(PreferencesChangeCompletionBlock)completion {
+    DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] initWithNoBeverageEnabled:YES];
+    [[[[[self.navigationController rac_pushViewController:drinkVC animated:YES]
+        concat:drinkVC.selectedDrinkSignal]
+       take:1]
+      concat:[self.navigationController rac_popToViewController:self animated:YES]]
+     subscribeNext:completion];
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(DrinkCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.viewModel = [self.viewModel drinkViewModelAtIndex:indexPath.section];
+    cell.viewModel = [self.viewModel drinkViewModelAtIndex:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.viewModel.numberOfDrinks == 0) return;
 
-    DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] initWithNoBeverageEnabled:YES];
-
-    UIViewController *currentVC = self.navigationController.visibleViewController;
-    [[[[[self.navigationController rac_pushViewController:drinkVC animated:YES]
-        concat:drinkVC.selectedDrinkSignal]
-        take:1]
-        concat:[self.navigationController rac_popToViewController:currentVC animated:YES]]
-        subscribeNext:^(Drink *drink) {
-            [ARAnalytics event:@"Set favorite drink" withProperties:@{@"name":drink.name ?: @"No Drink"}];
-            [self.viewModel addDrink:drink.copy];
-        }];
+    [self showDrinkSelectionWithCompletion:^(Drink * drink) {
+        if (drink == nil) {
+            [ARAnalytics event:@"Deleted favorite drink"];
+            [self.viewModel removeDrinkAtIndex:indexPath.row];
+        } else {
+            [ARAnalytics event:@"Edited favorite drink" withProperties:@{@"name":drink.name}];
+            [self.viewModel replaceDrinkAtIndex:indexPath.row withDrink:drink.copy];
+        }
+    }];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return [NSString stringWithFormat:@"Preferred Drink"];
+        return [NSString stringWithFormat:@"Favorite Drinks"];
     } else {
         return @"History";
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.numberOfDrinks + 1;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0 ? 1 : 0);
+    return MAX(self.viewModel.numberOfDrinks, 1);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -100,6 +120,15 @@ static NSString * const CellIdentifier = @"cell";
     return cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(DrinkCell.class) forIndexPath:indexPath];
 }
 
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.viewModel.numberOfDrinks > 0;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.viewModel removeDrinkAtIndex:indexPath.row];
+    [self.tableView setEditing:NO];
+}
 
 
 @end

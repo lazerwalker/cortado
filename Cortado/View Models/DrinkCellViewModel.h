@@ -6,9 +6,11 @@
 
 @property (readonly, nonatomic, strong) Drink *drink;
 
-@property (readonly) NSAttributedString *title;
+@property (readonly) NSString *title;
 @property (readonly) NSString *subtitle;
 @property (readonly) NSString *timestamp;
+
+@property (readonly, nonatomic, assign) BOOL isPlaceholder;
 
 - (id)initWithDrink:(Drink *)drink;
 

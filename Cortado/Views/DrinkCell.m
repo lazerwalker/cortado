@@ -10,8 +10,8 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (!self) return nil;
 
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     self.detailTextLabel.textColor = [UIColor darkGrayColor];
+    self.textLabel.numberOfLines = 0;
 
     return self;
 }
@@ -21,12 +21,12 @@
     _viewModel = viewModel;
     self.textLabel.text = viewModel.title;
     self.detailTextLabel.text = viewModel.subtitle;
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    if (viewModel.isPlaceholder) {
+        self.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
 }
 
 @end
