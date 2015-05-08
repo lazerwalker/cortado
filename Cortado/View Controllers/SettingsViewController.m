@@ -59,9 +59,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #ifdef DEBUG
-    return 4;
+    return 5;
 #else
-    return 3;
+    return 4;
 #endif
 }
 
