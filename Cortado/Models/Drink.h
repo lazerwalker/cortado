@@ -13,4 +13,6 @@
 @property (readonly, strong, nonatomic) NSString *subtype;
 @property (readonly, strong, nonatomic) NSNumber *caffeine; // in mg
 
+@property (readonly, strong, nonatomic) NSString *identifier; // for notifs
+
 @end

@@ -25,4 +25,8 @@
     return [self initWithName:name subtype:nil caffeine:caffeine];
 }
 
+- (NSString *)identifier {
+    return @(self.hash).stringValue;
+}
+
 @end

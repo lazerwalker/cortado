@@ -25,7 +25,7 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
     if (preferences.drinks) {
         for (Drink *drink in preferences.drinks) {
             UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
-            action.identifier = NotificationActionDrink;
+            action.identifier = drink.identifier;
             action.title = drink.name;
             action.activationMode = UIUserNotificationActivationModeBackground;
             action.destructive = NO;
@@ -74,7 +74,7 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 
     NSData *data = [NSUserDefaults.standardUserDefaults objectForKey:@"notificationPreferences"];
     Preferences *preferences = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    Drink *drink = preferences.drinks.firstObject;
+    NSArray *drinks = preferences.drinks;
 
     _notif = [[UILocalNotification alloc] init];
     _notif.category = NotificationCategoryBeverage;
@@ -82,14 +82,20 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
                         @"venue":name,
                         @"latLng":coordinateString};
 
-    if (drink) {
-        NSDictionary *drinkDict = [MTLJSONAdapter JSONDictionaryFromModel:drink];
-        if (drinkDict[@"subtype"] == [NSNull null]) {
-            NSMutableDictionary *mutable = drinkDict.mutableCopy;
-            [mutable removeObjectForKey:@"subtype"];
-            drinkDict = mutable.copy;
+    if (drinks) {
+        NSMutableDictionary *drinksDict = [[NSMutableDictionary alloc] init];
+
+        for (Drink *drink in drinks) {
+            NSDictionary *drinkDict = [MTLJSONAdapter JSONDictionaryFromModel:drink];
+            if (drinkDict[@"subtype"] == [NSNull null]) {
+                NSMutableDictionary *mutable = drinkDict.mutableCopy;
+                [mutable removeObjectForKey:@"subtype"];
+                drinkDict = mutable.copy;
+            }
+            drinksDict[drink.identifier] = drinkDict;
         }
-        _notif.userInfo = ASTExtend(_notif.userInfo, @{NotificationActionDrink:drinkDict});
+
+        _notif.userInfo = ASTExtend(_notif.userInfo, @{NotificationActionDrink:drinksDict.copy});
     }
 
     _notif.alertBody = [NSString stringWithFormat:@"It looks like you're at %@. Whatcha drinkin'?", name];

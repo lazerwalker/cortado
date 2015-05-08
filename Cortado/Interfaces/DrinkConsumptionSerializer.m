@@ -1,6 +1,8 @@
 #import "Drink.h"
 #import "DrinkConsumption.h"
 
+#import "CoffeeShopNotification.h"
+
 #import "DrinkConsumptionSerializer.h"
 
 @implementation DrinkConsumptionSerializer
@@ -24,12 +26,17 @@
 
 + (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
                                    identifier:(NSString *)identifier {
+    if ([identifier isEqualToString:NotificationActionCustom]) { return nil; }
+
+    NSDictionary *preferenceDict = userInfo[NotificationActionDrink];
+    if (preferenceDict == nil) { return nil; }
+
     NSDate *timestamp = userInfo[@"timestamp"];
     NSString *venue = userInfo[@"venue"];
     NSString *coordinate = userInfo[@"latLng"];
 
     Drink *drink = [MTLJSONAdapter modelOfClass:Drink.class
-                             fromJSONDictionary:userInfo[identifier]
+                             fromJSONDictionary:preferenceDict[identifier]
                                           error:nil];
 
     return [[DrinkConsumption alloc] initWithDrink:drink
