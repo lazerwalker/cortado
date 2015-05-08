@@ -59,6 +59,10 @@ typedef void (^PreferencesChangeCompletionBlock)(Drink *);
     [self.tableView registerClass:DrinkCell.class forCellReuseIdentifier:NSStringFromClass(DrinkCell.class)];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView setEditing:YES animated:NO];
+}
+
 #pragma mark -
 - (void)didTapAddButton {
     [self showDrinkSelectionWithCompletion:^(Drink * drink) {
@@ -120,14 +124,22 @@ typedef void (^PreferencesChangeCompletionBlock)(Drink *);
     return cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass(DrinkCell.class) forIndexPath:indexPath];
 }
 
-
+#pragma mark - Deleting
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.viewModel.numberOfDrinks > 0;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.viewModel removeDrinkAtIndex:indexPath.row];
-    [self.tableView setEditing:NO];
+}
+
+#pragma mark - Moving
+- (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self.viewModel moveDrinkAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
 
