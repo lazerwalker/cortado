@@ -11,6 +11,7 @@ static NSString * const PreferencesKey = @"preferredDrinks";
 
 @interface PreferencesViewModel ()
 @property (readwrite, nonatomic, strong) Preferences *preferences;
+@property (readwrite, nonatomic, assign) BOOL canAddMore;
 @end
 
 @implementation PreferencesViewModel
@@ -31,11 +32,19 @@ static NSString * const PreferencesKey = @"preferredDrinks";
         }
     }];
 
+    RAC(self, canAddMore) = [RACObserve(self, preferences.drinks) map:^id(NSArray *drinks) {
+        return @(drinks.count < 3);
+    }];
+
     return self;
 }
 
 + (NSSet *)keyPathsForValuesAffectingNumberOfDrinks {
     return [NSSet setWithObject:@keypath(PreferencesViewModel.new, preferences.drinks)];
+}
+
++ (NSSet *)keyPathsForValuesAffectingCanAddMore {
+    return [NSSet setWithObject:@keypath(PreferencesViewModel.new, preferences)];
 }
 
 - (void)setShouldRegisterNotificationTypeAutomatically:(BOOL)shouldRegisterNotificationTypeAutomatically {

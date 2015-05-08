@@ -8,6 +8,7 @@
 
 @property (readonly, nonatomic, strong) Preferences *preferences;
 @property (readonly) NSUInteger numberOfDrinks;
+@property (readonly) BOOL canAddMore;
 
 @property (readwrite, nonatomic, assign) BOOL shouldRegisterNotificationTypeAutomatically;
 

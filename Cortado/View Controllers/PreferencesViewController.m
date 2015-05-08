@@ -50,6 +50,7 @@ typedef void (^PreferencesChangeCompletionBlock)(Drink *);
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didTapAddButton)];
 
+    RAC(self, navigationItem.rightBarButtonItem.enabled) = RACObserve(self, viewModel.canAddMore);
     self.tableView.delegate = nil;
     self.tableView.delegate = self;
 
