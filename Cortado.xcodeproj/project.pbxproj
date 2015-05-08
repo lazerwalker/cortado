@@ -71,7 +71,6 @@
 		C62593FE1AF7FAB300ABC3F1 /* Cortado WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C62593FD1AF7FAB300ABC3F1 /* Cortado WatchKit App.app */; };
 		C62594061AF7FAB300ABC3F1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62594041AF7FAB300ABC3F1 /* Interface.storyboard */; };
 		C62594081AF7FAB300ABC3F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62594071AF7FAB300ABC3F1 /* Images.xcassets */; };
-		C625940B1AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C62593F21AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C62594131AF7FC3500ABC3F1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65366E01ACF3109007AE2B0 /* HealthKit.framework */; };
 		C62594141AF7FCB100ABC3F1 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
@@ -153,13 +152,6 @@
 			remoteGlobalIDString = C62593FC1AF7FAB300ABC3F1;
 			remoteInfo = "Cortado WatchKit App";
 		};
-		C62594091AF7FAB300ABC3F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C62593F11AF7FAB300ABC3F1;
-			remoteInfo = "Cortado WatchKit Extension";
-		};
 		C6BED1AC1AE3F5740095B959 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A62D721A1A254C6500846A33 /* Project object */;
@@ -170,17 +162,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A62D72641A254D1A00846A33 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				C625940B1AF7FAB300ABC3F1 /* Cortado WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C6BED15F1AE30D050095B959 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -696,13 +677,11 @@
 				A62D721E1A254C6500846A33 /* Sources */,
 				A62D721F1A254C6500846A33 /* Frameworks */,
 				A62D72201A254C6500846A33 /* Resources */,
-				A62D72641A254D1A00846A33 /* Embed App Extensions */,
 				FFB7447C9F42CC58CEB9E38B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C625940A1AF7FAB300ABC3F1 /* PBXTargetDependency */,
 			);
 			name = Cortado;
 			productName = Cuppa;
@@ -1146,11 +1125,6 @@
 			isa = PBXTargetDependency;
 			target = C62593FC1AF7FAB300ABC3F1 /* Cortado WatchKit App */;
 			targetProxy = C62593FF1AF7FAB300ABC3F1 /* PBXContainerItemProxy */;
-		};
-		C625940A1AF7FAB300ABC3F1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C62593F11AF7FAB300ABC3F1 /* Cortado WatchKit Extension */;
-			targetProxy = C62594091AF7FAB300ABC3F1 /* PBXContainerItemProxy */;
 		};
 		C6BED1AD1AE3F5740095B959 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
