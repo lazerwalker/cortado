@@ -4,11 +4,20 @@
 
 @implementation Preferences
 
+- (id)init {
+    self = [super init];
+    if (!self) return nil;
+
+    _drinks = @[];
+
+    return self;
+}
+
 - (id)initWithDrinks:(NSArray *)drinks {
     self = [super init];
     if (!self) return nil;
 
-    _drinks = drinks;
+    _drinks = drinks ?: @[];
 
     return self;
 }
