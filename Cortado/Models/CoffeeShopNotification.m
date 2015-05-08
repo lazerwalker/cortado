@@ -23,14 +23,16 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
     NSMutableArray *actions = [[NSMutableArray alloc] init];
 
     if (preferences.drinks) {
-        UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
-        action.identifier = NotificationActionDrink;
-        action.title = [preferences.drinks.firstObject name];
-        action.activationMode = UIUserNotificationActivationModeBackground;
-        action.destructive = NO;
-        action.authenticationRequired = NO;
+        for (Drink *drink in preferences.drinks) {
+            UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
+            action.identifier = NotificationActionDrink;
+            action.title = drink.name;
+            action.activationMode = UIUserNotificationActivationModeBackground;
+            action.destructive = NO;
+            action.authenticationRequired = NO;
 
-        [actions addObject:action];
+            [actions addObject:action];
+        }
     }
 
     UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
@@ -42,8 +44,12 @@ NSString * const NotificationActionCustom = @"DRINK_CUSTOM";
 
     UIMutableUserNotificationCategory *notificationCategory = [[UIMutableUserNotificationCategory alloc] init];
     notificationCategory.identifier = NotificationCategoryBeverage;
-    [notificationCategory setActions:actions.copy forContext:UIUserNotificationActionContextDefault];
-    [notificationCategory setActions:actions.copy forContext:UIUserNotificationActionContextMinimal];
+
+    NSArray *defaultActions = actions.copy;
+    [notificationCategory setActions:defaultActions forContext:UIUserNotificationActionContextDefault];
+
+    NSArray *minimalActions = [actions subarrayWithRange:NSMakeRange(0, MIN(actions.count, 2))];
+    [notificationCategory setActions:minimalActions forContext:UIUserNotificationActionContextMinimal];
 
     NSSet *category = [NSSet setWithObject:notificationCategory];
 
