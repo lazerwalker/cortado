@@ -27,7 +27,7 @@ before(^{
 describe(@"tapping on cells", ^{
     describe(@"tapping on the blacklist cell", ^{
         it(@"should show a VenueBlacklistViewController", ^{
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
             [subject tableView:subject.tableView didSelectRowAtIndexPath:indexPath];
             expect(navController.topViewController).will.beInstanceOf(VenueBlacklistViewController.class);
 

@@ -38,7 +38,7 @@ describe(@"creating an Apple notification", ^{
         it(@"should have the correct metadata", ^{
             expect(notif.userInfo[@"latLng"]).to.equal(@"37.77,-122.4");
             expect(notif.userInfo[@"venue"]).to.equal(@"Sightglass Coffee");
-            expect(notif.userInfo[NotificationActionDrink][@"name"]).to.equal(@"Club Mate");
+            expect(notif.userInfo[NotificationActionDrink][drink.identifier][@"name"]).to.equal(@"Club Mate");
 
             NSDate *date = notif.userInfo[@"timestamp"];
             expect(date.timeIntervalSinceNow).to.beInTheRangeOf(-1.0, 1.0);
@@ -103,8 +103,10 @@ describe(@"notification drink preferences", ^{
     });
 
     context(@"when there is a preferred drink", ^{
+        __block Drink *drink;
+
         before(^{
-            Drink *drink = [[Drink alloc] initWithName:@"Gibraltar" caffeine:@150];
+            drink = [[Drink alloc] initWithName:@"Gibraltar" caffeine:@150];
             Preferences *preferences = [[Preferences alloc] initWithDrinks:@[drink]];
             [CoffeeShopNotification registerNotificationTypeWithPreferences:preferences];
 
@@ -124,7 +126,7 @@ describe(@"notification drink preferences", ^{
         it(@"should show the preferred drink", ^{
             UIUserNotificationAction *action = actions.lastObject;
             expect(action.title).to.equal(@"Gibraltar");
-            expect(action.identifier).to.equal(NotificationActionDrink);
+            expect(action.identifier).to.equal(drink.identifier);
             expect(action.activationMode).to.equal(UIUserNotificationActivationModeBackground);
         });
 

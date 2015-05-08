@@ -20,18 +20,22 @@ describe(@"converting from an NSDictionary", ^{
     before(^{
         timestamp = NSDate.date;
 
+        Drink *drink = [[Drink alloc] initWithName:@"Latte" subtype:@"Double Shot" caffeine:@150];
+
         NSDictionary *userInfo = @{
             @"timestamp": timestamp,
             @"venue": @"Ritual Roasters",
             @"latLng": @"37.75,-122.42",
             NotificationActionDrink: @{
-               @"name": @"Latte",
-               @"subtype": @"Double Shot",
-               @"caffeine": @150
-           }
+                drink.identifier: @{
+                    @"name": @"Latte",
+                    @"subtype": @"Double Shot",
+                    @"caffeine": @150
+                }
+            }
         };
 
-        subject = [DrinkConsumptionSerializer consumptionFromUserInfo:userInfo identifier:NotificationActionDrink];
+        subject = [DrinkConsumptionSerializer consumptionFromUserInfo:userInfo identifier:drink.identifier];
     });
 
     it(@"should set the correct properties", ^{
