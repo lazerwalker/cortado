@@ -5,6 +5,7 @@
 typedef NS_ENUM(NSInteger, VenueBlacklistSection) {
     VenueBlacklistSectionBlacklisted,
     VenueBlacklistSectionHistory,
+    VenueBlacklistSectionStarbucks,
     VenueBlacklistSectionCount
 };
 

@@ -38,6 +38,8 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
 
     if (indexPath.section == VenueBlacklistSectionHistory) {
+        cell.accessoryView = nil;
+
         if (self.dataStore.venueHistory.count == 0) {
             cell.textLabel.text = @"You haven't been to any coffee shops yet.";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -47,9 +49,18 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
         }
     } else if (indexPath.section == VenueBlacklistSectionBlacklisted) {
+        cell.accessoryView = nil;
+
         FoursquareVenue *venue = self.dataStore.blacklistedVenues[indexPath.row];
         cell.textLabel.text = venue.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", venue.address, venue.crossStreet];
+    } else if (indexPath.section == VenueBlacklistSectionStarbucks) {
+        cell.textLabel.text = @"Ignore All Starbucks";
+
+        UISwitch *toggle = [[UISwitch alloc] init];
+        toggle.on = self.dataStore.ignoreAllStarbucks;
+        [toggle addTarget:self action:@selector(didChangeStarbucksToggle:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView = toggle;
     }
 }
 
@@ -93,13 +104,15 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
                                                 }]];
 
         [self presentViewController:alert animated:YES completion:nil];
+    } else if (indexPath.section == VenueBlacklistSectionStarbucks) {
+        return;
     }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return VenueBlacklistSectionCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -110,6 +123,8 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
             return 1;
         }
         return self.dataStore.venueHistory.count;
+    } else if (section == VenueBlacklistSectionStarbucks) {
+        return 1;
     }
 
     return 0;
@@ -132,8 +147,16 @@ static NSString * const HistoryIdentifier = @"HistoryCell";
         if ([self tableView:self.tableView numberOfRowsInSection:VenueBlacklistSectionBlacklisted] > 0) {
             return @"Ignored coffee shops";
         }
+    } else if (section == VenueBlacklistSectionStarbucks) {
+        return @"Because Starbucks is so common, it can be a common source of false positives.";
     }
     return nil;
+}
+
+#pragma mark -
+
+- (void)didChangeStarbucksToggle:(UISwitch *)toggle {
+    self.dataStore.ignoreAllStarbucks = toggle.on;
 }
 
 @end
