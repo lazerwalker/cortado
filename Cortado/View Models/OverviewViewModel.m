@@ -1,4 +1,8 @@
+#import <Asterism/Asterism.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "DataStore.h"
+#import "DrinkConsumption.h"
 
 #import "OverviewViewModel.h"
 
@@ -17,14 +21,47 @@
     self = [super init];
     if (!self) return nil;
 
+    self.dataStore = dataStore;
+
     return self;
 }
 
+#pragma mark - KVO
+
++ (NSSet *)keyPathsForValuesAffectingTodayCount {
+    return [NSSet setWithObject:@keypath(OverviewViewModel.new, dataStore.drinks)];
+}
+
++ (NSSet *)keyPathsForValuesAffectingAverageCount {
+    return [NSSet setWithObject:@keypath(OverviewViewModel.new, dataStore.drinks)];
+}
+
+#pragma mark -
+
 - (NSString *)todayCount {
-    return @"2";
+    NSCalendar *calendar = NSCalendar.currentCalendar;
+    NSArray *today = ASTFilter(self.dataStore.drinks, ^BOOL(DrinkConsumption *drink) {
+        return [calendar isDateInToday:drink.timestamp];
+    });
+
+    return @(today.count).stringValue;
 }
 
 - (NSString *)averageCount {
-    return @"0-1";
+    NSCalendar *calendar = NSCalendar.currentCalendar;
+
+    NSArray *days = [ASTGroupBy(self.dataStore.drinks, ^id<NSCopying>(DrinkConsumption *drink) {
+        return [calendar startOfDayForDate:drink.timestamp];
+    }) allKeys];
+
+    CGFloat average = (CGFloat)self.dataStore.drinks.count / days.count;
+    if (fabs(average - roundf(average)) <= 0.25) {
+        average = roundf(average);
+        return [NSString stringWithFormat:@"%lu", (unsigned long)average];
+    } else {
+        unsigned long bottom = (int)floorf(average);
+        unsigned long top = (int)ceilf(average);
+        return [NSString stringWithFormat:@"%lu-%lu", bottom, top];
+    }
 }
 @end
