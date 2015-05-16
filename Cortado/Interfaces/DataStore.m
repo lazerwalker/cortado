@@ -83,13 +83,13 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
 - (void)blacklistVenue:(FoursquareVenue *)venue {
     NSMutableSet *set = [self.blacklistedVenues mutableCopy];
     [set addObject:venue];
-    self.blacklistedVenues = set;
+    self.blacklistedVenues = set.copy;
 }
 
 - (void)unblacklistVenue:(FoursquareVenue *)venue {
     NSMutableSet *set = [self.blacklistedVenues mutableCopy];
     [set removeObject:venue];
-    self.blacklistedVenues = set;
+    self.blacklistedVenues = set.copy;
 }
 
 #pragma mark -
