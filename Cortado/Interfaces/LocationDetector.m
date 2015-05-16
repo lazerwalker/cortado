@@ -28,10 +28,13 @@
 
 - (void)checkForCoordinate:(CLLocationCoordinate2D)coordinate {
     NSString *coffeeShops = @"4bf58dd8d48988d1e0931735";
-    [[[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
+    [[[[[self.client fetchVenuesOfCategory:coffeeShops nearCoordinate:coordinate]
         take:1]
         filter:^BOOL(FoursquareVenue *venue) {
             return ![self.dataStore.blacklistedVenues containsObject:venue];
+        }]
+        filter:^BOOL(FoursquareVenue *venue) {
+            return !(self.dataStore.ignoreAllStarbucks && [venue.name containsString:@"Starbucks"]);
         }]
         subscribeNext:^(FoursquareVenue *result) {
             [ARAnalytics event:@"At coffee shop"];

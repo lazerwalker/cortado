@@ -80,6 +80,42 @@ describe(@"venue blacklisting", ^{
         });
     });
 
+    context(@"when all Starbucks are blacklisted", ^{
+        before(^{
+            subject.dataStore.ignoreAllStarbucks = YES;
+        });
+
+        after(^{
+            subject.dataStore.ignoreAllStarbucks = NO;
+        });
+
+        context(@"when a venue is a Starbucks", ^{
+            it(@"should not trigger a push notification", ^{
+                FoursquareVenue *venue = [[FoursquareVenue alloc] init];
+                venue.name = @"A Starbucks Is Here";
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(10.0, 10.0);
+
+                OCMStub([subject.client fetchVenuesOfCategory:[OCMArg any] nearCoordinate:coordinate]).andReturn([RACSignal return:venue]);
+
+                [[application reject] scheduleLocalNotification:[OCMArg any]];
+                [subject checkForCoordinate:coordinate];
+                OCMVerifyAll(application);
+            });
+        });
+
+        context(@"when a venue is not a Starbucks", ^{
+            it(@"should trigger a push notification", ^{
+                FoursquareVenue *venue = [[FoursquareVenue alloc] init];
+                venue.name = @"Dunkin Donuts";
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(10.0, 10.0);
+
+                OCMStub([subject.client fetchVenuesOfCategory:[OCMArg any] nearCoordinate:coordinate]).andReturn([RACSignal return:venue]);
+
+                [subject checkForCoordinate:coordinate];
+                OCMVerify([application scheduleLocalNotification:[OCMArg any]]);
+            });
+        });
+    });
 });
 
 
