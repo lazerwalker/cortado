@@ -18,6 +18,8 @@
 
 @property (readonly, nonatomic, strong) HealthKitManager *healthKitManager;
 
+@property (readwrite, nonatomic, assign) BOOL ignoreAllStarbucks;
+
 - (RACSignal *)importFromHealthKit;
 
 - (RACSignal *)addDrink:(DrinkConsumption *)drink;

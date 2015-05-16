@@ -73,6 +73,21 @@ describe(@"blacklisting a venue", ^{
     });
 });
 
+describe(@"blacklisting all Starbucks", ^{
+    it(@"should persist to disk", ^{
+        subject.ignoreAllStarbucks = YES;;
+
+        DataStore *newStore = [[DataStore alloc] initWithHealthKitManager:nil];
+        expect(newStore.ignoreAllStarbucks).to.beTruthy();
+
+        newStore.ignoreAllStarbucks = NO;
+
+        DataStore *newNewStore = [[DataStore alloc] initWithHealthKitManager:nil];
+        expect(newNewStore.ignoreAllStarbucks).to.beFalsy();
+
+    });
+});
+
 describe(@"adding a location", ^{
     __block FoursquareVenue *venue1 = [[FoursquareVenue alloc] init];
     __block FoursquareVenue *venue2 = [[FoursquareVenue alloc] init];

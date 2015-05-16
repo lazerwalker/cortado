@@ -9,6 +9,7 @@
 static NSString * const HistoryKey = @"History";
 static NSString * const VenueHistoryKey = @"VenueHistory";
 static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
+static NSString * const IgnoreStarbucksKey = @"IgnoreStarbucks";
 
 @interface DataStore ()
 @property (readwrite, nonatomic, strong) NSArray *drinks;
@@ -23,6 +24,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
     [defaults setObject:nil forKey:HistoryKey];
     [defaults setObject:nil forKey:VenueHistoryKey];
     [defaults setObject:nil forKey:BlacklistedVenuesKey];
+    [defaults setBool:NO forKey:IgnoreStarbucksKey];
     [defaults synchronize];
 }
 
@@ -40,6 +42,7 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
     self.drinks = self.cachedDrinks ?: @[];
     self.venueHistory = self.cachedVenueHistory ?: [[NSOrderedSet alloc] init];
     self.blacklistedVenues = self.cachedBlacklistedVenues ?: [[NSOrderedSet alloc] init];
+    self.ignoreAllStarbucks = [[NSUserDefaults standardUserDefaults] boolForKey:IgnoreStarbucksKey];
 
     [RACObserve(self, drinks) subscribeNext:^(NSArray *drinks) {
         [self persistDrinks:drinks];
@@ -115,6 +118,15 @@ static NSString * const BlacklistedVenuesKey = @"BlacklistedVenues";
 
 - (void)addDrinkImmediately:(DrinkConsumption *)drink {
     [[self addDrink:drink] subscribeNext:^(id x) {}];
+}
+
+// TODO: This should eventually be some sort of generic settings blob,
+// maybe one that doesn't live in here.
+- (void)setIgnoreAllStarbucks:(BOOL)ignoreAllStarbucks {
+    _ignoreAllStarbucks = ignoreAllStarbucks;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:ignoreAllStarbucks forKey:IgnoreStarbucksKey];
+    [defaults synchronize];
 }
 
 #pragma mark - Persistence
