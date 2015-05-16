@@ -73,6 +73,12 @@
 		C62594081AF7FAB300ABC3F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62594071AF7FAB300ABC3F1 /* Images.xcassets */; };
 		C62594131AF7FC3500ABC3F1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65366E01ACF3109007AE2B0 /* HealthKit.framework */; };
 		C62594141AF7FCB100ABC3F1 /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = A66A3A171A3B8DEF00849705 /* drinks.json */; };
+		C636588A1B06B21700FBE673 /* OverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658891B06B21700FBE673 /* OverviewView.m */; };
+		C636588B1B06B21700FBE673 /* OverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658891B06B21700FBE673 /* OverviewView.m */; };
+		C636588D1B06B22100FBE673 /* OverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C636588C1B06B22100FBE673 /* OverviewView.xib */; };
+		C636588E1B06B22100FBE673 /* OverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C636588C1B06B22100FBE673 /* OverviewView.xib */; };
+		C63658911B06B30E00FBE673 /* OverviewViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658901B06B30E00FBE673 /* OverviewViewModel.m */; };
+		C63658921B06B30E00FBE673 /* OverviewViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658901B06B30E00FBE673 /* OverviewViewModel.m */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
 		C66257011AFBE7C700EAFC15 /* PreferencesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C66257001AFBE7C700EAFC15 /* PreferencesTests.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
@@ -306,6 +312,11 @@
 		C62594051AF7FAB300ABC3F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		C62594071AF7FAB300ABC3F1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C62594121AF7FC3200ABC3F1 /* Cortado WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Cortado WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		C63658881B06B21700FBE673 /* OverviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewView.h; sourceTree = "<group>"; };
+		C63658891B06B21700FBE673 /* OverviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewView.m; sourceTree = "<group>"; };
+		C636588C1B06B22100FBE673 /* OverviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewView.xib; sourceTree = "<group>"; };
+		C636588F1B06B30E00FBE673 /* OverviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewModel.h; sourceTree = "<group>"; };
+		C63658901B06B30E00FBE673 /* OverviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewViewModel.m; sourceTree = "<group>"; };
 		C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
 		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
 		C66257001AFBE7C700EAFC15 /* PreferencesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTests.m; sourceTree = "<group>"; };
@@ -396,6 +407,8 @@
 				A6EBA4501A53662E00363546 /* DrinkCellViewModel.m */,
 				A6F328F11A575799001D36EC /* HistoryCellViewModel.h */,
 				A6F328F21A575799001D36EC /* HistoryCellViewModel.m */,
+				C636588F1B06B30E00FBE673 /* OverviewViewModel.h */,
+				C63658901B06B30E00FBE673 /* OverviewViewModel.m */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -579,6 +592,9 @@
 				A68205281AB763EE007923D8 /* EmptyStateCell.h */,
 				A68205291AB763EE007923D8 /* EmptyStateCell.m */,
 				A682052A1AB763EE007923D8 /* EmptyStateCell.xib */,
+				C63658881B06B21700FBE673 /* OverviewView.h */,
+				C63658891B06B21700FBE673 /* OverviewView.m */,
+				C636588C1B06B22100FBE673 /* OverviewView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -846,6 +862,7 @@
 				A68205151AB73A22007923D8 /* LocationFTUEViewController.xib in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
 				A682050F1AB6565B007923D8 /* IntroFTUEViewController.xib in Resources */,
+				C636588D1B06B22100FBE673 /* OverviewView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +892,7 @@
 				C6BED1531AE30D050095B959 /* LaunchScreen.xib in Resources */,
 				C6BED1541AE30D050095B959 /* Pods-acknowledgements.plist in Resources */,
 				C6BED1551AE30D050095B959 /* swipe.gif in Resources */,
+				C636588E1B06B22100FBE673 /* OverviewView.xib in Resources */,
 				C6BED1561AE30D050095B959 /* Images.xcassets in Resources */,
 				C6BED1571AE30D050095B959 /* SettingsViewController.storyboard in Resources */,
 				C6BED1581AE30D050095B959 /* EmptyStateCell.xib in Resources */,
@@ -1006,6 +1024,7 @@
 				A6F3D6A41A4B997E00BA15A9 /* UIViewController+ReactiveCocoa.m in Sources */,
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
 				A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */,
+				C63658911B06B30E00FBE673 /* OverviewViewModel.m in Sources */,
 				A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */,
 				A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */,
 				A6EBA87D1A2A3B3200344C17 /* HealthKitManager.m in Sources */,
@@ -1013,6 +1032,7 @@
 				A623765B1A3FAA3F00661201 /* DrinkSubtypeSelectionViewController.m in Sources */,
 				A6C9388A1A485E1C00E96951 /* DrinkConsumptionSerializer.m in Sources */,
 				A60585DC1A3E120500FF267F /* LocationDetector.m in Sources */,
+				C636588A1B06B21700FBE673 /* OverviewView.m in Sources */,
 				A6C938871A47C03700E96951 /* HKHealthStore+ReactiveCocoa.m in Sources */,
 				A66A3A231A3B907900849705 /* DrinkType.m in Sources */,
 				A66A3A261A3B918200849705 /* DrinkSubtype.m in Sources */,
@@ -1061,11 +1081,13 @@
 				C6BED1251AE30D050095B959 /* ImageAttributionViewController.m in Sources */,
 				C6BED1261AE30D050095B959 /* HistoryViewController.m in Sources */,
 				C6BED1271AE30D050095B959 /* CreateCustomDrinkViewController.m in Sources */,
+				C636588B1B06B21700FBE673 /* OverviewView.m in Sources */,
 				C6BED1281AE30D050095B959 /* LocationFTUEViewController.m in Sources */,
 				C6BED1291AE30D050095B959 /* SettingsViewController.m in Sources */,
 				C6BED12A1AE30D050095B959 /* UIViewController+ReactiveCocoa.m in Sources */,
 				C6BED12B1AE30D050095B959 /* ViewController.m in Sources */,
 				C6BED12C1AE30D050095B959 /* DrinkConsumption.m in Sources */,
+				C63658921B06B30E00FBE673 /* OverviewViewModel.m in Sources */,
 				C6BED12D1AE30D050095B959 /* UINavigationController+ReactiveCocoa.m in Sources */,
 				C6BED12E1AE30D050095B959 /* DrinkSelectionViewController.m in Sources */,
 				C6BED12F1AE30D050095B959 /* HealthKitManager.m in Sources */,

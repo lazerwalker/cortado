@@ -11,6 +11,8 @@
 #import "FTUEViewController.h"
 #import "HistoryCell.h"
 #import "HistoryViewModel.h"
+#import "OverviewView.h"
+#import "OverviewViewModel.h"
 #import "PreferencesViewController.h"
 #import "PreferencesViewModel.h"
 #import "SettingsViewController.h"
@@ -52,6 +54,9 @@ static NSString * const CellIdentifier = @"Cell";
 
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 56.0;
+
+    OverviewView *overview = [[OverviewView alloc] initWithViewModel:[self.viewModel overviewViewModel]];
+    self.tableView.tableHeaderView = overview;
 
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];

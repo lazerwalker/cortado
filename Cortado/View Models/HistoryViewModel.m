@@ -11,6 +11,7 @@
 #import "HealthKitManager.h"
 #import "HistoryCellViewModel.h"
 #import "LocationFetcher.h"
+#import "OverviewViewModel.h"
 
 #import "HistoryViewModel.h"
 
@@ -127,6 +128,10 @@
 - (HistoryCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath {
     DrinkConsumption *drink = [self drinkAtIndexPath:indexPath];
     return [[HistoryCellViewModel alloc] initWithConsumption:drink];
+}
+
+- (OverviewViewModel *)overviewViewModel {
+    return [[OverviewViewModel alloc] initWithDataStore:self.dataStore];
 }
 
 #pragma mark - Actions

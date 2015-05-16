@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, TableViewChange) {
 @class DataStore;
 @class HistoryCellViewModel;
 @class LocationFetcher;
+@class OverviewViewModel;
 
 @interface HistoryViewModel : RVMViewModel
 
@@ -25,6 +26,8 @@ typedef NS_ENUM(NSInteger, TableViewChange) {
 @property (readonly) NSInteger numberOfSections;
 @property (readonly) NSArray *drinks;
 @property (readonly) BOOL isEmptyState;
+
+@property (readonly) OverviewViewModel *overviewViewModel;
 
 @property (readonly) RACSignal *dataChanged;
 
