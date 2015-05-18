@@ -127,6 +127,11 @@
 }
 
 #pragma mark - Processing
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if (application.applicationState != UIApplicationStateInactive) { return; }
+
+    [self application:application handleActionWithIdentifier:NotificationActionCustom forLocalNotification:notification completionHandler:^{}];
+}
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
 
