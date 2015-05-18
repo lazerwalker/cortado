@@ -56,7 +56,10 @@ static NSString * const CellIdentifier = @"Cell";
     self.tableView.estimatedRowHeight = 56.0;
 
     OverviewView *overview = [[OverviewView alloc] initWithViewModel:[self.viewModel overviewViewModel]];
-    self.tableView.tableHeaderView = overview;
+
+    RAC(self, tableView.tableHeaderView) = [RACObserve(self, viewModel.isEmptyState) map:^id(NSNumber* isEmptyState) {
+        return isEmptyState.boolValue ? nil : overview;
+    }];
 
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(HistoryCell.class) bundle:NSBundle.mainBundle];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass(HistoryCell.class)];
