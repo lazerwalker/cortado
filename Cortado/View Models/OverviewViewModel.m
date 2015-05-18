@@ -54,7 +54,14 @@
         return [calendar startOfDayForDate:drink.timestamp];
     }) allKeys];
 
-    CGFloat average = (CGFloat)self.dataStore.drinks.count / days.count;
+    days = ASTSort(days);
+
+    NSDate *first = days.firstObject;
+    NSDate *last = days.lastObject;
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:first toDate:last options:0];
+    NSInteger totalDays = ABS(difference.day);
+
+    CGFloat average = (CGFloat)self.dataStore.drinks.count / totalDays;
     if (fabs(average - roundf(average)) <= 0.25) {
         average = roundf(average);
         return [NSString stringWithFormat:@"%lu", (unsigned long)average];
