@@ -15,6 +15,7 @@
 #import "Drink.h"
 #import "DrinkConsumption.h"
 #import "DrinkConsumptionSerializer.h"
+#import "DrinkSelectionViewController.h"
 #import "HealthKitManager.h"
 #import "CoffeeShopNotification.h"
 #import "FoursquareClient.h"
@@ -87,9 +88,30 @@
             [healthKitManager promptForPermissions];
         };
 
+        void (^preferenceBlock)() = ^{
+            DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] initWithNoBeverageEnabled:YES];
+            drinkVC.title = @"Set Preferred Drink";
+            drinkVC.navigationItem.leftBarButtonItem = nil;
+
+            UINavigationController *drinkNav = [[UINavigationController alloc] initWithRootViewController:drinkVC];
+
+            [drinkVC.selectedDrinkSignal subscribeNext:^(Drink *drink) {
+                [preferredDrinksVM addDrink:drink];
+                [drinkVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];;
+            }];
+
+            UIViewController *presenter = self.window.rootViewController;
+            if (presenter.presentedViewController) {
+                presenter = presenter.presentedViewController;
+            }
+
+            [presenter presentViewController:drinkNav animated:YES completion:nil];
+        };
+
         FTUEViewController *ftue = [[FTUEViewController alloc] initWithLocationBlock:locationBlock
                                                                   notificationsBlock:notificationsBlock
-                                                                      healthKitBlock:healthKitBlock];
+                                                                      healthKitBlock:healthKitBlock
+                                                                     preferenceBlock:preferenceBlock];
         [ftue.completedSignal subscribeNext: ^(id _){
             [FTUEViewController setAsSeen];
             [historyNav dismissViewControllerAnimated:YES completion:nil];

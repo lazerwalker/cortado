@@ -12,7 +12,8 @@
 + (void)setAsSeen;
 
 - (id)initWithLocationBlock:(FTUEAuthorizationBlock)locationBlock
-    notificationsBlock:(FTUEAuthorizationBlock)notificationBlock
-    healthKitBlock:(FTUEAuthorizationBlock)healthKitBlock;
+         notificationsBlock:(FTUEAuthorizationBlock)notificationBlock
+             healthKitBlock:(FTUEAuthorizationBlock)healthKitBlock
+            preferenceBlock:(FTUEAuthorizationBlock)preferenceBlock;
 
 @end

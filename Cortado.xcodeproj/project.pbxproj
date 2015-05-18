@@ -79,6 +79,10 @@
 		C636588E1B06B22100FBE673 /* OverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C636588C1B06B22100FBE673 /* OverviewView.xib */; };
 		C63658911B06B30E00FBE673 /* OverviewViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658901B06B30E00FBE673 /* OverviewViewModel.m */; };
 		C63658921B06B30E00FBE673 /* OverviewViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658901B06B30E00FBE673 /* OverviewViewModel.m */; };
+		C63658961B09B10300FBE673 /* PreferenceFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658941B09B10300FBE673 /* PreferenceFTUEViewController.m */; };
+		C63658971B09B10300FBE673 /* PreferenceFTUEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C63658941B09B10300FBE673 /* PreferenceFTUEViewController.m */; };
+		C63658981B09B10300FBE673 /* PreferenceFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C63658951B09B10300FBE673 /* PreferenceFTUEViewController.xib */; };
+		C63658991B09B10300FBE673 /* PreferenceFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C63658951B09B10300FBE673 /* PreferenceFTUEViewController.xib */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
 		C66257011AFBE7C700EAFC15 /* PreferencesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C66257001AFBE7C700EAFC15 /* PreferencesTests.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
@@ -317,6 +321,9 @@
 		C636588C1B06B22100FBE673 /* OverviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewView.xib; sourceTree = "<group>"; };
 		C636588F1B06B30E00FBE673 /* OverviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewModel.h; sourceTree = "<group>"; };
 		C63658901B06B30E00FBE673 /* OverviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewViewModel.m; sourceTree = "<group>"; };
+		C63658931B09B10300FBE673 /* PreferenceFTUEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceFTUEViewController.h; sourceTree = "<group>"; };
+		C63658941B09B10300FBE673 /* PreferenceFTUEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceFTUEViewController.m; sourceTree = "<group>"; };
+		C63658951B09B10300FBE673 /* PreferenceFTUEViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferenceFTUEViewController.xib; sourceTree = "<group>"; };
 		C642D2EB1AEDEA0B00BD5CE1 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
 		C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
 		C66257001AFBE7C700EAFC15 /* PreferencesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTests.m; sourceTree = "<group>"; };
@@ -577,6 +584,9 @@
 				A682051B1AB741C9007923D8 /* HealthKitFTUEViewController.h */,
 				A682051C1AB741C9007923D8 /* HealthKitFTUEViewController.m */,
 				A682051D1AB741C9007923D8 /* HealthKitFTUEViewController.xib */,
+				C63658931B09B10300FBE673 /* PreferenceFTUEViewController.h */,
+				C63658941B09B10300FBE673 /* PreferenceFTUEViewController.m */,
+				C63658951B09B10300FBE673 /* PreferenceFTUEViewController.xib */,
 			);
 			path = FTUE;
 			sourceTree = "<group>";
@@ -860,6 +870,7 @@
 				A682051F1AB741C9007923D8 /* HealthKitFTUEViewController.xib in Resources */,
 				A682051A1AB740B0007923D8 /* NotificationsFTUEViewController.xib in Resources */,
 				A68205151AB73A22007923D8 /* LocationFTUEViewController.xib in Resources */,
+				C63658981B09B10300FBE673 /* PreferenceFTUEViewController.xib in Resources */,
 				A66A3A271A3B925B00849705 /* drinks.json in Resources */,
 				A682050F1AB6565B007923D8 /* IntroFTUEViewController.xib in Resources */,
 				C636588D1B06B22100FBE673 /* OverviewView.xib in Resources */,
@@ -892,6 +903,7 @@
 				C6BED1531AE30D050095B959 /* LaunchScreen.xib in Resources */,
 				C6BED1541AE30D050095B959 /* Pods-acknowledgements.plist in Resources */,
 				C6BED1551AE30D050095B959 /* swipe.gif in Resources */,
+				C63658991B09B10300FBE673 /* PreferenceFTUEViewController.xib in Resources */,
 				C636588E1B06B22100FBE673 /* OverviewView.xib in Resources */,
 				C6BED1561AE30D050095B959 /* Images.xcassets in Resources */,
 				C6BED1571AE30D050095B959 /* SettingsViewController.storyboard in Resources */,
@@ -1025,6 +1037,7 @@
 				A62D722E1A254C6500846A33 /* ViewController.m in Sources */,
 				A66A3A141A3B7D5C00849705 /* DrinkConsumption.m in Sources */,
 				C63658911B06B30E00FBE673 /* OverviewViewModel.m in Sources */,
+				C63658961B09B10300FBE673 /* PreferenceFTUEViewController.m in Sources */,
 				A62376581A3F7BC200661201 /* UINavigationController+ReactiveCocoa.m in Sources */,
 				A66A3A1C1A3B8F3700849705 /* DrinkSelectionViewController.m in Sources */,
 				A6EBA87D1A2A3B3200344C17 /* HealthKitManager.m in Sources */,
@@ -1089,6 +1102,7 @@
 				C6BED12C1AE30D050095B959 /* DrinkConsumption.m in Sources */,
 				C63658921B06B30E00FBE673 /* OverviewViewModel.m in Sources */,
 				C6BED12D1AE30D050095B959 /* UINavigationController+ReactiveCocoa.m in Sources */,
+				C63658971B09B10300FBE673 /* PreferenceFTUEViewController.m in Sources */,
 				C6BED12E1AE30D050095B959 /* DrinkSelectionViewController.m in Sources */,
 				C6BED12F1AE30D050095B959 /* HealthKitManager.m in Sources */,
 				C6BED1301AE30D050095B959 /* AddConsumptionViewModel.m in Sources */,

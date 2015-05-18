@@ -4,6 +4,9 @@
 #import "IntroFTUEViewController.h"
 #import "LocationFTUEViewController.h"
 #import "NotificationsFTUEViewController.h"
+#import "PreferenceFTUEViewController.h"
+
+#import "DataStore.h"
 
 #import "FTUEViewController.h"
 
@@ -25,7 +28,10 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
     [defaults synchronize];
 }
 
-- (id)initWithLocationBlock:(FTUEAuthorizationBlock)locationBlock notificationsBlock:(FTUEAuthorizationBlock)notificationBlock healthKitBlock:(FTUEAuthorizationBlock)healthKitBlock {
+- (id)initWithLocationBlock:(FTUEAuthorizationBlock)locationBlock
+         notificationsBlock:(FTUEAuthorizationBlock)notificationBlock
+             healthKitBlock:(FTUEAuthorizationBlock)healthKitBlock
+            preferenceBlock:(FTUEAuthorizationBlock)preferenceBlock {
 
     self = [super init];
     if (!self) return nil;
@@ -34,6 +40,7 @@ static NSString * const FTUECompletedKey = @"completedFTUE";
         [[IntroFTUEViewController alloc] init],
         [[LocationFTUEViewController alloc] initWithAuthorizationBlock:locationBlock],
         [[NotificationsFTUEViewController alloc] initWithAuthorizationBlock:notificationBlock],
+        [[PreferenceFTUEViewController alloc] initWithAuthorizationBlock:preferenceBlock],
         [[HealthKitFTUEViewController alloc] initWithAuthorizationBlock:healthKitBlock]
     ];
 

@@ -169,7 +169,8 @@
 - (void)showOnboarding {
     FTUEViewController *ftue = [[FTUEViewController alloc] initWithLocationBlock:^{}
                                                               notificationsBlock:^{}
-                                                                  healthKitBlock:^{}];
+                                                                  healthKitBlock:^{}
+                                                                 preferenceBlock:^{}];
     [ftue.completedSignal subscribeNext: ^(id _){
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];
