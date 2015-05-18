@@ -26,18 +26,17 @@
 
 + (DrinkConsumption *)consumptionFromUserInfo:(NSDictionary *)userInfo
                                    identifier:(NSString *)identifier {
-    if ([identifier isEqualToString:NotificationActionCustom]) { return nil; }
-
-    NSDictionary *preferenceDict = userInfo[NotificationActionDrink];
-    if (preferenceDict == nil) { return nil; }
-
     NSDate *timestamp = userInfo[@"timestamp"];
     NSString *venue = userInfo[@"venue"];
     NSString *coordinate = userInfo[@"latLng"];
 
-    Drink *drink = [MTLJSONAdapter modelOfClass:Drink.class
+    Drink *drink;
+    NSDictionary *preferenceDict = userInfo[NotificationActionDrink];
+    if (preferenceDict != nil) {
+        drink = [MTLJSONAdapter modelOfClass:Drink.class
                              fromJSONDictionary:preferenceDict[identifier]
                                           error:nil];
+    }
 
     return [[DrinkConsumption alloc] initWithDrink:drink
                                          timestamp:timestamp
