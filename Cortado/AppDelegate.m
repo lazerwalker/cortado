@@ -89,6 +89,8 @@
         };
 
         void (^preferenceBlock)() = ^{
+            if (preferredDrinksVM.numberOfDrinks > 0) return;
+
             DrinkSelectionViewController *drinkVC = [[DrinkSelectionViewController alloc] initWithNoBeverageEnabled:YES];
             drinkVC.title = @"Set Preferred Drink";
             drinkVC.navigationItem.leftBarButtonItem = nil;
