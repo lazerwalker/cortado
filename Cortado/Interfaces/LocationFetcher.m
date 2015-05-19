@@ -5,8 +5,6 @@
 #import "LocationDetector.h"
 #import "LocationFetcher.h"
 
-#import <ARAnalytics/ARAnalytics.h>
-
 @interface LocationFetcher ()<CLLocationManagerDelegate>
 
 @property (readonly, nonatomic, strong) LocationDetector *detector;
@@ -52,8 +50,6 @@ dataStore:(DataStore *)dataStore {
 - (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
     BOOL isStart = [visit.departureDate isEqualToDate:NSDate.distantFuture];
     if (!isStart) return;
-
-    [ARAnalytics event:@"visited location"];
 
     [self.detector checkForCoordinate:visit.coordinate];
 }

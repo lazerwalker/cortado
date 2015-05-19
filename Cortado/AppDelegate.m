@@ -158,11 +158,7 @@
         [nav presentViewController:addNav animated:NO completion:nil];
         [[addVM.completedSignal
             flattenMap:^RACStream *(DrinkConsumption *c) {
-                BOOL changedTime = ![c.timestamp isEqualToDate:consumption.timestamp];
-                [ARAnalytics event:@"Add other" withProperties:@{@"changedTime":@(changedTime),
-                                                                 @"name":c.name,
-                                                                 @"timestamp":c.timestamp}];
-
+                [ARAnalytics event:@"Added other after notif"];
                 return [self.dataStore addDrink:c];
             }] subscribeCompleted:^{
                 [nav dismissViewControllerAnimated:YES completion:nil];

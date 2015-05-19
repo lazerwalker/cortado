@@ -1,6 +1,5 @@
 @import UIKit;
 
-#import <ARAnalytics/ARAnalytics.h>
 #import <Keys/CortadoKeys.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -37,8 +36,6 @@
             return !(self.dataStore.ignoreAllStarbucks && [venue.name containsString:@"Starbucks"]);
         }]
         subscribeNext:^(FoursquareVenue *result) {
-            [ARAnalytics event:@"At coffee shop"];
-
             [self.dataStore addVenue:result];
 
             CoffeeShopNotification *notif = [[CoffeeShopNotification alloc] initWithName:result.name

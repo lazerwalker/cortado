@@ -1,5 +1,4 @@
 @import UIKit;
-#import <ARAnalytics/ARAnalytics.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "FoursquareClient.h"
@@ -87,11 +86,6 @@ static NSString * const APIDate = @"20141205";
                     }
                 }
                 [subscriber sendCompleted];
-
-                if (venueJSON.count == 0) {
-                    [ARAnalytics event:@"no coffee shop found"];
-
-                }
             }
         }];
 

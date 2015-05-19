@@ -67,7 +67,7 @@ typedef void (^PreferencesChangeCompletionBlock)(Drink *);
 #pragma mark -
 - (void)didTapAddButton {
     [self showDrinkSelectionWithCompletion:^(Drink * drink) {
-        [ARAnalytics event:@"Added favorite drink" withProperties:@{@"name":drink.name}];
+        [ARAnalytics event:@"Added favorite drink"];
         [self.viewModel addDrink:drink.copy];
     }];
 
@@ -96,7 +96,7 @@ typedef void (^PreferencesChangeCompletionBlock)(Drink *);
             [ARAnalytics event:@"Deleted favorite drink"];
             [self.viewModel removeDrinkAtIndex:indexPath.row];
         } else {
-            [ARAnalytics event:@"Edited favorite drink" withProperties:@{@"name":drink.name}];
+            [ARAnalytics event:@"Edited favorite drink"];
             [self.viewModel replaceDrinkAtIndex:indexPath.row withDrink:drink.copy];
         }
     }];
@@ -140,6 +140,7 @@ typedef void (^PreferencesChangeCompletionBlock)(Drink *);
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [ARAnalytics event:@"Move favorite drink position"];
     [self.viewModel moveDrinkAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 

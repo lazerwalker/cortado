@@ -13,7 +13,6 @@
 #import "HistoryViewModel.h"
 #import "OverviewView.h"
 #import "OverviewViewModel.h"
-#import "PreferencesViewController.h"
 #import "PreferencesViewModel.h"
 #import "SettingsViewController.h"
 
@@ -163,10 +162,7 @@ static NSString * const CellIdentifier = @"Cell";
 
     [self.navigationController presentViewController:nav animated:YES completion:nil];
     [addVM.completedSignal subscribeNext:^(DrinkConsumption *c) {
-        BOOL isRecent = ABS([c.timestamp timeIntervalSinceNow]) < (60 * 60);
-        [ARAnalytics event:@"Add via add button" withProperties:@{@"timestamp":c.timestamp,
-                                                                  @"drink":c.name,
-                                                                  @"isRecent":@(isRecent)}];
+        [ARAnalytics event:@"Add via add button"];
         [[self.viewModel addDrink:c] subscribeNext:^(id x) {}];
     } completed:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
