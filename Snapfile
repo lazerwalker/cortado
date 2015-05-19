@@ -2,10 +2,10 @@
 
 # A list of devices you want to take the screenshots from
 devices([
-#  "iPhone 4s",
-#  "iPhone 5s",
+  "iPhone 4s",
+  "iPhone 5s",
 #  "iPhone 6",
-  "iPhone 6 Plus"
+#  "iPhone 6 Plus"
 ])
 
 languages([
