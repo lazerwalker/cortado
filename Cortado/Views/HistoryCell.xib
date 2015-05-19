@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -13,8 +13,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="spU-jH-4TW" id="c6e-FL-vuW">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="11:15" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daC-99-t97">
-                        <rect key="frame" x="8" y="21" width="34" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="11:15" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daC-99-t97">
+                        <rect key="frame" x="8" y="20" width="45" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="SFo-pR-XSD"/>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="mJL-Y4-EN6"/>
@@ -29,12 +29,12 @@
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="Cortado at La Colombe" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifP-Co-ei2">
-                        <rect key="frame" x="50" y="13" width="260" height="20"/>
+                        <rect key="frame" x="75" y="12" width="237" height="20"/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Double Shot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weg-jL-cAa">
-                        <rect key="frame" x="52" y="34" width="260" height="12"/>
+                        <rect key="frame" x="75" y="32" width="237" height="13"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                     <constraint firstItem="weg-jL-cAa" firstAttribute="leading" secondItem="ifP-Co-ei2" secondAttribute="leading" id="iLm-eS-H6w"/>
                     <constraint firstItem="weg-jL-cAa" firstAttribute="top" secondItem="ifP-Co-ei2" secondAttribute="bottom" id="qBf-d9-cTa"/>
                     <constraint firstItem="ifP-Co-ei2" firstAttribute="leading" secondItem="c6e-FL-vuW" secondAttribute="leading" constant="75" id="qN0-no-K4X"/>
-                    <constraint firstItem="daC-99-t97" firstAttribute="leading" secondItem="c6e-FL-vuW" secondAttribute="leadingMargin" constant="10" id="vuA-Xg-kuO"/>
+                    <constraint firstItem="daC-99-t97" firstAttribute="leading" secondItem="c6e-FL-vuW" secondAttribute="leadingMargin" id="vuA-Xg-kuO"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
