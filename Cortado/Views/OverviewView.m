@@ -8,6 +8,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *todayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *averageLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *averageDrinksLabel;
+@property (weak, nonatomic) IBOutlet UILabel *todayDrinksLabel;
+
 @end
 
 @implementation OverviewView
@@ -23,6 +26,9 @@
 - (void)awakeFromNib {
     RAC(self, todayLabel.text) = RACObserve(self, viewModel.todayCount);
     RAC(self, averageLabel.text) = RACObserve(self, viewModel.averageCount);
+
+    RAC(self, averageDrinksLabel.text) = RACObserve(self, viewModel.averageDrinksText);
+    RAC(self, todayDrinksLabel.text) = RACObserve(self, viewModel.todayDrinksText);
 }
 
 @end

@@ -36,6 +36,14 @@
     return [NSSet setWithObject:@keypath(OverviewViewModel.new, dataStore.drinks)];
 }
 
++ (NSSet *)keyPathsForValuesAffectingTodayDrinksText {
+    return [NSSet setWithObject:@keypath(OverviewViewModel.new, dataStore.drinks)];
+}
+
++ (NSSet *)keyPathsForValuesAffectingAverageDrinksText {
+    return [NSSet setWithObject:@keypath(OverviewViewModel.new, dataStore.drinks)];
+}
+
 #pragma mark -
 
 - (NSString *)todayCount {
@@ -70,5 +78,21 @@
         unsigned long top = (int)ceilf(average);
         return [NSString stringWithFormat:@"%lu-%lu", bottom, top];
     }
+}
+
+- (NSString *)todayDrinksText {
+    NSString *string = @"CAFFEINATED\nDRINK";
+    if (![self.todayCount isEqualToString:@"1"]) {
+        string = [string stringByAppendingString:@"S"];
+    }
+    return string;
+}
+
+- (NSString *)averageDrinksText {
+    NSString *string = @"CAFFEINATED\nDRINK";
+    if (![self.averageCount isEqualToString:@"1"]) {
+        string = [string stringByAppendingString:@"S"];
+    }
+    return string;
 }
 @end
