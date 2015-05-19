@@ -1249,7 +1249,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "993eb0e9-0abf-4a52-9569-1edf73a3d54e";
+				PROVISIONING_PROFILE = "dd72fbbe-3543-4266-9bda-07bbe2a97d59";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1300,7 +1300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Walker (VDT7GGRJH4)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1316,7 +1316,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb986863-381e-4af4-ab39-7df20d66436c";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
