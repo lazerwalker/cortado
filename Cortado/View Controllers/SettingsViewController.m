@@ -91,6 +91,8 @@
         [self showBlacklist];
     } else if ([cell.reuseIdentifier isEqualToString:@"preferences"]) {
         [self showPreferences];
+    } else if ([cell.reuseIdentifier isEqualToString:@"source"]) {
+        [self showGitHub];
     }
 }
 
@@ -159,6 +161,24 @@
 - (void)showPreferences {
     PreferencesViewController *preferencesVC = [[PreferencesViewController alloc] initWithViewModel:self.preferencesViewModel];
     [self.navigationController pushViewController:preferencesVC animated:YES];
+}
+
+- (void)showGitHub {
+    NSString *version = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+
+    NSString *urlString = [NSString stringWithFormat:@"https://github.com/lazerwalker/Cortado/tree/%@", version];
+#ifdef DEBUG
+    urlString = @"https://github.com/lazerwalker/Cortado";
+#endif
+
+    NSURL *url = [NSURL URLWithString:urlString];
+
+
+    INKWebViewController *vc = [[INKWebViewController alloc] init];
+    vc.navigationItem.rightBarButtonItem = nil;
+    [vc loadURL:url];
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // TODO: Remove before shipping
