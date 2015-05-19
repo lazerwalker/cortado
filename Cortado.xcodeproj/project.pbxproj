@@ -85,6 +85,7 @@
 		C63658991B09B10300FBE673 /* PreferenceFTUEViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C63658951B09B10300FBE673 /* PreferenceFTUEViewController.xib */; };
 		C642D2ED1AEDEA0B00BD5CE1 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
 		C66257011AFBE7C700EAFC15 /* PreferencesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C66257001AFBE7C700EAFC15 /* PreferencesTests.m */; };
+		C6902F091B0B00F6008F673D /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C642D2EC1AEDEA0B00BD5CE1 /* TestingAppDelegate.m */; };
 		C6A6A6331AE5F21C002D2753 /* DataStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6A6A6321AE5F21C002D2753 /* DataStoreTests.m */; };
 		C6B7A5B41AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7A5B31AE4BF6C0083E273 /* DrinkConsumptionSerializerTests.m */; };
 		C6BBB3851AF5A740002EAE0F /* LocationDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BBB3841AF5A740002EAE0F /* LocationDetectorTests.m */; };
@@ -1114,6 +1115,7 @@
 				C6BED1361AE30D050095B959 /* DrinkSubtype.m in Sources */,
 				C6BED1371AE30D050095B959 /* HistoryCellViewModel.m in Sources */,
 				C6BED1381AE30D050095B959 /* NotificationsFTUEViewController.m in Sources */,
+				C6902F091B0B00F6008F673D /* TestingAppDelegate.m in Sources */,
 				C6BED1391AE30D050095B959 /* HistoryCell.m in Sources */,
 				C6BED13A1AE30D050095B959 /* EmptyStateCell.m in Sources */,
 				C6BED13B1AE30D050095B959 /* AppDelegate.m in Sources */,
