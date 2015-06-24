@@ -29,12 +29,13 @@ Although there is no formal style guide, please follow the example of existing c
 * Use MVVM architecture and ReactiveCocoa as appropriate
 
 
-
 ## License
 
 The source code to Cortado is available under the MIT license. See the `LICENSE` file for more information.
 
-The icons and photos that appear in this app are all licensed under a Creative Commons By-Attribution license. For licensing information and attribution for a given art asset, check out the "Image Attribution" section of the app (accessible from the settings page of the app itself, or from within `SettingsViewController.storyboard` in Xcode)
+The icons and photos that appear in this app are all licensed under a Creative Commons By-Attribution license. For licensing information and attribution for a given art asset, check out the "Image Attribution" section of the app (accessible from the settings page of the app itself, or from within `SettingsViewController.storyboard` in Xcode).
+
+While it's not legally forbidden by the licensing terms, please do not simply submit your own version of Cortado to the App Store. Don't be a jerk.
 
 
 ## Contact
