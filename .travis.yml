@@ -3,6 +3,7 @@ cache: cocoapods
 
 install:
 - gem install xcpretty cocoapods slather -N
+- bundle exec pod install
 
 script:
 - set -o pipefail && xcodebuild test -workspace Cortado.xcworkspace -scheme Cortado -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
