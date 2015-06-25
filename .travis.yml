@@ -2,7 +2,7 @@ language: objective-c
 cache: cocoapods
 
 install:
-- gem install xcpretty cocoapods slather -N
+- gem install xcpretty cocoapods cocoapods-keys slather -N
 - pod install
 
 script:
