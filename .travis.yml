@@ -1,0 +1,10 @@
+language: objective-c
+cache: cocoapods
+
+install:
+- gem install xcpretty cocoapods slather -N
+
+script:
+- set -o pipefail && xcodebuild test -workspace Cortado.xcworkspace -scheme Cortado -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+
+after_success: slather
