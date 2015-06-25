@@ -2,7 +2,9 @@
 
 Cortado is an iPhone app to help you track your caffeine consumption habits. Besides letting you manually enter caffeine data, it detects when you are at a coffee shop and automatically prompts you to input data right from your lock screen or watch.
 
-Cortado is available for sale on the [App Store](). While this codebase will allow you to build and run the app for free, if you use Cortado on a regular basis I'd ask you to please buy it to help support future development.
+For more information on the ideas behind Cortado, check out the [blog post](http://blog.lazerwalker.com/2015/06/25/location-as-intent-introducing-cortado.html) introducing it.
+
+Cortado is available for sale on the [App Store](https://itunes.apple.com/us/app/cortado/id969899327). While this codebase will allow you to build and run the app for free, if you actually use Cortado, please buy it on the App Store to help support future development.
 
 
 ## Setup
@@ -35,7 +37,12 @@ The source code to Cortado is available under the MIT license. See the `LICENSE`
 
 The icons and photos that appear in this app are all licensed under a Creative Commons By-Attribution license. For licensing information and attribution for a given art asset, check out the "Image Attribution" section of the app (accessible from the settings page of the app itself, or from within `SettingsViewController.storyboard` in Xcode).
 
-While it's not legally forbidden by the licensing terms, please do not simply submit your own version of Cortado to the App Store. Don't be a jerk.
+Although technically allowed by the licensing terms, please do not simply submit your own version of Cortado to the App Store.
+
+
+## A Plea
+
+Releasing Cortado under such a liberal license is an experiment. I'm putting a lot of trust in you. Please don't abuse that trust. If you use Cortado, please buy a copy rather than simply compiling it from source. If you want to build your own software based off of my code, please make it meaningfully different rather than just a Cortado clone. You're all wonderful people, and I know I don't even need to be saying any of this.
 
 
 ## Contact
