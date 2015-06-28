@@ -2,6 +2,9 @@
 
 [![Download Cortado on the App Store](http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg)](https://itunes.apple.com/us/app/cortado/id969899327)
 
+[![CI Status](http://img.shields.io/travis/lazerwalker/cortado.svg?style=flat)](https://travis-ci.org/lazerwalker/cortado)
+[![Coverage Status](https://coveralls.io/repos/lazerwalker/cortado/badge.svg)](https://coveralls.io/r/lazerwalker/cortado)
+
 Cortado is an iPhone app to help you track your caffeine consumption habits. Besides letting you manually enter caffeine data, it detects when you are at a coffee shop and automatically prompts you to input data right from your lock screen or watch.
 
 For more information on the ideas behind Cortado, check out the [blog post](http://blog.lazerwalker.com/2015/06/25/location-as-intent-introducing-cortado.html) introducing it.
