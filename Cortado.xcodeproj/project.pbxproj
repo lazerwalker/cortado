@@ -1238,6 +1238,8 @@
 			baseConfigurationReference = 46FF4552A358097D7F8675E4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_DISPLAY_NAME_SUFFIX = "";
+				BUNDLE_ID_SUFFIX = "";
 				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Walker (48WB56AE4K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1300,7 +1302,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0337664A1406DC2AD11AF5A2 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.dev;
+				BUNDLE_DISPLAY_NAME_SUFFIX = " β";
+				BUNDLE_ID_SUFFIX = .dev;
 				CODE_SIGN_ENTITLEMENTS = Cortado/Cortado.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
