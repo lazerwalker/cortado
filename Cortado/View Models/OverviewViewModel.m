@@ -64,10 +64,11 @@
 
     days = ASTSort(days);
 
-    NSDate *first = days.firstObject;
-    NSDate *last = days.lastObject;
-    NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:first toDate:last options:0];
-    NSInteger totalDays = MAX(ABS(difference.day), 1);
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+                                               fromDate:days.firstObject
+                                                 toDate:days.lastObject
+                                                options:0];
+    NSInteger totalDays = ABS(difference.day) + 1;
 
     CGFloat average = (CGFloat)self.dataStore.drinks.count / totalDays;
     if (fabs(average - roundf(average)) <= 0.25) {
