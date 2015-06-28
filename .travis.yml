@@ -1,6 +1,6 @@
 language: objective-c
 cache: cocoapods
-xcode_workspace: Cortado/Cortado.xcworkspace
+xcode_workspace: Cortado.xcworkspace
 xcode_scheme: Cortado
 xcode_sdk: iphonesimulator
 
