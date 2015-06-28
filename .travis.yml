@@ -9,4 +9,8 @@ before_install:
   - gem install cocoapods cocoapods-keys --no-ri --no-rdoc
   - gem install slather --no-ri --no-rdoc
 
+  - pod keys set foursquareClientID "foursquareClientID" Cortado
+  - pod keys set foursquareClientSecret "foursquareClientSecret" Cortado
+  - pod keys set mixpanelToken "mixpanelToken" Cortado
+
 after_success: slather
