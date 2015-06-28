@@ -5,6 +5,7 @@ xcode_scheme: Cortado
 xcode_sdk: iphonesimulator
 
 before_install:
+  - gem install activesupport --no-ri --no-rdoc
   - gem install cocoapods cocoapods-keys --no-ri --no-rdoc
   - gem install slather --no-ri --no-rdoc
 
