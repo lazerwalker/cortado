@@ -7,7 +7,7 @@ pod 'FXForms', '~> 1.2'
 pod 'IntentKit/Mail'
 pod 'iRate'
 pod "Mantle", "~> 1.5"
-pod 'MBProgressHud', '~> 0.9'
+pod 'MBProgressHUD', '~> 0.9'
 pod 'ReactiveCocoa', '~> 2.5'
 pod 'ReactiveViewModel', '~> 0.2'
 pod 'VTAcknowledgementsViewController'

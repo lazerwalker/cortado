@@ -16,7 +16,7 @@ PODS:
   - IntentKit/Mail (0.7.1):
     - IntentKit/Core
   - iRate (1.11.3)
-  - Keys (1.0.2)
+  - Keys (1.0.0)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
@@ -48,9 +48,9 @@ DEPENDENCIES:
   - FXForms (~> 1.2)
   - IntentKit/Mail
   - iRate
-  - Keys (from `https://github.com/ashfurrow/empty-podspec.git`)
+  - Keys (from `Pods/CocoaPodsKeys/`)
   - Mantle (~> 1.5)
-  - MBProgressHud (~> 0.9)
+  - MBProgressHUD (~> 0.9)
   - OCMock
   - ReactiveCocoa (~> 2.5)
   - ReactiveViewModel (~> 0.2)
@@ -62,15 +62,12 @@ EXTERNAL SOURCES:
   ARAnalytics:
     :git: https://github.com/orta/ARAnalytics.git
   Keys:
-    :git: https://github.com/ashfurrow/empty-podspec.git
+    :path: Pods/CocoaPodsKeys/
 
 CHECKOUT OPTIONS:
   ARAnalytics:
     :commit: 7cd9a557f858322f1fea505a1f3a6c8daea6f509
     :git: https://github.com/orta/ARAnalytics.git
-  Keys:
-    :commit: dfc3c5e75dd23e5e9f938f4552eaceec4a8b4b73
-    :git: https://github.com/ashfurrow/empty-podspec.git
 
 SPEC CHECKSUMS:
   ARAnalytics: c331321fc6b034ad6249cd43e226d0b262436ce5
@@ -82,7 +79,7 @@ SPEC CHECKSUMS:
   FXForms: b6a78bac9f6b597ce704e34ac7c1ce9ff628b1d5
   IntentKit: 2aa2bee06d354502a7faca7002b9453c926f52fa
   iRate: 09ef501c74ade02013348bc33225ea48f7aa4e55
-  Keys: 0feb3c779714b9ddbb40a8214ca348af3ea4986c
+  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Mixpanel: 1d387d76800e07e953958c62c97fea27f13632dd
@@ -94,4 +91,4 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: f2391b007c3abafd3b3afccda7d8914a59b44309
   YLGIFImage: c0ae132fe80e5282b2762a97d14e23ba71a748ae
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.1
