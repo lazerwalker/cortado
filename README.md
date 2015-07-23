@@ -15,7 +15,7 @@ Cortado is available for sale on the [App Store](https://itunes.apple.com/us/app
 ## Setup
 
 1. Clone this repo: `git clone https://github.com/lazerwalker/cortado.git`
-2. Generate API keys for both [Foursquare](https://developer.foursquare.com) and [Mixpanel](https://developer.foursquare.com).
+2. Generate API keys for both [Foursquare](https://developer.foursquare.com) and [Mixpanel](https://mixpanel.com/).
 3. If they are not already on your machine, install Cocoapods and Cocoapods-Keys: `sudo gem install cocoapods cocoapods-keys`
 4. Run `pod install`, plugging in your Mixpanel and Foursquare API keys as prompted.
 5. Open `Cortado.xcworkspace` in Xcode
