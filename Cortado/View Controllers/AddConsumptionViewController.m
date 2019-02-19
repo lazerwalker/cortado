@@ -90,6 +90,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
     }];
 
     RAC(self, viewModel.timestamp) = [[self rac_signalForSelector:@selector(datePickerDidChange)] map:^id(id _) {
+        NSLog(@"Date: %@",self.datePicker.date);
         return self.datePicker.date;
     }];
 }
@@ -176,6 +177,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
         case AddConsumptionItemVenue:
             cell.textLabel.text = self.viewModel.venue;
             cell.accessoryType = UITableViewCellAccessoryNone;
+            break;
     }
 }
 
