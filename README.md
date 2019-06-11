@@ -52,7 +52,7 @@ Although technically allowed by the licensing terms, please do not simply submit
 
 ## Contact
 
-Mike Lazer-Walker
+Em Lazer-Walker
 
 - https://github.com/lazerwalker
 - [@lazerwalker](http://twitter.com/lazerwalker)
