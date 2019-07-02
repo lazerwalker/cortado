@@ -176,6 +176,7 @@ typedef NS_ENUM(NSInteger, AddConsumptionItem) {
         case AddConsumptionItemVenue:
             cell.textLabel.text = self.viewModel.venue;
             cell.accessoryType = UITableViewCellAccessoryNone;
+            break;
     }
 }
 
